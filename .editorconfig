@@ -1,2 +1,8 @@
-ndent_style = tab
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Tab indentation
+indent_style = tab
 indent_size = 4
