@@ -53,3 +53,4 @@ public:
 	void setMaterialList(int materialList)			{ m_materialList = materialList; }
 	void setAoe(std::string aoe)					{ m_aoe = aoe; }
 };
+
