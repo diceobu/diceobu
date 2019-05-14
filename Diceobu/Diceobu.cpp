@@ -2,7 +2,7 @@
 
 int main()
 {
-    std::cout << "Welcome to the Diceobu features test.\n"
-		<< "This is not the complete game.\n"
-		<< "This is only a platform that helps you explore the current features of the game.\n";
+	std::cout << "Welcome to Dfireobu also known as Diceobu Jr, or Diceobu's younger sibling.\n"
+		<< "Dfireobu is nothing like Diceobu.\n"
+		<< "It's just a platform that will guide you through the basic features Diceobu will have to offer.\n";
 }
