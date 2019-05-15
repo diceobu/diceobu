@@ -1,6 +1,12 @@
-#include <iostream>
+/* This is the main file of this test tool
+ * that contains the main function.
+ */
+
+//	User Libraries
 #include "Power.h"
 #include "Spell.h"
+//	Standard Libraries
+#include <iostream>
 
 int main()
 {
@@ -11,7 +17,7 @@ int main()
 	Power A("kappa", 4, "keepo", "123", 69, "coldaf", true, 6969, "almost square");
 	Spell B("kappa1", 5, "keepo1", "1234", 69, "coldaf", true, 6969, "almost square", 40, "wholeftime", 50, true, true, "fire stuff", 100);
 
-	
+	std::cout << B.getName() << '\n';
 
 	return 0;
 }

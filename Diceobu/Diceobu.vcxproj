@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="Diceobu.cpp" />
     <ClCompile Include="Power.cpp" />
+    <ClCompile Include="Spell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Power.h" />
