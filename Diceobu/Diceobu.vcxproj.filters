@@ -18,9 +18,15 @@
     <ClCompile Include="Diceobu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Power.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Power.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -152,9 +152,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Diceobu.cpp" />
+    <ClCompile Include="Power.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Power.h" />
+    <ClInclude Include="Spell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
