@@ -11,7 +11,7 @@
 class Power
 {
 //	Member variables
-private:
+protected:
 	std::string		m_name{ "Unnamed Power" };
 	int				m_levelReq{ 1 };
 	std::string		m_ofClass{ "Unknown Class" };
