@@ -185,6 +185,7 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="PC.h" />
     <ClInclude Include="Power.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Spell.h" />
