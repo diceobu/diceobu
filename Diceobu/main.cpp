@@ -4,11 +4,15 @@
 
 //	User Libraries
 #include "Campaign.h"
+#include "Character.h"
+#include "Entity.h"
 #include "Equipment.h"
 #include "Item.h"
 #include "Map.h"
 #include "NonMagicalPower.h"
 #include "NonUsable.h"
+#include "Object.h"
+#include "Obstacle.h"
 #include "Power.h"
 #include "Spell.h"
 #include "Tile.h"
@@ -16,6 +20,7 @@
 #include "Weapon.h"
 //	Standard Libraries
 #include <iostream>
+#include <string>
 
 int main()
 {
@@ -32,12 +37,18 @@ int main()
 	Map G("map1", 44, 1421, "fire&ice");
 	Tile H("map1", 40, 124124, 1414, "hard", "ice", true);
 	Campaign I("camp name", 2, 5, "map1>map2>map3", "desc");
+	Entity J("jeff", 50, 30, 20, "large", 24, 22, 11, 15151);
+	Object K("jeff", 50, 30, 20, "large", 24, 22, 11, 15151);
+	Obstacle L("jeff", 50, 30, 20, "large", 24, 22, 11, 15151, "rock");
+	Character M("jeff", 50, 30, 20, "large", 24, 22, 11, 15151, 15, "powers", 2, "fighter", "lawful trash", "some vest", 20, 50000, "human",
+		"some langs", 0, "tourash", "none", -1, -5);
 
 	std::cout << '\n' << "The following messages are just a test:" << '\n';
 	std::cout << B.getName() << '\n' << B.getCastingTime() << '\n' << C.getDescription() << '\n' << D.getClassReq() << '\n'
 		<< E.getPassiveEffect() << '\n' << E.getLevelReq() << '\n' << F.getDamage() << '\n' << G.getMapEffects() << '\n'
 		<< H.getTileID() << '\n' << H.getOpen() << '\n' << I.getName() << '\n' << I.getCampaignID() << '\n' << I.getOrderOfMaps()
-		<< '\n';
+		<< '\n' << J.getArmorClass() << '\n' << K.getEntityID() << '\n' << L.getMaterial() << '\n' << M.getAlignment() << '\n'
+		<< M.getVisionRange() << '\n';
 
 	return 0;
 }

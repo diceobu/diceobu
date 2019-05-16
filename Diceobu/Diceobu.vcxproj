@@ -156,12 +156,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Campaign.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="NonMagicalPower.cpp" />
     <ClCompile Include="NonUsable.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Power.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -170,16 +174,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Campaign.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />
     <ClInclude Include="NonUsable.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Power.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Usable.h" />
     <ClInclude Include="Weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="%28Template%29Class-Name.cpp" />
+    <None Include="%28Template%29Class-Name.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Diceobu.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
