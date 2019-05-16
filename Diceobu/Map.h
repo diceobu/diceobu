@@ -26,7 +26,7 @@ public:
 //	Constructors
 	Map(const std::string	&mapName,	const int			&size,
 		const int			&mapID,		const std::string	&mapEffects);
-	Map(const std::string &mapName, const int &size, const int &mapID);
+	Map(const std::string	&mapName,	const int &size, const int &mapID);
 //	Access Functions
 //	Getters
 	const std::string getMapName()		{ return m_mapName; }
