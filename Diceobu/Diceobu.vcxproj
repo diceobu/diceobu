@@ -164,8 +164,10 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="NonMagicalPower.cpp" />
     <ClCompile Include="NonUsable.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="PC.cpp" />
     <ClCompile Include="Power.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -181,8 +183,10 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />
     <ClInclude Include="NonUsable.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="PC.h" />
     <ClInclude Include="Power.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Spell.h" />
