@@ -1,13 +1,16 @@
 /* This is the Spell class source file.
  * It contains the definition of the
- * Spell class Constructor.
+ * Spell class Constructor and other
+ * Member Functions.
  */
 
 //	User Libraries
 #include "Spell.h"
+#include "Power.h"
 //	Standard Libraries
 #include <string>
 
+//	Constructors
 Spell::Spell(const std::string &name,		const int		  &levelReq,
 			 const std::string &ofClass,	const std::string &description,
 			 const int		   &range,		const std::string &damageType,
@@ -22,3 +25,4 @@ Spell::Spell(const std::string &name,		const int		  &levelReq,
 	  m_cSomatic{ cSomatic },			m_schOfMagic{ schOfMagic },
 	  m_magicLevel{ magicLevel }
 {}
+//	Others
