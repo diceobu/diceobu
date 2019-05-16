@@ -167,6 +167,7 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="PC.cpp" />
     <ClCompile Include="Power.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Tile.cpp" />
