@@ -1,55 +1,57 @@
 /* This is the Power class header file.
  * It contains the definition of the
  * Power class along with it's
- * Setters and Getters Functions.
+ * Getters and it's Constructor
+ * declarations. It also contains
+ * the declaration of other Functions.
  */
 
 #pragma once
 
+//	User Libraries
+
+//	Standard Libraries
 #include <string>
 
 class Power
 {
-//	Member variables
+//	Member Variables
 protected:
-	std::string		m_name{ "Unnamed Power" };
-	int				m_levelReq{ 1 };
-	std::string		m_ofClass{ "Unknown Class" };
-	std::string		m_description{ "Empty Description" };
-	int				m_range{ 0 };
-	std::string		m_damageType{ "Unknown Damage Type" };
-	bool			m_cMaterial{ false };
-	int				m_materialList{ 0 };
-	std::string		m_aoe{ "Unknown aoe" };
+	std::string m_name;
+	int			m_levelReq;
+	std::string m_ofClass;
+	std::string m_description;
+	int			m_range;
+	std::string m_damageType;
+	bool		m_cMaterial;
+	int			m_materialList;
+	std::string m_aoe;
 //	Member Functions
 public:
 //	Constructors
-	Power(std::string name,			int levelReq,		std::string ofClass,
-		std::string description,	int range,			std::string damageType,
-		bool cMaterial,				int materialList,	std::string aoe)
-		: m_name{ name },					m_levelReq{ levelReq },				m_ofClass{ ofClass },
-		m_description{ description },		m_range{ range },					m_damageType{ damageType },
-		m_cMaterial{ cMaterial },			m_materialList{ materialList },		m_aoe{ aoe }
-	{}
+	Power(const std::string &name,			const int &levelReq,		const std::string &ofClass,
+		  const std::string &description,	const int &range,			const std::string &damageType,
+		  const bool		&cMaterial,		const int &materialList,	const std::string &aoe);
 //	Access Functions
 //	Getters
-	const std::string	getName()			{ return m_name; }
-	const int			getLevelReq()		{ return m_levelReq; }
-	const std::string	getOfClass()		{ return m_ofClass; }
-	const std::string	getDescription()	{ return m_description; }
-	const int			getRange()			{ return m_range; }
-	const std::string	getDamageType()		{ return m_damageType; }
-	const bool			getCMaterial()		{ return m_cMaterial; }
-	const int			getMaterialList()	{ return m_materialList; }
-	const std::string	getAoe()			{ return m_aoe; }
+	std::string getName()		  { return m_name; }
+	int			getLevelReq()	  { return m_levelReq; }
+	std::string getOfClass()	  { return m_ofClass; }
+	std::string getDescription()  { return m_description; }
+	int			getRange()		  { return m_range; }
+	std::string getDamageType()	  { return m_damageType; }
+	bool		getCMaterial()	  { return m_cMaterial; }
+	int			getMaterialList() { return m_materialList; }
+	std::string getAoe()		  { return m_aoe; }
 //	Setters
-	void setName(std::string name)					{ m_name = name; }
-	void setLevelReq(int levelReq)					{ m_levelReq = levelReq; }
-	void setOfClass(std::string ofClass)			{ m_ofClass = ofClass; }
-	void setDescription(std::string descreption)	{ m_description = descreption; }
-	void setRange(int range)						{ m_range = range; }
-	void setDamageType(std::string damageType)		{ m_damageType = damageType; }
-	void setCMaterial(bool cMaterial)				{ m_cMaterial = cMaterial; }
-	void setMaterialList(int materialList)			{ m_materialList = materialList; }
-	void setAoe(std::string aoe)					{ m_aoe = aoe; }
+	void setName(const std::string name)				{ m_name = name; }
+	void setLevelReq(const int levelReq)				{ m_levelReq = levelReq; }
+	void setOfClass(const std::string ofClass)			{ m_ofClass = ofClass; }
+	void setDescription(const std::string description)	{ m_description = description; }
+	void setRange(const int range)						{ m_range = range; }
+	void setDamageType(const std::string damageType)	{ m_damageType = damageType; }
+	void setCMaterial(const bool cMaterial)				{ m_cMaterial = cMaterial; }
+	void setMaterialList(const int materialList)		{ m_materialList = materialList; }
+	void setAoe(const std::string aoe)					{ m_aoe = aoe; }
+//	Others
 };
