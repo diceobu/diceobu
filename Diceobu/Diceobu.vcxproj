@@ -181,6 +181,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />
     <ClInclude Include="NonUsable.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Power.h" />
