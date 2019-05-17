@@ -18,16 +18,16 @@ class User
 public:
 //	public Member Variables
 protected:
-	int userID;
-	std::string displayName;
-	std::string password;
-	std::string email;
-	std::string listOfCharacters;
-	std::string ongoingCamps;
-	bool dm;
-	std::string prefferences;
-	std::string friendList;
-	std::string gameHistory;
+	int			m_userID;
+	std::string m_displayName;
+	std::string m_password;
+	std::string m_email;
+	std::string m_listOfCharacters;
+	std::string m_ongoingCamps;
+	bool		m_isDungeonMaster;
+	std::string m_prefferences;
+	std::string m_friendList;
+	std::string m_gameHistory;
 private:
 //	private Member Variables
 
