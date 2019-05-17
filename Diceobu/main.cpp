@@ -5,18 +5,23 @@
 //	User Libraries
 #include "Campaign.h"
 #include "Character.h"
+#include "DungeonMaster.h"
 #include "Entity.h"
 #include "Equipment.h"
 #include "Item.h"
 #include "Map.h"
 #include "NonMagicalPower.h"
 #include "NonUsable.h"
+#include "NPC.h"
 #include "Object.h"
 #include "Obstacle.h"
+#include "PC.h"
+#include "Player.h"
 #include "Power.h"
 #include "Spell.h"
 #include "Tile.h"
 #include "Usable.h"
+#include "User.h"
 #include "Weapon.h"
 //	Standard Libraries
 #include <iostream>
@@ -42,13 +47,14 @@ int main()
 	Obstacle L("jeff", 50, 30, 20, "large", 24, 22, 11, 15151, "rock");
 	Character M("jeff", 50, 30, 20, "large", 24, 22, 11, 15151, 15, "powers", 2, "fighter", "lawful trash", "some vest", 20, 50000, "human",
 		"some langs", 0, "tourash", "none", -1, -5);
+	DungeonMaster N(1515, "some name", "wqdwad", "awd@dwad.wdad", "list of chars", "some camps", true, "prefs", "no friends", "gamehist");
 
 	std::cout << '\n' << "The following messages are just a test:" << '\n';
 	std::cout << B.getName() << '\n' << B.getCastingTime() << '\n' << C.getDescription() << '\n' << D.getClassReq() << '\n'
 		<< E.getPassiveEffect() << '\n' << E.getLevelReq() << '\n' << F.getDamage() << '\n' << G.getMapEffects() << '\n'
 		<< H.getTileID() << '\n' << H.getOpen() << '\n' << I.getName() << '\n' << I.getCampaignID() << '\n' << I.getOrderOfMaps()
 		<< '\n' << J.getArmorClass() << '\n' << K.getEntityID() << '\n' << L.getMaterial() << '\n' << M.getAlignment() << '\n'
-		<< M.getVisionRange() << '\n';
+		<< M.getVisionRange() << '\n' << N.getFriendList() << '\n' << N.isDungeonMaster() << '\n';
 
 	return 0;
 }

@@ -4,7 +4,7 @@
  * Member Functions.
  */
 
- //	User Libraries
+//	User Libraries
 #include "Class-Name.h"
 //	Standard Libraries
 

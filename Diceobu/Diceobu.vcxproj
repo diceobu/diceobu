@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="Campaign.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="DungeonMaster.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Equipment.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="PC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Power.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -189,6 +191,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="PC.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Power.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Tile.h" />
