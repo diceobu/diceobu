@@ -189,7 +189,6 @@
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="PC.h" />
     <ClInclude Include="Power.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Usable.h" />
@@ -198,9 +197,6 @@
   <ItemGroup>
     <None Include="%28Template%29Class-Name.cpp" />
     <None Include="%28Template%29Class-Name.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Diceobu.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
