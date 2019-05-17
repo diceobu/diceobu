@@ -16,12 +16,11 @@ class Obstacle : public Object
 {
 //	Member Variables
 public:
-//	Some public Member Variables
+//	public Member Variables
 protected:
 	std::string	m_material;
-//	Some protected Member Variables
 private:
-//	Some private Member Variables
+//	private Member Variables
 
 //	Member Functions
 public:

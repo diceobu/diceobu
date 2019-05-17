@@ -7,7 +7,7 @@
 
 #pragma once
 
- //	User Libraries
+//	User Libraries
 #include "Character.h"
 //	Standard Libraries
 #include <string>
@@ -16,13 +16,13 @@ class NPC : public Character
 {
 	//	Member Variables
 public:
-	//	Some public Member Variables
+	//	public Member Variables
 protected:
 	std::string  m_dialogTable;
 	std::string	 m_itemList;
 	std::string	 m_questList;
 private:
-	//	Some private Member Variables
+	//	private Member Variables
 
 	//	Member Functions
 public:
