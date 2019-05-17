@@ -177,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="Campaign.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="DungeonMaster.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Item.h" />
