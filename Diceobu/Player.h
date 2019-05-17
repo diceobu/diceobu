@@ -12,7 +12,7 @@
 //	Standard Libraries
 #include <string>
 
-class Player
+class Player : public User
 {
 //	Member Variables
 public:
