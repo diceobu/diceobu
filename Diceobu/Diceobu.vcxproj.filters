@@ -125,9 +125,6 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -145,10 +142,5 @@
     <None Include="%28Template%29Class-Name.cpp">
       <Filter>Templates\Source Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Diceobu.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
