@@ -16,14 +16,14 @@ class PC : public Character
 {
 	//	Member Variables
 public:
-	//	Some public Member Variables
+	//	public Member Variables
 protected:
 	int		m_userID;
 	int		m_inventory;
 	bool	m_inspiration;
 	int		m_expenses;
 private:
-	//	Some private Member Variables
+	//	private Member Variables
 
 	//	Member Functions
 public:

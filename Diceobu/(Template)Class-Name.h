@@ -16,11 +16,11 @@ class Class-Name
 {
 //	Member Variables
 public:
-//	Some public Member Variables
+//	public Member Variables
 protected:
-//	Some protected Member Variables
+//	protected Member Variables
 private:
-//	Some private Member Variables
+//	private Member Variables
 
 //	Member Functions
 public:
