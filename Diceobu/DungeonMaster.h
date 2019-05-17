@@ -12,7 +12,7 @@
 //	Standard Libraries
 #include <string>
 
-class DungeonMaster
+class DungeonMaster : public User
 {
 //	Member Variables
 public:

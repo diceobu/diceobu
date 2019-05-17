@@ -48,13 +48,15 @@ int main()
 	Character M("jeff", 50, 30, 20, "large", 24, 22, 11, 15151, 15, "powers", 2, "fighter", "lawful trash", "some vest", 20, 50000, "human",
 		"some langs", 0, "tourash", "none", -1, -5);
 	DungeonMaster N(1515, "some name", "wqdwad", "awd@dwad.wdad", "list of chars", "some camps", true, "prefs", "no friends", "gamehist");
+	Player O(1515, "some name", "wqdwad", "awd@dwad.wdad", "list of chars", "some camps", false, "prefs", "no friends", "gamehist");
 
 	std::cout << '\n' << "The following messages are just a test:" << '\n';
 	std::cout << B.getName() << '\n' << B.getCastingTime() << '\n' << C.getDescription() << '\n' << D.getClassReq() << '\n'
 		<< E.getPassiveEffect() << '\n' << E.getLevelReq() << '\n' << F.getDamage() << '\n' << G.getMapEffects() << '\n'
 		<< H.getTileID() << '\n' << H.getOpen() << '\n' << I.getName() << '\n' << I.getCampaignID() << '\n' << I.getOrderOfMaps()
 		<< '\n' << J.getArmorClass() << '\n' << K.getEntityID() << '\n' << L.getMaterial() << '\n' << M.getAlignment() << '\n'
-		<< M.getVisionRange() << '\n' << N.getFriendList() << '\n' << N.isDungeonMaster() << '\n';
+		<< M.getVisionRange() << '\n' << N.getFriendList() << '\n' << N.getIsDungeonMaster() << '\n' << O.getOngoingCamps() << '\n'
+		<< O.getIsDungeonMaster() << '\n';
 
 	return 0;
 }
