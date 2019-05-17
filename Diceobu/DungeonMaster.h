@@ -16,16 +16,20 @@ class DungeonMaster
 {
 //	Member Variables
 public:
-//	Some public Member Variables
+//	public Member Variables
 protected:
-//	Some protected Member Variables
+//	protected Member Variables
 private:
-//	Some private Member Variables
+//	private Member Variables
 
 //	Member Functions
 public:
 //	Constructors
-	DungeonMaster();
+	DungeonMaster(	const int			&userID,			const std::string	&displayName,
+					const std::string	&password,			const std::string	&email,
+					const std::string	&listOfCharacters,	const std::string	&ongoingCamps,
+					const bool			&isDungeonMaster,	const std::string	&prefferences,
+					const std::string	&friendList,		const std::string	&gameHistory);
 //	Access Functions
 //	Getters
 //	Setters
