@@ -6,17 +6,30 @@
 
 //	User Libraries
 #include "Map.h"
+#include "Tile.h"
 //	Standard Libraries
 #include <string>
+#include <iostream>
+#include <array>
 
 //	Constructors
-Map::Map(const std::string	&mapName,	const int			&size,
+Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 		 const int			&mapID,		const std::string	&mapEffects)
-	:	m_mapName{ mapName },	m_size{ size },
+	:	m_mapName{ mapName },	m_sizeX{ sizeX },			m_sizeY{sizeY},
 		m_mapID{ mapID },		m_mapEffects{ mapEffects }
-{}
-Map::Map(const std::string &mapName, const int &size, const int &mapID)
-	:	m_mapName{ mapName },	m_size{ size },
-		m_mapID{ mapID }
-{}
+{
+	initializeMapTiles(m_tileIDCounter, m_tileGrid);
+}
 //	Others
+void Map::initializeMapTiles(int	&tileIDCounter, std::array<std::array<Tile, 20>, 20>	&tileGrid)
+{
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			tileGrid[i][j].setTileID(tileIDCounter++);
+			std::cout << tileGrid[i][j].getTileID() << '\t';
+		}
+		std::cout << '\n';
+	}
+}
