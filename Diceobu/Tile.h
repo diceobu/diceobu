@@ -8,11 +8,11 @@
 #pragma once
 
 //	User Libraries
-#include "Map.h"
+
 //	Standard Libraries
 #include <string>
 
-class Tile : public Map
+class Tile
 {
 //	Member Variables
 protected:
@@ -23,9 +23,8 @@ protected:
 //	Member Functions
 public:
 //	Constructors
-	Tile(const std::string	&mapName,		const int			&size,
-		 const int			&mapID,
-		 const int			&tileID,		const std::string	&terrainType,
+	Tile() {}
+	Tile(const int			&tileID,		const std::string	&terrainType,
 		 const std::string	&tileEffects,	const bool			&open);
 //	Access Functions
 //	Getters
