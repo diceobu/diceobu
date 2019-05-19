@@ -4,6 +4,7 @@
 
 //	User Libraries
 #include "DiceobuLibrary.h"
+#include "GlobalVariables.h"
 //	Standard Libraries
 #include <iostream>
 #include <string>
@@ -15,9 +16,13 @@ int main()
 		<< "It's just a platform that will guide you through the basic features Diceobu will have to offer.\n";
 
 	std::cout << "\nExample test\n";
-	Map G("map1", 50, 50, 1421, "fire&ice");
-	Map Ga("map2", 50, 50, 1422, "notfire&ice");
-	Ga.m_tileGrid[1][1].setTileID(500);
+
+	Map G("Belithriell Castle", mapSize, mapSize, 1421, "fire&ice");
+	Entity A("jeff", 50, 30, 20, "large", 24, 22, 15151, { 5, 6 });
+
+	std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
+	A.changeEntityPosition({ 10, 11 });
+	std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
 
 	return 0;
 }

@@ -11,18 +11,18 @@
 #include <string>
 
 //	Constructors
-Character::Character(const std::string	&name,			const int	&hitPoints,
-					 const int			&overheal,		const int	&armorClass,
-					 const std::string	&size,			const int	&height,
-					 const int			&weight,		const int	&coordinates,
-					 const int			&entityID,
-					 const int			&abilityScores,	const std::string	&powers,
-					 const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
-					 const std::string	&equipment,		const int			&level,			const int			&exp,
-					 const std::string	&race,			const std::string	&languages,		const int			&balance,
-					 const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
-					 const int			&reach)
-	:	Entity(name, hitPoints, overheal, armorClass, size, height, weight, coordinates, entityID),
+Character::Character(	const std::string			&name,			const int	&hitPoints,
+						const int					&overheal,		const int	&armorClass,
+						const std::string			&size,			const int	&height,
+						const int					&weight,		const int	&entityID,
+						const std::pair<int, int>	&coordinates,
+						const int			&abilityScores,	const std::string	&powers,
+						const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
+						const std::string	&equipment,		const int			&level,			const int			&exp,
+						const std::string	&race,			const std::string	&languages,		const int			&balance,
+						const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
+						const int			&reach)
+	:	Entity(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates),
 		m_abilityScores{ abilityScores },	m_powers{ powers },
 		m_speed{ speed },					m_cClass{ cClass },				m_alignment{ alignment },
 		m_equipment{ equipment },			m_level{ level },				m_exp{ exp },

@@ -16,9 +16,9 @@ class Tile
 {
 //	Member Variables
 protected:
-	int			m_tileID;
-	std::string	m_terrainType{ "es" };
-	std::string	m_tileEffects{ "es" };
+	int			m_tileID{ -1 };
+	std::string	m_terrainType{ "emstr" };
+	std::string	m_tileEffects{ "emstr" };
 	bool		m_open{ false };
 	bool		m_occupied{ false };
 	int			m_occupantID{ -1 };
