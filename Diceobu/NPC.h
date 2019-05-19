@@ -31,7 +31,7 @@ public:
 			const int			&overheal,		const int			&armorClass,
 			const std::string	&size,			const int			&height,
 			const int			&weight,		const int			&entityID,
-			const std::pair<int, int>	&coordinates,
+			const std::pair<int, int>	&coordinates, const Map		&currMap,
 			const int			&abilityScores,	const std::string	&powers,
 			const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
 			const std::string	&equipment,		const int			&level,			const int			&exp,

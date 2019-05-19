@@ -8,7 +8,7 @@
 #pragma once
 
 //	User Libraries
-
+#include "Map.h"
 //	Standard Libraries
 #include <string>
 #include <utility>
@@ -26,6 +26,7 @@ protected:
 	int					m_weight{ -1 };
 	int					m_entityID{ -1 };
 	std::pair<int, int>	m_coordinates{ -1, -1 };
+	Map					m_currMap;
 //	Member Functions
 public:
 //	Constructors
@@ -33,7 +34,7 @@ public:
 			const int					&overheal,		const int	&armorClass,
 			const std::string			&size,			const int	&height,
 			const int					&weight,		const int	&entityID,
-			const std::pair<int, int>	&coordinates);
+			const std::pair<int, int>	&coordinates,	const Map	&currMap);
 //	Access Functions
 //	Getters
 	const std::string			getName()			{ return m_name; }
@@ -56,5 +57,5 @@ public:
 	void setEntityID(const int &entityID)						{ m_entityID = entityID; }
 	void setCoordinates(const std::pair<int, int> &coordinates)	{ m_coordinates = coordinates; }
 //	Others
-	void changeEntityPosition(const std::pair<int, int> &coordinates);
+	void changeEntityPosition(Map &currMap, const std::pair<int, int> &coordinates);
 };

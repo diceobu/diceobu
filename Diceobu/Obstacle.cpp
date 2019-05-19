@@ -15,9 +15,9 @@ Obstacle::Obstacle(	const std::string	&name,		const int			&hitPoints,
 					const int			&overheal,	const int			&armorClass,
 					const std::string	&size,		const int			&height,
 					const int			&weight,	const int			&entityID,	
-					const std::pair<int, int>	&coordinates,
+					const std::pair<int, int>	&coordinates, const Map		&currMap,
 					const std::string	&material)
-	:	Object(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates),
+	:	Object(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap),
 		m_material{ material }
 {}
 //	Others

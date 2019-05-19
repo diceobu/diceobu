@@ -18,11 +18,13 @@ int main()
 	std::cout << "\nExample test\n";
 
 	Map G("Belithriell Castle", mapSize, mapSize, 1421, "fire&ice");
-	Entity A("jeff", 50, 30, 20, "large", 24, 22, 15151, { 5, 6 });
+	Entity A("jeff", 50, 30, 20, "large", 24, 22, 11, { 5, 5 }, G);
 
 	std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
-	A.changeEntityPosition({ 10, 11 });
+	G.printMap();
+	A.changeEntityPosition(G, {6, 6});
 	std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
+	G.printMap();
 
 	return 0;
 }

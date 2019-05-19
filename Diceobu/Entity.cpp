@@ -6,6 +6,7 @@
 
 //	User Libraries
 #include "Entity.h"
+#include "Map.h"
 //	Standard Libraries
 #include <string>
 #include <utility>
@@ -15,18 +16,21 @@ Entity::Entity(	const std::string			&name,			const int	&hitPoints,
 				const int					&overheal,		const int	&armorClass,
 				const std::string			&size,			const int	&height,
 				const int					&weight,		const int	&entityID,
-				const std::pair<int, int>	&coordinates)
-	:	m_name{ name },			m_hitPoints{ hitPoints },
-		m_overheal{ overheal },	m_armorClass{ armorClass },
-		m_size{ size },			m_height{ height },
-		m_weight{ weight },		m_entityID{ entityID },
-		m_coordinates{ coordinates }
-{}
-//	Others
-void Entity::changeEntityPosition(const std::pair<int, int> &coordinates)
+				const std::pair<int, int>	&coordinates,	const Map	&currMap)
+	:	m_name{ name },					m_hitPoints{ hitPoints },
+		m_overheal{ overheal },			m_armorClass{ armorClass },
+		m_size{ size },					m_height{ height },
+		m_weight{ weight },				m_entityID{ entityID },
+		m_coordinates{ coordinates },	m_currMap{currMap}
 {
-	/*tileGrid[coordinates.first][coordinates.second].tld_occupied = false;
-	tileGrid[coordinates.first][coordinates.second].tld_occupantID = -1;*/
+	changeEntityPosition(m_currMap, m_coordinates);
+}
+//	Others
+void Entity::changeEntityPosition(Map &currMap, const std::pair<int, int> &coordinates)
+{
+	currMap.m_tileGrid[m_coordinates.first][m_coordinates.second].setOccupied(false);
+	currMap.m_tileGrid[m_coordinates.first][m_coordinates.second].setOccupantID(-1);
 	setCoordinates(coordinates);
-
+	currMap.m_tileGrid[coordinates.first][coordinates.second].setOccupied(true);
+	currMap.m_tileGrid[coordinates.first][coordinates.second].setOccupantID(m_entityID);
 }
