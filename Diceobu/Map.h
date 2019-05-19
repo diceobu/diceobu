@@ -8,6 +8,7 @@
 #pragma once
 
 //	User Libraries
+#include "GlobalVariables.h"
 #include "Tile.h"
 //	Standard Libraries
 #include <string>
@@ -17,15 +18,15 @@ class Map
 {
 //	Member Variables
 protected:
-	std::string								m_mapName;
-	int										m_mapID;
+	std::string										m_mapName		{ "emstr" };
+	int												m_mapID			{ -1 };
 private:
-	int										m_sizeX;
-	int										m_sizeY;
-	std::string								m_mapEffects;
-	int										m_tileIDCounter{ 0 };
+	int												m_sizeX			{ 1 };
+	int												m_sizeY			{ 1 };
+	std::string										m_mapEffects	{ "emstr" };
+	int												m_tileIDCounter	{ 0 };
 public:
-	std::array<std::array<Tile, 20>, 20>	m_tileGrid;
+	std::array<std::array<Tile, mapSize>, mapSize>	m_tileGrid;
 
 //	Member Functions
 public:
@@ -34,16 +35,17 @@ public:
 		const int			&mapID,		const std::string	&mapEffects);
 //	Access Functions
 //	Getters
-	const std::string							getMapName()	{ return m_mapName; }
-	const int									getSizeX()		{ return m_sizeX; }
-	const int									getSizeY()		{ return m_sizeY; }
-	const int									getMapID()		{ return m_mapID; }
-	const std::string							getMapEffects()	{ return m_mapEffects; }
+	const std::string	getMapName()	{ return m_mapName; }
+	const int			getSizeX()		{ return m_sizeX; }
+	const int			getSizeY()		{ return m_sizeY; }
+	const int			getMapID()		{ return m_mapID; }
+	const std::string	getMapEffects()	{ return m_mapEffects; }
+	//const std::array<std::array<Tile, 20>, 20>	getTileGrid() { return m_tileGrid; }
 //	Setters
 	void setMapName(const std::string &mapName)			{ m_mapName = mapName; }
 	void setMapID(const int &mapID)						{ m_mapID = mapID; }
 	void setMapEffects(const std::string &mapEffects)	{ m_mapEffects = mapEffects; }
 //	Others
 private:
-	void initializeMapTiles(int	&tileIDCounter,	std::array<std::array<Tile, 20>, 20> &m_tileGrid);
+	void initializeMapTiles(std::string	&mapName, int	&tileIDCounter,	std::array<std::array<Tile, mapSize>, mapSize> &m_tileGrid);
 };

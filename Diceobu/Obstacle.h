@@ -25,11 +25,12 @@ private:
 //	Member Functions
 public:
 //	Constructors
-	Obstacle(const std::string	&name,		const int			&hitPoints,
-			 const int			&overheal,	const int			&armorClass,
-			 const std::string	&size,		const int			&height,
-			 const int			&weight,	const int			&coordinates,
-			 const int			&entityID,	const std::string	&material);
+	Obstacle(	const std::string	&name,		const int			&hitPoints,
+				const int			&overheal,	const int			&armorClass,
+				const std::string	&size,		const int			&height,
+				const int			&weight,	const int			&entityID,	
+				const std::pair<int, int>	&coordinates,
+				const std::string	&material);
 //	Access Functions
 //	Getters
 	std::string	getMaterial() { return m_material; }

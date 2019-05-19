@@ -1,5 +1,8 @@
 #pragma once
 
+//	Data
+//#include "GameData.h"
+//	Classes
 #include "Campaign.h"
 #include "Character.h"
 #include "DungeonMaster.h"

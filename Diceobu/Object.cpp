@@ -10,12 +10,12 @@
 #include <string>
 
 //	Constructors
-Object::Object(const std::string	&name, const int	&hitPoints,
-	const int			&overheal, const int	&armorClass,
-	const std::string	&size, const int	&height,
-	const int			&weight, const int	&coordinates,
-	const int			&entityID)
+Object::Object(	const std::string	&name,		const int	&hitPoints,
+				const int			&overheal,	const int	&armorClass,
+				const std::string	&size,		const int	&height,
+				const int			&weight,	const int	&entityID,
+				const std::pair<int, int>	&coordinates)
 	:	Entity(name, hitPoints, overheal, armorClass,
-		size, height, weight, coordinates, entityID)
+		size, height, weight, entityID, coordinates)
 {}
 //	Others

@@ -18,11 +18,11 @@ class Object : public Entity
 //	Member Functions
 public:
 //	Constructors
-	Object(const std::string	&name,		const int	&hitPoints,
-		   const int			&overheal,	const int	&armorClass,
-		   const std::string	&size,		const int	&height,
-		   const int			&weight,	const int	&coordinates,
-		   const int			&entityID);
+	Object(	const std::string	&name,		const int	&hitPoints,
+			const int			&overheal,	const int	&armorClass,
+			const std::string	&size,		const int	&height,
+			const int			&weight,	const int	&entityID,
+			const std::pair<int, int>	&coordinates);
 //	Access Functions
 //	Getters
 //	Setters

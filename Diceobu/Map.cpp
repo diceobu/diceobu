@@ -7,6 +7,7 @@
 //	User Libraries
 #include "Map.h"
 #include "Tile.h"
+#include "GameData.h"
 //	Standard Libraries
 #include <string>
 #include <iostream>
@@ -18,22 +19,25 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 	:	m_mapName{ mapName },	m_sizeX{ sizeX },			m_sizeY{sizeY},
 		m_mapID{ mapID },		m_mapEffects{ mapEffects }
 {
-	initializeMapTiles(m_tileIDCounter, m_tileGrid);
+	initializeMapTiles(m_mapName, m_tileIDCounter, m_tileGrid);
 }
 //	Others
-void Map::initializeMapTiles(int	&tileIDCounter, std::array<std::array<Tile, 20>, 20>	&tileGrid)
+void Map::initializeMapTiles(std::string	&mapName, int	&tileIDCounter, std::array<std::array<Tile, mapSize>, mapSize>	&tileGrid)
 {
-	for (int i = 0; i < 20; i++)
+	initTileDataCont();
+	std::cout << '\n' << "map: " << mapName << '\n';
+	for (int i = 0; i < mapSize; i++)
 	{
-		for (int j = 0; j < 20; j++)
+		std::cout << "|";
+		for (int j = 0; j < mapSize; j++)
 		{
 			tileGrid[i][j].setTileID(tileIDCounter++);
-			tileGrid[i][j].setTerrainType();
-			tileGrid[i][j].setTileEffects();
-			tileGrid[i][j].setOpen();
-			tileGrid[i][j].setOccupied();
-			tileGrid[i][j].setOccupantID();
-			std::cout << tileGrid[i][j].getTileID() << '\t';
+			tileGrid[i][j].setTerrainType(tileDataContainer[i][j].tld_terrainType);
+			tileGrid[i][j].setTileEffects(tileDataContainer[i][j].tld_tileEffects);
+			tileGrid[i][j].setOpen(tileDataContainer[i][j].tld_open);
+			tileGrid[i][j].setOccupied(tileDataContainer[i][j].tld_occupied);
+			tileGrid[i][j].setOccupantID(tileDataContainer[i][j].tld_occupantID);
+			std::cout << tileGrid[i][j].getOpen() << '|';
 		}
 		std::cout << '\n';
 	}

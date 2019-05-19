@@ -40,17 +40,17 @@ private:
 //	Member Functions
 public:
 //	Constructors
-	Character(const std::string	&name,			const int	&hitPoints,
-			  const int			&overheal,		const int	&armorClass,
-			  const std::string	&size,			const int	&height,
-			  const int			&weight,		const int	&coordinates,
-			  const int			&entityID,
-			  const int			&abilityScores,	const std::string	&powers,
-			  const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
-			  const std::string	&equipment,		const int			&level,			const int			&exp,
-			  const std::string	&race,			const std::string	&languages,		const int			&balance,
-			  const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
-			  const int			&reach);
+	Character(	const std::string			&name,			const int	&hitPoints,
+				const int					&overheal,		const int	&armorClass,
+				const std::string			&size,			const int	&height,
+				const int					&weight,		const int	&entityID,
+				const std::pair<int, int>	&coordinates,
+				const int			&abilityScores,	const std::string	&powers,
+				const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
+				const std::string	&equipment,		const int			&level,			const int			&exp,
+				const std::string	&race,			const std::string	&languages,		const int			&balance,
+				const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
+				const int			&reach);
 //	Access Functions
 //	Getters
 	const int			getAbilityScores()	{ return m_abilityScores; }
