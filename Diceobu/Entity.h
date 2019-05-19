@@ -46,6 +46,8 @@ public:
 	const int					getWeight()			{ return m_weight; }
 	const int					getEntityID()		{ return m_entityID; }
 	const std::pair<int, int>	getCoordinates()	{ return m_coordinates; }
+	const int					getCoordinateX()	{ return m_coordinates.first; }
+	const int					getCoordinateY()	{ return m_coordinates.second; }
 //	Setters
 	void setName(const std::string &name)						{ m_name = name; }
 	void setHitPoints(const int &hitPoints)						{ m_hitPoints = hitPoints; }
@@ -56,6 +58,8 @@ public:
 	void setWeight(const int &weight)							{ m_weight = weight; }
 	void setEntityID(const int &entityID)						{ m_entityID = entityID; }
 	void setCoordinates(const std::pair<int, int> &coordinates)	{ m_coordinates = coordinates; }
+	void setCoordinateX(const int coordinateX)					{ m_coordinates.first = coordinateX; }
+	void setCoordinateY(const int coordinateY)					{ m_coordinates.second = coordinateY; }
 //	Others
 	void changeEntityPosition(Map &currMap, const std::pair<int, int> &coordinates);
 };
