@@ -28,6 +28,11 @@ void Map::initializeMapTiles(int	&tileIDCounter, std::array<std::array<Tile, 20>
 		for (int j = 0; j < 20; j++)
 		{
 			tileGrid[i][j].setTileID(tileIDCounter++);
+			tileGrid[i][j].setTerrainType();
+			tileGrid[i][j].setTileEffects();
+			tileGrid[i][j].setOpen();
+			tileGrid[i][j].setOccupied();
+			tileGrid[i][j].setOccupantID();
 			std::cout << tileGrid[i][j].getTileID() << '\t';
 		}
 		std::cout << '\n';

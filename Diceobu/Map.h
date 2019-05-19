@@ -24,6 +24,7 @@ private:
 	int										m_sizeY;
 	std::string								m_mapEffects;
 	int										m_tileIDCounter{ 0 };
+public:
 	std::array<std::array<Tile, 20>, 20>	m_tileGrid;
 
 //	Member Functions
@@ -33,11 +34,11 @@ public:
 		const int			&mapID,		const std::string	&mapEffects);
 //	Access Functions
 //	Getters
-	const std::string	getMapName()	{ return m_mapName; }
-	const int			getSizeX()		{ return m_sizeX; }
-	const int			getSizeY()		{ return m_sizeY; }
-	const int			getMapID()		{ return m_mapID; }
-	const std::string	getMapEffects()	{ return m_mapEffects; }
+	const std::string							getMapName()	{ return m_mapName; }
+	const int									getSizeX()		{ return m_sizeX; }
+	const int									getSizeY()		{ return m_sizeY; }
+	const int									getMapID()		{ return m_mapID; }
+	const std::string							getMapEffects()	{ return m_mapEffects; }
 //	Setters
 	void setMapName(const std::string &mapName)			{ m_mapName = mapName; }
 	void setMapID(const int &mapID)						{ m_mapID = mapID; }
