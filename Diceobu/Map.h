@@ -21,8 +21,8 @@ protected:
 	std::string										m_mapName		{ "emstr" };
 	int												m_mapID			{ -1 };
 private:
-	int												m_sizeX			{ 1 };
-	int												m_sizeY			{ 1 };
+	int												m_sizeX			{ -1 };
+	int												m_sizeY			{ -1 };
 	std::string										m_mapEffects	{ "emstr" };
 	int												m_tileIDCounter	{ 0 };
 public:
