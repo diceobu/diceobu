@@ -16,6 +16,8 @@ int main()
 
 	std::cout << "\nExample test\n";
 	Map G("map1", 50, 50, 1421, "fire&ice");
+	Map Ga("map2", 50, 50, 1422, "notfire&ice");
+	Ga.m_tileGrid[1][1].setTileID(500);
 
 	return 0;
 }
