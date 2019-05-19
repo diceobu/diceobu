@@ -19,25 +19,39 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 	:	m_mapName{ mapName },	m_sizeX{ sizeX },			m_sizeY{sizeY},
 		m_mapID{ mapID },		m_mapEffects{ mapEffects }
 {
-	initializeMapTiles(m_mapName, m_tileIDCounter, m_tileGrid);
+	initializeMapTiles();
 }
 //	Others
-void Map::initializeMapTiles(std::string	&mapName, int	&tileIDCounter, std::array<std::array<Tile, mapSize>, mapSize>	&tileGrid)
+void Map::initializeMapTiles()
 {
 	initTileDataCont();
-	std::cout << '\n' << "map: " << mapName << '\n';
+	std::cout << '\n' << "map: " << m_mapName << '\n';
 	for (int i = 0; i < mapSize; i++)
 	{
 		std::cout << "|";
 		for (int j = 0; j < mapSize; j++)
 		{
-			tileGrid[i][j].setTileID(tileIDCounter++);
-			tileGrid[i][j].setTerrainType(tileDataContainer[i][j].tld_terrainType);
-			tileGrid[i][j].setTileEffects(tileDataContainer[i][j].tld_tileEffects);
-			tileGrid[i][j].setOpen(tileDataContainer[i][j].tld_open);
-			tileGrid[i][j].setOccupied(tileDataContainer[i][j].tld_occupied);
-			tileGrid[i][j].setOccupantID(tileDataContainer[i][j].tld_occupantID);
-			std::cout << tileGrid[i][j].getOpen() << '|';
+			m_tileGrid[i][j].setTileID(m_tileIDCounter++);
+			m_tileGrid[i][j].setTerrainType(tileDataContainer[i][j].tld_terrainType);
+			m_tileGrid[i][j].setTileEffects(tileDataContainer[i][j].tld_tileEffects);
+			m_tileGrid[i][j].setOpen(tileDataContainer[i][j].tld_open);
+			m_tileGrid[i][j].setOccupied(tileDataContainer[i][j].tld_occupied);
+			m_tileGrid[i][j].setOccupantID(tileDataContainer[i][j].tld_occupantID);
+			std::cout << m_tileGrid[i][j].getOpen() << '|';
+		}
+		std::cout << '\n';
+	}
+}
+
+void Map::printMap()
+{
+	std::cout << '\n';
+	for (int i = 0; i < mapSize; i++)
+	{
+		std::cout << "|";
+		for (int j = 0; j < mapSize; j++)
+		{
+			std::cout << m_tileGrid[i][j].getOccupantID() << "|";
 		}
 		std::cout << '\n';
 	}

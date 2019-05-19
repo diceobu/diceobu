@@ -15,7 +15,7 @@ NPC::NPC(	const std::string	&name,			const int			&hitPoints,
 			const int			&overheal,		const int			&armorClass,
 			const std::string	&size,			const int			&height,
 			const int			&weight,		const int			&entityID,
-			const std::pair<int, int>	&coordinates,
+			const std::pair<int, int>	&coordinates, const Map		&currMap,
 			const int			&abilityScores,	const std::string	&powers,
 			const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
 			const std::string	&equipment,		const int			&level,			const int			&exp,
@@ -23,7 +23,7 @@ NPC::NPC(	const std::string	&name,			const int			&hitPoints,
 			const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
 			const int			&reach,
 			const std::string	&dialogTable,	const std::string	&itemList,		const std::string	&questList)
-	:	Character(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, abilityScores, powers,
+	:	Character(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap, abilityScores, powers,
 		speed, cClass, alignment, equipment, level, exp, race, languages, balance, background, proficiency, visionRange, reach),
 		m_dialogTable{ dialogTable }, m_itemList{ itemList }, m_questList{ questList }
 {}

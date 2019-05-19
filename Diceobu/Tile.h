@@ -31,10 +31,12 @@ public:
 	//		const bool			&occupied,		const int			&occupantID);
 //	Access Functions
 //	Getters
-	const int		  getTileID()			{ return m_tileID; }
-	const std::string getTerrainType()		{ return m_terrainType; }
-	const std::string getTileEffects()		{ return m_tileEffects; }
-	const bool		  getOpen()				{ return m_open; }
+	const int			getTileID()			{ return m_tileID; }
+	const std::string	getTerrainType()	{ return m_terrainType; }
+	const std::string	getTileEffects()	{ return m_tileEffects; }
+	const bool			getOpen()			{ return m_open; }
+	const bool			getOccupied()		{ return m_occupied; }
+	const int			getOccupantID()		{ return m_occupantID; }
 //	Setters
 	void setTileID(const int &tileID)					{ m_tileID = tileID; }
 	void setTerrainType(const std::string &terrainType)	{ m_terrainType = terrainType; }
