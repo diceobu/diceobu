@@ -1,21 +1,13 @@
-/* This is the Global Stuff header file.
- * It contains Global variables and Functions.
+/* This is the main header file.
+ * It contains Functions defined in main source file.
  */
 
 #pragma once
 
 //	User Libraries
-
+#include "GlobalVariables.h"
 //	Standard Libraries
 #include <string>
-
-//	Global Data Structures
-
-static constexpr int mapSize{ 50 };
-
-static bool inCombat{ false };
-
-static unsigned int mapIDCounter{ 0 };
 
 //	Global Functions
 
@@ -29,8 +21,12 @@ void displayFeedbackMessage(std::string message);
 
 void displayActiveMaps();
 
-void displayActiveEntities();
+void displayActiveCharacters();
 
 void createNewMap();
+
+void createNewCharacter(Map &currMap);
+
+std::string getUserOption();
 
 void simLaunch();

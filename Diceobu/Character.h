@@ -85,4 +85,5 @@ public:
 	void setVisionRange(const int &visionRange)			{ m_visionRange = visionRange; }
 	void setReach(const int &reach)						{ m_reach = reach; }
 //	Others
+	void printCharacter();
 };

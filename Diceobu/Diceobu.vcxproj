@@ -185,7 +185,8 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="GameData.h" />
-    <ClInclude Include="GlobalStuff.h" />
+    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />
