@@ -4,57 +4,16 @@
 
 //	User Libraries
 #include "DiceobuLibrary.h"
-#include "GlobalVariables.h"
+#include "GlobalStuff.h"
 //	Standard Libraries
 #include <iostream>
 #include <string>
 
 int main()
 {
-	std::cout << "Welcome to Dfireobu also known as Diceobu Jr, or Diceobu's younger sibling.\n"
-		<< "Dfireobu is nothing like Diceobu.\n"
-		<< "It's just a platform that will guide you through the basic features Diceobu will have to offer.\n";
+	displayWelcomeMessage();
 
-	std::cout << "\nExample test\n";
-	std::cout << '\n';
-
-	while (1)
-	{
-		std::cout << "List of available tools:\n";
-		std::cout << "1. Create new Default Map\n2. Create new Default Character\n3. Move existing character\n4. Type help to display more information\n";
-		std::string input{};
-		std::cin >> input;
-		if (input == "help")
-		{
-			std::cout << "Displing information:\n";
-		}
-		else if (input == "crm")
-		{
-			std::cout << "Creating new map:\n";
-		}
-		else if (input == "crc")
-		{
-			std::cout << "Creating new character:\n";
-		}
-		else if (input == "exit")
-		{
-			std::cout << "Exiting\n";
-			break;
-		}
-		else
-		{
-			std::cout << "Unrecognised command\n";
-		}
-	}
-
-	//Map G("Belithriell Castle", mapSize, mapSize, 1421, "fire&ice");
-	//Entity A("jeff", 50, 30, 20, "large", 24, 22, 11, { 5, 5 }, G);
-
-	//std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
-	//G.printMap();
-	//A.changeEntityPosition(G, {6, 6});
-	//std::cout << A.getCoordinates().first << " " << A.getCoordinates().second << '\n';
-	//G.printMap();
+	enterMainLoop();
 
 	return 0;
 }

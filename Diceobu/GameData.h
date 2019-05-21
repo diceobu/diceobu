@@ -1,13 +1,16 @@
+/* This is the Game Data header file.
+ * It contains hard-coded game data
+ * that would normaly be read from files.
+ */
+
 #pragma once
 
 //	User Libraries
+#include "GlobalStuff.h"
 
 //	Standard Libraries
 #include <array>
 #include <string>
-
-//	Constants
-#include "GlobalVariables.h"
 
 //	Data Structures
 struct tileData

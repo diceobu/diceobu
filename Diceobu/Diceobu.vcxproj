@@ -159,6 +159,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DungeonMaster.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GlobalStuff.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -185,7 +186,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="GameData.h" />
-    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="GlobalStuff.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />

@@ -8,7 +8,7 @@
 #pragma once
 
 //	User Libraries
-#include "GlobalVariables.h"
+#include "GlobalStuff.h"
 #include "Tile.h"
 //	Standard Libraries
 #include <string>
@@ -40,7 +40,6 @@ public:
 	const int			getSizeY()		{ return m_sizeY; }
 	const int			getMapID()		{ return m_mapID; }
 	const std::string	getMapEffects()	{ return m_mapEffects; }
-	//const std::array<std::array<Tile, mapSize>, mapSize> getTileGrid() { return m_tileGrid; }
 //	Setters
 	void setMapName(const std::string &mapName)			{ m_mapName = mapName; }
 	void setMapID(const int &mapID)						{ m_mapID = mapID; }
