@@ -13,6 +13,7 @@
 //	Standard Libraries
 #include <string>
 #include <array>
+#include <list>
 
 class Map
 {
@@ -27,12 +28,14 @@ private:
 	int												m_tileIDCounter	{ 0 };
 public:
 	std::array<std::array<Tile, mapSize>, mapSize>	m_tileGrid;
+	std::list<unsigned int>							m_containingCharacters;
 
 //	Member Functions
 public:
 //	Constructors
 	Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 		const int			&mapID,		const std::string	&mapEffects);
+	~Map() {}
 //	Access Functions
 //	Getters
 	const std::string	getMapName()	{ return m_mapName; }
