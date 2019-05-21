@@ -3,8 +3,9 @@
  */
 
 //	User Libraries
+#include "GlobalVariables.h"
 #include "DiceobuLibrary.h"
-#include "GlobalStuff.h"
+#include "main.h"
 //	Standard Libraries
 #include <iostream>
 #include <string>
@@ -15,7 +16,9 @@
 
 static std::list<Map> activeMaps;
 
-//	<------------------------------------------------ main start point
+static std::list<Character> activeCharacters;
+
+//	<------------------------------------------------ main starting point
 int main()
 {
 	displayWelcomeMessage();
@@ -48,8 +51,10 @@ void displayAvailableOptions()
 	std::cout	<< "1. Create new Default Map\n"
 				<< "2. Create new Default Character\n"
 				<< "3. Move existing character\n"
-				<< "4. Display help information\n"
-				<< "5. Display all active maps\n"
+				<< "4. Start/End combat\n"
+				<< "5. Display help information\n"
+				<< "6. Display all active maps\n"
+				<< "7. Display all active Characters\n"
 				<< "x. Exit\n";
 }
 
@@ -71,15 +76,29 @@ void displayActiveMaps()
 	}
 }
 
-void displayActiveEntities()
+void displayActiveCharacters()
 {
-
+	std::list <Character> ::iterator iter;
+	for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+	{
+		std::cout << '\n';
+		Character currCharacter = *iter;
+		currCharacter.printCharacter();
+		std::cout << '\n';
+	}
 }
 
 void createNewMap()
 {
 	Map newMap("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
 	activeMaps.push_back(newMap);
+}
+
+void createNewCharacter(Map &currMap)
+{
+	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, 11, { 0, 0 }, currMap, characterIDCounter++, "powers", 2, "fighter",
+		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
+	activeCharacters.push_back(newCharacter);
 }
 
 std::string getUserOption()
@@ -104,36 +123,69 @@ void simLaunch()
 		{
 			displayFeedbackMessage("Creating map");
 			createNewMap();
+			clearScreen();
+			displayAvailableOptions();
 			displayFeedbackMessage("New map created");
 		}
 		else if (input == "2")
 		{
 			displayFeedbackMessage("Creating new character");
-
+			createNewCharacter(activeMaps.back());
+			clearScreen();
+			displayAvailableOptions();
 			displayFeedbackMessage("New character created");
 		}
 		else if (input == "3")
 		{
 			displayFeedbackMessage("Moving character");
-
-			displayFeedbackMessage("Character moved");
+			clearScreen();
+			displayAvailableOptions();
 		}
 		else if (input == "4")
 		{
-			displayFeedbackMessage("Displaying additional information");
-
-			displayFeedbackMessage("Information displayed");
+			if (inCombat)
+			{
+				displayFeedbackMessage("Ending combat");
+				inCombat = false;
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Combat ended");
+			}
+			else
+			{
+				displayFeedbackMessage("Starting combat");
+				inCombat = true;
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Combat started");
+			}
 		}
 		else if (input == "5")
 		{
+			displayFeedbackMessage("Displaying additional information");
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "6")
+		{
 			displayFeedbackMessage("Displaying all active maps");
+			clearScreen();
 			displayActiveMaps();
-			displayFeedbackMessage("Maps displayed");
+			displayAvailableOptions();
+		}
+		else if (input == "7")
+		{
+			displayFeedbackMessage("Displaying all active entities");
+			clearScreen();
+			displayActiveCharacters();
+			displayAvailableOptions();
 		}
 		else if (input == "x")
 		{
 			displayFeedbackMessage("Exiting");
 			activeMaps.clear();
+			activeCharacters.clear();
+			clearScreen();
 			displayFeedbackMessage("Application exited");
 			break;
 		}

@@ -8,7 +8,7 @@
 #pragma once
 
 //	User Libraries
-#include "GlobalStuff.h"
+#include "GlobalVariables.h"
 #include "Tile.h"
 //	Standard Libraries
 #include <string>
@@ -47,6 +47,7 @@ public:
 //	Others
 private:
 	void initializeMapTiles();
+	char getTileSymbol(Tile &currTile);
 public:
 	void printMap();
 };

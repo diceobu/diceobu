@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "Character.h"
 //	Standard Libraries
+#include <iostream>
 #include <string>
 
 //	Constructors
@@ -31,3 +32,15 @@ Character::Character(	const std::string			&name,			const int	&hitPoints,
 		m_reach{ reach }
 {}
 //	Others
+void Character::printCharacter()
+{
+	std::cout	<< "Name: " << m_name << '\n'
+				<< "Race: " << m_race << '\t'
+				<< "Class: " << m_cClass << '\n'
+				<< "Level: " << m_level << '\t'
+				<< "Experience: " << m_exp << '\n'
+				<< "Hit Points: " << m_hitPoints << '\t'
+				<< "Armor Class: " << m_armorClass << '\n'
+				<< "Balance: " << m_balance << '\n'
+				<< '\n';
+}

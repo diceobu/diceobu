@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "Tile.h"
 #include "GameData.h"
+#include "GlobalVariables.h"
 //	Standard Libraries
 #include <string>
 #include <iostream>
@@ -39,17 +40,48 @@ void Map::initializeMapTiles()
 	}
 }
 
+char Map::getTileSymbol(Tile &currTile)
+{
+	char tileSymbol{};
+	if (currTile.getOpen())
+	{
+		if (currTile.getOccupied())
+		{
+			tileSymbol = 'x';
+		}
+		else
+		{
+			if (currTile.getTileEffects() == "none")
+			{
+				if (currTile.getTerrainType() == "dirt")		tileSymbol = '~';
+				else if (currTile.getTerrainType() == "stone")	tileSymbol = 'O';
+			}
+			else if (currTile.getTileEffects() == "fire")		tileSymbol = '@';
+			else if (currTile.getTileEffects() == "ice")		tileSymbol = '*';
+		}
+	}
+	else
+	{
+		tileSymbol = ' ';
+	}
+	return tileSymbol;
+}
+
 void Map::printMap()
 {
-	std::cout << '\n' << "map: " << m_mapName
-		<< '\t' << "mapID: " << m_mapID << '\n';
+	std::cout << '\n' << "Map: " << m_mapName
+		<< '\t' << "MapID: " << m_mapID << '\n';
+	for (int i = 0; i <= mapSize+1; i++) std::cout << '#';
+	std::cout << '\n';
 	for (int i = 0; i < mapSize; i++)
 	{
-		std::cout << "|";
+		std::cout << "#";
 		for (int j = 0; j < mapSize; j++)
 		{
-			std::cout << m_tileGrid[i][j].getOccupantID() << "|";
+			std::cout << getTileSymbol(m_tileGrid[i][j]);
 		}
+		std::cout << "#";
 		std::cout << '\n';
 	}
+	for (int i = 0; i <= mapSize + 1; i++) std::cout << '#';
 }
