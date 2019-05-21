@@ -25,10 +25,8 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 void Map::initializeMapTiles()
 {
 	initTileDataCont();
-	std::cout << '\n' << "map: " << m_mapName << '\n';
 	for (int i = 0; i < mapSize; i++)
 	{
-		std::cout << "|";
 		for (int j = 0; j < mapSize; j++)
 		{
 			m_tileGrid[i][j].setTileID(m_tileIDCounter++);
@@ -37,15 +35,14 @@ void Map::initializeMapTiles()
 			m_tileGrid[i][j].setOpen(tileDataContainer[i][j].tld_open);
 			m_tileGrid[i][j].setOccupied(tileDataContainer[i][j].tld_occupied);
 			m_tileGrid[i][j].setOccupantID(tileDataContainer[i][j].tld_occupantID);
-			std::cout << m_tileGrid[i][j].getOpen() << '|';
 		}
-		std::cout << '\n';
 	}
 }
 
 void Map::printMap()
 {
-	std::cout << '\n';
+	std::cout << '\n' << "map: " << m_mapName
+		<< '\t' << "mapID: " << m_mapID << '\n';
 	for (int i = 0; i < mapSize; i++)
 	{
 		std::cout << "|";

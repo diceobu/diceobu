@@ -8,14 +8,140 @@
 //	Standard Libraries
 #include <iostream>
 #include <string>
+#include <list>
+#include <iterator>
 
+//	Global Data Structures
+
+static std::list<Map> activeMaps;
+
+//	<------------------------------------------------ main start point
 int main()
 {
 	displayWelcomeMessage();
+	system("pause");
 
-	enterMainLoop();
+	simLaunch();
 
 	return 0;
+}
+//	<------------------------------------------------ main end point
+
+void clearScreen()
+{
+	std::cout << "\033[2J\033[1;1H";
+}
+
+void displayWelcomeMessage()
+{
+	std::cout	<< "Welcome to Dfireobu also known as Diceobu Jr, or Diceobu's younger sibling.\n"
+				<< "Dfireobu is not a complete game.\n"
+				<< "It's just a platform that will guide you through the basic features Diceobu will have to offer.\n"
+				<< "Most of the available options will be automated in the final product.\n"
+				<< "Here you can take control of them to freely explore and test their behavior.\n"
+				<< "Fullscreen view is recommended.\n";
+}
+
+void displayAvailableOptions()
+{
+	std::cout	<< "List of available options (select one of the numbers/symbols and hit enter):\n";
+	std::cout	<< "1. Create new Default Map\n"
+				<< "2. Create new Default Character\n"
+				<< "3. Move existing character\n"
+				<< "4. Display help information\n"
+				<< "5. Display all active maps\n"
+				<< "x. Exit\n";
+}
+
+void displayFeedbackMessage(std::string message)
+{
+	std::cout << '\n' << '\t' << '\t' << '\t'
+		<< message << '\n';
+}
+
+void displayActiveMaps()
+{
+	std::list <Map> :: iterator iter;
+	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
+	{
+		std::cout << '\n';
+		Map currMap = *iter;
+		currMap.printMap();
+		std::cout << '\n';
+	}
+}
+
+void displayActiveEntities()
+{
+
+}
+
+void createNewMap()
+{
+	Map newMap("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
+	activeMaps.push_back(newMap);
+}
+
+std::string getUserOption()
+{
+	std::cout << "Awaiting input (press h to display the list of available options): ";
+	std::string input{};
+	std::cin >> input;
+	return input;
+}
+
+void simLaunch()
+{
+	clearScreen();
+	displayAvailableOptions();
+	std::string input{};
+	while (1)
+	{
+		input = getUserOption();
+		clearScreen();
+		displayAvailableOptions();
+		if (input == "1")
+		{
+			displayFeedbackMessage("Creating map");
+			createNewMap();
+			displayFeedbackMessage("New map created");
+		}
+		else if (input == "2")
+		{
+			displayFeedbackMessage("Creating new character");
+
+			displayFeedbackMessage("New character created");
+		}
+		else if (input == "3")
+		{
+			displayFeedbackMessage("Moving character");
+
+			displayFeedbackMessage("Character moved");
+		}
+		else if (input == "4")
+		{
+			displayFeedbackMessage("Displaying additional information");
+
+			displayFeedbackMessage("Information displayed");
+		}
+		else if (input == "5")
+		{
+			displayFeedbackMessage("Displaying all active maps");
+			displayActiveMaps();
+			displayFeedbackMessage("Maps displayed");
+		}
+		else if (input == "x")
+		{
+			displayFeedbackMessage("Exiting");
+			activeMaps.clear();
+			displayFeedbackMessage("Application exited");
+			break;
+		}
+		else
+		{
+			displayFeedbackMessage("Unrecognized command");
+		}
+	}
 }
 
 // #################################################################################################################################################

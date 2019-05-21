@@ -159,7 +159,6 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DungeonMaster.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="GlobalStuff.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Item.cpp" />
