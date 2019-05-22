@@ -28,7 +28,7 @@ private:
 	int												m_tileIDCounter	{ 0 };
 public:
 	std::array<std::array<Tile, mapSize>, mapSize>	m_tileGrid;
-	std::list<unsigned int>							m_containingCharacters;
+	std::list<int>									m_containingCharacters;
 
 //	Member Functions
 public:
@@ -51,6 +51,7 @@ public:
 private:
 	void initializeMapTiles();
 	char getTileSymbol(Tile &currTile);
+	void printMapCharacters();
 public:
 	void printMap();
 };

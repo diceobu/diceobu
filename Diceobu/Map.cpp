@@ -71,6 +71,7 @@ void Map::printMap()
 {
 	std::cout << '\n' << "Map: " << m_mapName
 		<< '\t' << "MapID: " << m_mapID << '\n';
+	printMapCharacters();
 	for (int i = 0; i <= mapSize+1; i++) std::cout << '#';
 	std::cout << '\n';
 	for (int i = 0; i < mapSize; i++)
@@ -84,4 +85,15 @@ void Map::printMap()
 		std::cout << '\n';
 	}
 	for (int i = 0; i <= mapSize + 1; i++) std::cout << '#';
+}
+
+void Map::printMapCharacters()
+{
+	std::cout << "Characters with IDs: ";
+	std::list <int> ::iterator iter;
+	for (iter = m_containingCharacters.begin(); iter != m_containingCharacters.end(); iter++)
+	{
+		std::cout << *iter << ' ';
+	}
+	std::cout << "reside in this map\n";
 }

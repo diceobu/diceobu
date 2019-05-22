@@ -34,13 +34,15 @@ Character::Character(	const std::string			&name,			const int	&hitPoints,
 //	Others
 void Character::printCharacter()
 {
-	std::cout	<< "Name: " << m_name << '\n'
+	std::cout	<< "Name: " << m_name << '\t'
+				<< "ID: " << m_entityID << '\n'
 				<< "Race: " << m_race << '\t'
 				<< "Class: " << m_cClass << '\n'
 				<< "Level: " << m_level << '\t'
 				<< "Experience: " << m_exp << '\n'
 				<< "Hit Points: " << m_hitPoints << '\t'
 				<< "Armor Class: " << m_armorClass << '\n'
-				<< "Balance: " << m_balance << '\n'
+				<< "Balance: " << m_balance << '\t'
+				<< "Current Map: " << m_currMap.getMapID()
 				<< '\n';
 }

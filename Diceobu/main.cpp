@@ -12,8 +12,7 @@
 #include <list>
 #include <iterator>
 
-//	Global Data Structures
-
+//	Global Structures
 static std::list<Map> activeMaps;
 
 static std::list<Character> activeCharacters;
@@ -106,7 +105,7 @@ void deleteFirstActiveMap()
 
 void createNewCharacter(Map &currMap)
 {
-	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, 11, { 0, 0 }, currMap, characterIDCounter++, "powers", 2, "fighter",
+	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 	activeCharacters.push_back(newCharacter);
 	currMap.m_containingCharacters.push_back(newCharacter.getEntityID());
@@ -114,8 +113,8 @@ void createNewCharacter(Map &currMap)
 
 void deleteFirstActiveCharacter()
 {
-	Character *tempChar{ &activeCharacters.front() };
-	tempChar->getCurrMap().m_containingCharacters.remove(tempChar->getEntityID());
+	//Character tempChar{ activeCharacters.front() };
+	activeCharacters.front().getCurrMap().m_containingCharacters.remove(activeCharacters.front().getEntityID());
 	activeCharacters.pop_front();
 	//tempChar->~Character();
 	//std::cout << "object still exists: " << tempChar->getEntityID();
@@ -204,7 +203,7 @@ void simLaunch()
 		}
 		else if (input == "7")
 		{
-			displayFeedbackMessage("Displaying all active entities");
+			displayFeedbackMessage("Displaying all active characters");
 			clearScreen();
 			displayActiveCharacters();
 			displayAvailableOptions();
