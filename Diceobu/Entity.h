@@ -48,6 +48,7 @@ public:
 	const std::pair<int, int>	getCoordinates()	{ return m_coordinates; }
 	const int					getCoordinateX()	{ return m_coordinates.first; }
 	const int					getCoordinateY()	{ return m_coordinates.second; }
+	Map							getCurrMap()		{ return m_currMap; }
 //	Setters
 	void setName(const std::string &name)						{ m_name = name; }
 	void setHitPoints(const int &hitPoints)						{ m_hitPoints = hitPoints; }

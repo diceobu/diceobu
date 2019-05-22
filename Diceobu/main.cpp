@@ -12,8 +12,7 @@
 #include <list>
 #include <iterator>
 
-//	Global Data Structures
-
+//	Global Structures
 static std::list<Map> activeMaps;
 
 static std::list<Character> activeCharacters;
@@ -53,8 +52,10 @@ void displayAvailableOptions()
 				<< "3. Move existing character\n"
 				<< "4. Start/End combat\n"
 				<< "5. Display help information\n"
-				<< "6. Display all active maps\n"
+				<< "6. Display all active Maps\n"
 				<< "7. Display all active Characters\n"
+				<< "8. Delete first active Map\n"
+				<< "9. Delete first active Character\n"
 				<< "x. Exit\n";
 }
 
@@ -94,11 +95,29 @@ void createNewMap()
 	activeMaps.push_back(newMap);
 }
 
+void deleteFirstActiveMap()
+{
+	//Map *tempMap{ &activeMaps.front() };
+	activeMaps.pop_front();
+	//tempMap->~Map();
+	//std::cout << "object still exists: " << tempMap->getMapID();
+}
+
 void createNewCharacter(Map &currMap)
 {
-	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, 11, { 0, 0 }, currMap, characterIDCounter++, "powers", 2, "fighter",
+	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 	activeCharacters.push_back(newCharacter);
+	currMap.m_containingCharacters.push_back(newCharacter.getEntityID());
+}
+
+void deleteFirstActiveCharacter()
+{
+	//Character tempChar{ activeCharacters.front() };
+	activeCharacters.front().getCurrMap().m_containingCharacters.remove(activeCharacters.front().getEntityID());
+	activeCharacters.pop_front();
+	//tempChar->~Character();
+	//std::cout << "object still exists: " << tempChar->getEntityID();
 }
 
 std::string getUserOption()
@@ -129,11 +148,20 @@ void simLaunch()
 		}
 		else if (input == "2")
 		{
-			displayFeedbackMessage("Creating new character");
-			createNewCharacter(activeMaps.back());
-			clearScreen();
-			displayAvailableOptions();
-			displayFeedbackMessage("New character created");
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Cannot create character without a map");
+			}
+			else
+			{
+				displayFeedbackMessage("Creating new character");
+				createNewCharacter(activeMaps.back());
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("New character created");
+			}
 		}
 		else if (input == "3")
 		{
@@ -175,10 +203,44 @@ void simLaunch()
 		}
 		else if (input == "7")
 		{
-			displayFeedbackMessage("Displaying all active entities");
+			displayFeedbackMessage("Displaying all active characters");
 			clearScreen();
 			displayActiveCharacters();
 			displayAvailableOptions();
+		}
+		else if (input == "8")
+		{
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting first active map");
+				deleteFirstActiveMap();
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("First active map deleted");
+			}
+		}
+		else if (input == "9")
+		{
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting first active character");
+				deleteFirstActiveCharacter();
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("First active character deleted");
+			}
 		}
 		else if (input == "x")
 		{

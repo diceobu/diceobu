@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Campaign.h"
-#include "Character.h"
-#include "DungeonMaster.h"
 #include "Entity.h"
+#include "Character.h"
+#include "Campaign.h"
+#include "DungeonMaster.h"
 #include "Equipment.h"
 #include "Item.h"
 #include "Map.h"
