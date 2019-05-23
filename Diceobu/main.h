@@ -25,7 +25,7 @@ void displayActiveCharacters();
 
 void createNewMap();
 
-void createNewCharacter(Map &currMap);
+void createNewCharacter(Map* &currMap);
 
 std::string getUserOption();
 

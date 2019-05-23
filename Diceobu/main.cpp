@@ -13,17 +13,23 @@
 #include <iterator>
 
 //	Global Structures
-static std::list<Map> activeMaps;
+static std::list<Map*> activeMaps;
 
 static std::list<Character> activeCharacters;
 
 //	<------------------------------------------------ main starting point
 int main()
 {
-	displayWelcomeMessage();
+	while (1)
+	{
+		createNewMap();
+	}
+
+
+	/*displayWelcomeMessage();
 	system("pause");
 
-	simLaunch();
+	simLaunch();*/
 
 	return 0;
 }
@@ -67,12 +73,13 @@ void displayFeedbackMessage(std::string message)
 
 void displayActiveMaps()
 {
-	std::list <Map> :: iterator iter;
+	std::list <Map*> ::iterator iter;
 	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
 	{
 		std::cout << '\n';
-		Map currMap = *iter;
-		currMap.printMap();
+		Map* currMap = *iter;
+		//currMap->printMap();
+		std::cout << currMap->getMapID();
 		std::cout << '\n';
 	}
 }
@@ -91,8 +98,27 @@ void displayActiveCharacters()
 
 void createNewMap()
 {
+	std::cout << "list size before push: " << activeMaps.size() << '\n';
+	if (!activeMaps.empty())	std::cout << "before before: back id: " << activeMaps.back()->getMapID() << '\n';
+	if (!activeMaps.empty())	std::cout << "before before: front id: " << activeMaps.front()->getMapID() << '\n';
+
 	Map newMap("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
-	activeMaps.push_back(newMap);
+
+	if (!activeMaps.empty())	std::cout << "before: back id: " << activeMaps.back()->getMapID() << '\n';
+	if (!activeMaps.empty())	std::cout << "before: front id: " << activeMaps.front()->getMapID() << '\n';
+
+	activeMaps.push_back(&newMap);
+
+	std::cout << "list size after push: " << activeMaps.size() << '\n';
+
+	std::cout << "after: back id: " << activeMaps.back()->getMapID() << '\n';
+	std::cout << "after: front id: " << activeMaps.front()->getMapID() << '\n';
+
+	for (auto const &currMap : activeMaps)
+	{
+		std::cout << currMap->getMapID() << "\n";
+	}
+	system("pause");
 }
 
 void deleteFirstActiveMap()
@@ -103,26 +129,49 @@ void deleteFirstActiveMap()
 	//std::cout << "object still exists: " << tempMap->getMapID();
 }
 
-void createNewCharacter(Map &currMap)
+void testThisBitch(Character* &tempChar)
+{
+	system("pause");
+	std::cout << "char: " << tempChar->getEntityID() << '\n'
+		<< "map: " << tempChar->getCurrMap()->getMapID() << '\n'
+		<< "coords: " << tempChar->getCoordinateX() << ", " << tempChar->getCoordinateY() << '\n';
+	system("pause");
+	if (tempChar->getCurrMap()->m_containingCharacters.empty())	std::cout << "fuken list iz empty ffs...\n";
+	else
+	{
+		std::cout << tempChar->getCurrMap()->m_containingCharacters.front() << '\t'
+			<< tempChar->getCurrMap()->m_containingCharacters.back() << '\n'
+			<< "list size: " << tempChar->getCurrMap()->m_containingCharacters.size() << '\n';
+	}
+	system("pause");
+}
+
+void createNewCharacter(Map* &currMap)
 {
 	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 	activeCharacters.push_back(newCharacter);
-	currMap.m_containingCharacters.push_back(newCharacter.getEntityID());
+	currMap->m_containingCharacters.push_back(newCharacter.getEntityID());
+
+	//Character *tempChar{ &newCharacter };
+	//testThisBitch(tempChar);
 }
 
 void deleteFirstActiveCharacter()
 {
-	//Character tempChar{ activeCharacters.front() };
-	activeCharacters.front().getCurrMap().m_containingCharacters.remove(activeCharacters.front().getEntityID());
+	Character *tempChar{ &activeCharacters.front() };
+
+	//testThisBitch(tempChar);
+
+	tempChar->getCurrMap()->m_containingCharacters.remove(tempChar->getEntityID());
 	activeCharacters.pop_front();
-	//tempChar->~Character();
+	//tempChar.~Character();
 	//std::cout << "object still exists: " << tempChar->getEntityID();
 }
 
 std::string getUserOption()
 {
-	std::cout << "Awaiting input (press h to display the list of available options): ";
+	std::cout << "Awaiting input (whitespace characters are ignored): ";
 	std::string input{};
 	std::cin >> input;
 	return input;
@@ -198,15 +247,31 @@ void simLaunch()
 		{
 			displayFeedbackMessage("Displaying all active maps");
 			clearScreen();
-			displayActiveMaps();
-			displayAvailableOptions();
+			if (activeMaps.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveMaps();
+				displayAvailableOptions();
+			}
 		}
 		else if (input == "7")
 		{
 			displayFeedbackMessage("Displaying all active characters");
 			clearScreen();
-			displayActiveCharacters();
-			displayAvailableOptions();
+			if (activeCharacters.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveCharacters();
+				displayAvailableOptions();
+			}
 		}
 		else if (input == "8")
 		{
@@ -219,10 +284,19 @@ void simLaunch()
 			else
 			{
 				displayFeedbackMessage("Deleting first active map");
-				deleteFirstActiveMap();
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("First active map deleted");
+				if (activeMaps.front()->m_containingCharacters.empty())
+				{
+					deleteFirstActiveMap();
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("First active map deleted");
+				}
+				else
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Cannot delete map containing characters");
+				}
 			}
 		}
 		else if (input == "9")
@@ -250,6 +324,13 @@ void simLaunch()
 			clearScreen();
 			displayFeedbackMessage("Application exited");
 			break;
+		}
+		else if (input == "test")
+		{
+			Character *tempChar{ &activeCharacters.front() };
+			testThisBitch(tempChar);
+			tempChar = &activeCharacters.back();
+			testThisBitch(tempChar);
 		}
 		else
 		{
