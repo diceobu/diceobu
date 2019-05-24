@@ -8,6 +8,7 @@
 #include "main.h"
 //	Standard Libraries
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <list>
 #include <iterator>
@@ -179,9 +180,38 @@ void simLaunch()
 		}
 		else if (input == "3")
 		{
-			displayFeedbackMessage("Moving character");
-			clearScreen();
-			displayAvailableOptions();
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("No character found");
+			}
+			else
+			{
+				//	Create new function for this
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Type new coordinates (format: x,y)");
+				input = getUserOption();
+				std::string delimiter = ",";
+				size_t pos = 0;
+				std::string token;
+				while ((pos = input.find(delimiter)) != std::string::npos) {
+					token = input.substr(0, pos);
+					input.erase(0, pos + delimiter.length());
+				}
+				std::stringstream coordX{ token }, coordY{ input };
+				std::pair<int, int> coords{};
+				coordX >> coords.first;
+				coordY >> coords.second;
+				Character* tempChar{ &activeCharacters.back() };
+				tempChar->changeEntityPosition(activeMaps.back(), coords);
+				//	Create new function for this
+
+				displayFeedbackMessage("Moving character");
+				clearScreen();
+				displayAvailableOptions();
+			}
 		}
 		else if (input == "4")
 		{
@@ -289,13 +319,6 @@ void simLaunch()
 			clearScreen();
 			displayFeedbackMessage("Application exited");
 			break;
-		}
-		else if (input == "test")
-		{
-			Character *tempChar{ &activeCharacters.front() };
-			testThisBitch(tempChar);
-			tempChar = &activeCharacters.back();
-			testThisBitch(tempChar);
 		}
 		else
 		{

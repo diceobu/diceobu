@@ -25,9 +25,8 @@ private:
 	int												m_sizeX			{ -1 };
 	int												m_sizeY			{ -1 };
 	std::string										m_mapEffects	{ "emstr" };
-	int												m_tileIDCounter	{ 0 };
 public:
-	std::array<std::array<Tile, mapSize>, mapSize>	m_tileGrid;
+	std::array<std::array<Tile*, mapSize>, mapSize>	m_tileGrid;
 	std::list<int>									m_containingCharacters;
 
 //	Member Functions

@@ -20,22 +20,25 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 	:	m_mapName{ mapName },	m_sizeX{ sizeX },			m_sizeY{sizeY},
 		m_mapID{ mapID },		m_mapEffects{ mapEffects }
 {
+	if (mapID == 0)
+	{
+		initTileDataCont();
+	}
 	initializeMapTiles();
 }
+
 //	Others
 void Map::initializeMapTiles()
 {
-	initTileDataCont();
 	for (int i = 0; i < mapSize; i++)
 	{
 		for (int j = 0; j < mapSize; j++)
 		{
-			m_tileGrid[i][j].setTileID(m_tileIDCounter++);
-			m_tileGrid[i][j].setTerrainType(tileDataContainer[i][j].tld_terrainType);
-			m_tileGrid[i][j].setTileEffects(tileDataContainer[i][j].tld_tileEffects);
-			m_tileGrid[i][j].setOpen(tileDataContainer[i][j].tld_open);
-			m_tileGrid[i][j].setOccupied(tileDataContainer[i][j].tld_occupied);
-			m_tileGrid[i][j].setOccupantID(tileDataContainer[i][j].tld_occupantID);
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, tileDataContainer[i][j].tld_terrainType,
+				tileDataContainer[i][j].tld_tileEffects,
+				tileDataContainer[i][j].tld_open,
+				tileDataContainer[i][j].tld_occupied,
+				tileDataContainer[i][j].tld_occupantID);
 		}
 	}
 }
@@ -79,7 +82,7 @@ void Map::printMap()
 		std::cout << "#";
 		for (int j = 0; j < mapSize; j++)
 		{
-			std::cout << getTileSymbol(m_tileGrid[i][j]);
+			std::cout << getTileSymbol(*m_tileGrid[i][j]);
 		}
 		std::cout << "#";
 		std::cout << '\n';
