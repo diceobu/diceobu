@@ -89,11 +89,18 @@ void Map::printMap()
 
 void Map::printMapCharacters()
 {
-	std::cout << "Characters with IDs: ";
-	std::list <int> ::iterator iter;
-	for (iter = m_containingCharacters.begin(); iter != m_containingCharacters.end(); iter++)
+	if (m_containingCharacters.empty())
 	{
-		std::cout << *iter << ' ';
+		std::cout << "No characters reside in this map\n";
 	}
-	std::cout << "reside in this map\n";
+	else
+	{
+		std::cout << "Characters with IDs: ";
+		std::list <int> :: iterator iter;
+		for (iter = m_containingCharacters.begin(); iter != m_containingCharacters.end(); iter++)
+		{
+			std::cout << *iter << ' ';
+		}
+		std::cout << "reside in this map\n";
+	}
 }

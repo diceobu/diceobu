@@ -26,7 +26,7 @@ protected:
 	int					m_weight{ -1 };
 	int					m_entityID{ -1 };
 	std::pair<int, int>	m_coordinates{ -1, -1 };
-	Map					m_currMap;
+	Map*				m_currMap;
 //	Member Functions
 public:
 //	Constructors
@@ -34,7 +34,7 @@ public:
 			const int					&overheal,		const int	&armorClass,
 			const std::string			&size,			const int	&height,
 			const int					&weight,		const int	&entityID,
-			const std::pair<int, int>	&coordinates,	const Map	&currMap);
+			const std::pair<int, int>	&coordinates,	Map*		&currMap);
 //	Access Functions
 //	Getters
 	const std::string			getName()			{ return m_name; }
@@ -48,7 +48,7 @@ public:
 	const std::pair<int, int>	getCoordinates()	{ return m_coordinates; }
 	const int					getCoordinateX()	{ return m_coordinates.first; }
 	const int					getCoordinateY()	{ return m_coordinates.second; }
-	Map							getCurrMap()		{ return m_currMap; }
+	Map*						getCurrMap()		{ return m_currMap; }
 //	Setters
 	void setName(const std::string &name)						{ m_name = name; }
 	void setHitPoints(const int &hitPoints)						{ m_hitPoints = hitPoints; }
@@ -62,5 +62,5 @@ public:
 	void setCoordinateX(const int coordinateX)					{ m_coordinates.first = coordinateX; }
 	void setCoordinateY(const int coordinateY)					{ m_coordinates.second = coordinateY; }
 //	Others
-	void changeEntityPosition(Map &currMap, const std::pair<int, int> &coordinates);
+	void changeEntityPosition(Map* &currMap, const std::pair<int, int> &coordinates);
 };
