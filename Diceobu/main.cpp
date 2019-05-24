@@ -20,12 +20,6 @@ static std::list<Character> activeCharacters;
 //	<------------------------------------------------ main starting point
 int main()
 {
-	//while (1)
-	//{
-	//	createNewMap();
-	//}
-
-
 	displayWelcomeMessage();
 	system("pause");
 
@@ -78,8 +72,7 @@ void displayActiveMaps()
 	{
 		std::cout << '\n';
 		Map* currMap = *iter;
-		//currMap->printMap();
-		std::cout << currMap->getMapID();
+		currMap->printMap();
 		std::cout << '\n';
 	}
 }
@@ -98,35 +91,14 @@ void displayActiveCharacters()
 
 void createNewMap()
 {
-	std::cout << "list size before push: " << activeMaps.size() << '\n';
-	if (!activeMaps.empty())	std::cout << "before before: back id: " << activeMaps.back()->getMapID() << '\n';
-	if (!activeMaps.empty())	std::cout << "before before: front id: " << activeMaps.front()->getMapID() << '\n';
-
-	//Map *newMap = new Map("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
-
-	if (!activeMaps.empty())	std::cout << "before: back id: " << activeMaps.back()->getMapID() << '\n';
-	if (!activeMaps.empty())	std::cout << "before: front id: " << activeMaps.front()->getMapID() << '\n';
-
-	activeMaps.push_back(new Map("Castle of Belithriell", 50, 50, mapIDCounter++, "none"));
-
-	std::cout << "list size after push: " << activeMaps.size() << '\n';
-
-	std::cout << "after: back id: " << activeMaps.back()->getMapID() << '\n';
-	std::cout << "after: front id: " << activeMaps.front()->getMapID() << '\n';
-
-	for (auto const &currMap : activeMaps)
-	{
-		std::cout << currMap->getMapID() << "\n";
-	}
-	system("pause");
+	activeMaps.push_back(new Map("Castle of Belithriell", mapSize, mapSize, mapIDCounter++, "none"));
 }
 
 void deleteFirstActiveMap()
 {
-	//Map *tempMap{ &activeMaps.front() };
+	Map *tempMap{ activeMaps.front() };
 	activeMaps.pop_front();
-	//tempMap->~Map();
-	//std::cout << "object still exists: " << tempMap->getMapID();
+	tempMap->~Map();
 }
 
 void testThisBitch(Character* &tempChar)
@@ -152,21 +124,14 @@ void createNewCharacter(Map* &currMap)
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 	activeCharacters.push_back(newCharacter);
 	currMap->m_containingCharacters.push_back(newCharacter.getEntityID());
-
-	//Character *tempChar{ &newCharacter };
-	//testThisBitch(tempChar);
 }
 
 void deleteFirstActiveCharacter()
 {
 	Character *tempChar{ &activeCharacters.front() };
-
-	//testThisBitch(tempChar);
-
 	tempChar->getCurrMap()->m_containingCharacters.remove(tempChar->getEntityID());
 	activeCharacters.pop_front();
-	//tempChar.~Character();
-	//std::cout << "object still exists: " << tempChar->getEntityID();
+	//tempChar->~Character();
 }
 
 std::string getUserOption()
