@@ -20,16 +20,16 @@ static std::list<Character> activeCharacters;
 //	<------------------------------------------------ main starting point
 int main()
 {
-	while (1)
-	{
-		createNewMap();
-	}
+	//while (1)
+	//{
+	//	createNewMap();
+	//}
 
 
-	/*displayWelcomeMessage();
+	displayWelcomeMessage();
 	system("pause");
 
-	simLaunch();*/
+	simLaunch();
 
 	return 0;
 }
