@@ -102,12 +102,12 @@ void createNewMap()
 	if (!activeMaps.empty())	std::cout << "before before: back id: " << activeMaps.back()->getMapID() << '\n';
 	if (!activeMaps.empty())	std::cout << "before before: front id: " << activeMaps.front()->getMapID() << '\n';
 
-	Map newMap("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
+	//Map *newMap = new Map("Castle of Belithriell", 50, 50, mapIDCounter++, "none");
 
 	if (!activeMaps.empty())	std::cout << "before: back id: " << activeMaps.back()->getMapID() << '\n';
 	if (!activeMaps.empty())	std::cout << "before: front id: " << activeMaps.front()->getMapID() << '\n';
 
-	activeMaps.push_back(&newMap);
+	activeMaps.push_back(new Map("Castle of Belithriell", 50, 50, mapIDCounter++, "none"));
 
 	std::cout << "list size after push: " << activeMaps.size() << '\n';
 
