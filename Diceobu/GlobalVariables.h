@@ -17,3 +17,5 @@ static bool inCombat{ false };
 static unsigned int mapIDCounter{ 0 };
 
 static unsigned int characterIDCounter{ 0 };
+
+static unsigned int tileIDCounter{ 0 };

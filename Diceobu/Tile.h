@@ -25,10 +25,9 @@ protected:
 //	Member Functions
 public:
 //	Constructors
-	Tile() {}
-	//Tile(	const int			&tileID,		const std::string	&terrainType,
-	//		const std::string	&tileEffects,	const bool			&open,
-	//		const bool			&occupied,		const int			&occupantID);
+	Tile(	const int			&tileID,		const std::string	&terrainType,
+			const std::string	&tileEffects,	const bool			&open,
+			const bool			&occupied,		const int			&occupantID);
 //	Access Functions
 //	Getters
 	const int			getTileID()			{ return m_tileID; }

@@ -28,9 +28,9 @@ Entity::Entity(	const std::string			&name,			const int	&hitPoints,
 //	Others
 void Entity::changeEntityPosition(Map* &currMap, const std::pair<int, int> &coordinates)
 {
-	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second].setOccupied(false);
-	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second].setOccupantID(-1);
+	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupied(false);
+	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupantID(-1);
 	setCoordinates(coordinates);
-	currMap->m_tileGrid[coordinates.first][coordinates.second].setOccupied(true);
-	currMap->m_tileGrid[coordinates.first][coordinates.second].setOccupantID(m_entityID);
+	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupied(true);
+	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
 }
