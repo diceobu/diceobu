@@ -41,19 +41,26 @@ void displayWelcomeMessage()
 
 void displayAvailableOptions()
 {
-	std::cout << "List of available options (select one of the numbers/symbols and hit enter):\n";
-	std::cout << "1. Create new Default Map\n"
-		<< "2. Create new Default Character\n"
-		<< "3. Move existing character\n"
-		<< "4. Start/End combat\n"
-		<< "5. Display help information\n"
-		<< "6. Display all active Maps\n"
-		<< "7. Display all active Characters\n"
-		<< "8. Delete first active Map\n"
-		<< "9. Delete first active Character\n"
-		<< "x. Exit\n";
-	if (!activeMaps.empty())	std::cout << "Current Map: " << currWorkingMap->getMapID() << '\t';
-	if (!activeCharacters.empty())	std::cout << "Current Character: " << currWorkingChar->getEntityID() << '\n';
+	std::cout	<< "List of available options (select one of the numbers/symbols and hit enter):\n";
+	std::cout	<< "1.	Create new Default Map\n"
+				<< "2.	Create new Default Character\n"
+				<< "3.	Move current character\n"
+				<< "4.	Start/End combat\n"
+				<< "5.	Display help information\n"
+				<< "6.	Display all active Maps\n"
+				<< "7.	Display all active Characters\n"
+				<< "8.	Delete current Map\n"
+				<< "9.	Delete current Character\n"
+				<< "10.	Choose next Map\n"
+				<< "11.	Choose next Character\n"
+				<< "x.	Exit\n";
+	std::cout << '\n';
+
+	if (inCombat)	std::cout << "\t#############\n";
+	if (inCombat)	std::cout << "\t# IN COMBAT #\n";
+	if (inCombat)	std::cout << "\t#############\n\n";
+	if (!activeMaps.empty())	std::cout << "\tCurrent Map: " << currWorkingMap->getMapID() << '\n';
+	if (!activeCharacters.empty())	std::cout << "\tCurrent Character: " << currWorkingChar->getEntityID() << '\n';
 }
 
 void displayFeedbackMessage(std::string message)
@@ -96,17 +103,63 @@ void displayActiveCharacters()
 	}
 }
 
+void chooseNextMap()
+{
+	std::list <Map*> ::iterator iter;
+	bool nextUp{ false };
+	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
+	{
+		if (nextUp)
+		{
+			currWorkingMap = *iter;
+			nextUp = false;
+			break;
+		}
+		if (currWorkingMap == *iter)
+		{
+			nextUp = true;
+		}
+	}
+	if (nextUp)
+	{
+		currWorkingMap = activeMaps.front();
+	}
+}
+
+void chooseNextCharacter()
+{
+	std::list <Character*> ::iterator iter;
+	bool nextUp{ false };
+	for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+	{
+		if (nextUp)
+		{
+			currWorkingChar = *iter;
+			nextUp = false;
+			break;
+		}
+		if (currWorkingChar == *iter)
+		{
+			nextUp = true;
+		}
+	}
+	if (nextUp)
+	{
+		currWorkingChar = activeCharacters.front();
+	}
+}
+
 void createNewMap()
 {
 	activeMaps.push_back(new Map("Castle of Belithriell", mapSize, mapSize, mapIDCounter++, "none"));
 	currWorkingMap = activeMaps.back();
 }
 
-void deleteFirstActiveMap()
+void deleteCurrentMap()
 {
-	Map *tempMap{ activeMaps.front() };
-	activeMaps.pop_front();
-	tempMap->~Map();
+	activeMaps.remove(currWorkingMap);
+	currWorkingMap->~Map();
+	if (!activeMaps.empty())	currWorkingMap = activeMaps.back();
 }
 
 void createNewCharacter(Map* &currMap)
@@ -117,12 +170,11 @@ void createNewCharacter(Map* &currMap)
 	currMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 }
 
-void deleteFirstActiveCharacter()
+void deleteCurrentCharacter()
 {
-	Character *tempChar{ activeCharacters.front() };
-	tempChar->getCurrMap()->m_containingCharacters.remove(tempChar->getEntityID());
-	activeCharacters.pop_front();
-	tempChar->~Character();
+	activeCharacters.remove(currWorkingChar);
+	currWorkingChar->~Character();
+	if (!activeCharacters.empty())	currWorkingChar = activeCharacters.back();
 }
 
 void displayInfo()
@@ -132,6 +184,35 @@ void displayInfo()
 		<< "Current Character shows the Character that you changes will affect.\n"
 		<< "You can work only with one Character/Map at a time\n";
 	std::cout << '\n';
+}
+
+void moveCurrentCharacter()
+{
+	std::string input;
+	clearScreen();
+	displayAvailableOptions();
+	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
+	input = getUserOption();
+	if (input == "x")
+	{
+		displayFeedbackMessage("Canceling character movement");
+	}
+	else
+	{
+		displayFeedbackMessage("Moving character");
+		std::string delimiter = ",";
+		size_t pos = 0;
+		std::string token;
+		while ((pos = input.find(delimiter)) != std::string::npos) {
+			token = input.substr(0, pos);
+			input.erase(0, pos + delimiter.length());
+		}
+		std::stringstream coordX{ token }, coordY{ input };
+		std::pair<int, int> coords{};
+		coordX >> coords.first;
+		coordY >> coords.second;
+		currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
+	}
 }
 
 std::string getUserOption()
@@ -188,34 +269,11 @@ void simLaunch()
 			else
 			{
 				//	Create new function for this
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
-				input = getUserOption();
-				if (input == "x")
-				{
-					displayFeedbackMessage("Canceling character movement");
-				}
-				else
-				{
-					displayFeedbackMessage("Moving character");
-					std::string delimiter = ",";
-					size_t pos = 0;
-					std::string token;
-					while ((pos = input.find(delimiter)) != std::string::npos) {
-						token = input.substr(0, pos);
-						input.erase(0, pos + delimiter.length());
-					}
-					std::stringstream coordX{ token }, coordY{ input };
-					std::pair<int, int> coords{};
-					coordX >> coords.first;
-					coordY >> coords.second;
-					Character* tempChar{ activeCharacters.back() };
-					tempChar->changeEntityPosition(activeMaps.back(), coords);
-				}
+				moveCurrentCharacter();
 				//	Create new function for this
 
 				clearScreen();
+				currWorkingChar->getCurrMap()->printMap();
 				displayAvailableOptions();
 			}
 		}
@@ -286,13 +344,13 @@ void simLaunch()
 			}
 			else
 			{
-				displayFeedbackMessage("Deleting first active map");
+				displayFeedbackMessage("Deleting current map");
 				if (activeMaps.front()->m_containingCharacters.empty())
 				{
-					deleteFirstActiveMap();
+					deleteCurrentMap();
 					clearScreen();
 					displayAvailableOptions();
-					displayFeedbackMessage("First active map deleted");
+					displayFeedbackMessage("Current map deleted");
 				}
 				else
 				{
@@ -312,12 +370,30 @@ void simLaunch()
 			}
 			else
 			{
-				displayFeedbackMessage("Deleting first active character");
-				deleteFirstActiveCharacter();
+				displayFeedbackMessage("Deleting current character");
+				deleteCurrentCharacter();
 				clearScreen();
 				displayAvailableOptions();
-				displayFeedbackMessage("First active character deleted");
+				displayFeedbackMessage("Current character deleted");
 			}
+		}
+		else if (input == "10")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextMap();
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "11")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextCharacter();
+			clearScreen();
+			displayAvailableOptions();
 		}
 		else if (input == "x")
 		{
