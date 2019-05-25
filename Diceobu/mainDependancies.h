@@ -26,15 +26,21 @@ void displayActiveMaps();
 
 void displayActiveCharacters();
 
+void chooseNextMap();
+
+void chooseNextCharacter();
+
 void createNewMap();
 
-void deleteFirstActiveMap();
+void deleteCurrentMap();
 
 void createNewCharacter(Map* &currMap);
 
-void deleteFirstActiveCharacter();
+void deleteCurrentCharacter();
 
 void displayInfo();
+
+void moveCurrentCharacter();
 
 std::string getUserOption();
 
