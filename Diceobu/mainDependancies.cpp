@@ -17,7 +17,11 @@
 //	Global Structures
 static std::list<Map*> activeMaps;
 
-static std::list<Character> activeCharacters;
+static std::list<Character*> activeCharacters;
+
+Map* currWorkingMap;
+
+Character* currWorkingChar;
 
 
 void clearScreen()
@@ -48,6 +52,8 @@ void displayAvailableOptions()
 		<< "8. Delete first active Map\n"
 		<< "9. Delete first active Character\n"
 		<< "x. Exit\n";
+	if (!activeMaps.empty())	std::cout << "Current Map: " << currWorkingMap->getMapID() << '\t';
+	if (!activeCharacters.empty())	std::cout << "Current Character: " << currWorkingChar->getEntityID() << '\n';
 }
 
 void displayFeedbackMessage(std::string message)
@@ -80,12 +86,12 @@ void displayActiveMaps()
 
 void displayActiveCharacters()
 {
-	std::list <Character> ::iterator iter;
+	std::list <Character*> ::iterator iter;
 	for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
 	{
 		std::cout << '\n';
-		Character currCharacter = *iter;
-		currCharacter.printCharacter();
+		Character* currCharacter = *iter;
+		currCharacter->printCharacter();
 		std::cout << '\n';
 	}
 }
@@ -93,6 +99,7 @@ void displayActiveCharacters()
 void createNewMap()
 {
 	activeMaps.push_back(new Map("Castle of Belithriell", mapSize, mapSize, mapIDCounter++, "none"));
+	currWorkingMap = activeMaps.back();
 }
 
 void deleteFirstActiveMap()
@@ -104,18 +111,27 @@ void deleteFirstActiveMap()
 
 void createNewCharacter(Map* &currMap)
 {
-	Character newCharacter("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
-		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
-	activeCharacters.push_back(newCharacter);
-	currMap->m_containingCharacters.push_back(newCharacter.getEntityID());
+	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
+		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
+	currWorkingChar = activeCharacters.back();
+	currMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 }
 
 void deleteFirstActiveCharacter()
 {
-	Character *tempChar{ &activeCharacters.front() };
+	Character *tempChar{ activeCharacters.front() };
 	tempChar->getCurrMap()->m_containingCharacters.remove(tempChar->getEntityID());
 	activeCharacters.pop_front();
-	//tempChar->~Character();
+	tempChar->~Character();
+}
+
+void displayInfo()
+{
+	std::cout << "Information\n\n";
+	std::cout << "Current Map shows the Map that your changes will affect.\n"
+		<< "Current Character shows the Character that you changes will affect.\n"
+		<< "You can work only with one Character/Map at a time\n";
+	std::cout << '\n';
 }
 
 std::string getUserOption()
@@ -194,7 +210,7 @@ void simLaunch()
 					std::pair<int, int> coords{};
 					coordX >> coords.first;
 					coordY >> coords.second;
-					Character* tempChar{ &activeCharacters.back() };
+					Character* tempChar{ activeCharacters.back() };
 					tempChar->changeEntityPosition(activeMaps.back(), coords);
 				}
 				//	Create new function for this
@@ -226,6 +242,7 @@ void simLaunch()
 		{
 			displayFeedbackMessage("Displaying additional information");
 			clearScreen();
+			displayInfo();
 			displayAvailableOptions();
 		}
 		else if (input == "6")

@@ -34,6 +34,8 @@ void createNewCharacter(Map* &currMap);
 
 void deleteFirstActiveCharacter();
 
+void displayInfo();
+
 std::string getUserOption();
 
 void simLaunch();

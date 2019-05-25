@@ -40,7 +40,7 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 //	Others
 void Map::initializeMapTiles_File()
 {
-	std::ifstream inFile("Sample.dat");
+	std::ifstream inFile("map-terrain.dat");
 	char tempChar;
 	int i{ -1 };
 	int j{ -1 };
@@ -136,9 +136,47 @@ char Map::getTileSymbol(Tile &currTile)
 	return tileSymbol;
 }
 
+char Map::getTerrainTileSymbol(Tile &currTile)
+{
+	char tileSymbol{};
+	if (currTile.getOpen())
+	{
+		if (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
+		else if (currTile.getTerrainType() == "grass")	tileSymbol = 'g';
+		else if (currTile.getTerrainType() == "rock")	tileSymbol = 'r';
+		else if (currTile.getTerrainType() == "sand")	tileSymbol = 's';
+		else if (currTile.getTerrainType() == "water")	tileSymbol = 'w';
+	}
+	else
+	{
+		tileSymbol = ' ';
+	}
+	return tileSymbol;
+}
+
+void Map::writeTerrainMap()
+{
+	std::ofstream outFile("map-terrain.dat");
+
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	for (int i = 0; i < mapSize; i++)
+	{
+		outFile << '#';
+		for (int j = 0; j < mapSize; j++)
+		{
+			outFile << getTerrainTileSymbol(*m_tileGrid[i][j]);
+			if (j == 49)	outFile << '#' << '\n';
+		}
+	}
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
+}
+
 void Map::writeMap()
 {
-	std::ofstream outFile("Sample.dat");
+	std::ofstream outFile("map-instance.dat");
 
 	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
 	outFile << '\n';
