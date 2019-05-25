@@ -162,6 +162,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="mainDependancies.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="NonMagicalPower.cpp" />
     <ClCompile Include="NonUsable.cpp" />
@@ -186,7 +187,7 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GlobalVariables.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="mainDependancies.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="NonMagicalPower.h" />

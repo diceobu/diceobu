@@ -10,6 +10,8 @@
 
 //	Global Data Structures
 
+static constexpr bool runUI{ false };
+
 static constexpr int mapSize{ 50 };
 
 static bool inCombat{ false };

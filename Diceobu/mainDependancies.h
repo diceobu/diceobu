@@ -6,6 +6,7 @@
 
 //	User Libraries
 #include "GlobalVariables.h"
+#include "Map.h"
 //	Standard Libraries
 #include <string>
 
@@ -19,13 +20,19 @@ void displayAvailableOptions();
 
 void displayFeedbackMessage(std::string message);
 
+void writeActiveMaps();
+
 void displayActiveMaps();
 
 void displayActiveCharacters();
 
 void createNewMap();
 
+void deleteFirstActiveMap();
+
 void createNewCharacter(Map* &currMap);
+
+void deleteFirstActiveCharacter();
 
 std::string getUserOption();
 
