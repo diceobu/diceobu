@@ -19,3 +19,5 @@ static unsigned int mapIDCounter{ 0 };
 static unsigned int characterIDCounter{ 0 };
 
 static unsigned int tileIDCounter{ 0 };
+
+static bool readFromFile{ true };

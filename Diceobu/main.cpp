@@ -66,6 +66,16 @@ void displayFeedbackMessage(std::string message)
 		<< message << '\n';
 }
 
+void writeActiveMaps()
+{
+	std::list <Map*> ::iterator iter;
+	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
+	{
+		Map* currMap = *iter;
+		currMap->writeMap();
+	}
+}
+
 void displayActiveMaps()
 {
 	std::list <Map*> ::iterator iter;
@@ -250,6 +260,7 @@ void simLaunch()
 			else
 			{
 				displayActiveMaps();
+				writeActiveMaps();
 				displayAvailableOptions();
 			}
 		}

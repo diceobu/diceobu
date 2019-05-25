@@ -12,7 +12,9 @@
 //	Standard Libraries
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <array>
+#include <cstdlib>
 
 //	Constructors
 Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
@@ -20,15 +22,60 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 	:	m_mapName{ mapName },	m_sizeX{ sizeX },			m_sizeY{sizeY},
 		m_mapID{ mapID },		m_mapEffects{ mapEffects }
 {
-	if (mapID == 0)
+	if (readFromFile)
 	{
-		initTileDataCont();
+		initializeMapTiles_File();
 	}
-	initializeMapTiles();
+	else
+	{
+		if (firstContCreated)
+		{
+			initTileDataCont();
+			firstContCreated = false;
+		}
+		initializeMapTiles_Cont();
+	}
 }
 
 //	Others
-void Map::initializeMapTiles()
+void Map::initializeMapTiles_File()
+{
+	std::fstream inFile("Sample.dat", std::fstream::in);
+	char tempChar;
+	int i{ 0 };
+	int j{ 0 };
+	while (inFile >> std::noskipws >> tempChar) {
+		if (tempChar == '~')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "dirt", "none", true, false, -1);
+		}
+		else if (tempChar == 'O')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "stone", "none", true, false, -1);
+		}
+		else if (tempChar == ' ')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "none", "none", false, false, -1);
+		}
+		else if (tempChar == '\n')
+		{
+			i++;
+			j = -1;
+		}
+		else if (tempChar == '!')
+		{
+			break;
+		}
+		else
+		{
+			std::cout << "error: incorrect map file format";
+			exit(1);
+		}
+		j++;
+	}
+}
+
+void Map::initializeMapTiles_Cont()
 {
 	for (int i = 0; i < mapSize; i++)
 	{
@@ -68,6 +115,21 @@ char Map::getTileSymbol(Tile &currTile)
 		tileSymbol = ' ';
 	}
 	return tileSymbol;
+}
+
+void Map::writeMap()
+{
+	std::ofstream outFile("Sample.dat");
+
+	for (int i = 0; i < mapSize; i++)
+	{
+		for (int j = 0; j < mapSize; j++)
+		{
+			outFile << getTileSymbol(*m_tileGrid[i][j]);
+			if (j == 49)	outFile << std::endl;
+		}
+	}
+	outFile << "!Symbols: x = Entity, ~ = dirt, O = stone, @ = fire, * = ice, ' ' = closed tile";
 }
 
 void Map::printMap()

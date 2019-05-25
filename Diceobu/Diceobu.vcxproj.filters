@@ -18,6 +18,9 @@
     <Filter Include="Templates\Source Files">
       <UniqueIdentifier>{34c7e2b5-c005-47a7-880b-0ad325f26cad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Data">
+      <UniqueIdentifier>{5648b818-5175-4178-8324-9ec48870d610}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Power.cpp">
@@ -164,6 +167,9 @@
     </None>
     <None Include="%28Template%29Class-Name.cpp">
       <Filter>Templates\Source Files</Filter>
+    </None>
+    <None Include="Sample.dat">
+      <Filter>Game Data</Filter>
     </None>
   </ItemGroup>
 </Project>
