@@ -40,10 +40,10 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 //	Others
 void Map::initializeMapTiles_File()
 {
-	std::fstream inFile("Sample.dat", std::fstream::in);
+	std::ifstream inFile("Sample.dat");
 	char tempChar;
-	int i{ 0 };
-	int j{ 0 };
+	int i{ -1 };
+	int j{ -1 };
 	while (inFile >> std::noskipws >> tempChar) {
 		if (tempChar == 'd')
 		{
@@ -76,7 +76,7 @@ void Map::initializeMapTiles_File()
 		else if (tempChar == '\n')
 		{
 			i++;
-			j = -1;
+			j = -2;
 		}
 		else if (tempChar == '!')
 		{
@@ -140,14 +140,19 @@ void Map::writeMap()
 {
 	std::ofstream outFile("Sample.dat");
 
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
 	for (int i = 0; i < mapSize; i++)
 	{
+		outFile << '#';
 		for (int j = 0; j < mapSize; j++)
 		{
 			outFile << getTileSymbol(*m_tileGrid[i][j]);
-			if (j == 49)	outFile << std::endl;
+			if (j == 49)	outFile << '#' << '\n';
 		}
 	}
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
 	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
 }
 
