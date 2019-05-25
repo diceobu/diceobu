@@ -45,17 +45,33 @@ void Map::initializeMapTiles_File()
 	int i{ 0 };
 	int j{ 0 };
 	while (inFile >> std::noskipws >> tempChar) {
-		if (tempChar == '~')
+		if (tempChar == 'd')
 		{
 			m_tileGrid[i][j] = new Tile(tileIDCounter++, "dirt", "none", true, false, -1);
 		}
-		else if (tempChar == 'O')
+		else if (tempChar == 'g')
 		{
-			m_tileGrid[i][j] = new Tile(tileIDCounter++, "stone", "none", true, false, -1);
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "grass", "none", true, false, -1);
+		}
+		else if (tempChar == 'r')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "rock", "none", true, false, -1);
+		}
+		else if (tempChar == 's')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "sand", "none", true, false, -1);
+		}
+		else if (tempChar == 'w')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "water", "none", true, false, -1);
 		}
 		else if (tempChar == ' ')
 		{
 			m_tileGrid[i][j] = new Tile(tileIDCounter++, "none", "none", false, false, -1);
+		}
+		else if (tempChar == '#')
+		{
+
 		}
 		else if (tempChar == '\n')
 		{
@@ -103,11 +119,14 @@ char Map::getTileSymbol(Tile &currTile)
 		{
 			if (currTile.getTileEffects() == "none")
 			{
-				if (currTile.getTerrainType() == "dirt")		tileSymbol = '~';
-				else if (currTile.getTerrainType() == "stone")	tileSymbol = 'O';
+				if (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
+				else if (currTile.getTerrainType() == "grass")	tileSymbol = 'g';
+				else if (currTile.getTerrainType() == "rock")	tileSymbol = 'r';
+				else if (currTile.getTerrainType() == "sand")	tileSymbol = 's';
+				else if (currTile.getTerrainType() == "water")	tileSymbol = 'w';
 			}
-			else if (currTile.getTileEffects() == "fire")		tileSymbol = '@';
-			else if (currTile.getTileEffects() == "ice")		tileSymbol = '*';
+			else if (currTile.getTileEffects() == "fire")		tileSymbol = 'f';
+			else if (currTile.getTileEffects() == "ice")		tileSymbol = 'i';
 		}
 	}
 	else
@@ -129,7 +148,7 @@ void Map::writeMap()
 			if (j == 49)	outFile << std::endl;
 		}
 	}
-	outFile << "!Symbols: x = Entity, ~ = dirt, O = stone, @ = fire, * = ice, ' ' = closed tile";
+	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
 }
 
 void Map::printMap()

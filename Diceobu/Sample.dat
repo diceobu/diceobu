@@ -9,35 +9,35 @@
                                                   
                                                   
                                                   
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~O~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~OO~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~OO~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~OO~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~O~~OO~~~~~~~~~~~~~~~~~~~          
-           ~~~~~OO~~OO~~~~~~~~~~~~~~~~~~          
-           ~~~~~~OO~~OO~~~~~~~~~~~~~~~~~          
-           ~~~~~~~OO~~OO~~~OOOOOOOOOOOOO          
-           ~~~~~~~~OO~~O~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~O~~O~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~O~~O~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~O~~OOOOO~~~~~~~~~~~O          
-           ~~~~~~~~~O~~~~~~~~~~~~~~~~~~O          
-           ~~~~~~~~~O~~~~~~~~~~~~~~~~~~O          
-           ~~~~~~~~~OOOOOOOO~~~~~~~~~~~O          
-           ~~~~~~~~~~~~~~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~~~~~~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~~~~~~~~O~~~~~~~~~~~O          
-           ~~~~~~~~~~~~~~~~OOOOOOOOOOOOO          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           dddddrddddddddddddddddddddddd          
+           dddddrrdddddddddddddddddddddd          
+           ddddddrrddddddddddddddddddddd          
+           dddddddrrdddddddddddddddddddd          
+           dddddrddrrddddddddddddddddddd          
+           dddddrrddrrdddddddddddddddddd          
+           ddddddrrddrrddddddddddddddddd          
+           dddddddrrddrrdddrrrrrrrrrrrrr          
+           ddddddddrrddrdddrdddddddddddr          
+           dddddddddrddrdddrdddddddddddr          
+           dddddddddrddrdddrdddddddddddr          
+           dddddddddrddrrrrrdddddddddddr          
+           dddddddddrddddddddddddddddddr          
+           dddddddddrddddddddddddddddddr          
+           dddddddddrrrrrrrrdddddddddddr          
+           ddddddddddddddddrdddddddddddr          
+           ddddddddddddddddrdddddddddddr          
+           ddddddddddddddddrdddddddddddr          
+           ddddddddddddddddrrrrrrrrrrrrr          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
+           ddddddddddddddddddddddddddddd          
                                                   
                                                   
                                                   
@@ -48,4 +48,4 @@
                                                   
                                                   
                                                   
-!Symbols: x = Entity, ~ = dirt, O = stone, @ = fire, * = ice, ' ' = closed tile
+!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile
