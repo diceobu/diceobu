@@ -19,7 +19,7 @@ public:
 //	Some public Member Variables
 protected:
 	int			m_abilityScores;
-	std::string	m_powers;
+	const std::list<std::string>	m_powers;
 	int			m_speed;
 	std::string	m_cClass;
 	std::string	m_alignment;
@@ -45,7 +45,7 @@ public:
 				const std::string			&size,			const int	&height,
 				const int					&weight,		const int	&entityID,
 				const std::pair<int, int>	&coordinates,	Map*		&currMap,
-				const int			&abilityScores,	const std::string	&powers,
+				const int			&abilityScores,	const std::list<std::string>	&powers,
 				const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
 				const std::string	&equipment,		const int			&level,			const int			&exp,
 				const std::string	&race,			const std::string	&languages,		const int			&balance,
@@ -54,7 +54,7 @@ public:
 //	Access Functions
 //	Getters
 	const int			getAbilityScores()	{ return m_abilityScores; }
-	const std::string	getPowers()			{ return m_powers; }
+	const std::list<std::string>	getPowers()			{ return m_powers; }
 	const int			getSpeed()			{ return m_speed; }
 	const std::string	getCClass()			{ return m_cClass; }
 	const std::string	getAlignment()		{ return m_alignment; }
@@ -70,7 +70,6 @@ public:
 	const int			getReach()			{ return m_reach; }
 //	Setters
 	void setAbilityScores(const int &abilityScores)		{ m_abilityScores = abilityScores; }
-	void setPowers(const std::string &powers)			{ m_powers = powers; }
 	void setSpeed(const int &speed)						{ m_speed = speed; }
 	void setCClass(const std::string &cClass)			{ m_cClass = cClass; }
 	void setAlignment(const std::string &alignment)		{ m_alignment = alignment; }

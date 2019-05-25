@@ -33,7 +33,7 @@ public:
 		const std::string	&size,			const int			&height,
 		const int			&weight,		const int			&entityID,
 		const std::pair<int, int>			&coordinates, Map*	&currMap,
-		const int			&abilityScores,	const std::string	&powers,
+		const int			&abilityScores,	const std::list<std::string>	&powers,
 		const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
 		const std::string	&equipment,		const int			&level,			const int			&exp,
 		const std::string	&race,			const std::string	&languages,		const int			&balance,

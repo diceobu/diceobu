@@ -52,9 +52,11 @@ void displayAvailableOptions()
 				<< "8.	Delete current Map\n"
 				<< "9.	Delete current Character\n"
 				<< "10.	Choose next Map\n"
-				<< "11.	Choose next Character\n"
-				<< "x.	Exit\n";
-	std::cout << '\n';
+				<< "11.	Choose next Character\n";
+	if(inCombat)
+	std::cout	<< "a.	Choose attack\n";
+	std::cout	<< "x.	Exit\n";
+	std::cout	<< '\n';
 
 	if (inCombat)	std::cout << "\t#############\n";
 	if (inCombat)	std::cout << "\t# IN COMBAT #\n";
@@ -162,12 +164,102 @@ void deleteCurrentMap()
 	if (!activeMaps.empty())	currWorkingMap = activeMaps.back();
 }
 
-void createNewCharacter(Map* &currMap)
+void createNewCharacter()
 {
-	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 0, 0 }, currMap, 11, "powers", 2, "fighter",
+	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
 	currWorkingChar = activeCharacters.back();
-	currMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
+	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
+}
+
+void characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+	const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY)
+{
+	int					hitPoints{ 10 };
+	int					overheal{ 0 };
+	int					armorClass{ 5 };
+	std::string			size{ "medium" };
+	int					height{ 5 };
+	int					weight{ 60 };
+	std::pair<int, int>	coordinates{coordX, coordY};
+	int					abilityScores{ 10 };
+	std::list<std::string>	powers;
+	int					speed{ 3 };
+	std::string			equipment{ "leather armor" };
+	int					exp{ 0 };
+	std::string			languages{ "common" };
+	std::string			proficiency{};
+	int					visionRange{ 30 };
+	int					reach{ 1 };
+
+	if (cClass == "fighter")
+	{
+		hitPoints += 8 * level;
+		armorClass += 20;
+		abilityScores += 5;
+		powers = { "phMelAttck", "indomitable", "cleave", "crescendo" };
+		equipment = "heavy armor";
+	}
+	else if (cClass == "wizard")
+	{
+		hitPoints += 4 * level;
+		armorClass += 5;
+		abilityScores += 20;
+		powers = { "phMelAttck", "mgRangAttck", "callMeteor", "suddenStorm", "iceAge",
+			"grandIllusion", "stealTime", "oppressiveForce", "iceKnife", "maelstromOfChaos",
+			"disintegrate", "teleport", "earthenAegis" };
+		equipment = "cloth armor";
+	}
+	else if (cClass == "rogue")
+	{
+		hitPoints += 6 * level;
+		armorClass += 10;
+		abilityScores += 12;
+		powers = { "phMelAttck", "sneakAttack ", "stealth", "impossibleToCatch", "throwingDagger" };
+	}
+	else if (cClass == "ranger")
+	{
+		hitPoints += 5 * level;
+		armorClass += 7;
+		abilityScores += 15;
+		powers = { "phRangAttck", "hawkEye", "longShot", "cheapShot", "naturesWay", "rainningArrow" };
+	}
+	if (race == "dward")
+	{
+		hitPoints += level;
+		armorClass += 5;
+		size = "small";
+		powers.push_back("repair");
+		languages = "common&dwarvish";
+		visionRange += 10;
+		weight += 30;
+	}
+	else if (race == "elf")
+	{
+		height += 3;
+		abilityScores += 10;
+		powers.push_back("heal");
+		speed += 2;
+		languages = "common&elvish";
+		visionRange += 30;
+	}
+	else if (race == "human")
+	{
+		hitPoints += level / 5;
+		armorClass += 2;
+		height += 2;
+		abilityScores += 5;
+		powers.push_back("inspire");
+		speed += 1;
+		weight += 15;
+	}
+
+	activeCharacters.push_back(new Character(name, hitPoints, overheal, armorClass,
+		size, height, weight, characterIDCounter++, coordinates, currWorkingMap, abilityScores,
+		powers, speed, cClass, alignment, equipment, level, exp, race, languages, balance,
+		background, proficiency, visionRange, reach));
+	currWorkingChar = activeCharacters.back();
+	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 }
 
 void deleteCurrentCharacter()
@@ -215,6 +307,11 @@ void moveCurrentCharacter()
 	}
 }
 
+void resolveCombatAttack()
+{
+
+}
+
 std::string getUserOption()
 {
 	std::cout << "Awaiting input (whitespace characters are ignored): ";
@@ -252,7 +349,7 @@ void simLaunch()
 			else
 			{
 				displayFeedbackMessage("Creating new character");
-				createNewCharacter(activeMaps.back());
+				createNewCharacter();
 				clearScreen();
 				displayAvailableOptions();
 				displayFeedbackMessage("New character created");
@@ -268,10 +365,7 @@ void simLaunch()
 			}
 			else
 			{
-				//	Create new function for this
 				moveCurrentCharacter();
-				//	Create new function for this
-
 				clearScreen();
 				currWorkingChar->getCurrMap()->printMap();
 				displayAvailableOptions();
@@ -394,6 +488,10 @@ void simLaunch()
 			chooseNextCharacter();
 			clearScreen();
 			displayAvailableOptions();
+		}
+		else if (input == "a" && inCombat)
+		{
+			resolveCombatAttack();
 		}
 		else if (input == "x")
 		{
