@@ -52,8 +52,10 @@ private:
 	void initializeMapTiles_File();
 	void initializeMapTiles_Cont();
 	char getTileSymbol(Tile &currTile);
+	char getTerrainTileSymbol(Tile &currTile);
 	void printMapCharacters();
 public:
 	void printMap();
 	void writeMap();
+	void writeTerrainMap();
 };

@@ -207,7 +207,7 @@
   <ItemGroup>
     <None Include="%28Template%29Class-Name.cpp" />
     <None Include="%28Template%29Class-Name.h" />
-    <None Include="Sample.dat" />
+    <None Include="map-terrain.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
