@@ -19,12 +19,13 @@ class Map
 {
 //	Member Variables
 protected:
-	std::string										m_mapName		{ "emstr" };
-	int												m_mapID			{ -1 };
+	std::string										m_mapName			{ "emstr" };
+	int												m_mapID				{ -1 };
 private:
-	int												m_sizeX			{ -1 };
-	int												m_sizeY			{ -1 };
-	std::string										m_mapEffects	{ "emstr" };
+	int												m_sizeX				{ -1 };
+	int												m_sizeY				{ -1 };
+	std::string										m_mapEffects		{ "emstr" };
+	bool											firstContCreated	{ true };
 public:
 	std::array<std::array<Tile*, mapSize>, mapSize>	m_tileGrid;
 	std::list<int>									m_containingCharacters;
@@ -48,9 +49,11 @@ public:
 	void setMapEffects(const std::string &mapEffects)	{ m_mapEffects = mapEffects; }
 //	Others
 private:
-	void initializeMapTiles();
+	void initializeMapTiles_File();
+	void initializeMapTiles_Cont();
 	char getTileSymbol(Tile &currTile);
 	void printMapCharacters();
 public:
 	void printMap();
+	void writeMap();
 };
