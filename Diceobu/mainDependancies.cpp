@@ -174,24 +174,31 @@ void simLaunch()
 				//	Create new function for this
 				clearScreen();
 				displayAvailableOptions();
-				displayFeedbackMessage("Type new coordinates (format: x,y)");
+				displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
 				input = getUserOption();
-				std::string delimiter = ",";
-				size_t pos = 0;
-				std::string token;
-				while ((pos = input.find(delimiter)) != std::string::npos) {
-					token = input.substr(0, pos);
-					input.erase(0, pos + delimiter.length());
+				if (input == "x")
+				{
+					displayFeedbackMessage("Canceling character movement");
 				}
-				std::stringstream coordX{ token }, coordY{ input };
-				std::pair<int, int> coords{};
-				coordX >> coords.first;
-				coordY >> coords.second;
-				Character* tempChar{ &activeCharacters.back() };
-				tempChar->changeEntityPosition(activeMaps.back(), coords);
+				else
+				{
+					displayFeedbackMessage("Moving character");
+					std::string delimiter = ",";
+					size_t pos = 0;
+					std::string token;
+					while ((pos = input.find(delimiter)) != std::string::npos) {
+						token = input.substr(0, pos);
+						input.erase(0, pos + delimiter.length());
+					}
+					std::stringstream coordX{ token }, coordY{ input };
+					std::pair<int, int> coords{};
+					coordX >> coords.first;
+					coordY >> coords.second;
+					Character* tempChar{ &activeCharacters.back() };
+					tempChar->changeEntityPosition(activeMaps.back(), coords);
+				}
 				//	Create new function for this
 
-				displayFeedbackMessage("Moving character");
 				clearScreen();
 				displayAvailableOptions();
 			}
