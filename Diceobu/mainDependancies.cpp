@@ -386,6 +386,145 @@ std::string getUserOption()
 	return input;
 }
 
+void diceobuSystemCore(std::string input)
+{
+	if (input == "1")
+	{
+		//displayFeedbackMessage("Creating map");
+		createNewMap();
+	}
+	else if (input == "2")
+	{
+		if (activeMaps.empty())
+		{
+			//displayFeedbackMessage("Cannot create character without a map");
+		}
+		else
+		{
+			//displayFeedbackMessage("Creating new character");
+			if (characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25))
+			{
+				//displayFeedbackMessage("Could not create character");
+			}
+			else
+			{
+				//displayFeedbackMessage("New character created");
+			}
+		}
+	}
+	else if (input == "3")
+	{
+		if (activeCharacters.empty())
+		{
+			//displayFeedbackMessage("No character found");
+		}
+		else
+		{
+			//moveCurrentCharacter();
+			//currWorkingChar->getCurrMap()->printMap();
+		}
+	}
+	else if (input == "4")
+	{
+		if (activeCharacters.empty())
+		{
+			//displayFeedbackMessage("No characters found");
+		}
+		else
+		{
+			if (inCombat)
+			{
+				//displayFeedbackMessage("Ending combat");
+				inCombat = false;
+				combatQueue.clear();
+			}
+			else
+			{
+				//displayFeedbackMessage("Starting combat");
+				inCombat = true;
+				enQueueCombat();
+				//displayCombatQueue();
+				resolveCombatAttack();
+			}
+		}
+	}
+	else if (input == "5")
+	{
+		//displayInfo();
+	}
+	else if (input == "6")
+	{
+		if (activeMaps.empty())
+		{
+			//displayFeedbackMessage("Nothing to display");
+		}
+		else
+		{
+			//displayActiveMaps();
+			writeActiveMaps();
+		}
+	}
+	else if (input == "7")
+	{
+		if (activeCharacters.empty())
+		{
+			//displayFeedbackMessage("Nothing to display");
+		}
+		else
+		{
+			//displayActiveCharacters();
+		}
+	}
+	else if (input == "8")
+	{
+		if (activeMaps.empty())
+		{
+			//displayFeedbackMessage("Nothing to delete");
+		}
+		else
+		{
+			if (currWorkingMap->m_containingCharacters.empty())
+			{
+				deleteCurrentMap();
+			}
+			else
+			{
+				//displayFeedbackMessage("Cannot delete map containing characters");
+			}
+		}
+	}
+	else if (input == "9")
+	{
+		if (activeCharacters.empty())
+		{
+			//	Nothing to delete function calls
+		}
+		else
+		{
+			deleteCurrentCharacter();
+		}
+	}
+	else if (input == "10")
+	{
+		chooseNextMap();
+	}
+	else if (input == "11")
+	{
+		chooseNextCharacter();
+	}
+	else if (input == "a" && inCombat)
+	{
+		resolveCombatAttack();
+	}
+	else if (input == "x")
+	{
+		activeMaps.clear();
+		activeCharacters.clear();
+		combatQueue.clear();
+		//	Qt function calls to terminate session
+	}
+}
+
 void simLaunch()
 {
 	clearScreen();
@@ -528,7 +667,7 @@ void simLaunch()
 			else
 			{
 				displayFeedbackMessage("Deleting current map");
-				if (activeMaps.front()->m_containingCharacters.empty())
+				if (currWorkingMap->m_containingCharacters.empty())
 				{
 					deleteCurrentMap();
 					clearScreen();
