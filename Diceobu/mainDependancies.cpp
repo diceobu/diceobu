@@ -10,6 +10,7 @@
 //	Standard Libraries
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <string>
 #include <list>
 #include <iterator>
@@ -128,6 +129,19 @@ void chooseNextMap()
 	{
 		currWorkingMap = activeMaps.front();
 	}
+	if (!activeCharacters.empty() && !currWorkingMap->m_containingCharacters.empty())
+	{
+		std::list <Character*> :: iterator iter2;
+		for (iter2 = activeCharacters.begin(); iter2 != activeCharacters.end(); iter2++)
+		{
+			Character* currCharacter = *iter2;
+			if (currCharacter->getEntityID() == currWorkingMap->m_containingCharacters.back())
+			{
+				currWorkingChar = currCharacter;
+				break;
+			}
+		}
+	}
 }
 
 void chooseNextCharacter()
@@ -151,6 +165,7 @@ void chooseNextCharacter()
 	{
 		currWorkingChar = activeCharacters.front();
 	}
+	currWorkingMap = currWorkingChar->getCurrMap();
 }
 
 void createNewMap()
@@ -159,11 +174,51 @@ void createNewMap()
 	currWorkingMap = activeMaps.back();
 }
 
+void clearMapInstance()
+{
+	std::ofstream outFile("map-instance.dat");
+
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	for (int i = 0; i < mapSize; i++)
+	{
+		outFile << '#';
+		for (int j = 0; j < mapSize; j++)
+		{
+			outFile << ' ';
+			if (j == 49)	outFile << '#' << '\n';
+		}
+	}
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
+}
+
 void deleteCurrentMap()
 {
 	activeMaps.remove(currWorkingMap);
 	currWorkingMap->~Map();
-	if (!activeMaps.empty())	currWorkingMap = activeMaps.back();
+	if (!activeMaps.empty())
+	{
+		currWorkingMap = activeMaps.back();
+		if (!activeCharacters.empty() && !currWorkingMap->m_containingCharacters.empty())
+		{
+			std::list <Character*> ::iterator iter;
+			for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+			{
+				Character* currCharacter = *iter;
+				if (currCharacter->getEntityID() == currWorkingMap->m_containingCharacters.back())
+				{
+					currWorkingChar = currCharacter;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		clearMapInstance();
+	}
 }
 
 int createNewCharacter()
@@ -276,7 +331,11 @@ void deleteCurrentCharacter()
 	currWorkingChar->getCurrMap()->m_tileGrid[currWorkingChar->getCoordinateX()][currWorkingChar->getCoordinateY()]->setOccupantID(-1);
 	activeCharacters.remove(currWorkingChar);
 	currWorkingChar->~Character();
-	if (!activeCharacters.empty())	currWorkingChar = activeCharacters.back();
+	if (!activeCharacters.empty())
+	{
+		currWorkingChar = activeCharacters.back();
+		currWorkingMap = currWorkingChar->getCurrMap();
+	}
 }
 
 void displayInfo()
@@ -286,6 +345,12 @@ void displayInfo()
 		<< "Current Character shows the Character that you changes will affect.\n"
 		<< "You can work only with one Character/Map at a time\n";
 	std::cout << '\n';
+}
+
+void moveCurrentCharacterUI(const int &coordX, const int &coordY)
+{
+	std::pair<int, int>	coords{ coordX, coordY };
+	currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
 }
 
 void moveCurrentCharacter()
@@ -370,6 +435,11 @@ void displayAvailableMoves()
 	
 }
 
+void resolveCombatMove(const std::string &power)
+{
+	power;
+}
+
 void resolveCombatAttack()
 {
 	std::string input;
@@ -390,25 +460,27 @@ void diceobuSystemCore(std::string input)
 {
 	if (input == "1")
 	{
-		//displayFeedbackMessage("Creating map");
 		createNewMap();
+		currWorkingMap->writeMap();
+		//	refresh map
+		//	update currWorkingMap box
+		//	displayFeedbackMessageUI("Map created");
 	}
 	else if (input == "2")
 	{
 		if (activeMaps.empty())
 		{
-			//displayFeedbackMessage("Cannot create character without a map");
+			//	displayFeedbackMessageUI("Cannot create character without a map");
 		}
 		else
 		{
-			//displayFeedbackMessage("Creating new character");
 			if (characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25))
 			{
-				//displayFeedbackMessage("Could not create character");
+				//displayFeedbackMessageUI("Could not create character");
 			}
 			else
 			{
-				//displayFeedbackMessage("New character created");
+				//displayFeedbackMessageUI("New character created");
 			}
 		}
 	}
@@ -416,80 +488,91 @@ void diceobuSystemCore(std::string input)
 	{
 		if (activeCharacters.empty())
 		{
-			//displayFeedbackMessage("No character found");
+			//displayFeedbackMessageUI("No character found");
 		}
 		else
 		{
-			//moveCurrentCharacter();
-			//currWorkingChar->getCurrMap()->printMap();
+			// moveCurrentCharacterUI(x, y);
+			currWorkingMap->writeMap();
+			//	refresh map
 		}
 	}
 	else if (input == "4")
 	{
 		if (activeCharacters.empty())
 		{
-			//displayFeedbackMessage("No characters found");
+			//displayFeedbackMessageUI("No characters found");
 		}
 		else
 		{
 			if (inCombat)
 			{
-				//displayFeedbackMessage("Ending combat");
 				inCombat = false;
 				combatQueue.clear();
+				//displayFeedbackMessageUI("Combat ended");
 			}
 			else
 			{
-				//displayFeedbackMessage("Starting combat");
 				inCombat = true;
 				enQueueCombat();
-				//displayCombatQueue();
-				resolveCombatAttack();
+				//displayFeedbackMessageUI("Combat started");
+				//displayCombatQueueUI();
+				resolveCombatMove("power");
 			}
 		}
 	}
 	else if (input == "5")
 	{
-		//displayInfo();
+		//displayInfoUI();
 	}
 	else if (input == "6")
 	{
 		if (activeMaps.empty())
 		{
-			//displayFeedbackMessage("Nothing to display");
+			//displayFeedbackMessageUI("Nothing to display");
 		}
 		else
 		{
-			//displayActiveMaps();
-			writeActiveMaps();
+			//displayActiveMapsUI();
 		}
 	}
 	else if (input == "7")
 	{
 		if (activeCharacters.empty())
 		{
-			//displayFeedbackMessage("Nothing to display");
+			//displayFeedbackMessageUI("Nothing to display");
 		}
 		else
 		{
-			//displayActiveCharacters();
+			//displayActiveCharactersUI();
 		}
 	}
 	else if (input == "8")
 	{
 		if (activeMaps.empty())
 		{
-			//displayFeedbackMessage("Nothing to delete");
+			//displayFeedbackMessageUI("Nothing to delete");
 		}
 		else
 		{
 			if (currWorkingMap->m_containingCharacters.empty())
 			{
 				deleteCurrentMap();
+				if (!activeMaps.empty())
+				{
+					currWorkingMap->writeMap();
+					// update currWorkingMap box
+				}
+				else
+				{
+					//	change currWorkingMap box to empty
+				}
+				//	refresh map
+				//	displayFeedbackMessageUI("Selected map deleted");
 			}
 			else
 			{
-				//displayFeedbackMessage("Cannot delete map containing characters");
+				//displayFeedbackMessageUI("Cannot delete map containing characters");
 			}
 		}
 	}
@@ -497,24 +580,66 @@ void diceobuSystemCore(std::string input)
 	{
 		if (activeCharacters.empty())
 		{
-			//	Nothing to delete function calls
+			//	displayFeedbackMessageUI("Nothing to delete");
 		}
 		else
 		{
 			deleteCurrentCharacter();
+			if (!activeCharacters.empty())
+			{
+				// update currWorkingChar box
+			}
+			else
+			{
+				//	change currWorkingChar box to empty
+			}
+			currWorkingMap->writeMap();
+			//	refresh map
 		}
 	}
 	else if (input == "10")
 	{
-		chooseNextMap();
+		if (activeMaps.empty())
+		{
+			// displayFeedbackMessageUI("No maps found");
+		}
+		else
+		{
+			chooseNextMap();
+			currWorkingMap->writeMap();
+			//	refresh map
+			// update currWorkingMap box
+		}
 	}
 	else if (input == "11")
 	{
-		chooseNextCharacter();
+		if (activeCharacters.empty())
+		{
+			// displayFeedbackMessageUI("no chars found");
+		}
+		else
+		{
+			chooseNextCharacter();
+			currWorkingMap->writeMap();
+			//	refresh map
+			// update currWorkingMap box
+			// update currWorkingChar box
+		}
 	}
-	else if (input == "a" && inCombat)
+	else if (input == "12")
 	{
-		resolveCombatAttack();
+		//	displayCombatQueueUI();
+	}
+	else if (input == "a")
+	{
+		if(inCombat)
+		{
+			resolveCombatMove("power");
+		}
+		else
+		{
+			//	displayFeedbackMessageUI("Not in combat");
+		}
 	}
 	else if (input == "x")
 	{
