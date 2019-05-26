@@ -23,7 +23,8 @@ Entity::Entity(	const std::string			&name,			const int	&hitPoints,
 		m_weight{ weight },				m_entityID{ entityID },
 		m_coordinates{ coordinates },	m_currMap{ currMap }
 {
-	changeEntityPosition(m_currMap, m_coordinates);
+	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupied(true);
+	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
 }
 //	Others
 void Entity::changeEntityPosition(Map* &currMap, const std::pair<int, int> &coordinates)
