@@ -264,6 +264,8 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 
 void deleteCurrentCharacter()
 {
+	currWorkingChar->getCurrMap()->m_tileGrid[currWorkingChar->getCoordinateX()][currWorkingChar->getCoordinateY()]->setOccupied(false);
+	currWorkingChar->getCurrMap()->m_tileGrid[currWorkingChar->getCoordinateX()][currWorkingChar->getCoordinateY()]->setOccupantID(-1);
 	activeCharacters.remove(currWorkingChar);
 	currWorkingChar->~Character();
 	if (!activeCharacters.empty())	currWorkingChar = activeCharacters.back();
@@ -349,7 +351,8 @@ void simLaunch()
 			else
 			{
 				displayFeedbackMessage("Creating new character");
-				createNewCharacter();
+				//createNewCharacter();
+				characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25);
 				clearScreen();
 				displayAvailableOptions();
 				displayFeedbackMessage("New character created");
