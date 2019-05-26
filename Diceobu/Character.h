@@ -54,7 +54,7 @@ public:
 //	Access Functions
 //	Getters
 	const int			getAbilityScores()	{ return m_abilityScores; }
-	const std::list<std::string>	getPowers()			{ return m_powers; }
+	std::list<std::string>	getPowers()			{ return m_powers; }
 	const int			getSpeed()			{ return m_speed; }
 	const std::string	getCClass()			{ return m_cClass; }
 	const std::string	getAlignment()		{ return m_alignment; }

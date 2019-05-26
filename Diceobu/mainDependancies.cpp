@@ -23,6 +23,8 @@ Map* currWorkingMap;
 
 Character* currWorkingChar;
 
+static std::list<Character*> combatQueue;
+
 
 void clearScreen()
 {
@@ -83,7 +85,7 @@ void writeActiveMaps()
 
 void displayActiveMaps()
 {
-	std::list <Map*> ::iterator iter;
+	std::list <Map*> :: iterator iter;
 	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
 	{
 		std::cout << '\n';
@@ -95,7 +97,7 @@ void displayActiveMaps()
 
 void displayActiveCharacters()
 {
-	std::list <Character*> ::iterator iter;
+	std::list <Character*> :: iterator iter;
 	for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
 	{
 		std::cout << '\n';
@@ -107,7 +109,7 @@ void displayActiveCharacters()
 
 void chooseNextMap()
 {
-	std::list <Map*> ::iterator iter;
+	std::list <Map*> :: iterator iter;
 	bool nextUp{ false };
 	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
 	{
@@ -299,25 +301,81 @@ void moveCurrentCharacter()
 	}
 	else
 	{
-		displayFeedbackMessage("Moving character");
-		std::string delimiter = ",";
-		size_t pos = 0;
-		std::string token;
-		while ((pos = input.find(delimiter)) != std::string::npos) {
-			token = input.substr(0, pos);
-			input.erase(0, pos + delimiter.length());
+		if (input.length() < 3)
+		{
+			displayFeedbackMessage("Wrong coordinates");
+			displayFeedbackMessage("Character movement aborted");
+			displayFeedbackMessage("Character created on default position (25,25)");
 		}
-		std::stringstream coordX{ token }, coordY{ input };
-		std::pair<int, int> coords{};
-		coordX >> coords.first;
-		coordY >> coords.second;
-		currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
+		else
+		{
+			displayFeedbackMessage("Moving character");
+			std::string delimiter = ",";
+			size_t pos = 0;
+			std::string token;
+			while ((pos = input.find(delimiter)) != std::string::npos) {
+				token = input.substr(0, pos);
+				input.erase(0, pos + delimiter.length());
+			}
+			std::stringstream coordX{ token }, coordY{ input };
+			std::pair<int, int> coords{};
+			coordX >> coords.first;
+			coordY >> coords.second;
+			currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
+		}
 	}
+}
+
+void enQueueCombat()
+{
+	std::list<Character*> tempActiveCharacters{ activeCharacters };
+	while (!tempActiveCharacters.empty())
+	{
+		if (rand()%2)
+		{
+			combatQueue.push_back(tempActiveCharacters.front());
+			tempActiveCharacters.pop_front();
+		}
+		else
+		{
+			combatQueue.push_back(tempActiveCharacters.back());
+			tempActiveCharacters.pop_back();
+		}
+	}
+}
+
+void displayCombatQueue()
+{
+	std::cout << '\n';
+	std::cout << "Combat Order: ";
+	std::list <Character*> :: iterator iter;
+	for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
+	{
+		Character* currCharacter = *iter;
+		std::cout << currCharacter->getEntityID() << ' ';
+	}
+	std::cout << '\n';
+}
+
+void displayAvailableMoves()
+{
+	//displayFeedbackMessage("1.\t");
+	std::list <std::string> :: iterator iter;
+	for (iter = currWorkingChar->getPowers().begin(); iter != currWorkingChar->getPowers().end(); iter++)
+	{
+		std::cout << "hi\n";
+		std::string currString{ *iter };
+		std::cout << currString << ' ';
+	}
+	
 }
 
 void resolveCombatAttack()
 {
-
+	std::string input;
+	displayFeedbackMessage("Choose move from list of available moves: ");
+	displayAvailableMoves();
+	input = getUserOption();
 }
 
 std::string getUserOption()
@@ -369,6 +427,10 @@ void simLaunch()
 					clearScreen();
 					displayAvailableOptions();
 					displayFeedbackMessage("New character created");
+					moveCurrentCharacter();
+					clearScreen();
+					currWorkingChar->getCurrMap()->printMap();
+					displayAvailableOptions();
 				}
 			}
 		}
@@ -390,21 +452,31 @@ void simLaunch()
 		}
 		else if (input == "4")
 		{
-			if (inCombat)
+			if (activeCharacters.empty())
 			{
-				displayFeedbackMessage("Ending combat");
-				inCombat = false;
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Combat ended");
+				displayFeedbackMessage("No characters found");
 			}
 			else
 			{
-				displayFeedbackMessage("Starting combat");
-				inCombat = true;
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Combat started");
+				if (inCombat)
+				{
+					displayFeedbackMessage("Ending combat");
+					inCombat = false;
+					combatQueue.clear();
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Combat ended");
+				}
+				else
+				{
+					displayFeedbackMessage("Starting combat");
+					inCombat = true;
+					enQueueCombat();
+					clearScreen();
+					displayCombatQueue();
+					resolveCombatAttack();
+					displayFeedbackMessage("Combat started");
+				}
 			}
 		}
 		else if (input == "5")

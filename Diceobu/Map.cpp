@@ -213,6 +213,7 @@ void Map::printMap()
 	}
 	for (int i = 0; i <= mapSize + 1; i++) std::cout << '#';
 	std::cout << '\n';
+	writeMap();
 }
 
 void Map::printMapCharacters()

@@ -174,5 +174,8 @@
     <None Include="map-terrain.dat">
       <Filter>Game Data</Filter>
     </None>
+    <None Include="map-instance.dat">
+      <Filter>Game Data</Filter>
+    </None>
   </ItemGroup>
 </Project>
