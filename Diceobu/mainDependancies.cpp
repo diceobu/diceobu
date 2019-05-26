@@ -164,17 +164,21 @@ void deleteCurrentMap()
 	if (!activeMaps.empty())	currWorkingMap = activeMaps.back();
 }
 
-void createNewCharacter()
+int createNewCharacter()
 {
+	if (currWorkingMap->m_tileGrid[25][25]->getOccupied()) return 1;
 	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
 	currWorkingChar = activeCharacters.back();
 	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
+	return 0;
 }
 
-void characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+int characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
 	const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY)
 {
+	if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied())	return 1;
+
 	int					hitPoints{ 10 };
 	int					overheal{ 0 };
 	int					armorClass{ 5 };
@@ -260,6 +264,8 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 		background, proficiency, visionRange, reach));
 	currWorkingChar = activeCharacters.back();
 	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
+
+	return 0;
 }
 
 void deleteCurrentCharacter()
@@ -352,10 +358,18 @@ void simLaunch()
 			{
 				displayFeedbackMessage("Creating new character");
 				//createNewCharacter();
-				characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25);
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("New character created");
+				if (characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25))
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Could not create character");
+				}
+				else
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("New character created");
+				}
 			}
 		}
 		else if (input == "3")

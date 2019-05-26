@@ -34,10 +34,10 @@ void createNewMap();
 
 void deleteCurrentMap();
 
-void characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+int characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
 	const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY);
 
-void createNewCharacter();
+int createNewCharacter();
 
 void deleteCurrentCharacter();
 
