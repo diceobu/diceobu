@@ -10,6 +10,7 @@
 //	Standard Libraries
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <string>
 #include <list>
 #include <iterator>
@@ -130,10 +131,10 @@ void chooseNextMap()
 	}
 	if (!activeCharacters.empty() && !currWorkingMap->m_containingCharacters.empty())
 	{
-		std::list <Character*> ::iterator iter;
-		for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+		std::list <Character*> :: iterator iter2;
+		for (iter2 = activeCharacters.begin(); iter2 != activeCharacters.end(); iter2++)
 		{
-			Character* currCharacter = *iter;
+			Character* currCharacter = *iter2;
 			if (currCharacter->getEntityID() == currWorkingMap->m_containingCharacters.back())
 			{
 				currWorkingChar = currCharacter;
@@ -173,11 +174,51 @@ void createNewMap()
 	currWorkingMap = activeMaps.back();
 }
 
+void clearMapInstance()
+{
+	std::ofstream outFile("map-instance.dat");
+
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	for (int i = 0; i < mapSize; i++)
+	{
+		outFile << '#';
+		for (int j = 0; j < mapSize; j++)
+		{
+			outFile << ' ';
+			if (j == 49)	outFile << '#' << '\n';
+		}
+	}
+	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+	outFile << '\n';
+	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
+}
+
 void deleteCurrentMap()
 {
 	activeMaps.remove(currWorkingMap);
 	currWorkingMap->~Map();
-	if (!activeMaps.empty())	currWorkingMap = activeMaps.back();
+	if (!activeMaps.empty())
+	{
+		currWorkingMap = activeMaps.back();
+		if (!activeCharacters.empty() && !currWorkingMap->m_containingCharacters.empty())
+		{
+			std::list <Character*> ::iterator iter;
+			for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+			{
+				Character* currCharacter = *iter;
+				if (currCharacter->getEntityID() == currWorkingMap->m_containingCharacters.back())
+				{
+					currWorkingChar = currCharacter;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		clearMapInstance();
+	}
 }
 
 int createNewCharacter()
@@ -526,6 +567,7 @@ void diceobuSystemCore(std::string input)
 				{
 					//	change currWorkingMap box to empty
 				}
+				//	refresh map
 				//	displayFeedbackMessageUI("Selected map deleted");
 			}
 			else
@@ -551,6 +593,8 @@ void diceobuSystemCore(std::string input)
 			{
 				//	change currWorkingChar box to empty
 			}
+			currWorkingMap->writeMap();
+			//	refresh map
 		}
 	}
 	else if (input == "10")
