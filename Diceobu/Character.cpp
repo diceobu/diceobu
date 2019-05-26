@@ -43,6 +43,7 @@ void Character::printCharacter()
 				<< "Hit Points: " << m_hitPoints << '\t'
 				<< "Armor Class: " << m_armorClass << '\n'
 				<< "Balance: " << m_balance << '\t'
-				<< "Current Map: " << m_currMap->getMapID()
+				<< "Current Map: " << m_currMap->getMapID() << '\t'
+				<< "Coordinates: " << m_coordinates.first << "," << m_coordinates.second
 				<< '\n';
 }
