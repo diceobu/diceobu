@@ -192,7 +192,7 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 	int					visionRange{ 30 };
 	int					reach{ 1 };
 
-	if (cClass == "fighter")
+	if (cClass == "Fighter")
 	{
 		hitPoints += 8 * level;
 		armorClass += 20;
@@ -200,7 +200,7 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 		powers = { "phMelAttck", "indomitable", "cleave", "crescendo" };
 		equipment = "heavy armor";
 	}
-	else if (cClass == "wizard")
+	else if (cClass == "Wizard")
 	{
 		hitPoints += 4 * level;
 		armorClass += 5;
@@ -210,21 +210,21 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 			"disintegrate", "teleport", "earthenAegis" };
 		equipment = "cloth armor";
 	}
-	else if (cClass == "rogue")
+	else if (cClass == "Rogue")
 	{
 		hitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
 		powers = { "phMelAttck", "sneakAttack ", "stealth", "impossibleToCatch", "throwingDagger" };
 	}
-	else if (cClass == "ranger")
+	else if (cClass == "Ranger")
 	{
 		hitPoints += 5 * level;
 		armorClass += 7;
 		abilityScores += 15;
 		powers = { "phRangAttck", "hawkEye", "longShot", "cheapShot", "naturesWay", "rainningArrow" };
 	}
-	if (race == "dward")
+	if (race == "Dwarf")
 	{
 		hitPoints += level;
 		armorClass += 5;
@@ -234,7 +234,7 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 		visionRange += 10;
 		weight += 30;
 	}
-	else if (race == "elf")
+	else if (race == "Elf")
 	{
 		height += 3;
 		abilityScores += 10;
@@ -243,7 +243,7 @@ void characterCreation(const std::string &name, const std::string &cClass, const
 		languages = "common&elvish";
 		visionRange += 30;
 	}
-	else if (race == "human")
+	else if (race == "Human")
 	{
 		hitPoints += level / 5;
 		armorClass += 2;
