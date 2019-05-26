@@ -7,6 +7,7 @@
 //	User Libraries
 #include "GlobalVariables.h"
 #include "Map.h"
+#include "Character.h"
 //	Standard Libraries
 #include <string>
 
@@ -52,3 +53,7 @@ std::string getUserOption();
 void simLaunch();
 
 //	it's a feature bix
+
+extern Map* currWorkingMap;
+
+extern Character* currWorkingChar;
