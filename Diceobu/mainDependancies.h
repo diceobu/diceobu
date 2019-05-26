@@ -50,3 +50,5 @@ void resolveCombatAttack();
 std::string getUserOption();
 
 void simLaunch();
+
+//	it's a feature bix
