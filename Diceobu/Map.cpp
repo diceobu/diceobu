@@ -16,6 +16,7 @@
 #include <array>
 #include <cstdlib>
 
+#include <QDebug>
 //	Constructors
 Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 		 const int			&mapID,		const std::string	&mapEffects)
@@ -25,6 +26,7 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 	if (readFromFile)
 	{
 		initializeMapTiles_File();
+        // qDebug() << "in map.cpp - CREATING MAP";
 	}
 	else
 	{
@@ -108,6 +110,8 @@ void Map::initializeMapTiles_Cont()
 
 char Map::getTileSymbol(Tile &currTile)
 {
+    // qDebug() << "map 113 GTS///";
+
 	char tileSymbol{};
 	if (currTile.getOpen())
 	{
@@ -133,6 +137,8 @@ char Map::getTileSymbol(Tile &currTile)
 	{
 		tileSymbol = ' ';
 	}
+    // qDebug() << "map 140 GTSS///";
+
 	return tileSymbol;
 }
 
@@ -177,6 +183,7 @@ void Map::writeTerrainMap()
 void Map::writeMap()
 {
 	std::ofstream outFile("map-instance.dat");
+    // qDebug() << "map 182///";
 
 	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
 	outFile << '\n';
@@ -185,11 +192,15 @@ void Map::writeMap()
 		outFile << '#';
 		for (int j = 0; j < mapSize; j++)
 		{
+            // qDebug() << "map 191///"<< i << j;
+
 			outFile << getTileSymbol(*m_tileGrid[i][j]);
-			if (j == 49)	outFile << '#' << '\n';
+            if (j == mapSize - 1)	outFile << '#' << '\n';
 		}
 	}
 	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
+    // qDebug() << "map 196///";
+
 	outFile << '\n';
 	outFile << "!Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile";
 }

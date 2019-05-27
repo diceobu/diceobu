@@ -1,25 +1,16 @@
-/* This is the main file of this test tool
- * that contains the main function.
- */
-
-//	User Libraries
-#include "mainDependancies.h"
-//	Standard Libraries
+#include "loginwindow.h"
+#include <QApplication>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 
 
-int main()
+int main(int argc, char *argv[])
 {
-	if (runUI)
-	{
+    QApplication a(argc, argv);
+    LoginWindow loginWindow;
+ //   QGraphicsView lobbyWindow;
 
-	}
-	else
-	{
-		displayWelcomeMessage();
-		system("pause");
+    loginWindow.show();
 
-		simLaunch();
-	}
-
-	return 0;
+    return a.exec();
 }

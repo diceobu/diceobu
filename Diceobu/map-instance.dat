@@ -1,53 +1,53 @@
 ####################################################
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
-#                                                  #
+#                ddddd                             #
+#                dddd                              #
+#           ddddddd                                #
+#        ddddddddd                                 #
+#       dddddddddddddddggg                         #
+#    ggdddddddddddddggggggg                        #
+#  gggggggggggggggggggggggg                        #
+#sssggggggggggggggggggggggggg                      #
+#sssssssggggggggggggggggggggggggg                  #
+#wsssssssggggggggggggggggggggggg                   #
+#wwwwwssssggggggggggggggggggggg                    #
+#wwwwwwwwssssggggggggggggggggggg                   #
+#wwwwwwwwwwwsssssgggggggggggggggg                  #
+#wwwwwwwwwwwwwwssssgggggggggggggggg                #
+#wwwwwwwwwwwwwwwwsssssgggggggggggggg               #
+#wwwwwwwwwwwwwwwwwwwssssgggggggggggg               #
+#wwwwwwwwwwwwwwwwwwwwwssssgggggggggg               #
+#wwwwwwwwwwwwwwwwwwwwwwssssgggggggggg              #
+#wwwwwwwwwwwwwwwwwwssssssggggggggggggg             #
+#wwwwwwwwwwwwwssssssgggggggggggggggggggg           #
+#wwwwwwwsssssssssgggggggggggggggggggggggg          #
+#wwwwwwwwsssssssssggggggggggggggggggggggggg        #
+#wwwwwwwwwssssssssggggggggggggggggggggggggggg      #
+#wwwwwwwwwwsssssssggggggggggrrrrrrrrrrrrrgggggg    #
+#wwwwwwwwwwwwwsssssgggggggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwwwssssgggggggggggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwwwwwssssgggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwwwwwwsssgggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwwwwwssssgggggrrrrrrrrrrrrrgggggggggg#
+#wwwwwwwwwwwwwwwwwwwsssgggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwwwsssssggggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwwsssssssggggggrgggggggggggrgggggggggg#
+#wwwwwwwwwwwwwsssssgggggggggggggggggggggrgggggggggg#
+#wwwwwwwwwwwssssssgggggggxggrgggggggggggrgggggggggg#
+#wwwwwwwwwssssssggggggggggggrrrrrrrrrrrrrgggggggggg#
+#wwwwwwwwwwwssssssggggggggggggggggggggggggggggggggg#
+#wwwwwwwwwwwwwwwsssgggggggggggggggggggggggggggggggg#
+#wwwwwwwwwwwwwwwwwssssggggggggggggggggggggggggggggg#
+#wwwwwwwwwwwwwwwwwsssssgggggggggggggggggggggggggggg#
+#wwwwwwwwwwwwwwwssssgggggggggddddddddddddgggggggggg#
+#wwwwwwwwwwwwwsssgggggggggddddddddddddddddggggggggg#
+#sssssssssssssssgggg    ddddddddddddddddddd        #
+#sssssssssssgggggg        ddddddddddddd            #
+#                          dddddd                  #
+#                        ddddd                     #
+#                     ddddd                        #
+#                  dddddd                          #
+#               dddddd                             #
+#                dddd                              #
+#                 ddddd                            #
 ####################################################
 !Symbols: x = Entity, d = dirt, g = grass, r = rock, s = sand, w = water, f = fire, i = ice, a = acid, ' ' = closed tile
