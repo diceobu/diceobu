@@ -134,11 +134,19 @@ void initPixmapArray()
                         }
                         else if (tempChar == 'F')
                         {
-                            pixmap_array[0][i] = QPixmap(":/img/legitob.png");
+                            pixmap_array[0][i] = QPixmap(":/img/Warrior.png");
                         }
                         else if (tempChar == 'W')
                         {
                             pixmap_array[0][i] = QPixmap(":/img/Wizard.png");
+                        }
+                        else if (tempChar == 'R')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/Rogue.png");
+                        }
+                        else if (tempChar == 'B')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/Ranger.png");
                         }
                         else if (tempChar == '!')
                         {

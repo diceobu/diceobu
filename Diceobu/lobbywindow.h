@@ -57,6 +57,7 @@ private slots:
     void on_pushButton_Grid_toggled(bool checked);
     void on_comboBox_Maps_activated(const QString &arg1);
     void on_comboBox_Characters_activated(const QString &arg1);
+    void on_pushButton_Character_Details_clicked();
 };
 
 extern MainUIClass *mui;

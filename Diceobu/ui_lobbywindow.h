@@ -45,9 +45,8 @@ public:
     QLabel *label;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
-    QPushButton *pushButton;
+    QPushButton *pushButton_Character_Details;
     QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
     QGroupBox *groupBox;
     QLabel *label_2;
     QPushButton *pushButton_Move;
@@ -157,17 +156,17 @@ public:
         verticalLayout_5->setSpacing(20);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton_Character_Details = new QPushButton(layoutWidget);
+        pushButton_Character_Details->setObjectName(QString::fromUtf8("pushButton_Character_Details"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
-        pushButton->setMinimumSize(QSize(180, 60));
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+        sizePolicy.setHeightForWidth(pushButton_Character_Details->sizePolicy().hasHeightForWidth());
+        pushButton_Character_Details->setSizePolicy(sizePolicy);
+        pushButton_Character_Details->setMinimumSize(QSize(180, 60));
+        pushButton_Character_Details->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
-"font: 75 24pt \"ImperatorSmallCaps\";\n"
+"font: 75 18pt \"ImperatorSmallCaps\";\n"
 "border-style: solid;\n"
 "border-color: black;\n"
 "border-width: 2px;\n"
@@ -178,13 +177,14 @@ public:
 "\n"
 "QPushButton:pressed{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);\n"
+"font: 75 22pt \"ImperatorSmallCaps\";\n"
 "border-color: black;\n"
 "border-width: 1px;\n"
 "border-radius: 10px;\n"
 "}\n"
 ""));
 
-        verticalLayout_5->addWidget(pushButton);
+        verticalLayout_5->addWidget(pushButton_Character_Details);
 
         pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
@@ -211,33 +211,6 @@ public:
 ""));
 
         verticalLayout_5->addWidget(pushButton_2);
-
-        pushButton_3 = new QPushButton(layoutWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy);
-        pushButton_3->setMinimumSize(QSize(180, 60));
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
-"font: 75 24pt \"ImperatorSmallCaps\";\n"
-"border-style: solid;\n"
-"border-color: black;\n"
-"border-width: 2px;\n"
-"border-radius: 10px;\n"
-"color: black;\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:pressed{\n"
-"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);\n"
-"font: 75 22pt \"ImperatorSmallCaps\";\n"
-"border-color: black;\n"
-"border-width: 1px;\n"
-"border-radius: 10px;\n"
-"}\n"
-""));
-
-        verticalLayout_5->addWidget(pushButton_3);
 
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
@@ -266,7 +239,25 @@ public:
         label_2->setAlignment(Qt::AlignCenter);
         pushButton_Move = new QPushButton(centralwidget);
         pushButton_Move->setObjectName(QString::fromUtf8("pushButton_Move"));
-        pushButton_Move->setGeometry(QRect(870, 280, 121, 61));
+        pushButton_Move->setGeometry(QRect(920, 270, 121, 61));
+        pushButton_Move->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
+"font: 75 12pt \"ImperatorSmallCaps\";\n"
+"border-style: solid;\n"
+"border-color: black;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"color: black;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed{\n"
+"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);\n"
+"border-color: black;\n"
+"border-width: 1px;\n"
+"border-radius: 10px;\n"
+"}\n"
+""));
         tableWidget = new MapWidget(centralwidget);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setGeometry(QRect(30, 80, 751, 750));
@@ -331,7 +322,7 @@ public:
 
         layoutWidget2 = new QWidget(centralwidget);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(830, 420, 275, 168));
+        layoutWidget2->setGeometry(QRect(840, 430, 275, 168));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -514,10 +505,34 @@ public:
 
         comboBox_Maps = new QComboBox(centralwidget);
         comboBox_Maps->setObjectName(QString::fromUtf8("comboBox_Maps"));
-        comboBox_Maps->setGeometry(QRect(800, 350, 151, 31));
+        comboBox_Maps->setGeometry(QRect(840, 350, 271, 30));
+        comboBox_Maps->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"background-color: rgb(45, 45, 45);\n"
+"font: 75 12pt \"ImperatorSmallCaps\";\n"
+"border-style: solid;\n"
+"border-color: rgb(88, 88, 88);\n"
+"border-width: 1px;\n"
+"border-radius: 2px;\n"
+"color: rgb(220, 220, 220);\n"
+"\n"
+"}\n"
+"\n"
+""));
         comboBox_Characters = new QComboBox(centralwidget);
         comboBox_Characters->setObjectName(QString::fromUtf8("comboBox_Characters"));
-        comboBox_Characters->setGeometry(QRect(1020, 350, 81, 31));
+        comboBox_Characters->setGeometry(QRect(840, 390, 271, 30));
+        comboBox_Characters->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"background-color: rgb(45, 45, 45);\n"
+"font: 75 12pt \"ImperatorSmallCaps\";\n"
+"border-style: solid;\n"
+"border-color: rgb(88, 88, 88);\n"
+"border-width: 1px;\n"
+"border-radius: 2px;\n"
+"color: rgb(220, 220, 220);\n"
+"\n"
+"}\n"
+"\n"
+""));
         pushButton_Grid = new QPushButton(centralwidget);
         pushButton_Grid->setObjectName(QString::fromUtf8("pushButton_Grid"));
         pushButton_Grid->setGeometry(QRect(20, 840, 101, 31));
@@ -603,8 +618,7 @@ public:
         label_3->setBuddy(system_log);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(tableWidget, pushButton_2);
-        QWidget::setTabOrder(pushButton_2, pushButton_3);
-        QWidget::setTabOrder(pushButton_3, pushButton_Move);
+        QWidget::setTabOrder(pushButton_2, pushButton_Move);
         QWidget::setTabOrder(pushButton_Move, pushButton_5);
         QWidget::setTabOrder(pushButton_5, tableWidget_2);
         QWidget::setTabOrder(tableWidget_2, pushButton_nextMap);
@@ -612,7 +626,6 @@ public:
         QWidget::setTabOrder(pushButton_nextCharacter, comboBox_Maps);
         QWidget::setTabOrder(comboBox_Maps, comboBox_Characters);
         QWidget::setTabOrder(comboBox_Characters, pushButton_Grid);
-        QWidget::setTabOrder(pushButton_Grid, pushButton);
 
         menubar->addAction(menuFile->menuAction());
         menuFile->addAction(menuOpen->menuAction());
@@ -660,12 +673,13 @@ public:
         actionNewMap->setShortcut(QApplication::translate("LobbyWindow", "M", nullptr));
 #endif // QT_NO_SHORTCUT
         label->setText(QApplication::translate("LobbyWindow", "Game Map", nullptr));
-        pushButton->setText(QApplication::translate("LobbyWindow", "Inventory", nullptr));
+        pushButton_Character_Details->setText(QApplication::translate("LobbyWindow", "Character\n"
+"Details", nullptr));
         pushButton_2->setText(QApplication::translate("LobbyWindow", "Spells", nullptr));
-        pushButton_3->setText(QApplication::translate("LobbyWindow", "Gear", nullptr));
         groupBox->setTitle(QString());
         label_2->setText(QApplication::translate("LobbyWindow", "Friends", nullptr));
-        pushButton_Move->setText(QApplication::translate("LobbyWindow", "Move", nullptr));
+        pushButton_Move->setText(QApplication::translate("LobbyWindow", "Move\n"
+"Character", nullptr));
         pushButton_5->setText(QApplication::translate("LobbyWindow", "Not paint", nullptr));
         label_3->setText(QApplication::translate("LobbyWindow", "System Log", nullptr));
         system_log->setHtml(QApplication::translate("LobbyWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

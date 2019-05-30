@@ -7,7 +7,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
 #include <QDesktopWidget>
-
 #include <QVector>
 #include <string>
 #include <QPaintEvent>
@@ -18,22 +17,14 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "mainDependancies.h"
-
 #include "Map.h"
 #include "DiceobuLibrary.h"
 #include "mainuiclass.h"
 #include <QObject>
 #include <QKeyEvent>
 #include <QStringList>
-
-
-
 #include <QStyle>
 
-
-//Map* currWorkingMap;
-
-//Character* currWorkingChar;
 
 static int window_width    =   1440;
 static int window_height   =   900;
@@ -51,10 +42,6 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   //MainUIClass *mui;
-   // // // qDebug() << "was here - before Connect";
-
-
     connect(mui, SIGNAL(refreshCurrent()),
             this, SLOT(displayCurrent()));
     connect(mui, SIGNAL(updateLog(std::string ,Map* ,int , std::string, Map* , std::string , Character* ,std::string , int ,int )),
@@ -62,14 +49,8 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
 	connect(mui, SIGNAL(errorMessage(int)),
 			this, SLOT(errorHandler(int)));
 
-    //void updateSystemLog(std::string input,Map* this_currWorkingMap,Map* ,Character* previousCharacter,int coordX,int coordY);
-
-                /*&mui, SIGNAL(refreshCurrent()), &ui, SLOT(displayCurrent()));*/
-
-
     QPixmap background(":/img/bg4.jpg");
     setFixedSize(window_width,window_height);
-    //background = background.scaled(1920,1080, Qt::IgnoreAspectRatio);
     background = background.scaled(window_width+50,window_height+50, Qt::IgnoreAspectRatio);
 
 
@@ -77,71 +58,9 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     palette.setBrush(QPalette::Background, background);
     this->setPalette(palette);
 
-    //createNewMap();
-    //createNewCharacter();
     displayCurrent();
     checkLists();
-  //  QString test = "hello";
-   // ui->system_log->setText(QString("Hello, test is %1 and %2 goodbye").arg(test,test));
-   // ui->system_log->append(test);
 }
-
-
-
-//    QFile file("F:\\Documents\\GitHub\\DONTTOUCH\\DiceobuUI\\Sample.dat");
-//    if (!file.open(QIODevice::ReadOnly))
-//            QMessageBox::information(0,"info",file.errorString());
-
-
-//    QTextStream in(&file);
-
-/*
-
-    //hide();
-    QGraphicsView* lobbyWindow = new QGraphicsView;
-    QGraphicsScene* scene = new QGraphicsScene;
-    QPainter painter(this);
-
-
-
-    QPixmap tilepix(":/img/etst1.png");
-
-    QGraphicsPixmapItem *newItem=new QGraphicsPixmapItem(QPixmap(":/img/etst1.png"));
-    scene->addItem(newItem);
-
-
-    QVector< QVector< QPixmap > > pixmap_array;
-    pixmap_array.resize(10);
-
-    for (int i = 0; i < pixmap_array.size(); i++)
-    {
-        pixmap_array[i].resize(10);
-        pixmap_array[0][i] = QPixmap(":/img/etst1.png");
-       // scene->addPixmap(pixmap_array[0][i]);
-    }
-
-
-//    tilep.load(":/targetimage.png");
-    scene->addPixmap(tilepix);
-    lobbyWindow->setScene(scene);
-   // scene.addPixmap(QPixmap::tilepix);
-    // Add the vertical lines first, paint them red
-    for (int x=0; x<=500; x+=50)
-//        scene->addLine(x,0,x,500, QPen(Qt::red));
-    scene->addPixmap(tilepix);
-    newItem->setPos(15, -30);
-
-
-    // Now add the horizontal lines, paint them green
-    for (int y=0; y<=500; y+=50)
-        scene->addLine(0,y,500,y, QPen(Qt::green));
-
-
-    // Fit the view in the scene's bounding rect
-    //ui->view->fitInView(scene->itemsVBoundingRect());
- // */
-    //show();
-
 
 
 
@@ -149,49 +68,6 @@ LobbyWindow::~LobbyWindow()
 {
     delete ui;
 }
-
-/*
-void LobbyWindow::paintEvent(QPaintEvent *e)
-{
-    QPainter painter(this);
-    QVector< QVector< QPixmap > > pixmap_array;
-
-    int startingx = 10;
-    int startingy = 100;
-    int tilesize = 50;
-    int numoftiles = 200;
-    int tilesperrow = 15;
-
-    pixmap_array.resize(numoftiles);
-
-    QPoint point1;
-    point1.setX(startingx);
-    point1.setY(startingy);
-
-    QPoint point2;
-    point2.setX(tilesize);
-    point2.setY(tilesize);
-    int counter = 0;
-    for (int i = 0; i < pixmap_array.size(); i++)
-    {
-        pixmap_array[i].resize(numoftiles);
-        pixmap_array[0][i] = QPixmap(":/img/etst1.png");
-
-        painter.drawPixmap(point1.x(),point1.y(),point2.x(),point2.y(), pixmap_array[0][i]);
-        counter++;
-        point1.setX(point1.x()+tilesize);
-        if (counter % tilesperrow == 0) {
-            point1.setY(point1.y()+tilesize);
-            point1.setX(startingx);
-        }
-       // point1.setY(point1.y()+50);
-        //point2.setX(point2.x()+50);
-        //point2.setY(50);
-}
-}
-
-
-*/
 
 void LobbyWindow::on_actionNewCharacter_triggered()
 {
@@ -202,11 +78,23 @@ void LobbyWindow::on_actionNewCharacter_triggered()
     }
     else
     {
-    charCreateWindow = new CharCreateWindow(this);
-    charCreateWindow->show();
+        charCreateWindow = new CharCreateWindow(this);
+        charCreateWindow->show();
     }
 }
 
+void LobbyWindow::on_pushButton_Character_Details_clicked()
+{
+    if (activeCharactersisEmpty())
+    {
+        errorHandler(5);
+    }
+    else
+    {
+        characterDetailsWindow = new CharacterDetailsWindow(this);
+        characterDetailsWindow->show();
+    }
+}
 
 void LobbyWindow::on_pushButton_Move_clicked()
 {
@@ -222,10 +110,10 @@ void LobbyWindow::on_pushButton_Move_clicked()
         }
         else
         {
-        targetMapID = currWorkingMap->getMapID();
-        moveWindow = new MoveWindow(this);
-        qDebug() << "starting move from" << targetMapID;
-        moveWindow->show();
+         targetMapID = currWorkingMap->getMapID();
+            moveWindow = new MoveWindow(this);
+            qDebug() << "starting move from" << targetMapID;
+            moveWindow->show();
         }
     }
 
@@ -235,10 +123,6 @@ void LobbyWindow::on_pushButton_Move_clicked()
 void LobbyWindow::on_pushButton_5_clicked()
 {
 
-   // ui->comboBox_Maps->removeItem(0);
-    //qDebug() << ui->comboBox_Maps->currentText();
-    characterDetailsWindow = new CharacterDetailsWindow(this);
-    characterDetailsWindow->show();
 }
 
 
@@ -350,36 +234,69 @@ void LobbyWindow::updateLists(){
     std::list<Map*> tempMaps = getActiveMaps();
     std::list<Character*> tempCharacters = getActiveCharacters();
 
-
-    if (!tempMaps.empty())
+    if (activeMapsisEmpty())
     {
-        for (int i = 0; i <= tempMaps.size()+1; i++)
+        ui->comboBox_Maps->removeItem(0);
+        ui->comboBox_Maps->addItem("No Maps available.");
+    }
+    else
+    {
+        for (int i = 0; i <= tempMaps.size() + 1; i++)
         {
             ui->comboBox_Maps->removeItem(0);
         }
-    }
-    std::list <Map*> :: iterator iter;
-    for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
+        std::list <Map*> :: iterator iter;
+        for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
         {
             Map* tempMap = *iter;
-            ui->comboBox_Maps->addItem(QString::number(tempMap->getMapID()) + " " +  QString::fromStdString(tempMap->getMapName()));
+            if (tempMap->getMapID() == currWorkingMap->getMapID())
+            {
+                ui->comboBox_Maps->addItem(QString::number(tempMap->getMapID()) + " : " +  QString::fromStdString(tempMap->getMapName()));
+            break;
+            }
         }
+        for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
+        {
+            Map* tempMap = *iter;
+            if (tempMap->getMapID() != currWorkingMap->getMapID())
+            {
+                ui->comboBox_Maps->addItem(QString::number(tempMap->getMapID()) + " : " +  QString::fromStdString(tempMap->getMapName()));
+            }
+        }
+    }
 
 
-
-    if (!tempCharacters.empty())
+    if (activeCharactersisEmpty())
     {
-        for (int i = 0; i <= tempCharacters.size()+1; i++)
+        ui->comboBox_Characters->removeItem(0);
+        ui->comboBox_Characters->addItem("No Characters available.");
+    }
+    else
+    {
+        for (int i = 0; i <= tempCharacters.size() + 1; i++)
         {
             ui->comboBox_Characters->removeItem(0);
         }
-    }
-    std::list <Character*> :: iterator iter2;
-    for (iter2 = tempCharacters.begin(); iter2 != tempCharacters.end(); iter2++)
+
+        std::list <Character*> :: iterator iter2;
+        for (iter2 = tempCharacters.begin(); iter2 != tempCharacters.end(); iter2++)
         {
             Character* tempCharacter = *iter2;
-            ui->comboBox_Characters->addItem(QString::number(tempCharacter->getEntityID()) + " " +  QString::fromStdString(tempCharacter->getName()));
+            if (tempCharacter->getEntityID() == currWorkingChar->getEntityID())
+            {
+            ui->comboBox_Characters->addItem(QString::number(tempCharacter->getEntityID()) + " : " +  QString::fromStdString(tempCharacter->getName()));
+            break;
+            }
         }
+        for (iter2 = tempCharacters.begin(); iter2 != tempCharacters.end(); iter2++)
+        {
+            Character* tempCharacter = *iter2;
+            if (tempCharacter->getEntityID() != currWorkingChar->getEntityID())
+            {
+            ui->comboBox_Characters->addItem(QString::number(tempCharacter->getEntityID()) + " : " +  QString::fromStdString(tempCharacter->getName()));
+            }
+        }
+    }
 }
 
 void LobbyWindow::keyPressEvent(QKeyEvent *e)
@@ -437,8 +354,7 @@ void LobbyWindow::keyPressEvent(QKeyEvent *e)
 
                    diceobuSystemCore("3",coordX,coordY);
                 }
-
-           }
+            }
         }
     }
 }
@@ -455,7 +371,6 @@ void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
     tempQSList = ui->comboBox_Maps->currentText().split(" ");
 	targetMapID = tempQSList.at(0).toInt();
 	diceobuSystemCore("13");
-	//jumpToMap(tempQSList.at(0).toInt());
 }
 
 void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
@@ -486,5 +401,5 @@ void LobbyWindow::errorHandler(int errorCode)
 		QMessageBox::critical(this, "Error!", "No Characters found!");
 		break;
 	}
-
 }
+

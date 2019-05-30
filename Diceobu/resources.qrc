@@ -25,8 +25,6 @@
         <file>map-Woods_of_Oblivion.dat</file>
         <file>img/berseker.png</file>
         <file>img/floor.png</file>
-        <file>img/obdsf.png</file>
-        <file>img/obdsf2.png</file>
         <file>img/legitob.png</file>
         <file>img/floor2.png</file>
         <file>img/labelAC.png</file>
@@ -40,6 +38,11 @@
         <file>img/fighterClassImage.png</file>
         <file>img/wizard2.png</file>
         <file>img/wizardClassImage.png</file>
+        <file>img/rogueClassImage.png</file>
+        <file>img/rangerClassImage.png</file>
+        <file>img/Ranger.png</file>
+        <file>img/Rogue.png</file>
+        <file>img/Warrior.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/ImperatorSmallCaps Bold.ttf</file>

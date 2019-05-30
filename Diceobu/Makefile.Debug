@@ -281,28 +281,39 @@ debug\qrc_resources.cpp: resources.qrc \
 		map-Woods_of_Oblivion.dat \
 		map-instance.dat \
 		img\floor2.png \
+		img\labelAC.png \
+		img\labelAC_LI.jpg \
 		img\sand.png \
+		img\labelImage2.png \
+		img\wizardClassImage.png \
 		img\grass2.png \
 		img\water.png \
+		img\labelAS2.png \
 		img\grass3.png \
 		img\diskette.png \
 		img\empty.png \
 		img\rock.png \
 		img\star.png \
 		img\Wizard.png \
+		img\labelAS.jpg \
 		img\berseker.png \
 		img\bg1.jpg \
 		img\floor.png \
 		img\Diceobu.png \
-		img\obdsf2.png \
 		img\bg4.jpg \
+		img\rogueClassImage.png \
 		img\legitob.png \
 		img\bg2.png \
 		img\bg3.png \
 		img\etst1.png \
+		img\fighter.png \
+		img\fighterClassImage.png \
+		img\wizard2.png \
+		img\labelAC2.png \
+		img\rangerClassImage.png \
 		img\d20v2.png \
-		img\obdsf.png \
 		img\dot.png \
+		img\labelImage.jpg \
 		img\d20.png \
 		img\grass.png \
 		img\dirt.png \
@@ -318,28 +329,39 @@ debug\qrc_resources.cpp: resources.qrc \
 		map-Woods_of_Oblivion.dat \
 		map-instance.dat \
 		img\floor2.png \
+		img\labelAC.png \
+		img\labelAC_LI.jpg \
 		img\sand.png \
+		img\labelImage2.png \
+		img\wizardClassImage.png \
 		img\grass2.png \
 		img\water.png \
+		img\labelAS2.png \
 		img\grass3.png \
 		img\diskette.png \
 		img\empty.png \
 		img\rock.png \
 		img\star.png \
 		img\Wizard.png \
+		img\labelAS.jpg \
 		img\berseker.png \
 		img\bg1.jpg \
 		img\floor.png \
 		img\Diceobu.png \
-		img\obdsf2.png \
 		img\bg4.jpg \
+		img\rogueClassImage.png \
 		img\legitob.png \
 		img\bg2.png \
 		img\bg3.png \
 		img\etst1.png \
+		img\fighter.png \
+		img\fighterClassImage.png \
+		img\wizard2.png \
+		img\labelAC2.png \
+		img\rangerClassImage.png \
 		img\d20v2.png \
-		img\obdsf.png \
 		img\dot.png \
+		img\labelImage.jpg \
 		img\d20.png \
 		img\grass.png \
 		img\dirt.png \
@@ -701,6 +723,7 @@ debug\moc_lobbywindow.cpp: lobbywindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -850,6 +873,7 @@ debug\moc_loginwindow.cpp: loginwindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -886,27 +910,9 @@ debug\moc_mainuiclass.cpp: mainuiclass.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
-		DiceobuLibrary.h \
-		Campaign.h \
-		DungeonMaster.h \
-		User.h \
-		Equipment.h \
-		Item.h \
-		NonMagicalPower.h \
-		Power.h \
-		NonUsable.h \
-		NPC.h \
-		Object.h \
-		Obstacle.h \
-		PC.h \
-		Player.h \
-		Spell.h \
-		Usable.h \
-		Weapon.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
@@ -928,31 +934,78 @@ debug\moc_mainuiclass.cpp: mainuiclass.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
+		DiceobuLibrary.h \
+		Campaign.h \
+		DungeonMaster.h \
+		User.h \
+		Equipment.h \
+		Item.h \
+		NonMagicalPower.h \
+		Power.h \
+		NonUsable.h \
+		NPC.h \
+		Object.h \
+		Obstacle.h \
+		PC.h \
+		Player.h \
+		Spell.h \
+		Usable.h \
+		Weapon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		debug\moc_predefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\bin\moc.exe
 	F:\Documents\Qt\5.12.3\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include F:/Documents/GitHub/DONTTOUCH/DiceobuUI/debug/moc_predefs.h -IF:/Documents/Qt/5.12.3/msvc2017/mkspecs/win32-msvc -IF:/Documents/GitHub/DONTTOUCH/DiceobuUI -IF:/Documents/Qt/5.12.3/msvc2017/include -IF:/Documents/Qt/5.12.3/msvc2017/include/QtWidgets -IF:/Documents/Qt/5.12.3/msvc2017/include/QtGui -IF:/Documents/Qt/5.12.3/msvc2017/include/QtANGLE -IF:/Documents/Qt/5.12.3/msvc2017/include/QtCore -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainuiclass.h -o debug\moc_mainuiclass.cpp
@@ -1186,6 +1239,7 @@ debug\moc_mapwidget.cpp: mapwidget.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -1462,6 +1516,7 @@ ui_lobbywindow.h: lobbywindow.ui \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -1524,21 +1579,9 @@ debug\Character.obj: Character.cpp Entity.h \
 		Map.h \
 		GlobalVariables.h \
 		Tile.h \
-		Character.h
-
-debug\DungeonMaster.obj: DungeonMaster.cpp DungeonMaster.h \
-		User.h
-
-debug\Entity.obj: Entity.cpp Entity.h \
-		Map.h \
-		GlobalVariables.h \
-		Tile.h \
-		mainDependancies.h \
 		Character.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
@@ -1562,63 +1605,154 @@ debug\Entity.obj: Entity.cpp Entity.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h
+
+debug\DungeonMaster.obj: DungeonMaster.cpp DungeonMaster.h \
+		User.h
+
+debug\Entity.obj: Entity.cpp Entity.h \
+		Map.h \
+		GlobalVariables.h \
+		Tile.h \
+		mainDependancies.h \
+		Character.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlogging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qflags.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
+		mapwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
@@ -1794,6 +1928,7 @@ debug\Map.obj: Map.cpp Map.h \
 		mainDependancies.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
@@ -1836,6 +1971,84 @@ debug\NPC.obj: NPC.cpp Character.h \
 		Map.h \
 		GlobalVariables.h \
 		Tile.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlogging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qflags.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
 		NPC.h
 
 debug\NonMagicalPower.obj: NonMagicalPower.cpp NonMagicalPower.h \
@@ -1862,6 +2075,84 @@ debug\PC.obj: PC.cpp Character.h \
 		Map.h \
 		GlobalVariables.h \
 		Tile.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlogging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qflags.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
 		PC.h
 
 debug\Player.obj: Player.cpp Player.h \
@@ -1988,7 +2279,98 @@ debug\characterdetailswindow.obj: characterdetailswindow.cpp characterdetailswin
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfiledevice.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvector2d.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtouchdevice.h \
-		ui_characterdetailswindow.h
+		ui_characterdetailswindow.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QVariant \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QApplication \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qeventloop.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QFrame \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qframe.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGroupBox \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgroupbox.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QLabel \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QListWidget \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlistwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlistview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractitemview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qitemselectionmodel.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvalidator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qicon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qslider.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QPushButton \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qpushbutton.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsScene \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsscene.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpen.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsView \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainter.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtextoption.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qscrollarea.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QImage \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsPixmapItem \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsitem.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsItem \
+		mainDependancies.h \
+		GlobalVariables.h \
+		Map.h \
+		Tile.h \
+		Character.h \
+		Entity.h \
+		mapwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPainter \
+		lobbywindow.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMainWindow \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmainwindow.h \
+		mainuiclass.h \
+		DiceobuLibrary.h \
+		Campaign.h \
+		DungeonMaster.h \
+		User.h \
+		Equipment.h \
+		Item.h \
+		NonMagicalPower.h \
+		Power.h \
+		NonUsable.h \
+		NPC.h \
+		Object.h \
+		Obstacle.h \
+		PC.h \
+		Player.h \
+		Spell.h \
+		Usable.h \
+		Weapon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
+		charcreatewindow.h \
+		movewindow.h \
+		mapcreatewindow.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 
 debug\charcreatewindow.obj: charcreatewindow.cpp charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
@@ -2146,6 +2528,7 @@ debug\charcreatewindow.obj: charcreatewindow.cpp charcreatewindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
@@ -2297,6 +2680,7 @@ debug\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -2389,11 +2773,11 @@ debug\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsView \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qscrollarea.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QImage \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsPixmapItem \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsitem.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsItem \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDesktopWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QVector \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QString \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QFile \
@@ -2401,7 +2785,8 @@ debug\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMessageBox \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h \
 		mainDependancies.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QStringList
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QStringList \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QStyle
 
 debug\main.obj: main.cpp loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMainWindow \
@@ -2522,6 +2907,7 @@ debug\main.obj: main.cpp loginwindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -2682,6 +3068,7 @@ debug\loginwindow.obj: loginwindow.cpp loginwindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -2755,27 +3142,8 @@ debug\mainDependancies.obj: mainDependancies.cpp GlobalVariables.h \
 		Map.h \
 		Tile.h \
 		Character.h \
-		Campaign.h \
-		DungeonMaster.h \
-		User.h \
-		Equipment.h \
-		Item.h \
-		NonMagicalPower.h \
-		Power.h \
-		NonUsable.h \
-		NPC.h \
-		Object.h \
-		Obstacle.h \
-		PC.h \
-		Player.h \
-		Spell.h \
-		Usable.h \
-		Weapon.h \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
@@ -2799,63 +3167,83 @@ debug\mainDependancies.obj: mainDependancies.cpp GlobalVariables.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		Campaign.h \
+		DungeonMaster.h \
+		User.h \
+		Equipment.h \
+		Item.h \
+		NonMagicalPower.h \
+		Power.h \
+		NonUsable.h \
+		NPC.h \
+		Object.h \
+		Obstacle.h \
+		PC.h \
+		Player.h \
+		Spell.h \
+		Usable.h \
+		Weapon.h \
+		mainDependancies.h \
+		mapwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
@@ -2906,27 +3294,9 @@ debug\mainuiclass.obj: mainuiclass.cpp mainuiclass.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
-		DiceobuLibrary.h \
-		Campaign.h \
-		DungeonMaster.h \
-		User.h \
-		Equipment.h \
-		Item.h \
-		NonMagicalPower.h \
-		Power.h \
-		NonUsable.h \
-		NPC.h \
-		Object.h \
-		Obstacle.h \
-		PC.h \
-		Player.h \
-		Spell.h \
-		Usable.h \
-		Weapon.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
@@ -2948,31 +3318,78 @@ debug\mainuiclass.obj: mainuiclass.cpp mainuiclass.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
+		DiceobuLibrary.h \
+		Campaign.h \
+		DungeonMaster.h \
+		User.h \
+		Equipment.h \
+		Item.h \
+		NonMagicalPower.h \
+		Power.h \
+		NonUsable.h \
+		NPC.h \
+		Object.h \
+		Obstacle.h \
+		PC.h \
+		Player.h \
+		Spell.h \
+		Usable.h \
+		Weapon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject
 
 debug\mapcreatewindow.obj: mapcreatewindow.cpp mapcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
@@ -3121,6 +3538,7 @@ debug\mapcreatewindow.obj: mapcreatewindow.cpp mapcreatewindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
@@ -3276,6 +3694,7 @@ debug\mapwidget.obj: mapwidget.cpp mapwidget.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		DiceobuLibrary.h \
 		Campaign.h \
 		DungeonMaster.h \
@@ -3470,6 +3889,7 @@ debug\movewindow.obj: movewindow.cpp movewindow.h \
 		Tile.h \
 		Character.h \
 		Entity.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPixmap \
 		mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \

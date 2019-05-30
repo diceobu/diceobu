@@ -62,11 +62,17 @@ QPixmap Character::getClassImage(){//Character* tempChar){
     }
     else if (m_cClass == "Rogue")
     {
-        classImage = QPixmap("");
+        classImage = QPixmap(":/img/rogueClassImage.png");
     }
-    else if (m_cClass == "Archer")
+    else if (m_cClass == "Ranger")
     {
-        classImage = QPixmap("");
+        classImage = QPixmap(":/img/rangerClassImage.png");
+    }
+
+    if ((m_name == "OBDSF") || (m_name == "obdsf") || (m_name == "Obergard") || (m_name == "Obergard Shadowgriff"))
+    {
+         classImage = QPixmap(":/img/legitob.png");
+         classImage = classImage.scaled(165,233);
     }
 
     return classImage;

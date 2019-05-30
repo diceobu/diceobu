@@ -83,7 +83,7 @@ color: white;
       <number>20</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_Character_Details">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -99,7 +99,7 @@ color: white;
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 24pt &quot;ImperatorSmallCaps&quot;;
+font: 75 18pt &quot;ImperatorSmallCaps&quot;;
 border-style: solid;
 border-color: black;
 border-width: 2px;
@@ -110,6 +110,7 @@ color: black;
 
 QPushButton:pressed{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
+font: 75 22pt &quot;ImperatorSmallCaps&quot;;
 border-color: black;
 border-width: 1px;
 border-radius: 10px;
@@ -117,7 +118,8 @@ border-radius: 10px;
 </string>
        </property>
        <property name="text">
-        <string>Inventory</string>
+        <string>Character
+Details</string>
        </property>
       </widget>
      </item>
@@ -157,46 +159,6 @@ border-radius: 10px;
        </property>
        <property name="text">
         <string>Spells</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 24pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-
-
-QPushButton:pressed{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
-font: 75 22pt &quot;ImperatorSmallCaps&quot;;
-border-color: black;
-border-width: 1px;
-border-radius: 10px;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>Gear</string>
        </property>
       </widget>
      </item>
@@ -256,14 +218,35 @@ color: white;
    <widget class="QPushButton" name="pushButton_Move">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>280</y>
+      <x>920</x>
+      <y>270</y>
       <width>121</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+
+QPushButton:pressed{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
+border-color: black;
+border-width: 1px;
+border-radius: 10px;
+}
+</string>
+    </property>
     <property name="text">
-     <string>Move</string>
+     <string>Move
+Character</string>
     </property>
    </widget>
    <widget class="MapWidget" name="tableWidget">
@@ -391,8 +374,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>420</y>
+      <x>840</x>
+      <y>430</y>
       <width>275</width>
       <height>168</height>
      </rect>
@@ -725,21 +708,49 @@ color: white;
    <widget class="QComboBox" name="comboBox_Maps">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>840</x>
       <y>350</y>
-      <width>151</width>
-      <height>31</height>
+      <width>271</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+background-color: rgb(45, 45, 45);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 2px;
+color: rgb(220, 220, 220);
+
+}
+
+</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox_Characters">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>350</y>
-      <width>81</width>
-      <height>31</height>
+      <x>840</x>
+      <y>390</y>
+      <width>271</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+background-color: rgb(45, 45, 45);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 2px;
+color: rgb(220, 220, 220);
+
+}
+
+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_Grid">
@@ -791,6 +802,8 @@ border-radius: 10px;
    <zorder>comboBox_Maps</zorder>
    <zorder>comboBox_Characters</zorder>
    <zorder>pushButton_Grid</zorder>
+   <zorder>horizontalSpacer</zorder>
+   <zorder>horizontalSpacer_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -993,7 +1006,6 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
  <tabstops>
   <tabstop>tableWidget</tabstop>
   <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_Move</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>tableWidget_2</tabstop>
@@ -1002,7 +1014,6 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
   <tabstop>comboBox_Maps</tabstop>
   <tabstop>comboBox_Characters</tabstop>
   <tabstop>pushButton_Grid</tabstop>
-  <tabstop>pushButton</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>
