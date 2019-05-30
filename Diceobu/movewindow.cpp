@@ -9,7 +9,7 @@ MoveWindow::MoveWindow(QWidget *parent) :
     ui(new Ui::MoveWindow)
 {
     ui->setupUi(this);
-    setFixedSize(250,130);
+    setFixedSize(300,150);
     setWindowTitle("Move Character");
 
 
@@ -21,14 +21,13 @@ MoveWindow::MoveWindow(QWidget *parent) :
         {
             ui->comboBox_Maps_Move->removeItem(0);
         }
-    }
     std::list <Map*> :: iterator iter;
     for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
         {
             Map* tempMap = *iter;
             if (tempMap->getMapID() == targetMapID)
             {
-            ui->comboBox_Maps_Move->addItem(QString::number(tempMap->getMapID()) + " " +  QString::fromStdString(tempMap->getMapName()));
+            ui->comboBox_Maps_Move->addItem(QString::number(tempMap->getMapID()) + " : " +  QString::fromStdString(tempMap->getMapName()));
             }
         }
     for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
@@ -36,11 +35,13 @@ MoveWindow::MoveWindow(QWidget *parent) :
             Map* tempMap = *iter;
             if (tempMap->getMapID() != targetMapID)
             {
-            ui->comboBox_Maps_Move->addItem(QString::number(tempMap->getMapID()) + " " +  QString::fromStdString(tempMap->getMapName()));
+            ui->comboBox_Maps_Move->addItem(QString::number(tempMap->getMapID()) + " : " +  QString::fromStdString(tempMap->getMapName()));
             }
         }
+    }
+    ui->field_x->setText(QString::number(currWorkingChar->getCoordinateX()));
+    ui->field_y->setText(QString::number(currWorkingChar->getCoordinateY()));
 }
-
 
 MoveWindow::~MoveWindow()
 {

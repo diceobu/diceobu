@@ -6,6 +6,7 @@
 #include <QImage>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
+#include <QDesktopWidget>
 
 #include <QVector>
 #include <string>
@@ -26,6 +27,10 @@
 #include <QStringList>
 
 
+
+#include <QStyle>
+
+
 //Map* currWorkingMap;
 
 //Character* currWorkingChar;
@@ -41,7 +46,7 @@ int directionalMovement = 0;
 MainUIClass *mui = new MainUIClass;
 
 LobbyWindow::LobbyWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QMainWindow(),
     ui(new Ui::LobbyWindow)
 {
     ui->setupUi(this);
@@ -54,6 +59,9 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
             this, SLOT(displayCurrent()));
     connect(mui, SIGNAL(updateLog(std::string ,Map* ,int , std::string, Map* , std::string , Character* ,std::string , int ,int )),
             this, SLOT(updateSystemLog(std::string ,Map* ,int , std::string, Map* , std::string , Character* ,std::string , int ,int )));
+	connect(mui, SIGNAL(errorMessage(int)),
+			this, SLOT(errorHandler(int)));
+
     //void updateSystemLog(std::string input,Map* this_currWorkingMap,Map* ,Character* previousCharacter,int coordX,int coordY);
 
                 /*&mui, SIGNAL(refreshCurrent()), &ui, SLOT(displayCurrent()));*/
@@ -65,8 +73,6 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     background = background.scaled(window_width+50,window_height+50, Qt::IgnoreAspectRatio);
 
 
-
-
     QPalette palette;
     palette.setBrush(QPalette::Background, background);
     this->setPalette(palette);
@@ -75,7 +81,7 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     //createNewCharacter();
     displayCurrent();
     checkLists();
-    QString test = "hello";
+  //  QString test = "hello";
    // ui->system_log->setText(QString("Hello, test is %1 and %2 goodbye").arg(test,test));
    // ui->system_log->append(test);
 }
@@ -230,14 +236,15 @@ void LobbyWindow::on_pushButton_5_clicked()
 {
 
    // ui->comboBox_Maps->removeItem(0);
-    qDebug() << ui->comboBox_Maps->currentText();
+    //qDebug() << ui->comboBox_Maps->currentText();
+    characterDetailsWindow = new CharacterDetailsWindow(this);
+    characterDetailsWindow->show();
 }
 
 
 void LobbyWindow::on_actionDeleteMap_triggered()
 {
     diceobuSystemCore("8");
-   QMessageBox::information(this,"?","Placeholder");
 }
 
 void LobbyWindow::on_actionNewMap_triggered()
@@ -250,21 +257,17 @@ void LobbyWindow::on_actionNewMap_triggered()
 void LobbyWindow::on_pushButton_nextMap_clicked()
 {
     diceobuSystemCore("10");
-   // QMessageBox::information(this,"?","Placeholder");
 }
 
 void LobbyWindow::on_actionDeleteCharacter_triggered()
 {
     diceobuSystemCore("9");
-    QMessageBox::information(this,"?","Placeholder");
 }
 
 
 void LobbyWindow::on_pushButton_nextCharacter_clicked()
 {
     diceobuSystemCore("11");
-   //
-    QMessageBox::information(this,"?","Placeholder");
 }
 
 void LobbyWindow::displayCurrent()
@@ -461,4 +464,27 @@ void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
     tempQSList = ui->comboBox_Characters->currentText().split(" ");
     targetCharacterID = tempQSList.at(0).toInt();
     diceobuSystemCore("14");
+}
+
+void LobbyWindow::errorHandler(int errorCode)
+{
+	switch (errorCode)
+	{
+	case 1:
+        QMessageBox::critical(this, "Error!", "Cannot create character with no existing Maps!");
+        break;
+	case 2:
+		QMessageBox::critical(this, "Error!", "Nothing to delete!");
+		break;
+	case 3:
+		QMessageBox::critical(this, "Error!", "Cannot delete a Map containing characters!");
+		break;
+	case 4:
+        QMessageBox::critical(this, "Error!", "No Maps found!");
+		break;
+	case 5:
+		QMessageBox::critical(this, "Error!", "No Characters found!");
+		break;
+	}
+
 }

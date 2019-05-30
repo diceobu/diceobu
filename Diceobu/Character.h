@@ -11,6 +11,7 @@
 #include "Entity.h"
 //	Standard Libraries
 #include <string>
+#include <QPixmap>
 
 class Character : public Entity
 {
@@ -85,4 +86,5 @@ public:
 	void setReach(const int &reach)						{ m_reach = reach; }
 //	Others
 	void printCharacter();
+    QPixmap getClassImage();//Character* tempChar);
 };

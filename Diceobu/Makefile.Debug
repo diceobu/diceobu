@@ -67,6 +67,7 @@ SOURCES       = Campaign.cpp \
 		Usable.cpp \
 		User.cpp \
 		Weapon.cpp \
+		characterdetailswindow.cpp \
 		charcreatewindow.cpp \
 		lobbywindow.cpp \
 		main.cpp \
@@ -76,6 +77,7 @@ SOURCES       = Campaign.cpp \
 		mapcreatewindow.cpp \
 		mapwidget.cpp \
 		movewindow.cpp debug\qrc_resources.cpp \
+		debug\moc_characterdetailswindow.cpp \
 		debug\moc_charcreatewindow.cpp \
 		debug\moc_lobbywindow.cpp \
 		debug\moc_loginwindow.cpp \
@@ -103,6 +105,7 @@ OBJECTS       = debug\Campaign.obj \
 		debug\Usable.obj \
 		debug\User.obj \
 		debug\Weapon.obj \
+		debug\characterdetailswindow.obj \
 		debug\charcreatewindow.obj \
 		debug\lobbywindow.obj \
 		debug\main.obj \
@@ -113,6 +116,7 @@ OBJECTS       = debug\Campaign.obj \
 		debug\mapwidget.obj \
 		debug\movewindow.obj \
 		debug\qrc_resources.obj \
+		debug\moc_characterdetailswindow.obj \
 		debug\moc_charcreatewindow.obj \
 		debug\moc_lobbywindow.obj \
 		debug\moc_loginwindow.obj \
@@ -145,6 +149,7 @@ DIST          = DiceobuUI.pro.user \
 		Usable.h \
 		User.h \
 		Weapon.h \
+		characterdetailswindow.h \
 		charcreatewindow.h \
 		lobbywindow.h \
 		loginwindow.h \
@@ -172,6 +177,7 @@ DIST          = DiceobuUI.pro.user \
 		Usable.cpp \
 		User.cpp \
 		Weapon.cpp \
+		characterdetailswindow.cpp \
 		charcreatewindow.cpp \
 		lobbywindow.cpp \
 		main.cpp \
@@ -235,9 +241,9 @@ DESTDIR_TARGET = debug\DiceobuUI.exe
 first: all
 all: Makefile.Debug  debug\DiceobuUI.exe
 
-debug\DiceobuUI.exe: ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h $(OBJECTS) 
+debug\DiceobuUI.exe: ui_characterdetailswindow.h ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-debug\Campaign.obj debug\Character.obj debug\DungeonMaster.obj debug\Entity.obj debug\Equipment.obj debug\Item.obj debug\Map.obj debug\NPC.obj debug\NonMagicalPower.obj debug\NonUsable.obj debug\Object.obj debug\Obstacle.obj debug\PC.obj debug\Player.obj debug\Power.obj debug\Spell.obj debug\Tile.obj debug\Usable.obj debug\User.obj debug\Weapon.obj debug\charcreatewindow.obj debug\lobbywindow.obj debug\main.obj debug\loginwindow.obj debug\mainDependancies.obj debug\mainuiclass.obj debug\mapcreatewindow.obj debug\mapwidget.obj debug\movewindow.obj debug\qrc_resources.obj debug\moc_charcreatewindow.obj debug\moc_lobbywindow.obj debug\moc_loginwindow.obj debug\moc_mainuiclass.obj debug\moc_mapcreatewindow.obj debug\moc_mapwidget.obj debug\moc_movewindow.obj
+debug\Campaign.obj debug\Character.obj debug\DungeonMaster.obj debug\Entity.obj debug\Equipment.obj debug\Item.obj debug\Map.obj debug\NPC.obj debug\NonMagicalPower.obj debug\NonUsable.obj debug\Object.obj debug\Obstacle.obj debug\PC.obj debug\Player.obj debug\Power.obj debug\Spell.obj debug\Tile.obj debug\Usable.obj debug\User.obj debug\Weapon.obj debug\characterdetailswindow.obj debug\charcreatewindow.obj debug\lobbywindow.obj debug\main.obj debug\loginwindow.obj debug\mainDependancies.obj debug\mainuiclass.obj debug\mapcreatewindow.obj debug\mapwidget.obj debug\movewindow.obj debug\qrc_resources.obj debug\moc_characterdetailswindow.obj debug\moc_charcreatewindow.obj debug\moc_lobbywindow.obj debug\moc_loginwindow.obj debug\moc_mainuiclass.obj debug\moc_mapcreatewindow.obj debug\moc_mapwidget.obj debug\moc_movewindow.obj
 $(LIBS)
 <<
 
@@ -247,10 +253,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) DiceobuUI.zip $(SOURCES) $(DIST) DiceobuUI.pro ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\spec_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\angle.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\windows-vulkan.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\msvc-desktop.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\qconfig.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_location.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webview.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webview_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt_functions.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt_config.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\win32-msvc\qmake.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exclusive_builds.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\msvc-version.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\toolchain.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\default_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\default_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\resolve_config.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\default_post.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\build_pass.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\resources.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qtquickcompiler.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\precompile_header.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\warn_on.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\moc.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\opengl.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\uic.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qmake_use.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\file_copies.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\windows.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\testcase_targets.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exceptions.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\yacc.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\lex.prf DiceobuUI.pro resources.qrc ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Widgetsd.prl ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Guid.prl ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Cored.prl ..\..\..\Qt\5.12.3\msvc2017\lib\qtmaind.prl  resources.qrc resources.qrc    ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\data\dummy.cpp Campaign.h Character.h DiceobuLibrary.h DungeonMaster.h Entity.h Equipment.h GameData.h GlobalVariables.h Item.h Map.h NPC.h NonMagicalPower.h NonUsable.h Object.h Obstacle.h PC.h Player.h Power.h Spell.h Tile.h Usable.h User.h Weapon.h charcreatewindow.h lobbywindow.h loginwindow.h mainDependancies.h mainuiclass.h mapcreatewindow.h mapwidget.h movewindow.h  Campaign.cpp Character.cpp DungeonMaster.cpp Entity.cpp Equipment.cpp Item.cpp Map.cpp NPC.cpp NonMagicalPower.cpp NonUsable.cpp Object.cpp Obstacle.cpp PC.cpp Player.cpp Power.cpp Spell.cpp Tile.cpp Usable.cpp User.cpp Weapon.cpp charcreatewindow.cpp lobbywindow.cpp main.cpp loginwindow.cpp mainDependancies.cpp mainuiclass.cpp mapcreatewindow.cpp mapwidget.cpp movewindow.cpp charcreatewindow.ui lobbywindow.ui loginwindow.ui mapcreatewindow.ui mapwidget.ui movewindow.ui    
+	$(ZIP) DiceobuUI.zip $(SOURCES) $(DIST) DiceobuUI.pro ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\spec_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\angle.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\windows-vulkan.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\msvc-desktop.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\qconfig.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_location.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webview.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_webview_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt_functions.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt_config.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\win32-msvc\qmake.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exclusive_builds.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\common\msvc-version.conf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\toolchain.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\default_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\default_pre.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\resolve_config.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\default_post.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\build_pass.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\resources.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qtquickcompiler.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\precompile_header.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\warn_on.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qt.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\moc.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\opengl.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\uic.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\qmake_use.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\file_copies.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\win32\windows.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\testcase_targets.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\exceptions.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\yacc.prf ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\lex.prf DiceobuUI.pro resources.qrc ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Widgetsd.prl ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Guid.prl ..\..\..\Qt\5.12.3\msvc2017\lib\Qt5Cored.prl ..\..\..\Qt\5.12.3\msvc2017\lib\qtmaind.prl  resources.qrc resources.qrc    ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\data\dummy.cpp Campaign.h Character.h DiceobuLibrary.h DungeonMaster.h Entity.h Equipment.h GameData.h GlobalVariables.h Item.h Map.h NPC.h NonMagicalPower.h NonUsable.h Object.h Obstacle.h PC.h Player.h Power.h Spell.h Tile.h Usable.h User.h Weapon.h characterdetailswindow.h charcreatewindow.h lobbywindow.h loginwindow.h mainDependancies.h mainuiclass.h mapcreatewindow.h mapwidget.h movewindow.h  Campaign.cpp Character.cpp DungeonMaster.cpp Entity.cpp Equipment.cpp Item.cpp Map.cpp NPC.cpp NonMagicalPower.cpp NonUsable.cpp Object.cpp Obstacle.cpp PC.cpp Player.cpp Power.cpp Spell.cpp Tile.cpp Usable.cpp User.cpp Weapon.cpp characterdetailswindow.cpp charcreatewindow.cpp lobbywindow.cpp main.cpp loginwindow.cpp mainDependancies.cpp mainuiclass.cpp mapcreatewindow.cpp mapwidget.cpp movewindow.cpp characterdetailswindow.ui charcreatewindow.ui lobbywindow.ui loginwindow.ui mapcreatewindow.ui mapwidget.ui movewindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\Campaign.obj debug\Character.obj debug\DungeonMaster.obj debug\Entity.obj debug\Equipment.obj debug\Item.obj debug\Map.obj debug\NPC.obj debug\NonMagicalPower.obj debug\NonUsable.obj debug\Object.obj debug\Obstacle.obj debug\PC.obj debug\Player.obj debug\Power.obj debug\Spell.obj debug\Tile.obj debug\Usable.obj debug\User.obj debug\Weapon.obj debug\charcreatewindow.obj debug\lobbywindow.obj debug\main.obj debug\loginwindow.obj debug\mainDependancies.obj debug\mainuiclass.obj debug\mapcreatewindow.obj debug\mapwidget.obj debug\movewindow.obj debug\qrc_resources.obj debug\moc_charcreatewindow.obj debug\moc_lobbywindow.obj debug\moc_loginwindow.obj debug\moc_mainuiclass.obj debug\moc_mapcreatewindow.obj debug\moc_mapwidget.obj debug\moc_movewindow.obj
+	-$(DEL_FILE) debug\Campaign.obj debug\Character.obj debug\DungeonMaster.obj debug\Entity.obj debug\Equipment.obj debug\Item.obj debug\Map.obj debug\NPC.obj debug\NonMagicalPower.obj debug\NonUsable.obj debug\Object.obj debug\Obstacle.obj debug\PC.obj debug\Player.obj debug\Power.obj debug\Spell.obj debug\Tile.obj debug\Usable.obj debug\User.obj debug\Weapon.obj debug\characterdetailswindow.obj debug\charcreatewindow.obj debug\lobbywindow.obj debug\main.obj debug\loginwindow.obj debug\mainDependancies.obj debug\mainuiclass.obj debug\mapcreatewindow.obj debug\mapwidget.obj debug\movewindow.obj debug\qrc_resources.obj debug\moc_characterdetailswindow.obj debug\moc_charcreatewindow.obj debug\moc_lobbywindow.obj debug\moc_loginwindow.obj debug\moc_mainuiclass.obj debug\moc_mapcreatewindow.obj debug\moc_mapwidget.obj debug\moc_movewindow.obj
 	-$(DEL_FILE) debug\DiceobuUI.vc.pdb debug\DiceobuUI.ilk debug\DiceobuUI.idb
 
 distclean: clean 
@@ -274,6 +280,7 @@ debug\qrc_resources.cpp: resources.qrc \
 		map-Castle_of_Belithriel.dat \
 		map-Woods_of_Oblivion.dat \
 		map-instance.dat \
+		img\floor2.png \
 		img\sand.png \
 		img\grass2.png \
 		img\water.png \
@@ -283,13 +290,18 @@ debug\qrc_resources.cpp: resources.qrc \
 		img\rock.png \
 		img\star.png \
 		img\Wizard.png \
+		img\berseker.png \
 		img\bg1.jpg \
+		img\floor.png \
 		img\Diceobu.png \
+		img\obdsf2.png \
 		img\bg4.jpg \
+		img\legitob.png \
 		img\bg2.png \
 		img\bg3.png \
 		img\etst1.png \
 		img\d20v2.png \
+		img\obdsf.png \
 		img\dot.png \
 		img\d20.png \
 		img\grass.png \
@@ -305,6 +317,7 @@ debug\qrc_resources.cpp: resources.qrc \
 		map-Castle_of_Belithriel.dat \
 		map-Woods_of_Oblivion.dat \
 		map-instance.dat \
+		img\floor2.png \
 		img\sand.png \
 		img\grass2.png \
 		img\water.png \
@@ -314,13 +327,18 @@ debug\qrc_resources.cpp: resources.qrc \
 		img\rock.png \
 		img\star.png \
 		img\Wizard.png \
+		img\berseker.png \
 		img\bg1.jpg \
+		img\floor.png \
 		img\Diceobu.png \
+		img\obdsf2.png \
 		img\bg4.jpg \
+		img\legitob.png \
 		img\bg2.png \
 		img\bg3.png \
 		img\etst1.png \
 		img\d20v2.png \
+		img\obdsf.png \
 		img\dot.png \
 		img\d20.png \
 		img\grass.png \
@@ -344,9 +362,118 @@ compiler_moc_predefs_clean:
 debug\moc_predefs.h: ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\data\dummy.cpp
 	cl -BxF:\Documents\Qt\5.12.3\msvc2017\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\..\Qt\5.12.3\msvc2017\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
 
-compiler_moc_header_make_all: debug\moc_charcreatewindow.cpp debug\moc_lobbywindow.cpp debug\moc_loginwindow.cpp debug\moc_mainuiclass.cpp debug\moc_mapcreatewindow.cpp debug\moc_mapwidget.cpp debug\moc_movewindow.cpp
+compiler_moc_header_make_all: debug\moc_characterdetailswindow.cpp debug\moc_charcreatewindow.cpp debug\moc_lobbywindow.cpp debug\moc_loginwindow.cpp debug\moc_mainuiclass.cpp debug\moc_mapcreatewindow.cpp debug\moc_mapwidget.cpp debug\moc_movewindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_charcreatewindow.cpp debug\moc_lobbywindow.cpp debug\moc_loginwindow.cpp debug\moc_mainuiclass.cpp debug\moc_mapcreatewindow.cpp debug\moc_mapwidget.cpp debug\moc_movewindow.cpp
+	-$(DEL_FILE) debug\moc_characterdetailswindow.cpp debug\moc_charcreatewindow.cpp debug\moc_lobbywindow.cpp debug\moc_loginwindow.cpp debug\moc_mainuiclass.cpp debug\moc_mapcreatewindow.cpp debug\moc_mapwidget.cpp debug\moc_movewindow.cpp
+debug\moc_characterdetailswindow.cpp: characterdetailswindow.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlogging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qflags.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcursor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvariant.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdebug.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtextstream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlocale.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qset.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurlquery.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfile.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfiledevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvector2d.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtouchdevice.h \
+		debug\moc_predefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\bin\moc.exe
+	F:\Documents\Qt\5.12.3\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include F:/Documents/GitHub/DONTTOUCH/DiceobuUI/debug/moc_predefs.h -IF:/Documents/Qt/5.12.3/msvc2017/mkspecs/win32-msvc -IF:/Documents/GitHub/DONTTOUCH/DiceobuUI -IF:/Documents/Qt/5.12.3/msvc2017/include -IF:/Documents/Qt/5.12.3/msvc2017/include/QtWidgets -IF:/Documents/Qt/5.12.3/msvc2017/include/QtGui -IF:/Documents/Qt/5.12.3/msvc2017/include/QtANGLE -IF:/Documents/Qt/5.12.3/msvc2017/include/QtCore -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" characterdetailswindow.h -o debug\moc_characterdetailswindow.cpp
+
 debug\moc_charcreatewindow.cpp: charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -597,6 +724,7 @@ debug\moc_lobbywindow.cpp: lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		debug\moc_predefs.h \
@@ -745,6 +873,7 @@ debug\moc_loginwindow.cpp: loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		debug\moc_predefs.h \
@@ -1080,6 +1209,7 @@ debug\moc_mapwidget.cpp: mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		debug\moc_predefs.h \
@@ -1199,9 +1329,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h
+compiler_uic_make_all: ui_characterdetailswindow.h ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h
+	-$(DEL_FILE) ui_characterdetailswindow.h ui_charcreatewindow.h ui_lobbywindow.h ui_loginwindow.h ui_mapcreatewindow.h ui_mapwidget.h ui_movewindow.h
+ui_characterdetailswindow.h: characterdetailswindow.ui \
+		..\..\..\Qt\5.12.3\msvc2017\bin\uic.exe
+	F:\Documents\Qt\5.12.3\msvc2017\bin\uic.exe characterdetailswindow.ui -o ui_characterdetailswindow.h
+
 ui_charcreatewindow.h: charcreatewindow.ui \
 		..\..\..\Qt\5.12.3\msvc2017\bin\uic.exe
 	F:\Documents\Qt\5.12.3\msvc2017\bin\uic.exe charcreatewindow.ui -o ui_charcreatewindow.h
@@ -1351,6 +1485,7 @@ ui_lobbywindow.h: lobbywindow.ui \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 	F:\Documents\Qt\5.12.3\msvc2017\bin\uic.exe lobbywindow.ui -o ui_lobbywindow.h
@@ -1538,6 +1673,7 @@ debug\Entity.obj: Entity.cpp Entity.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 
@@ -1691,6 +1827,7 @@ debug\Map.obj: Map.cpp Map.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		charcreatewindow.h \
 		movewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 
@@ -1745,6 +1882,113 @@ debug\User.obj: User.cpp User.h
 debug\Weapon.obj: Weapon.cpp Weapon.h \
 		Equipment.h \
 		Item.h
+
+debug\characterdetailswindow.obj: characterdetailswindow.cpp characterdetailswindow.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobal.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qconfig.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlogging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qflags.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qatomic_msvc.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmutex.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnumeric.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qnamespace.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstring.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qchar.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrefcount.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qarraydata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringview.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiterator.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpair.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringlist.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qregexp.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmetatype.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmargins.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qrect.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsize.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qpoint.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcolor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgb.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qrgba64.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvector.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qmatrix.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpolygon.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qregion.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdatastream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qiodevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qline.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtransform.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainterpath.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qimage.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpixmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qshareddata.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qhash.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcursor.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qevent.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvariant.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmap.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdebug.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtextstream.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlocale.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qset.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurl.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurlquery.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfile.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfiledevice.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvector2d.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtouchdevice.h \
+		ui_characterdetailswindow.h
 
 debug\charcreatewindow.obj: charcreatewindow.cpp charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
@@ -1931,6 +2175,7 @@ debug\charcreatewindow.obj: charcreatewindow.cpp charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 
@@ -2075,6 +2320,7 @@ debug\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		ui_lobbywindow.h \
@@ -2299,6 +2545,7 @@ debug\main.obj: main.cpp loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QApplication \
@@ -2458,6 +2705,7 @@ debug\loginwindow.obj: loginwindow.cpp loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		ui_loginwindow.h \
@@ -2645,6 +2893,7 @@ debug\mainDependancies.obj: mainDependancies.cpp GlobalVariables.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		loginwindow.h \
@@ -2903,6 +3152,7 @@ debug\mapcreatewindow.obj: mapcreatewindow.cpp mapcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		charcreatewindow.h \
 		movewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
 
@@ -3049,6 +3299,7 @@ debug\mapwidget.obj: mapwidget.cpp mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
 		movewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		ui_mapwidget.h \
@@ -3248,12 +3499,15 @@ debug\movewindow.obj: movewindow.cpp movewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		charcreatewindow.h \
 		mapcreatewindow.h \
+		characterdetailswindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMessageBox \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h
 
 debug\qrc_resources.obj: debug\qrc_resources.cpp 
+
+debug\moc_characterdetailswindow.obj: debug\moc_characterdetailswindow.cpp 
 
 debug\moc_charcreatewindow.obj: debug\moc_charcreatewindow.cpp 
 

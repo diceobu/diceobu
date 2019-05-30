@@ -28,6 +28,18 @@
         <file>img/obdsf.png</file>
         <file>img/obdsf2.png</file>
         <file>img/legitob.png</file>
+        <file>img/floor2.png</file>
+        <file>img/labelAC.png</file>
+        <file>img/labelAC_LI.jpg</file>
+        <file>img/labelAS.jpg</file>
+        <file>img/labelImage.jpg</file>
+        <file>img/labelAC2.png</file>
+        <file>img/labelAS2.png</file>
+        <file>img/labelImage2.png</file>
+        <file>img/fighter.png</file>
+        <file>img/fighterClassImage.png</file>
+        <file>img/wizard2.png</file>
+        <file>img/wizardClassImage.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/ImperatorSmallCaps Bold.ttf</file>

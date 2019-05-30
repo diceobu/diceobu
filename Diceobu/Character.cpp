@@ -10,7 +10,7 @@
 //	Standard Libraries
 #include <iostream>
 #include <string>
-
+#include <QPixmap>
 //	Constructors
 Character::Character(	const std::string			&name,			const int	&hitPoints,
 						const int					&overheal,		const int	&armorClass,
@@ -46,4 +46,28 @@ void Character::printCharacter()
 				<< "Current Map: " << m_currMap->getMapID() << '\t'
 				<< "Coordinates: " << m_coordinates.first << "," << m_coordinates.second
 				<< '\n';
+}
+
+QPixmap Character::getClassImage(){//Character* tempChar){
+
+    QPixmap classImage;
+
+    if (m_cClass == "Wizard")
+    {
+        classImage = QPixmap(":/img/wizardClassImage.png");
+    }
+    else if (m_cClass == "Fighter")
+    {
+        classImage = QPixmap(":/img/fighterClassImage.png");
+    }
+    else if (m_cClass == "Rogue")
+    {
+        classImage = QPixmap("");
+    }
+    else if (m_cClass == "Archer")
+    {
+        classImage = QPixmap("");
+    }
+
+    return classImage;
 }

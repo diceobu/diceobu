@@ -44,7 +44,7 @@ public:
     {
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName(QString::fromUtf8("LoginWindow"));
-        LoginWindow->resize(1245, 644);
+        LoginWindow->resize(1258, 644);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);

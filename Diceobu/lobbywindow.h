@@ -8,6 +8,7 @@
 #include "charcreatewindow.h"
 #include "movewindow.h"
 #include "mapcreatewindow.h"
+#include "characterdetailswindow.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -29,6 +30,7 @@ private:
     CharCreateWindow *charCreateWindow;
     MoveWindow *moveWindow;
     MapCreateWindow *mapCreateWindow;
+    CharacterDetailsWindow *characterDetailsWindow;
 
     void updateLists();
 protected:
@@ -38,6 +40,8 @@ public slots:
     void displayCurrent();
     void updateSystemLog(std::string input,Map* this_currWorkingMap,int currWorkingCharID, std::string currWorkingCharName,
                          Map* previousMap, std::string previousMapName, Character* previousCharacter,std::string previousCharacterName, int coordX,int coordY);
+
+   void errorHandler(int errorCode);
 
 private slots:
     void on_pushButton_5_clicked();

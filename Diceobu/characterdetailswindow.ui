@@ -1,0 +1,1972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CharacterDetailsWindow</class>
+ <widget class="QDialog" name="CharacterDetailsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>ImperatorSmallCaps</family>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-image: url(:/img/bg4.jpg);
+}</string>
+  </property>
+  <widget class="QLabel" name="label_Ability_Scores">
+   <property name="geometry">
+    <rect>
+     <x>497</x>
+     <y>110</y>
+     <width>80</width>
+     <height>84</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>80</width>
+     <height>84</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>80</width>
+     <height>84</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Ability 
+Score</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_EXP">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>200</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>EXP</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Image">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>205</width>
+     <height>273</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>205</width>
+     <height>273</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>256</width>
+     <height>341</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 24pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Entity_Details">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>570</y>
+     <width>181</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ border-radius: 5px;
+ margin-top: 2ex;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Entity Details</string>
+   </property>
+   <widget class="QLabel" name="label_Current_Map">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>60</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>currMap</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ID">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>30</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>entity ID</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ID_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>[ID]:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Map_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>[Map]:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_XY_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>[X/Y]:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_XY">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>90</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>X/Y</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_ID_Tag</zorder>
+   <zorder>label_ID</zorder>
+   <zorder>label_Map_Tag</zorder>
+   <zorder>label_Current_Map</zorder>
+   <zorder>label_XY_Tag</zorder>
+   <zorder>label_XY</zorder>
+  </widget>
+  <widget class="QLabel" name="label_Background_Race">
+   <property name="geometry">
+    <rect>
+     <x>455</x>
+     <y>230</y>
+     <width>165</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 16pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Background &amp; Race</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Name">
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>10</y>
+     <width>212</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 20pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_HP">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>160</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>14</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>20/20 (+0)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_AC">
+   <property name="geometry">
+    <rect>
+     <x>502</x>
+     <y>20</y>
+     <width>70</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>70</width>
+     <height>72</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>70</width>
+     <height>72</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>AC</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Balance">
+   <property name="geometry">
+    <rect>
+     <x>338</x>
+     <y>290</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Balance</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Class_Level">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>80</y>
+     <width>160</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font:  &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Class, Level</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Alignment">
+   <property name="geometry">
+    <rect>
+     <x>455</x>
+     <y>300</y>
+     <width>165</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>14</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Alignement</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Image_Value">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>165</width>
+     <height>233</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}*/
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Ability_Scores_Value">
+   <property name="geometry">
+    <rect>
+     <x>497</x>
+     <y>135</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_AC_Value">
+   <property name="geometry">
+    <rect>
+     <x>502</x>
+     <y>35</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+</string>
+   </property>
+   <property name="text">
+    <string>20</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_HP_Tag">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>160</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>130</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+   </property>
+   <property name="text">
+    <string>HP: </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_EXP_Tag">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>200</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>130</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+   </property>
+   <property name="text">
+    <string>EXP:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Balance_tag">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>290</y>
+     <width>130</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>130</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Balance:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Powers">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>470</y>
+     <width>211</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Powers</string>
+   </property>
+   <widget class="QListWidget" name="listWidget_Powers">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>191</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Physical_Traits">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>470</y>
+     <width>181</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Physical Traits</string>
+   </property>
+   <widget class="QLabel" name="label_Size">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Size</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Weight">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Weight</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Height">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>70</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Height</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Height_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Height:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Size_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Size:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Weight_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Weight:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Vision_Range">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>230</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>vision range</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Reach">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>170</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Reach</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Vision_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Vision:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Reach_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Reach:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Speed_Tag">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>130</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>Speed:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Speed">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>200</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Speed</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_Weight_Tag</zorder>
+   <zorder>label_Size_Tag</zorder>
+   <zorder>label_Speed_Tag</zorder>
+   <zorder>label_Reach_Tag</zorder>
+   <zorder>label_Vision_Tag</zorder>
+   <zorder>label_Height_Tag</zorder>
+   <zorder>label_Size</zorder>
+   <zorder>label_Weight</zorder>
+   <zorder>label_Height</zorder>
+   <zorder>label_Vision_Range</zorder>
+   <zorder>label_Reach</zorder>
+   <zorder>label_Speed</zorder>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Languages">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>470</y>
+     <width>181</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Languages</string>
+   </property>
+   <widget class="QListWidget" name="listWidget_Languages">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Inventory">
+   <property name="geometry">
+    <rect>
+     <x>35</x>
+     <y>290</y>
+     <width>175</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color: rgb(45, 45, 45);
+font: 75 20pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+
+QPushButton:pressed{
+background-color: rgb(45, 45, 45);
+font: 75 20pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Inventory</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Ability_Scores_Value_Tag">
+   <property name="geometry">
+    <rect>
+     <x>497</x>
+     <y>110</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>8</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+font: 75 8pt &quot;ImperatorSmallCaps&quot;;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Ability Score</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_AC_Value_Tag">
+   <property name="geometry">
+    <rect>
+     <x>502</x>
+     <y>55</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>6</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+font: 75 6pt &quot;ImperatorSmallCaps&quot;;
+color: black;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Armor
+ Class</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>395</y>
+     <width>220</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_More_Details">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>397</y>
+     <width>120</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+color: white
+;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>More Details</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>395</y>
+     <width>220</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>360</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_More">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>ImperatorSmallCaps</family>
+        <pointsize>10</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+
+QPushButton:pressed{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>More...</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_close">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>ImperatorSmallCaps</family>
+        <pointsize>10</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+
+QPushButton:pressed{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>710</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="pushButton_Less">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>ImperatorSmallCaps</family>
+        <pointsize>10</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+
+QPushButton:pressed{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Less</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_close_2">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>ImperatorSmallCaps</family>
+        <pointsize>10</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+
+QPushButton:pressed{
+background-color: rgb(45, 45, 45);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 5px;
+color: rgb(220, 220, 220);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>label_EXP_Tag</zorder>
+  <zorder>label_Ability_Scores</zorder>
+  <zorder>label_EXP</zorder>
+  <zorder>pushButton_close</zorder>
+  <zorder>label_Image</zorder>
+  <zorder>pushButton_More</zorder>
+  <zorder>groupBox_Entity_Details</zorder>
+  <zorder>label_Background_Race</zorder>
+  <zorder>label_Name</zorder>
+  <zorder>label_AC</zorder>
+  <zorder>label_Class_Level</zorder>
+  <zorder>label_Alignment</zorder>
+  <zorder>pushButton_Less</zorder>
+  <zorder>pushButton_close_2</zorder>
+  <zorder>label_Image_Value</zorder>
+  <zorder>label_Ability_Scores_Value</zorder>
+  <zorder>label_AC_Value</zorder>
+  <zorder>label_HP_Tag</zorder>
+  <zorder>label_HP</zorder>
+  <zorder>label_Balance_tag</zorder>
+  <zorder>label_Balance</zorder>
+  <zorder>groupBox_Powers</zorder>
+  <zorder>groupBox_Physical_Traits</zorder>
+  <zorder>groupBox_Languages</zorder>
+  <zorder>pushButton_Inventory</zorder>
+  <zorder>label_Ability_Scores_Value_Tag</zorder>
+  <zorder>label_AC_Value_Tag</zorder>
+  <zorder>line</zorder>
+  <zorder>label_More_Details</zorder>
+  <zorder>line_2</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

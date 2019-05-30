@@ -40,9 +40,9 @@ void LoginWindow::on_pushButton_clicked()
     QString password = ui->login_password->text();
 
     if ((username == "admin" && password == "admin") || (username == "test" && password == "123")){
-    hide();
+    close();
     lobbyWindow = new LobbyWindow(this);
-    lobbyWindow->showMaximized();
+    lobbyWindow->show();
     } else {
          QMessageBox::warning(this,"Failed Login","Invalid username or password.");
     }
@@ -54,6 +54,6 @@ void LoginWindow::on_pushButton_2_clicked()
     close();
      //QMessageBox::warning(this,"Failed Login","Invalid username or password.");
     lobbyWindow = new LobbyWindow(this);
-    lobbyWindow->showMaximized();
+    lobbyWindow->show();
 }
 

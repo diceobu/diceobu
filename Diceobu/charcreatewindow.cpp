@@ -84,7 +84,6 @@ void CharCreateWindow::on_pushButton_confirm_clicked()
         else
         {
             diceobuSystemCore("2",coordX,coordY,cName,cClass,cRace,cAlignment,cBackground,cBalance,cLevel);
-            QMessageBox::information(this,"Success","Character created succefully.");
             close();
         }
     }

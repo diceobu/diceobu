@@ -43,6 +43,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_y;
     QLineEdit *field_y;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_confirm;
     QPushButton *pushButton_cancel;
@@ -52,10 +53,10 @@ public:
     {
         if (MoveWindow->objectName().isEmpty())
             MoveWindow->setObjectName(QString::fromUtf8("MoveWindow"));
-        MoveWindow->resize(241, 170);
+        MoveWindow->resize(246, 172);
         horizontalLayout_7 = new QHBoxLayout(MoveWindow);
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        horizontalSpacer_3 = new QSpacerItem(47, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(35, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_3);
 
@@ -102,7 +103,12 @@ public:
 
         comboBox_Maps_Move = new QComboBox(MoveWindow);
         comboBox_Maps_Move->setObjectName(QString::fromUtf8("comboBox_Maps_Move"));
-        comboBox_Maps_Move->setMinimumSize(QSize(120, 0));
+        comboBox_Maps_Move->setMinimumSize(QSize(130, 0));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font2.setBold(true);
+        font2.setWeight(75);
+        comboBox_Maps_Move->setFont(font2);
 
         horizontalLayout_6->addWidget(comboBox_Maps_Move);
 
@@ -169,16 +175,16 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         pushButton_confirm = new QPushButton(MoveWindow);
         pushButton_confirm->setObjectName(QString::fromUtf8("pushButton_confirm"));
         pushButton_confirm->setMinimumSize(QSize(0, 35));
         pushButton_confirm->setMaximumSize(QSize(130, 100));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font2.setBold(true);
-        font2.setWeight(75);
         pushButton_confirm->setFont(font2);
 
         horizontalLayout->addWidget(pushButton_confirm);
@@ -197,7 +203,7 @@ public:
 
         horizontalLayout_7->addLayout(verticalLayout_2);
 
-        horizontalSpacer_4 = new QSpacerItem(47, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(35, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_4);
 

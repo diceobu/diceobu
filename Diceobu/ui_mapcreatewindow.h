@@ -36,7 +36,7 @@ public:
     {
         if (MapCreateWindow->objectName().isEmpty())
             MapCreateWindow->setObjectName(QString::fromUtf8("MapCreateWindow"));
-        MapCreateWindow->resize(250, 125);
+        MapCreateWindow->resize(250, 128);
         horizontalLayout_2 = new QHBoxLayout(MapCreateWindow);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_2 = new QVBoxLayout();

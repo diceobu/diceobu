@@ -75,6 +75,7 @@ void displayWelcomeMessage()
 		<< "Fullscreen view is recommended.\n";
 }
 
+
 void displayAvailableOptions()
 {
 	std::cout	<< "List of available options (select one of the numbers/symbols and hit enter):\n";
@@ -555,7 +556,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
                        const std::string &cRace, const std::string &cAlignment,
                        const std::string &cBackground, const int &cBalance, const int &cLevel)
 {
-    LobbyWindow lb;
+    //LobbyWindow lb;
     Map* previousMap;// = currWorkingMap;
     Character *previousCharacter;// = currWorkingChar;
     int currWorkingCharID = 0;
@@ -599,7 +600,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
         if (activeMaps.empty())
 		{
 			//	displayFeedbackMessageUI("Cannot create character without a map");
-            QMessageBox::critical(&lb,"Error!","Cannot create character with no existing Maps!");
+			emit mui->errorMessage(1);
 		}
 		else
 		{
@@ -622,11 +623,11 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 			}
 		}
 	}
-	else if (input == "3")
+	else if (input == "3")	// Move Character
 	{
         if (currWorkingMap->m_containingCharacters.empty())
 		{
-			//displayFeedbackMessageUI("No character found");
+			//displayFeedbackMessageUI("No character found"); // Done in UI		
 		}
 		else
 		{
@@ -675,7 +676,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 	}
 	else if (input == "5")
 	{
-		//displayInfoUI();
+		//displayInfoUI(); // Help
 	}
 	else if (input == "6")
 	{
@@ -703,8 +704,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 	{
 		if (activeMaps.empty())
 		{
-			//displayFeedbackMessageUI("Nothing to delete");
-            QMessageBox::warning(&lb,"Error!","Nothing to delete!");
+			mui->errorMessage(2); //            QMessageBox::warning(&lb,"Error!","Nothing to delete!");
 		}
 		else
 		{
@@ -737,7 +737,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 			else
 			{
 				//displayFeedbackMessageUI("Cannot delete map containing characters");
-                QMessageBox::critical(&lb,"Error!","Cannot delete Map containing characters!");
+				mui->errorMessage(3); //                QMessageBox::critical(&lb,"Error!","Cannot delete a Map containing characters!");
 			}
 		}
 	}
@@ -746,7 +746,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		if (activeCharacters.empty())
 		{
 			//	displayFeedbackMessageUI("Nothing to delete");
-            QMessageBox::warning(&lb,"Error!","Nothing to delete!");
+			mui->errorMessage(2); //  QMessageBox::warning(&lb,"Error!","Nothing to delete!");
 		}
 		else
         {
@@ -774,7 +774,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		if (activeMaps.empty())
 		{
 			// displayFeedbackMessageUI("No maps found");
-            QMessageBox::critical(&lb,"Error!","No Maps found!");
+            mui->errorMessage(4); // 	QMessageBox::critical(&lb, "Error!", "No Maps found!");
 		}
 		else
 		{
@@ -786,14 +786,15 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 			// update currWorkingMap box
             emit mui->refreshCurrent();
             emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
-                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);		}
+                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);		
+		}
 	}
 	else if (input == "11")
 	{
 		if (activeCharacters.empty())
 		{
 			// displayFeedbackMessageUI("no chars found");
-            QMessageBox::critical(&lb,"Error!","No Characters found!");
+			mui->errorMessage(5);	//	QMessageBox::critical(&lb,"Error!","No Characters found!");
 		}
 		else
 		{
@@ -819,14 +820,12 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		if (activeMaps.empty())
 		{
 		// displayFeedbackMessageUI("No maps found");
-			QMessageBox::critical(&lb, "Error!", "No Maps found!");
+			mui->errorMessage(4); //QMessageBox::critical(&lb, "Error!", "No Maps found!");
 		}
 		else
 		{
-		   qDebug() << "abou to jump from" << currWorkingMap->getMapID() << "to" << targetMapID;
 			previousMap = currWorkingMap;
 			jumpToMap(targetMapID);
-			qDebug() << "jumpedrom" << currWorkingMap->getMapID() << "to" << targetMapID;
 			currWorkingMap->writeMap();
 			//	refresh map
 			initPixmapArray();
@@ -841,7 +840,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		if (activeCharacters.empty())
 		{
 			// displayFeedbackMessageUI("no chars found");
-			QMessageBox::critical(&lb, "Error!", "No Characters found!");
+            mui->errorMessage(5); //    QMessageBox::critical(&lb, "Error!", "No Characters found!");
 		}
 		else
 		{

@@ -45,6 +45,7 @@ SOURCES += \
         Usable.cpp \
         User.cpp \
         Weapon.cpp \
+        characterdetailswindow.cpp \
         charcreatewindow.cpp \
         lobbywindow.cpp \
         main.cpp \
@@ -79,6 +80,7 @@ HEADERS += \
         Usable.h \
         User.h \
         Weapon.h \
+        characterdetailswindow.h \
         charcreatewindow.h \
         lobbywindow.h \
         loginwindow.h \
@@ -89,6 +91,7 @@ HEADERS += \
         movewindow.h
 
 FORMS += \
+        characterdetailswindow.ui \
         charcreatewindow.ui \
         lobbywindow.ui \
         loginwindow.ui \
