@@ -71,16 +71,24 @@ void CharCreateWindow::on_pushButton_confirm_clicked()
     int         coordY      = ui->field_y->text().toInt();
 
 
-    if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())
+    if (coordX > 49 || coordX < 0 || coordY > 49 || coordY < 0 )
     {
-        QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");
+        QMessageBox::critical(this,"Error!","Target tile is out of bounds!");
     }
     else
     {
-        diceobuSystemCore("2",coordX,coordY,cName,cClass,cRace,cAlignment,cBackground,cBalance,cLevel);
-        QMessageBox::information(this,"Success","Character created succefully.");
-        close();
+        if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())
+        {
+            QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");
+        }
+        else
+        {
+            diceobuSystemCore("2",coordX,coordY,cName,cClass,cRace,cAlignment,cBackground,cBalance,cLevel);
+            QMessageBox::information(this,"Success","Character created succefully.");
+            close();
+        }
     }
+
 }
 
 void CharCreateWindow::on_pushButton_cancel_clicked()

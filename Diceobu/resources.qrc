@@ -20,7 +20,14 @@
         <file>img/dot.png</file>
         <file>img/star.png</file>
         <file>map-instance.dat</file>
-        <file>map-terrain.dat</file>
+        <file>img/Wizard.png</file>
+        <file>map-Castle_of_Belithriel.dat</file>
+        <file>map-Woods_of_Oblivion.dat</file>
+        <file>img/berseker.png</file>
+        <file>img/floor.png</file>
+        <file>img/obdsf.png</file>
+        <file>img/obdsf2.png</file>
+        <file>img/legitob.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/ImperatorSmallCaps Bold.ttf</file>

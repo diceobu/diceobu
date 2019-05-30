@@ -124,17 +124,21 @@ void initPixmapArray()
                         {
                             pixmap_array[0][i] = QPixmap(":/img/empty.png");
                         }
-                        else if (tempChar == '#')
+                        else if (tempChar == 'f')
+                        {
+                           pixmap_array[0][i] = QPixmap(":/img/floor.png");
+                        }
+                        else if ((tempChar == '\n') || (tempChar == '\r') || (tempChar == '#'))
                         {
                            i--;
                         }
-                        else if ((tempChar == '\n') || (tempChar == '\r'))
+                        else if (tempChar == 'F')
                         {
-                           i--;
+                            pixmap_array[0][i] = QPixmap(":/img/legitob.png");
                         }
-                        else if (tempChar == 'x')
+                        else if (tempChar == 'W')
                         {
-                            pixmap_array[0][i] = QPixmap(":/img/star.png");
+                            pixmap_array[0][i] = QPixmap(":/img/Wizard.png");
                         }
                         else if (tempChar == '!')
                         {
@@ -182,6 +186,8 @@ void MapWidget::paintEvent(QPaintEvent *e)
     }
     if (grid)
     {
+        //painter.QPainter::setOpacity(0.5);
+
         for ( int x=0; x<=750; x+=15)
         {
             painter.drawLine(x,0,x,750);

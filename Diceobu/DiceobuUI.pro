@@ -51,6 +51,7 @@ SOURCES += \
         loginwindow.cpp \
         mainDependancies.cpp \
         mainuiclass.cpp \
+        mapcreatewindow.cpp \
         mapwidget.cpp \
         movewindow.cpp
 
@@ -83,6 +84,7 @@ HEADERS += \
         loginwindow.h \
         mainDependancies.h \
         mainuiclass.h \
+        mapcreatewindow.h \
         mapwidget.h \
         movewindow.h
 
@@ -90,6 +92,7 @@ FORMS += \
         charcreatewindow.ui \
         lobbywindow.ui \
         loginwindow.ui \
+        mapcreatewindow.ui \
         mapwidget.ui \
         movewindow.ui
 

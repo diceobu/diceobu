@@ -23,6 +23,8 @@
 #include "mainuiclass.h"
 #include <QObject>
 #include <QKeyEvent>
+#include <QStringList>
+
 
 //Map* currWorkingMap;
 
@@ -30,6 +32,12 @@
 
 static int window_width    =   1440;
 static int window_height   =   900;
+
+int targetMapID;
+int targetCharacterID;
+
+int directionalMovement = 0;
+
 MainUIClass *mui = new MainUIClass;
 
 LobbyWindow::LobbyWindow(QWidget *parent) :
@@ -196,22 +204,33 @@ void LobbyWindow::on_actionNewCharacter_triggered()
 
 void LobbyWindow::on_pushButton_Move_clicked()
 {
-    if (currWorkingMap->m_containingCharacters.empty())
+    if (getActiveMaps().empty())
     {
         QMessageBox::critical(this,"Error!","Nothing to move!");
     }
     else
     {
-    moveWindow = new MoveWindow(this);
-    moveWindow->show();
+        if (currWorkingMap->m_containingCharacters.empty())
+        {
+            QMessageBox::critical(this,"Error!","Nothing to move!");
+        }
+        else
+        {
+        targetMapID = currWorkingMap->getMapID();
+        moveWindow = new MoveWindow(this);
+        qDebug() << "starting move from" << targetMapID;
+        moveWindow->show();
+        }
     }
+
 }
 
 
 void LobbyWindow::on_pushButton_5_clicked()
 {
 
-    ui->comboBox_Maps->removeItem(0);
+   // ui->comboBox_Maps->removeItem(0);
+    qDebug() << ui->comboBox_Maps->currentText();
 }
 
 
@@ -223,9 +242,9 @@ void LobbyWindow::on_actionDeleteMap_triggered()
 
 void LobbyWindow::on_actionNewMap_triggered()
 {
-    // // qDebug() << "lobbycpp 209///";
-    diceobuSystemCore("1");
-    //QMessageBox::information(this,"?","Placeholder");
+    mapCreateWindow = new MapCreateWindow(this);
+    mapCreateWindow->show();
+    //diceobuSystemCore("1");
 }
 
 void LobbyWindow::on_pushButton_nextMap_clicked()
@@ -308,13 +327,13 @@ void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int
         ui->system_log->append(QString(">> Deleted Character [ID: %1] - %2.").arg(QString::number(previousCharacter->getEntityID()),
                                                                                  QString::fromStdString(previousCharacterName)));
     }
-    else if (input == "10")
+    else if (input == "10" || input == "13")
     {
         ui->system_log->append(QString(">> Changed view from Map [ID: %1] to Map [ID: %2] - %3.").arg(QString::number(previousMap->getMapID()),
                                                                                                       QString::number(currWorkingMap->getMapID()),
                                                                                                       QString::fromStdString(currWorkingMap->getMapName())));
     }
-    else if (input == "11")
+    else if (input == "11" || input == "14")
     {
         ui->system_log->append(QString(">> Changed view from Character [ID: %1] to Character [ID: %2] - %3.").arg(QString::number(previousCharacter->getEntityID()),
                                                                                                                   QString::number(currWorkingCharID),
@@ -326,6 +345,8 @@ void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int
 void LobbyWindow::updateLists(){
 
     std::list<Map*> tempMaps = getActiveMaps();
+    std::list<Character*> tempCharacters = getActiveCharacters();
+
 
     if (!tempMaps.empty())
     {
@@ -334,72 +355,88 @@ void LobbyWindow::updateLists(){
             ui->comboBox_Maps->removeItem(0);
         }
     }
-
     std::list <Map*> :: iterator iter;
     for (iter = tempMaps.begin(); iter != tempMaps.end(); iter++)
         {
             Map* tempMap = *iter;
             ui->comboBox_Maps->addItem(QString::number(tempMap->getMapID()) + " " +  QString::fromStdString(tempMap->getMapName()));
-           //ui->comboBox_Maps->addItem( QString::number(1) + "Hello");
-            //qDebug() << "hi" << QString::number(tempMap->getMapID()) <<  QString::fromStdString(tempMap->getMapName());
         }
-   // qDebug() << "-------------";
+
+
+
+    if (!tempCharacters.empty())
+    {
+        for (int i = 0; i <= tempCharacters.size()+1; i++)
+        {
+            ui->comboBox_Characters->removeItem(0);
+        }
+    }
+    std::list <Character*> :: iterator iter2;
+    for (iter2 = tempCharacters.begin(); iter2 != tempCharacters.end(); iter2++)
+        {
+            Character* tempCharacter = *iter2;
+            ui->comboBox_Characters->addItem(QString::number(tempCharacter->getEntityID()) + " " +  QString::fromStdString(tempCharacter->getName()));
+        }
 }
 
 void LobbyWindow::keyPressEvent(QKeyEvent *e)
 {
-    //qDebug() << "A" << currWorkingMap->m_containingCharacters.empty();
-    if (currWorkingMap->m_containingCharacters.empty())
+    if (!activeMapsisEmpty())
     {
-        QMessageBox::critical(this,"Error!","Nothing to move!");
-    }
-    else
-    {
-        //if ((e->key() == Qt::Key_Up) || (e->key() == Qt::Key_Down) || (e->key() == Qt::Key_Left) || (e->key() == Qt::Key_Right))
+        if (currWorkingMap->m_containingCharacters.empty())
         {
-            int coordX = currWorkingChar->getCoordinateX();
-            int coordY = currWorkingChar->getCoordinateY();
+            QMessageBox::critical(this,"Error!","Nothing to move!");
+        }
+        else
+        {
+            if ((e->key() == Qt::Key_W) || (e->key() == Qt::Key_S) || (e->key() == Qt::Key_A) || (e->key() == Qt::Key_D))
+            {
+                int coordX = currWorkingChar->getCoordinateX();
+                int coordY = currWorkingChar->getCoordinateY();
 
-            if (e->key() == Qt::Key_W) // Up
-            {
-                if (coordX > 0)
-                {
-                    coordX--;
-                }
-            }
-            else if (e->key() == Qt::Key_S) // Down
-            {
-                if (coordX < 49)
-                {
-                    coordX++;
-                }
-            }
-            else if (e->key() == Qt::Key_A) // Left
-            {
-                if (coordY > 0)
-                {
-                    coordY--;
-                }
-            }
-            else if (e->key() == Qt::Key_D) // Right
-            {
-                if (coordY < 49)
-                {
-                    coordY++;
-                }
-            }
-            if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen() )
-            {
-                // Sound effect KAPPA
-            }
-            else
-            {
-                //qDebug() <<  coordX << coordY;
+                directionalMovement = 1;
 
-               diceobuSystemCore("3",coordX,coordY);
-            }
+                if (e->key() == Qt::Key_W) // Up
+                {
+                    if (coordX > 0)
+                    {
+                        coordX--;
+                    }
+                }
+                else if (e->key() == Qt::Key_S) // Down
+                {
+                    if (coordX < 49)
+                    {
+                        coordX++;
+                    }
+                }
+                else if (e->key() == Qt::Key_A) // Left
+                {
+                    if (coordY > 0)
+                    {
+                        coordY--;
+                    }
+                }
+                else if (e->key() == Qt::Key_D) // Right
+                {
+                    if (coordY < 49)
+                    {
+                        coordY++;
+                    }
+                }
+                if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen() )
+                {
+                    // Sound effect KAPPA
+                }
+                else
+                {
+                    //qDebug() <<  coordX << coordY;
 
-       }
+                   diceobuSystemCore("3",coordX,coordY);
+                }
+
+           }
+        }
     }
 }
 
@@ -411,5 +448,17 @@ void LobbyWindow::on_pushButton_Grid_toggled(bool checked)
 
 void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
 {
-    //qDebug() << ui->comboBox_Maps->itemData(ui->comboBox_Maps->currentData());
+    QStringList tempQSList;
+    tempQSList = ui->comboBox_Maps->currentText().split(" ");
+	targetMapID = tempQSList.at(0).toInt();
+	diceobuSystemCore("13");
+	//jumpToMap(tempQSList.at(0).toInt());
+}
+
+void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
+{
+    QStringList tempQSList;
+    tempQSList = ui->comboBox_Characters->currentText().split(" ");
+    targetCharacterID = tempQSList.at(0).toInt();
+    diceobuSystemCore("14");
 }

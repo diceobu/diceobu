@@ -7,6 +7,7 @@
 #include "mainuiclass.h"
 #include "charcreatewindow.h"
 #include "movewindow.h"
+#include "mapcreatewindow.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -27,6 +28,8 @@ private:
     Ui::LobbyWindow *ui;
     CharCreateWindow *charCreateWindow;
     MoveWindow *moveWindow;
+    MapCreateWindow *mapCreateWindow;
+
     void updateLists();
 protected:
   //  void paintEvent(QPaintEvent *e);
@@ -49,8 +52,15 @@ private slots:
     void keyPressEvent (QKeyEvent *e);
     void on_pushButton_Grid_toggled(bool checked);
     void on_comboBox_Maps_activated(const QString &arg1);
+    void on_comboBox_Characters_activated(const QString &arg1);
 };
 
 extern MainUIClass *mui;
+
+extern int targetMapID;
+extern int targetCharacterID;
+
+extern int directionalMovement;
+
 
 #endif // LOBBYWINDOW_H

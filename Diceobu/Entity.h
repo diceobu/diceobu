@@ -62,5 +62,5 @@ public:
 	void setCoordinateX(const int coordinateX)					{ m_coordinates.first = coordinateX; }
 	void setCoordinateY(const int coordinateY)					{ m_coordinates.second = coordinateY; }
 //	Others
-	void changeEntityPosition(Map* &currMap, const std::pair<int, int> &coordinates);
+	void changeEntityPosition(Map* &currMap, Map* &targetMap, const std::pair<int, int> &coordinates);
 };

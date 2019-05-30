@@ -74,7 +74,7 @@ public:
     QPushButton *pushButton_nextCharacter;
     QSpacerItem *horizontalSpacer_4;
     QComboBox *comboBox_Maps;
-    QComboBox *comboBox_2;
+    QComboBox *comboBox_Characters;
     QPushButton *pushButton_Grid;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -514,10 +514,10 @@ public:
 
         comboBox_Maps = new QComboBox(centralwidget);
         comboBox_Maps->setObjectName(QString::fromUtf8("comboBox_Maps"));
-        comboBox_Maps->setGeometry(QRect(860, 350, 201, 51));
-        comboBox_2 = new QComboBox(centralwidget);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(1040, 290, 72, 22));
+        comboBox_Maps->setGeometry(QRect(800, 350, 151, 31));
+        comboBox_Characters = new QComboBox(centralwidget);
+        comboBox_Characters->setObjectName(QString::fromUtf8("comboBox_Characters"));
+        comboBox_Characters->setGeometry(QRect(1020, 350, 81, 31));
         pushButton_Grid = new QPushButton(centralwidget);
         pushButton_Grid->setObjectName(QString::fromUtf8("pushButton_Grid"));
         pushButton_Grid->setGeometry(QRect(20, 840, 101, 31));
@@ -552,7 +552,7 @@ public:
         pushButton_5->raise();
         layoutWidget->raise();
         comboBox_Maps->raise();
-        comboBox_2->raise();
+        comboBox_Characters->raise();
         pushButton_Grid->raise();
         menubar = new QMenuBar(LobbyWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -610,8 +610,8 @@ public:
         QWidget::setTabOrder(tableWidget_2, pushButton_nextMap);
         QWidget::setTabOrder(pushButton_nextMap, pushButton_nextCharacter);
         QWidget::setTabOrder(pushButton_nextCharacter, comboBox_Maps);
-        QWidget::setTabOrder(comboBox_Maps, comboBox_2);
-        QWidget::setTabOrder(comboBox_2, pushButton_Grid);
+        QWidget::setTabOrder(comboBox_Maps, comboBox_Characters);
+        QWidget::setTabOrder(comboBox_Characters, pushButton_Grid);
         QWidget::setTabOrder(pushButton_Grid, pushButton);
 
         menubar->addAction(menuFile->menuAction());

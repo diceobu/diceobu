@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -24,7 +25,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MoveWindow
 {
 public:
-    QHBoxLayout *horizontalLayout_6;
+    QHBoxLayout *horizontalLayout_7;
     QSpacerItem *horizontalSpacer_3;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
@@ -32,6 +33,9 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_spawnat;
     QSpacerItem *horizontalSpacer;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_spawnat_2;
+    QComboBox *comboBox_Maps_Move;
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_x;
@@ -48,12 +52,12 @@ public:
     {
         if (MoveWindow->objectName().isEmpty())
             MoveWindow->setObjectName(QString::fromUtf8("MoveWindow"));
-        MoveWindow->resize(250, 131);
-        horizontalLayout_6 = new QHBoxLayout(MoveWindow);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        MoveWindow->resize(241, 170);
+        horizontalLayout_7 = new QHBoxLayout(MoveWindow);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         horizontalSpacer_3 = new QSpacerItem(47, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_6->addItem(horizontalSpacer_3);
+        horizontalLayout_7->addItem(horizontalSpacer_3);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -83,6 +87,28 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_4);
 
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        label_spawnat_2 = new QLabel(MoveWindow);
+        label_spawnat_2->setObjectName(QString::fromUtf8("label_spawnat_2"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_spawnat_2->setFont(font1);
+
+        horizontalLayout_6->addWidget(label_spawnat_2);
+
+        comboBox_Maps_Move = new QComboBox(MoveWindow);
+        comboBox_Maps_Move->setObjectName(QString::fromUtf8("comboBox_Maps_Move"));
+        comboBox_Maps_Move->setMinimumSize(QSize(120, 0));
+
+        horizontalLayout_6->addWidget(comboBox_Maps_Move);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_2 = new QHBoxLayout();
@@ -107,11 +133,6 @@ public:
         field_x->setMinimumSize(QSize(30, 25));
         field_x->setMaximumSize(QSize(30, 25));
         field_x->setBaseSize(QSize(40, 0));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
         field_x->setFont(font1);
         field_x->setClearButtonEnabled(false);
 
@@ -174,11 +195,11 @@ public:
         verticalLayout_2->addLayout(horizontalLayout);
 
 
-        horizontalLayout_6->addLayout(verticalLayout_2);
+        horizontalLayout_7->addLayout(verticalLayout_2);
 
         horizontalSpacer_4 = new QSpacerItem(47, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_6->addItem(horizontalSpacer_4);
+        horizontalLayout_7->addItem(horizontalSpacer_4);
 
 #ifndef QT_NO_SHORTCUT
         label_x->setBuddy(field_y);
@@ -194,6 +215,7 @@ public:
     {
         MoveWindow->setWindowTitle(QApplication::translate("MoveWindow", "Dialog", nullptr));
         label_spawnat->setText(QApplication::translate("MoveWindow", "Move to:", nullptr));
+        label_spawnat_2->setText(QApplication::translate("MoveWindow", "Map:", nullptr));
         label_x->setText(QApplication::translate("MoveWindow", "X :", nullptr));
         label_y->setText(QApplication::translate("MoveWindow", "Y :", nullptr));
         pushButton_confirm->setText(QApplication::translate("MoveWindow", "Confirm", nullptr));

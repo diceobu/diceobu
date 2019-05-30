@@ -135,6 +135,9 @@
     <ClCompile Include="mainuiclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mapcreatewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="mapwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -227,6 +230,9 @@
     <QtMoc Include="mainuiclass.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="mapcreatewindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="mapwidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -235,6 +241,8 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
     
     
     
@@ -264,6 +272,9 @@
     <ClInclude Include="ui_loginwindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_mapcreatewindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="ui_mapwidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -281,6 +292,9 @@
     <QtUic Include="loginwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="mapcreatewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="mapwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -296,6 +310,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="fonts\ImperatorSmallCaps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\Wizard.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\add-folder.png">
@@ -346,10 +363,13 @@
     <None Include="img\grass3.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="map-instance.dat">
+    <None Include="map-Castle_of_Belithriel.dat">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="map-terrain.dat">
+    <None Include="map-Woods_of_Oblivion.dat">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="map-instance.dat">
       <Filter>Resource Files</Filter>
     </None>
     <QtRcc Include="resources.qrc">

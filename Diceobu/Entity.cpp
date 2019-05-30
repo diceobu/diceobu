@@ -7,6 +7,7 @@
 //	User Libraries
 #include "Entity.h"
 #include "Map.h"
+#include "mainDependancies.h"
 //	Standard Libraries
 #include <string>
 #include <utility>
@@ -27,11 +28,16 @@ Entity::Entity(	const std::string			&name,			const int	&hitPoints,
 	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
 }
 //	Others
-void Entity::changeEntityPosition(Map* &currMap, const std::pair<int, int> &coordinates)
+void Entity::changeEntityPosition(Map* &currMap, Map* &targetMap, const std::pair<int, int> &coordinates)
 {
 	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupied(false);
 	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupantID(-1);
+	currMap->m_containingCharacters.remove(currWorkingChar->getEntityID());
+
 	setCoordinates(coordinates);
-	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupied(true);
-	currMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
+
+	targetMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupied(true);
+	targetMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
+	targetMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
+
 }

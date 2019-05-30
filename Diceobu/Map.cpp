@@ -9,14 +9,19 @@
 #include "Tile.h"
 #include "GameData.h"
 #include "GlobalVariables.h"
+#include "mapcreatewindow.h"
 //	Standard Libraries
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <array>
 #include <cstdlib>
-
+#include <iterator>
+#include <mainDependancies.h>
+#include <Character.h>
 #include <QDebug>
+#include <list>
+
 //	Constructors
 Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 		 const int			&mapID,		const std::string	&mapEffects)
@@ -42,7 +47,7 @@ Map::Map(const std::string	&mapName,	const int			&sizeX,			const int	&sizeY,
 //	Others
 void Map::initializeMapTiles_File()
 {
-	std::ifstream inFile("map-terrain.dat");
+    std::ifstream inFile(mapFilepath);
 	char tempChar;
 	int i{ -1 };
 	int j{ -1 };
@@ -57,7 +62,7 @@ void Map::initializeMapTiles_File()
 		}
 		else if (tempChar == 'r')
 		{
-			m_tileGrid[i][j] = new Tile(tileIDCounter++, "rock", "none", true, false, -1);
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "rock", "none", false, false, -1);
 		}
 		else if (tempChar == 's')
 		{
@@ -65,8 +70,20 @@ void Map::initializeMapTiles_File()
 		}
 		else if (tempChar == 'w')
 		{
-			m_tileGrid[i][j] = new Tile(tileIDCounter++, "water", "none", true, false, -1);
+            m_tileGrid[i][j] = new Tile(tileIDCounter++, "water", "none", false, false, -1);
 		}
+		else if (tempChar == '$')
+		{
+			m_tileGrid[i][j] = new Tile(tileIDCounter++, "soulsand", "none", true, false, -1);
+		}
+        else if (tempChar == 'f')
+        {
+            m_tileGrid[i][j] = new Tile(tileIDCounter++, "floor", "none", true, false, -1);
+        }
+		//else if (tempChar == 'r')
+		//{
+		//	m_tileGrid[i][j] = new Tile(tileIDCounter++, "rock", "none", true, false, -1);
+		//}
 		else if (tempChar == ' ')
 		{
 			m_tileGrid[i][j] = new Tile(tileIDCounter++, "none", "none", false, false, -1);
@@ -86,7 +103,7 @@ void Map::initializeMapTiles_File()
 		}
 		else
 		{
-			std::cout << "error: incorrect map file format";
+            //std::cout << "error: incorrect map file format";
 			exit(1);
 		}
 		j++;
@@ -110,37 +127,125 @@ void Map::initializeMapTiles_Cont()
 
 char Map::getTileSymbol(Tile &currTile)
 {
-    // qDebug() << "map 113 GTS///";
-
 	char tileSymbol{};
-	if (currTile.getOpen())
-	{
-		if (currTile.getOccupied())
-		{
-			tileSymbol = 'x';
-		}
-		else
-		{
-			if (currTile.getTileEffects() == "none")
-			{
-				if (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
-				else if (currTile.getTerrainType() == "grass")	tileSymbol = 'g';
-				else if (currTile.getTerrainType() == "rock")	tileSymbol = 'r';
-				else if (currTile.getTerrainType() == "sand")	tileSymbol = 's';
-				else if (currTile.getTerrainType() == "water")	tileSymbol = 'w';
-			}
-			else if (currTile.getTileEffects() == "fire")		tileSymbol = 'f';
-			else if (currTile.getTileEffects() == "ice")		tileSymbol = 'i';
-		}
-	}
-	else
-	{
-		tileSymbol = ' ';
-	}
-    // qDebug() << "map 140 GTSS///";
 
-	return tileSymbol;
+    if      (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
+    else if (currTile.getTerrainType() == "grass")		tileSymbol = 'g';
+    else if (currTile.getTerrainType() == "rock")		tileSymbol = 'r';
+    else if (currTile.getTerrainType() == "sand")		tileSymbol = 's';
+    else if (currTile.getTerrainType() == "water")		tileSymbol = 'w';
+	else if (currTile.getTerrainType() == "soulsand")	tileSymbol = '$';
+    else if (currTile.getTerrainType() == "floor")      tileSymbol = 'f';
+    else if (currTile.getTerrainType() == "none")       tileSymbol = ' ';
+
+    if (currTile.getOccupied())
+    {
+        Character* currCharacter;
+        int occuID;
+        std::string currClass;
+        std::list <Character*> :: iterator iter;
+        std::list <Character*> tempCharList;
+        tempCharList = getActiveCharacters();
+
+        for (iter = tempCharList.begin(); iter != tempCharList.end(); iter++)
+        {
+            currCharacter = *iter;
+            occuID = currTile.getOccupantID();
+            if (currCharacter->getEntityID() == occuID)
+            {
+                currClass = currCharacter->getCClass();
+                break;
+            }
+        }
+        if (currClass == "Wizard")
+        {
+            tileSymbol = 'W';
+        }
+        else if (currClass == "Fighter")
+        {
+            tileSymbol = 'F';
+        }
+        else if (currClass == "Rogue")
+        {
+            tileSymbol = 'R';
+        }
+        else if (currClass == "Ranger")
+        {
+            tileSymbol = 'B'; // Bow LOL
+        }
+    }
+    return tileSymbol;
 }
+
+
+//    if (currTile.getOpen())
+//	{
+//		if (currTile.getOccupied())
+//        {
+//            Character* currChar;
+//            std::string currClass = "Wizard";
+//            int occuID = -1 ;
+////            tileSymbol = 'x';
+//           // if (currTile.getOccupantID())
+//            qDebug() << "Occupied by ID:" << QString::number(currTile.getOccupantID());
+//            std::list <Character*> :: iterator iter;
+//            //for (iter = getActiveCharacters().begin(); iter != getActiveCharacters().end(); iter++)
+//            //{
+//            //    currChar = *iter;
+//            //    occuID = currTile.getOccupantID();
+//            //    if (currChar->getEntityID() == occuID)
+//            //    {
+//            //        currClass = currChar->getCClass();
+//            //        qDebug() << "Map128 ID is" << QString::number(currChar->getEntityID()) << QString::number(occuID) << "Class is " << QString::fromStdString(currClass);
+//            //    }
+//            //}
+
+//            qDebug() << "Map139 ID is" << QString::number(currChar->getEntityID()) << QString::number(occuID) << "Class is " << QString::fromStdString(currClass);
+
+//            if (currClass == "Wizard")
+//            {
+//                tileSymbol = 'W';
+//            }
+//            else if (currClass == "Fighter")
+//            {
+//                tileSymbol = 'F';
+//            }
+//            else if (currClass == "Rogue")
+//            {
+//                tileSymbol = 'R';
+//            }
+//            else if (currClass == "Ranger")
+//            {
+//                tileSymbol = 'B'; // Bow LOL
+//            }
+//            qDebug() << "Map148";
+//        }
+//		else
+//		{
+//            qDebug() << "map179" << QString::fromStdString(mapName) << QString::fromStdString(mapFilepath);
+
+//			if (currTile.getTileEffects() == "none")
+//			{
+//				if      (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
+//				else if (currTile.getTerrainType() == "grass")		tileSymbol = 'g';
+//				else if (currTile.getTerrainType() == "rock")		tileSymbol = 'r';
+//				else if (currTile.getTerrainType() == "sand")		tileSymbol = 's';
+//				else if (currTile.getTerrainType() == "water")		tileSymbol = 'w';
+//				else if (currTile.getTerrainType() == "soulsand")	tileSymbol = '$';
+
+//			}
+//			else if (currTile.getTileEffects() == "fire")		tileSymbol = 'f';
+//			else if (currTile.getTileEffects() == "ice")		tileSymbol = 'i';
+//		}
+//	}
+//	else
+//	{
+//		tileSymbol = ' ';
+//	}
+//     //qDebug() << "map 140 GTSS///";
+
+//	return tileSymbol;
+//}
 
 char Map::getTerrainTileSymbol(Tile &currTile)
 {
@@ -152,6 +257,8 @@ char Map::getTerrainTileSymbol(Tile &currTile)
 		else if (currTile.getTerrainType() == "rock")	tileSymbol = 'r';
 		else if (currTile.getTerrainType() == "sand")	tileSymbol = 's';
 		else if (currTile.getTerrainType() == "water")	tileSymbol = 'w';
+		else if (currTile.getTerrainType() == "soulsand")	tileSymbol = '$';
+
 	}
 	else
 	{
@@ -172,7 +279,8 @@ void Map::writeTerrainMap()
 		for (int j = 0; j < mapSize; j++)
 		{
 			outFile << getTerrainTileSymbol(*m_tileGrid[i][j]);
-			if (j == 49)	outFile << '#' << '\n';
+
+            if (j == 49)	outFile << '#' << '\n';
 		}
 	}
 	for (int i = 0; i < mapSize + 2; i++)	outFile << '#';
@@ -193,7 +301,6 @@ void Map::writeMap()
 		for (int j = 0; j < mapSize; j++)
 		{
             // qDebug() << "map 191///"<< i << j;
-
 			outFile << getTileSymbol(*m_tileGrid[i][j]);
             if (j == mapSize - 1)	outFile << '#' << '\n';
 		}

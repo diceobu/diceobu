@@ -82,6 +82,9 @@ bool activeCharactersisEmpty();
 
 bool activeMapsisEmpty();
 
+void jumpToMap(const int &targetMapID);
+
+
 //    it's a feature bix
 
 extern Map* currWorkingMap;
