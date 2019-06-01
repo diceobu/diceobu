@@ -93,3 +93,7 @@ extern Map* currWorkingMap;
 extern Character* currWorkingChar;
 
 extern int muteLog;
+
+extern bool inCombat;
+
+extern bool inCombatTemp;

@@ -12,6 +12,7 @@
 
 #include <QDebug>
 #include <QKeyEvent>
+#include <QListWidget>
 
 namespace Ui {
 class LobbyWindow;
@@ -60,6 +61,9 @@ private slots:
     void on_pushButton_Character_Details_clicked();
     void on_actionSaveCharacter_triggered();
     void on_actionLoadCharacter_triggered();
+    void on_pushButton_Engage_Combat_clicked();
+    void on_pushButton_Engage_Combat_toggled(bool checked);
+    void on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item);
 };
 
 extern MainUIClass *mui;

@@ -75,117 +75,13 @@ color: white;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>10</y>
-      <width>182</width>
-      <height>222</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_5">
-     <property name="spacing">
-      <number>20</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="pushButton_Character_Details">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 18pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-
-
-QPushButton:pressed{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
-font: 75 22pt &quot;ImperatorSmallCaps&quot;;
-border-color: black;
-border-width: 1px;
-border-radius: 10px;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>Character
-Details</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 24pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-
-
-QPushButton:pressed{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
-border-color: black;
-border-width: 1px;
-border-radius: 10px;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>Spells</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>1170</x>
+      <x>1160</x>
       <y>10</y>
-      <width>251</width>
-      <height>631</height>
+      <width>261</width>
+      <height>361</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -210,7 +106,7 @@ color: black;
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>251</width>
+       <width>261</width>
        <height>60</height>
       </rect>
      </property>
@@ -240,7 +136,7 @@ color: white;
     <property name="geometry">
      <rect>
       <x>920</x>
-      <y>270</y>
+      <y>90</y>
       <width>121</width>
       <height>61</height>
      </rect>
@@ -297,10 +193,10 @@ color: white;
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>250</y>
+      <x>800</x>
+      <y>190</y>
       <width>80</width>
-      <height>21</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -404,427 +300,6 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>430</y>
-      <width>275</width>
-      <height>168</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="minimumSize">
-          <size>
-           <width>129</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
-font: 75 14pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: white;
-}</string>
-         </property>
-         <property name="text">
-          <string>Current 
- Map</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_currMap">
-         <property name="minimumSize">
-          <size>
-           <width>129</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>ImperatorSmallCaps</family>
-           <pointsize>14</pointsize>
-           <weight>9</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 14pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_7">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>15</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_nextMap">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>99</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: rgb(50,50,50);
-font: 75 14pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius:5px;
-color: white;
-}
-
-QPushButton:pressed{
-background-color: rgb(24,24,24);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 1px;
-border-radius:5px;
-color: white;
-}</string>
-           </property>
-           <property name="text">
-            <string>&gt;&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>15</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="minimumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: white;
-}</string>
-         </property>
-         <property name="text">
-          <string>Current 
- Character</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_currChar">
-         <property name="minimumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>ImperatorSmallCaps</family>
-           <pointsize>14</pointsize>
-           <weight>9</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 14pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>15</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_nextCharacter">
-           <property name="minimumSize">
-            <size>
-             <width>100</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: rgb(50,50,50);
-font: 75 14pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius:5px;
-color: white;
-}
-
-QPushButton:pressed{
-background-color: rgb(24,24,24);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 1px;
-border-radius:5px;
-color: white;
-}</string>
-           </property>
-           <property name="text">
-            <string>&gt;&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>15</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QComboBox" name="comboBox_Maps">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>350</y>
-      <width>271</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-background-color: rgb(45, 45, 45);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: rgb(88, 88, 88);
-border-width: 1px;
-border-radius: 2px;
-color: rgb(220, 220, 220);
-
-}
-
-</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox_Characters">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>390</y>
-      <width>271</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-background-color: rgb(45, 45, 45);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: rgb(88, 88, 88);
-border-width: 1px;
-border-radius: 2px;
-color: rgb(220, 220, 220);
-
-}
-
-</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_Grid">
     <property name="geometry">
      <rect>
@@ -865,7 +340,675 @@ border-radius: 10px;
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>layoutWidget</zorder>
+   <widget class="QPushButton" name="pushButton_Engage_Combat">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>840</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+
+QPushButton:checked{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(170,170,170), stop:1 grey);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-color: black;
+border-width: 1px;
+border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Engage Combat</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_Powers">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>350</y>
+      <width>211</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+    </property>
+    <property name="title">
+     <string>Powers</string>
+    </property>
+    <widget class="QListWidget" name="listWidget_Powers_Lobby">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>191</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QListWidget{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Combat_Status">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>280</y>
+      <width>180</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>180</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 18pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+
+QPushButton:pressed{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
+font: 75 22pt &quot;ImperatorSmallCaps&quot;;
+border-color: black;
+border-width: 1px;
+border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Combat
+Status</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_NextUp">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>170</y>
+      <width>181</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+    </property>
+    <property name="title">
+     <string>Next up</string>
+    </property>
+    <widget class="QListWidget" name="listWidget_NextUp">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QListWidget{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Character_Details">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>10</y>
+      <width>180</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>180</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 18pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+
+QPushButton:pressed{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 grey);
+font: 75 22pt &quot;ImperatorSmallCaps&quot;;
+border-color: black;
+border-width: 1px;
+border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Character
+Details</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1150</x>
+      <y>380</y>
+      <width>277</width>
+      <height>244</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="minimumSize">
+            <size>
+             <width>129</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string>Current 
+ Map</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_currMap">
+           <property name="minimumSize">
+            <size>
+             <width>129</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>ImperatorSmallCaps</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_7">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>15</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_nextMap">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>99</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: rgb(50,50,50);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius:5px;
+color: white;
+}
+
+QPushButton:pressed{
+background-color: rgb(24,24,24);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 1px;
+border-radius:5px;
+color: white;
+}</string>
+             </property>
+             <property name="text">
+              <string>&gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_6">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>15</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string>Current 
+ Character</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_currChar">
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>ImperatorSmallCaps</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>15</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_nextCharacter">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: rgb(50,50,50);
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius:5px;
+color: white;
+}
+
+QPushButton:pressed{
+background-color: rgb(24,24,24);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 1px;
+border-radius:5px;
+color: white;
+}</string>
+             </property>
+             <property name="text">
+              <string>&gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>15</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QComboBox" name="comboBox_Maps">
+         <property name="minimumSize">
+          <size>
+           <width>271</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox{
+background-color: rgb(45, 45, 45);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 2px;
+color: rgb(220, 220, 220);
+
+}
+
+</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_Characters">
+         <property name="minimumSize">
+          <size>
+           <width>271</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox{
+background-color: rgb(45, 45, 45);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: rgb(88, 88, 88);
+border-width: 1px;
+border-radius: 2px;
+color: rgb(220, 220, 220);
+
+}
+
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <zorder>pushButton_Character_Details</zorder>
    <zorder>label</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>groupBox</zorder>
@@ -874,9 +1017,11 @@ border-radius: 10px;
    <zorder>tableWidget</zorder>
    <zorder>pushButton_5</zorder>
    <zorder>layoutWidget</zorder>
-   <zorder>comboBox_Maps</zorder>
-   <zorder>comboBox_Characters</zorder>
    <zorder>pushButton_Grid</zorder>
+   <zorder>pushButton_Engage_Combat</zorder>
+   <zorder>groupBox_Powers</zorder>
+   <zorder>pushButton_Combat_Status</zorder>
+   <zorder>groupBox_NextUp</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1097,7 +1242,6 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
  </customwidgets>
  <tabstops>
   <tabstop>tableWidget</tabstop>
-  <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_Move</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>tableWidget_2</tabstop>

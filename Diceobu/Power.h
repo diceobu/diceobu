@@ -18,14 +18,14 @@ class Power
 //	Member Variables
 protected:
 	std::string m_name;
-	int			m_levelReq;
-	std::string m_ofClass;
-	std::string m_description;
-	int			m_range;
-	std::string m_damageType;
-	bool		m_cMaterial;
-	int			m_materialList;
-	std::string m_aoe;
+	int			m_levelReq{ 0 };
+	std::string m_ofClass{ "none" };
+	std::string m_description{ "LOL" };
+	int			m_range{ 50 };
+	std::string m_damageType{ "Dark" };
+	bool		m_cMaterial{ "none" };
+	int			m_materialList{0};
+	std::string m_aoe{ "none" };
 //	Member Functions
 public:
 //	Constructors
