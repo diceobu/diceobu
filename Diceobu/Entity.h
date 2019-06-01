@@ -41,7 +41,7 @@ public:
 //	Getters
 	const std::string			getName()			{ return m_name; }
 	const int					getmaxHitPoints()	{ return m_maxHitPoints; }
-	const int					getcurrHitPoints()	{ return m_currHitPoints; }
+	const int					getCurrHitPoints()	{ return m_currHitPoints; }
 	const int					getOverheal()		{ return m_overheal; }
 	const int					getArmorClass()		{ return m_armorClass; }
 	const std::string			getSize()			{ return m_size; }
@@ -55,7 +55,7 @@ public:
 //	Setters
 	void setName(const std::string &name)						{ m_name = name; }
 	void setmaxHitPoints(const int &maxHitPoints)				{ m_maxHitPoints = maxHitPoints; }
-	void setcurrHitPoints(const int &currHitPoints)				{ m_currHitPoints = currHitPoints; }
+	void setCurrHitPoints(const int &currHitPoints)				{ m_currHitPoints = currHitPoints; }
 	void setOverheal(const int &overheal)						{ m_overheal = overheal; }
 	void setArmorClass(const int &armorClass)					{ m_armorClass = armorClass; }
 	void setSize(const std::string &size)						{ m_size = size; }

@@ -32,6 +32,12 @@ Entity::Entity(	const std::string			&name,
 //	Others
 void Entity::changeEntityPosition(Map* &currMap, Map* &targetMap, const std::pair<int, int> &coordinates)
 {
+	if (m_currHitPoints <= 0)
+	{
+		muteLog = 1;
+		emit mui->errorMessage(8);
+		return;
+	}
 	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupied(false);
 	currMap->m_tileGrid[m_coordinates.first][m_coordinates.second]->setOccupantID(-1);
 	currMap->m_containingCharacters.remove(currWorkingChar->getEntityID());
