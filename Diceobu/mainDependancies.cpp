@@ -27,8 +27,9 @@ static std::list<Map*> activeMaps;
 static std::list<Character*> activeCharacters;
 
 Map* currWorkingMap;
-
 Character* currWorkingChar;
+
+int muteLog = 0;
 //Character* currWorkingChar = new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
 //"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 
@@ -617,9 +618,12 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
                 emit mui->refreshCurrent();
                 currWorkingCharID = currWorkingChar->getEntityID();
                 currWorkingCharName = currWorkingChar->getName();
+
+                if (muteLog != 1)
+                {
                 emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
                                     previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
-
+                }
 			}
 		}
 	}

@@ -71,7 +71,7 @@ std::string getUserOption();
                        const std::string &cBackground, const int &cBalance, const int &cLevel, const int &coordX, const int &coordY;)*/
 
 
-void diceobuSystemCore(std::string input, const int &coordX = 0, const int &coordY = 0, const std::string &cName = "Adam",
+void diceobuSystemCore(std::string input, const int &coordX = 25, const int &coordY = 25, const std::string &cName = "Adam",
                        const std::string &cClass = "Fighter", const std::string &cRace = "Human", const std::string &cAlignment = "Neutral",
                        const std::string &cBackground = "Soldier", const int &cBalance = 0, const int &cLevel = 0);
 void simLaunch();
@@ -90,3 +90,5 @@ void jumpToMap(const int &targetMapID);
 extern Map* currWorkingMap;
 
 extern Character* currWorkingChar;
+
+extern int muteLog;

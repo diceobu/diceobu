@@ -34,12 +34,13 @@ QT_BEGIN_NAMESPACE
 class Ui_LobbyWindow
 {
 public:
-    QAction *actionSave;
     QAction *actionOptions;
     QAction *actionNewCharacter;
     QAction *actionDeleteCharacter;
     QAction *actionDeleteMap;
     QAction *actionNewMap;
+    QAction *actionLoadCharacter;
+    QAction *actionSaveCharacter;
     QWidget *centralwidget;
     QTableWidget *tableWidget_2;
     QLabel *label;
@@ -81,6 +82,8 @@ public:
     QMenu *menuNew;
     QMenu *menuClose;
     QMenu *menuDelete;
+    QMenu *menuLoad;
+    QMenu *menuSave;
 
     void setupUi(QMainWindow *LobbyWindow)
     {
@@ -91,21 +94,15 @@ public:
         icon.addFile(QString::fromUtf8(":/img/d20v2.png"), QSize(), QIcon::Normal, QIcon::Off);
         LobbyWindow->setWindowIcon(icon);
         LobbyWindow->setStyleSheet(QString::fromUtf8(""));
-        actionSave = new QAction(LobbyWindow);
-        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionOptions = new QAction(LobbyWindow);
+        actionOptions->setObjectName(QString::fromUtf8("actionOptions"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/diskette.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionSave->setIcon(icon1);
+        icon1.addFile(QString::fromUtf8(":/fonts/img/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOptions->setIcon(icon1);
         QFont font;
         font.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
         font.setBold(true);
         font.setWeight(75);
-        actionSave->setFont(font);
-        actionOptions = new QAction(LobbyWindow);
-        actionOptions->setObjectName(QString::fromUtf8("actionOptions"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/fonts/img/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionOptions->setIcon(icon2);
         actionOptions->setFont(font);
         actionNewCharacter = new QAction(LobbyWindow);
         actionNewCharacter->setObjectName(QString::fromUtf8("actionNewCharacter"));
@@ -122,11 +119,16 @@ public:
         actionNewMap = new QAction(LobbyWindow);
         actionNewMap->setObjectName(QString::fromUtf8("actionNewMap"));
         actionNewMap->setFont(font1);
+        actionLoadCharacter = new QAction(LobbyWindow);
+        actionLoadCharacter->setObjectName(QString::fromUtf8("actionLoadCharacter"));
+        actionSaveCharacter = new QAction(LobbyWindow);
+        actionSaveCharacter->setObjectName(QString::fromUtf8("actionSaveCharacter"));
         centralwidget = new QWidget(LobbyWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableWidget_2 = new QTableWidget(centralwidget);
         tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
         tableWidget_2->setGeometry(QRect(20, 70, 770, 770));
+        tableWidget_2->setFocusPolicy(Qt::NoFocus);
         tableWidget_2->setStyleSheet(QString::fromUtf8("QTableWidget{\n"
 "font: 75 30pt \"ImperatorSmallCaps\";\n"
 "background-color: gray;\n"
@@ -139,6 +141,7 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(25, 10, 761, 60));
+        label->setFocusPolicy(Qt::NoFocus);
         label->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);\n"
 "font: 75 30pt \"ImperatorSmallCaps\";\n"
@@ -152,6 +155,7 @@ public:
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(890, 10, 182, 222));
+        layoutWidget->setFocusPolicy(Qt::NoFocus);
         verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setSpacing(20);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
@@ -164,6 +168,7 @@ public:
         sizePolicy.setHeightForWidth(pushButton_Character_Details->sizePolicy().hasHeightForWidth());
         pushButton_Character_Details->setSizePolicy(sizePolicy);
         pushButton_Character_Details->setMinimumSize(QSize(180, 60));
+        pushButton_Character_Details->setFocusPolicy(Qt::NoFocus);
         pushButton_Character_Details->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 18pt \"ImperatorSmallCaps\";\n"
@@ -191,6 +196,7 @@ public:
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
         pushButton_2->setMinimumSize(QSize(180, 60));
+        pushButton_2->setFocusPolicy(Qt::NoFocus);
         pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 24pt \"ImperatorSmallCaps\";\n"
@@ -215,6 +221,7 @@ public:
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(1170, 10, 251, 631));
+        groupBox->setFocusPolicy(Qt::NoFocus);
         groupBox->setStyleSheet(QString::fromUtf8("QGroupBox{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0  rgba(128,128, 128), stop:1 rgba(64,64, 64));\n"
 "font: 75 24pt \"ImperatorSmallCaps\";\n"
@@ -227,6 +234,7 @@ public:
         label_2 = new QLabel(groupBox);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(0, 0, 251, 60));
+        label_2->setFocusPolicy(Qt::NoFocus);
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);\n"
 "font: 75 30pt \"ImperatorSmallCaps\";\n"
@@ -240,6 +248,7 @@ public:
         pushButton_Move = new QPushButton(centralwidget);
         pushButton_Move->setObjectName(QString::fromUtf8("pushButton_Move"));
         pushButton_Move->setGeometry(QRect(920, 270, 121, 61));
+        pushButton_Move->setFocusPolicy(Qt::NoFocus);
         pushButton_Move->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -273,9 +282,11 @@ public:
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setGeometry(QRect(790, 250, 80, 21));
+        pushButton_5->setFocusPolicy(Qt::NoFocus);
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(801, 650, 621, 221));
+        layoutWidget1->setFocusPolicy(Qt::NoFocus);
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -291,6 +302,7 @@ public:
         font2.setItalic(false);
         font2.setWeight(9);
         label_3->setFont(font2);
+        label_3->setFocusPolicy(Qt::NoFocus);
         label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 16pt \"ImperatorSmallCaps\";\n"
@@ -323,6 +335,7 @@ public:
         layoutWidget2 = new QWidget(centralwidget);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
         layoutWidget2->setGeometry(QRect(840, 430, 275, 168));
+        layoutWidget2->setFocusPolicy(Qt::NoFocus);
         horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -332,6 +345,7 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setMinimumSize(QSize(129, 60));
         label_4->setMaximumSize(QSize(130, 60));
+        label_4->setFocusPolicy(Qt::NoFocus);
         label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -356,6 +370,7 @@ public:
         font3.setItalic(false);
         font3.setWeight(9);
         label_currMap->setFont(font3);
+        label_currMap->setFocusPolicy(Qt::NoFocus);
         label_currMap->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -388,6 +403,7 @@ public:
         pushButton_nextMap->setSizePolicy(sizePolicy1);
         pushButton_nextMap->setMinimumSize(QSize(99, 30));
         pushButton_nextMap->setMaximumSize(QSize(100, 30));
+        pushButton_nextMap->setFocusPolicy(Qt::NoFocus);
         pushButton_nextMap->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(50,50,50);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -426,6 +442,7 @@ public:
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setMinimumSize(QSize(130, 60));
         label_5->setMaximumSize(QSize(130, 60));
+        label_5->setFocusPolicy(Qt::NoFocus);
         label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 black, stop:1 gray);\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -444,6 +461,7 @@ public:
         label_currChar->setMinimumSize(QSize(130, 60));
         label_currChar->setMaximumSize(QSize(130, 60));
         label_currChar->setFont(font3);
+        label_currChar->setFocusPolicy(Qt::NoFocus);
         label_currChar->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -471,6 +489,7 @@ public:
         pushButton_nextCharacter->setObjectName(QString::fromUtf8("pushButton_nextCharacter"));
         pushButton_nextCharacter->setMinimumSize(QSize(100, 20));
         pushButton_nextCharacter->setMaximumSize(QSize(100, 30));
+        pushButton_nextCharacter->setFocusPolicy(Qt::NoFocus);
         pushButton_nextCharacter->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(50,50,50);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -506,6 +525,7 @@ public:
         comboBox_Maps = new QComboBox(centralwidget);
         comboBox_Maps->setObjectName(QString::fromUtf8("comboBox_Maps"));
         comboBox_Maps->setGeometry(QRect(840, 350, 271, 30));
+        comboBox_Maps->setFocusPolicy(Qt::NoFocus);
         comboBox_Maps->setStyleSheet(QString::fromUtf8("QComboBox{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -521,6 +541,7 @@ public:
         comboBox_Characters = new QComboBox(centralwidget);
         comboBox_Characters->setObjectName(QString::fromUtf8("comboBox_Characters"));
         comboBox_Characters->setGeometry(QRect(840, 390, 271, 30));
+        comboBox_Characters->setFocusPolicy(Qt::NoFocus);
         comboBox_Characters->setStyleSheet(QString::fromUtf8("QComboBox{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -536,6 +557,7 @@ public:
         pushButton_Grid = new QPushButton(centralwidget);
         pushButton_Grid->setObjectName(QString::fromUtf8("pushButton_Grid"));
         pushButton_Grid->setGeometry(QRect(20, 840, 101, 31));
+        pushButton_Grid->setFocusPolicy(Qt::NoFocus);
         pushButton_Grid->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 10pt \"ImperatorSmallCaps\";\n"
@@ -613,6 +635,10 @@ public:
         menuClose->setObjectName(QString::fromUtf8("menuClose"));
         menuDelete = new QMenu(menuFile);
         menuDelete->setObjectName(QString::fromUtf8("menuDelete"));
+        menuLoad = new QMenu(menuFile);
+        menuLoad->setObjectName(QString::fromUtf8("menuLoad"));
+        menuSave = new QMenu(menuFile);
+        menuSave->setObjectName(QString::fromUtf8("menuSave"));
         LobbyWindow->setMenuBar(menubar);
 #ifndef QT_NO_SHORTCUT
         label_3->setBuddy(system_log);
@@ -630,7 +656,8 @@ public:
         menubar->addAction(menuFile->menuAction());
         menuFile->addAction(menuOpen->menuAction());
         menuFile->addAction(menuNew->menuAction());
-        menuFile->addAction(actionSave);
+        menuFile->addAction(menuSave->menuAction());
+        menuFile->addAction(menuLoad->menuAction());
         menuFile->addAction(menuDelete->menuAction());
         menuFile->addAction(menuClose->menuAction());
         menuFile->addSeparator();
@@ -639,6 +666,8 @@ public:
         menuNew->addAction(actionNewCharacter);
         menuDelete->addAction(actionDeleteMap);
         menuDelete->addAction(actionDeleteCharacter);
+        menuLoad->addAction(actionLoadCharacter);
+        menuSave->addAction(actionSaveCharacter);
 
         retranslateUi(LobbyWindow);
 
@@ -648,7 +677,6 @@ public:
     void retranslateUi(QMainWindow *LobbyWindow)
     {
         LobbyWindow->setWindowTitle(QApplication::translate("LobbyWindow", "Diceobu", nullptr));
-        actionSave->setText(QApplication::translate("LobbyWindow", "Save", nullptr));
         actionOptions->setText(QApplication::translate("LobbyWindow", "Options", nullptr));
         actionNewCharacter->setText(QApplication::translate("LobbyWindow", "Character", nullptr));
 #ifndef QT_NO_TOOLTIP
@@ -671,6 +699,20 @@ public:
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionNewMap->setShortcut(QApplication::translate("LobbyWindow", "M", nullptr));
+#endif // QT_NO_SHORTCUT
+        actionLoadCharacter->setText(QApplication::translate("LobbyWindow", "Character", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionLoadCharacter->setToolTip(QApplication::translate("LobbyWindow", "loadCharacter", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_SHORTCUT
+        actionLoadCharacter->setShortcut(QApplication::translate("LobbyWindow", "L", nullptr));
+#endif // QT_NO_SHORTCUT
+        actionSaveCharacter->setText(QApplication::translate("LobbyWindow", "Character", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSaveCharacter->setToolTip(QApplication::translate("LobbyWindow", "saveCharacter", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_SHORTCUT
+        actionSaveCharacter->setShortcut(QApplication::translate("LobbyWindow", "J", nullptr));
 #endif // QT_NO_SHORTCUT
         label->setText(QApplication::translate("LobbyWindow", "Game Map", nullptr));
         pushButton_Character_Details->setText(QApplication::translate("LobbyWindow", "Character\n"
@@ -701,6 +743,8 @@ public:
         menuNew->setTitle(QApplication::translate("LobbyWindow", "New...", nullptr));
         menuClose->setTitle(QApplication::translate("LobbyWindow", "Close", nullptr));
         menuDelete->setTitle(QApplication::translate("LobbyWindow", "Delete...", nullptr));
+        menuLoad->setTitle(QApplication::translate("LobbyWindow", "Load", nullptr));
+        menuSave->setTitle(QApplication::translate("LobbyWindow", "Save", nullptr));
     } // retranslateUi
 
 };

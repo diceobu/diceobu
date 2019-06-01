@@ -24,6 +24,8 @@
 #include <QKeyEvent>
 #include <QStringList>
 #include <QStyle>
+#include "charactersaves.h"
+#include <QFileDialog>
 
 
 static int window_width    =   1440;
@@ -67,6 +69,41 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
 LobbyWindow::~LobbyWindow()
 {
     delete ui;
+}
+
+
+
+void LobbyWindow::on_pushButton_5_clicked()
+{
+
+}
+
+void LobbyWindow::on_actionSaveCharacter_triggered()
+{
+    if (!activeCharactersisEmpty())
+    {
+        savePlayerCharacter();
+    }
+    else
+    {
+        emit mui->errorMessage(5);
+    }
+}
+
+void LobbyWindow::on_actionLoadCharacter_triggered()
+{
+    if (!activeMapsisEmpty())
+    {
+        QString saveFilePath = QFileDialog::getOpenFileName(this, tr("Choose a Player Character to load"),"saves","Character Files (*.pc)");
+        if (saveFilePath != "")
+        {
+        loadPlayerCharacter(saveFilePath.toStdString());
+        }
+    }
+    else
+    {
+        emit mui->errorMessage(1);
+    }
 }
 
 void LobbyWindow::on_actionNewCharacter_triggered()
@@ -119,13 +156,6 @@ void LobbyWindow::on_pushButton_Move_clicked()
 
 }
 
-
-void LobbyWindow::on_pushButton_5_clicked()
-{
-
-}
-
-
 void LobbyWindow::on_actionDeleteMap_triggered()
 {
     diceobuSystemCore("8");
@@ -154,9 +184,32 @@ void LobbyWindow::on_pushButton_nextCharacter_clicked()
     diceobuSystemCore("11");
 }
 
+void LobbyWindow::on_pushButton_Grid_toggled(bool checked)
+{
+    grid = checked;
+    displayCurrent();
+}
+
+void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
+{
+    QStringList tempQSList;
+    tempQSList = ui->comboBox_Maps->currentText().split(" ");
+    targetMapID = tempQSList.at(0).toInt();
+    diceobuSystemCore("13");
+}
+
+void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
+{
+    QStringList tempQSList;
+    tempQSList = ui->comboBox_Characters->currentText().split(" ");
+    targetCharacterID = tempQSList.at(0).toInt();
+    diceobuSystemCore("14");
+}
+
 void LobbyWindow::displayCurrent()
 {
-    //// // qDebug() << "was hereDISPLAY";
+    //currWorkingMap->writeMap();
+	initPixmapArray();
     if (activeMapsisEmpty())
     {
         ui->label_currMap->setText("None");
@@ -178,55 +231,7 @@ void LobbyWindow::displayCurrent()
     updateLists();
 }
 
-void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int currWorkingCharID, std::string currWorkingCharName,
-                                  Map* previousMap, std::string previousMapName, Character* previousCharacter,std::string previousCharacterName, int coordX,int coordY)
-{
-    if (input == "1")
-    {
-       ui->system_log->append(QString(">> Created Map [ID: %1] - %2.").arg(QString::number(this_currWorkingMap->getMapID()),
-                                                                         QString::fromStdString(this_currWorkingMap->getMapName())));
-    }
-    else if (input == "2")
-    {
-        ui->system_log->append(QString(">> Created Character [ID: %1] - %2 on Map [ID: %3] at {%4,%5}.").arg(QString::number(currWorkingCharID),
-                                                                                                             QString::fromStdString(currWorkingCharName),
-                                                                                                             QString::number(currWorkingMap->getMapID()),
-                                                                                                             QString::number(coordX),
-                                                                                                             QString::number(coordY)));
-    }
-    else if (input == "3")
-    {
-        ui->system_log->append(QString(">> Moved Character [ID: %1] - %2 on Map [ID: %3] to {%4,%5}.").arg(QString::number(currWorkingCharID),
-                                                                                                             QString::fromStdString(currWorkingCharName),
-                                                                                                             QString::number(currWorkingMap->getMapID()),
-                                                                                                             QString::number(coordX),
-                                                                                                             QString::number(coordY)));
-    }
-    else if (input == "8")
-    {
-        qDebug() << "mD 632 " << QString::number(previousMap->getMapID()) << QString::fromStdString(previousMap->getMapName());
 
-        ui->system_log->append(QString(">> Deleted Map [ID: %1] - %2.").arg(QString::number(previousMap->getMapID()),
-                                                                            QString::fromStdString(previousMapName)));
-    }
-    else if (input == "9")
-    {
-        ui->system_log->append(QString(">> Deleted Character [ID: %1] - %2.").arg(QString::number(previousCharacter->getEntityID()),
-                                                                                 QString::fromStdString(previousCharacterName)));
-    }
-    else if (input == "10" || input == "13")
-    {
-        ui->system_log->append(QString(">> Changed view from Map [ID: %1] to Map [ID: %2] - %3.").arg(QString::number(previousMap->getMapID()),
-                                                                                                      QString::number(currWorkingMap->getMapID()),
-                                                                                                      QString::fromStdString(currWorkingMap->getMapName())));
-    }
-    else if (input == "11" || input == "14")
-    {
-        ui->system_log->append(QString(">> Changed view from Character [ID: %1] to Character [ID: %2] - %3.").arg(QString::number(previousCharacter->getEntityID()),
-                                                                                                                  QString::number(currWorkingCharID),
-                                                                                                                  QString::fromStdString(currWorkingCharName)));
-    }
-}
 
 
 void LobbyWindow::updateLists(){
@@ -359,26 +364,66 @@ void LobbyWindow::keyPressEvent(QKeyEvent *e)
     }
 }
 
-void LobbyWindow::on_pushButton_Grid_toggled(bool checked)
+void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int currWorkingCharID, std::string currWorkingCharName,
+                                  Map* previousMap, std::string previousMapName, Character* previousCharacter,std::string previousCharacterName, int coordX,int coordY)
 {
-    grid = checked;
-    displayCurrent();
-}
+    if (input == "1")
+    {
+       ui->system_log->append(QString(">> Created Map [ID: %1] - %2.").arg(QString::number(this_currWorkingMap->getMapID()),
+                                                                         QString::fromStdString(this_currWorkingMap->getMapName())));
+    }
+    else if (input == "2")
+    {
+        ui->system_log->append(QString(">> Created Character [ID: %1] - %2 on Map [ID: %3] at {%4,%5}.").arg(QString::number(currWorkingCharID),
+                                                                                                             QString::fromStdString(currWorkingCharName),
+                                                                                                             QString::number(currWorkingMap->getMapID()),
+                                                                                                             QString::number(coordX),
+                                                                                                             QString::number(coordY)));
+    }
+    else if (input == "3")
+    {
+        ui->system_log->append(QString(">> Moved Character [ID: %1] - %2 on Map [ID: %3] to {%4,%5}.").arg(QString::number(currWorkingCharID),
+                                                                                                             QString::fromStdString(currWorkingCharName),
+                                                                                                             QString::number(currWorkingMap->getMapID()),
+                                                                                                             QString::number(coordX),
+                                                                                                             QString::number(coordY)));
+    }
+    else if (input == "8")
+    {
+        ui->system_log->append(QString(">> Deleted Map [ID: %1] - %2.").arg(QString::number(previousMap->getMapID()),
+                                                                            QString::fromStdString(previousMapName)));
+    }
+    else if (input == "9")
+    {
+        ui->system_log->append(QString(">> Deleted Character [ID: %1] - %2.").arg(QString::number(previousCharacter->getEntityID()),
+                                                                                 QString::fromStdString(previousCharacterName)));
+    }
+    else if (input == "10" || input == "13")
+    {
+        ui->system_log->append(QString(">> Changed view from Map [ID: %1] to Map [ID: %2] - %3.").arg(QString::number(previousMap->getMapID()),
+                                                                                                      QString::number(currWorkingMap->getMapID()),
+                                                                                                      QString::fromStdString(currWorkingMap->getMapName())));
+    }
+    else if (input == "11" || input == "14")
+    {
+        ui->system_log->append(QString(">> Changed view from Character [ID: %1] to Character [ID: %2] - %3.").arg(QString::number(previousCharacter->getEntityID()),
+                                                                                                                  QString::number(currWorkingCharID),
+                                                                                                                  QString::fromStdString(currWorkingCharName)));
+    }
+    else if (input == "15")
+    {
+        ui->system_log->append(QString(">> Loaded Character [ID %1] - %2 at {%3,%4}").arg(QString::number(currWorkingChar->getEntityID()),
+                                                                               QString::fromStdString(currWorkingChar->getName()),
+                                                                                                      QString::number(currWorkingChar->getCoordinateX()),
+                                                                                                                      QString::number(currWorkingChar->getCoordinateY())
+                                                                                                      ));
+    }
+    else if (input == "16")
+    {
+        ui->system_log->append(QString(">> Saved Character [ID: %1] - %2 to saves/%2.pc.").arg(QString::number(currWorkingChar->getEntityID()),
+                                                                                               QString::fromStdString(currWorkingChar->getName())));
+    }
 
-void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
-{
-    QStringList tempQSList;
-    tempQSList = ui->comboBox_Maps->currentText().split(" ");
-	targetMapID = tempQSList.at(0).toInt();
-	diceobuSystemCore("13");
-}
-
-void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
-{
-    QStringList tempQSList;
-    tempQSList = ui->comboBox_Characters->currentText().split(" ");
-    targetCharacterID = tempQSList.at(0).toInt();
-    diceobuSystemCore("14");
 }
 
 void LobbyWindow::errorHandler(int errorCode)
@@ -400,6 +445,13 @@ void LobbyWindow::errorHandler(int errorCode)
 	case 5:
 		QMessageBox::critical(this, "Error!", "No Characters found!");
 		break;
+    case 6:
+        QMessageBox::critical(this,"Error!","Target tile is out of bounds!");
+        break;
+    case 7:
+        QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");
+        break;
 	}
 }
+
 

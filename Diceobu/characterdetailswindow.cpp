@@ -18,6 +18,7 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui(new Ui::CharacterDetailsWindow)
 {
     ui->setupUi(this);
+    expanded = false;
     setFixedSize(window_width,window_height);
     setGeometry(630, 150, window_width, window_height);
     setWindowTitle("Character Details");
@@ -47,7 +48,7 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui->label_HP->setText(QString::number(currWorkingChar->getHitPoints()) + "/" + QString::number(currWorkingChar->getHitPoints()) + " (+"
                           + QString::number(currWorkingChar->getOverheal()) + ")");
     ui->label_Weight->setText(QString::number(currWorkingChar->getWeight()) + "<font size=3> lbs. </font>");
-    ui->label_Height->setText(QString::number(currWorkingChar->getHeight()) + "");
+    ui->label_Height->setText(QString::number(currWorkingChar->getHeight()) + "'");
     ui->label_Speed->setText(QString::number(currWorkingChar->getSpeed()) + "<font size=3> ft. </font>");
     ui->label_Reach->setText(QString::number(currWorkingChar->getReach()) + "<font size=3> ft. </font>" );
     ui->label_Vision_Range->setText(QString::number(currWorkingChar->getVisionRange()) + " ft.");

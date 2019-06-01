@@ -30,6 +30,9 @@
       <height>770</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget{
 font: 75 30pt &quot;ImperatorSmallCaps&quot;;
@@ -50,6 +53,9 @@ color: white;
       <width>761</width>
       <height>60</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
@@ -78,6 +84,9 @@ color: white;
       <height>222</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <property name="spacing">
       <number>20</number>
@@ -95,6 +104,9 @@ color: white;
          <width>180</width>
          <height>60</height>
         </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
@@ -137,6 +149,9 @@ Details</string>
          <height>60</height>
         </size>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
@@ -173,6 +188,9 @@ border-radius: 10px;
       <height>631</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QGroupBox{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0  rgba(128,128, 128), stop:1 rgba(64,64, 64));
@@ -195,6 +213,9 @@ color: black;
        <width>251</width>
        <height>60</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -223,6 +244,9 @@ color: white;
       <width>121</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -279,6 +303,9 @@ color: white;
       <height>21</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="text">
      <string>Not paint</string>
     </property>
@@ -291,6 +318,9 @@ color: white;
       <width>621</width>
       <height>221</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <property name="spacing">
@@ -318,6 +348,9 @@ color: white;
          <italic>false</italic>
          <bold>false</bold>
         </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
@@ -380,6 +413,9 @@ p, li { white-space: pre-wrap; }
       <height>168</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -396,6 +432,9 @@ p, li { white-space: pre-wrap; }
            <width>130</width>
            <height>60</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel{
@@ -440,6 +479,9 @@ color: white;
            <bold>false</bold>
           </font>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QLabel{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
@@ -471,6 +513,9 @@ color: black;
          </property>
          <item>
           <spacer name="horizontalSpacer_7">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -502,6 +547,9 @@ color: black;
              <height>30</height>
             </size>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background-color: rgb(50,50,50);
@@ -530,6 +578,9 @@ color: white;
          </item>
          <item>
           <spacer name="horizontalSpacer_6">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -560,6 +611,9 @@ color: white;
            <width>130</width>
            <height>60</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel{
@@ -604,6 +658,9 @@ color: white;
            <bold>false</bold>
           </font>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QLabel{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
@@ -635,6 +692,9 @@ color: black;
          </property>
          <item>
           <spacer name="horizontalSpacer_5">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -659,6 +719,9 @@ color: black;
              <width>100</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
@@ -688,6 +751,9 @@ color: white;
          </item>
          <item>
           <spacer name="horizontalSpacer_4">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -714,6 +780,9 @@ color: white;
       <height>30</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QComboBox{
 background-color: rgb(45, 45, 45);
@@ -738,6 +807,9 @@ color: rgb(220, 220, 220);
       <height>30</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QComboBox{
 background-color: rgb(45, 45, 45);
@@ -761,6 +833,9 @@ color: rgb(220, 220, 220);
       <width>101</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -802,8 +877,6 @@ border-radius: 10px;
    <zorder>comboBox_Maps</zorder>
    <zorder>comboBox_Characters</zorder>
    <zorder>pushButton_Grid</zorder>
-   <zorder>horizontalSpacer</zorder>
-   <zorder>horizontalSpacer_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -899,9 +972,22 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
      <addaction name="actionDeleteMap"/>
      <addaction name="actionDeleteCharacter"/>
     </widget>
+    <widget class="QMenu" name="menuLoad">
+     <property name="title">
+      <string>Load</string>
+     </property>
+     <addaction name="actionLoadCharacter"/>
+    </widget>
+    <widget class="QMenu" name="menuSave">
+     <property name="title">
+      <string>Save</string>
+     </property>
+     <addaction name="actionSaveCharacter"/>
+    </widget>
     <addaction name="menuOpen"/>
     <addaction name="menuNew"/>
-    <addaction name="actionSave"/>
+    <addaction name="menuSave"/>
+    <addaction name="menuLoad"/>
     <addaction name="menuDelete"/>
     <addaction name="menuClose"/>
     <addaction name="separator"/>
@@ -909,22 +995,6 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <action name="actionSave">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/img/diskette.png</normaloff>:/img/diskette.png</iconset>
-   </property>
-   <property name="text">
-    <string>Save</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>ImperatorSmallCaps</family>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-  </action>
   <action name="actionOptions">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -993,6 +1063,28 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
    </property>
    <property name="shortcut">
     <string>M</string>
+   </property>
+  </action>
+  <action name="actionLoadCharacter">
+   <property name="text">
+    <string>Character</string>
+   </property>
+   <property name="toolTip">
+    <string>loadCharacter</string>
+   </property>
+   <property name="shortcut">
+    <string>L</string>
+   </property>
+  </action>
+  <action name="actionSaveCharacter">
+   <property name="text">
+    <string>Character</string>
+   </property>
+   <property name="toolTip">
+    <string>saveCharacter</string>
+   </property>
+   <property name="shortcut">
+    <string>J</string>
    </property>
   </action>
  </widget>

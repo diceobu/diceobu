@@ -58,6 +58,8 @@ private slots:
     void on_comboBox_Maps_activated(const QString &arg1);
     void on_comboBox_Characters_activated(const QString &arg1);
     void on_pushButton_Character_Details_clicked();
+    void on_actionSaveCharacter_triggered();
+    void on_actionLoadCharacter_triggered();
 };
 
 extern MainUIClass *mui;

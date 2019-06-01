@@ -117,6 +117,9 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="characterdetailswindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="charcreatewindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -215,6 +218,9 @@
     <ClInclude Include="Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <QtMoc Include="characterdetailswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="charcreatewindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -255,6 +261,8 @@
     
     
     
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
@@ -263,6 +271,9 @@
     </CustomBuild>
     
     
+    <ClInclude Include="ui_characterdetailswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="ui_charcreatewindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -283,6 +294,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="characterdetailswindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="charcreatewindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -312,10 +326,22 @@
     <None Include="fonts\ImperatorSmallCaps">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\Ranger.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\Rogue.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\Warrior.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="img\Wizard.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\add-folder.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\berseker.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\bg1.jpg">
@@ -354,6 +380,18 @@
     <None Include="img\etst1.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\fighter.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\fighterClassImage.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\floor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\floor2.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="img\grass.png">
       <Filter>Resource Files</Filter>
     </None>
@@ -361,6 +399,30 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\grass3.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelAC.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelAC2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelAC_LI.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelAS.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelAS2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelImage.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\labelImage2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\legitob.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="map-Castle_of_Belithriel.dat">
@@ -372,10 +434,16 @@
     <None Include="map-instance.dat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\rangerClassImage.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <QtRcc Include="resources.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
     <None Include="img\rock.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\rogueClassImage.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\sand.png">
@@ -388,6 +456,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\water.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\wizard2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\wizardClassImage.png">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

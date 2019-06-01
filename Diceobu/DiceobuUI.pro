@@ -46,6 +46,7 @@ SOURCES += \
         User.cpp \
         Weapon.cpp \
         characterdetailswindow.cpp \
+        charactersaves.cpp \
         charcreatewindow.cpp \
         lobbywindow.cpp \
         main.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
         User.h \
         Weapon.h \
         characterdetailswindow.h \
+        charactersaves.h \
         charcreatewindow.h \
         lobbywindow.h \
         loginwindow.h \
