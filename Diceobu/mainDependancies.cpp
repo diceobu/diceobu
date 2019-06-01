@@ -7,6 +7,10 @@
 #include "GlobalVariables.h"
 #include "DiceobuLibrary.h"
 #include "mainDependancies.h"
+#include "lobbywindow.h"
+#include "loginwindow.h"
+#include "mainuiclass.h"
+#include "mapcreatewindow.h"
 //	Standard Libraries
 #include <iostream>
 #include <sstream>
@@ -14,18 +18,48 @@
 #include <string>
 #include <list>
 #include <iterator>
-
+//  Qt Libraries
+#include <QMessageBox>
+#include <QDebug>
 //	Global Structures
 static std::list<Map*> activeMaps;
 
 static std::list<Character*> activeCharacters;
 
 Map* currWorkingMap;
-
 Character* currWorkingChar;
+
+int muteLog = 0;
+//Character* currWorkingChar = new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
+//"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5);
 
 static std::list<Character*> combatQueue;
 
+
+std::list<Map*> getActiveMaps()
+{
+    return activeMaps;
+}
+
+std::list<Character*> getActiveCharacters()
+{
+    return activeCharacters;
+}
+
+void checkLists()
+{
+    // qDebug() << "Maps:" << activeMaps.empty() << "Characters:" << activeCharacters.empty();
+}
+
+bool activeCharactersisEmpty()
+{
+    return activeCharacters.empty();
+}
+
+bool activeMapsisEmpty()
+{
+    return activeMaps.empty();
+}
 
 void clearScreen()
 {
@@ -41,6 +75,7 @@ void displayWelcomeMessage()
 		<< "Here you can take control of them to freely explore and test their behavior.\n"
 		<< "Fullscreen view is recommended.\n";
 }
+
 
 void displayAvailableOptions()
 {
@@ -144,6 +179,37 @@ void chooseNextMap()
 	}
 }
 
+void jumpToMap(const int &targetMapID)
+{
+	std::list <Map*> ::iterator iter;
+	bool found{ false };
+	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
+	{
+		currWorkingMap = *iter;
+		if (currWorkingMap->getMapID() == targetMapID)
+		{
+			found = true;
+            break;
+		}
+		if (found == true)
+		{
+			if (!activeCharacters.empty() && !currWorkingMap->m_containingCharacters.empty())
+			{
+				std::list <Character*> ::iterator iter2;
+				for (iter2 = activeCharacters.begin(); iter2 != activeCharacters.end(); iter2++)
+				{
+					Character* currCharacter = *iter2;
+					if (currCharacter->getEntityID() == currWorkingMap->m_containingCharacters.back())
+					{
+						currWorkingChar = currCharacter;
+						break;
+					}
+				}
+			}
+		}
+	}
+}
+
 void chooseNextCharacter()
 {
 	std::list <Character*> ::iterator iter;
@@ -168,9 +234,28 @@ void chooseNextCharacter()
 	currWorkingMap = currWorkingChar->getCurrMap();
 }
 
+void jumpToCharacter(const int &targetCharacterID)
+{
+	std::list <Character*> ::iterator iter;
+	bool found{ false };
+	for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+	{
+		currWorkingChar = *iter;
+        if (currWorkingChar->getEntityID() == targetCharacterID)
+		{
+			found = true;
+			break;
+		}
+     }
+    if (found == true)
+    {
+        currWorkingMap = currWorkingChar->getCurrMap();
+    }
+}
+
 void createNewMap()
 {
-	activeMaps.push_back(new Map("Castle of Belithriell", mapSize, mapSize, mapIDCounter++, "none"));
+	activeMaps.push_back(new Map(mapName, mapSize, mapSize, mapIDCounter++, "none"));
 	currWorkingMap = activeMaps.back();
 }
 
@@ -224,19 +309,20 @@ void deleteCurrentMap()
 int createNewCharacter()
 {
 	if (currWorkingMap->m_tileGrid[25][25]->getOccupied()) return 1;
-	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
+	activeCharacters.push_back(new Character("jeff", "male", 50, 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
 	currWorkingChar = activeCharacters.back();
 	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 	return 0;
 }
 
-int characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+int characterCreation(const std::string &name, const std::string &gender, const std::string &cClass, const std::string &race, const std::string &alignment,
 	const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY)
 {
-	if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied())	return 1;
+    if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())	return 1; //????????????????????
 
-	int					hitPoints{ 10 };
+	int					maxHitPoints{ 10 };
+	int					currHitPoints{ maxHitPoints };
 	int					overheal{ 0 };
 	int					armorClass{ 5 };
 	std::string			size{ "medium" };
@@ -255,7 +341,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 
 	if (cClass == "Fighter")
 	{
-		hitPoints += 8 * level;
+		maxHitPoints += 8 * level;
 		armorClass += 20;
 		abilityScores += 5;
 		powers = { "phMelAttck", "indomitable", "cleave", "crescendo" };
@@ -263,7 +349,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (cClass == "Wizard")
 	{
-		hitPoints += 4 * level;
+		maxHitPoints += 4 * level;
 		armorClass += 5;
 		abilityScores += 20;
 		powers = { "phMelAttck", "mgRangAttck", "callMeteor", "suddenStorm", "iceAge",
@@ -273,21 +359,21 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (cClass == "Rogue")
 	{
-		hitPoints += 6 * level;
+		maxHitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
 		powers = { "phMelAttck", "sneakAttack ", "stealth", "impossibleToCatch", "throwingDagger" };
 	}
 	else if (cClass == "Ranger")
 	{
-		hitPoints += 5 * level;
+		maxHitPoints += 5 * level;
 		armorClass += 7;
 		abilityScores += 15;
 		powers = { "phRangAttck", "hawkEye", "longShot", "cheapShot", "naturesWay", "rainningArrow" };
 	}
 	if (race == "Dwarf")
 	{
-		hitPoints += level;
+		maxHitPoints += level;
 		armorClass += 5;
 		size = "small";
 		powers.push_back("repair");
@@ -306,7 +392,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (race == "Human")
 	{
-		hitPoints += level / 5;
+		maxHitPoints += level / 5;
 		armorClass += 2;
 		height += 2;
 		abilityScores += 5;
@@ -315,7 +401,11 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 		weight += 15;
 	}
 
-	activeCharacters.push_back(new Character(name, hitPoints, overheal, armorClass,
+
+
+	currHitPoints = maxHitPoints;
+    //currWorkingMap->m_tileGrid[coordX][coordY]->setOccupied(true); //??????????????????????????
+	activeCharacters.push_back(new Character(name, gender, maxHitPoints, currHitPoints, overheal, armorClass,
 		size, height, weight, characterIDCounter++, coordinates, currWorkingMap, abilityScores,
 		powers, speed, cClass, alignment, equipment, level, exp, race, languages, balance,
 		background, proficiency, visionRange, reach));
@@ -327,6 +417,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 
 void deleteCurrentCharacter()
 {
+    currWorkingMap->m_containingCharacters.remove(currWorkingChar->getEntityID());
 	currWorkingChar->getCurrMap()->m_tileGrid[currWorkingChar->getCoordinateX()][currWorkingChar->getCoordinateY()]->setOccupied(false);
 	currWorkingChar->getCurrMap()->m_tileGrid[currWorkingChar->getCoordinateX()][currWorkingChar->getCoordinateY()]->setOccupantID(-1);
 	activeCharacters.remove(currWorkingChar);
@@ -350,46 +441,57 @@ void displayInfo()
 void moveCurrentCharacterUI(const int &coordX, const int &coordY)
 {
 	std::pair<int, int>	coords{ coordX, coordY };
-	currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
+	std::list <Map*> ::iterator iter;
+	Map* targetMap;
+	for (iter = activeMaps.begin(); iter != activeMaps.end(); iter++)
+	{
+		targetMap = *iter;
+		if (targetMap->getMapID() == targetMapID)
+		{
+			break;
+		}
+	}
+	currWorkingChar->changeEntityPosition(currWorkingMap, targetMap, coords);
+	currWorkingMap = targetMap;
 }
 
-void moveCurrentCharacter()
-{
-	std::string input;
-	clearScreen();
-	displayAvailableOptions();
-	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
-	input = getUserOption();
-	if (input == "x")
-	{
-		displayFeedbackMessage("Canceling character movement");
-	}
-	else
-	{
-		if (input.length() < 3)
-		{
-			displayFeedbackMessage("Wrong coordinates");
-			displayFeedbackMessage("Character movement aborted");
-			displayFeedbackMessage("Character created on default position (25,25)");
-		}
-		else
-		{
-			displayFeedbackMessage("Moving character");
-			std::string delimiter = ",";
-			size_t pos = 0;
-			std::string token;
-			while ((pos = input.find(delimiter)) != std::string::npos) {
-				token = input.substr(0, pos);
-				input.erase(0, pos + delimiter.length());
-			}
-			std::stringstream coordX{ token }, coordY{ input };
-			std::pair<int, int> coords{};
-			coordX >> coords.first;
-			coordY >> coords.second;
-			currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
-		}
-	}
-}
+//void moveCurrentCharacter()
+//{
+//	std::string input;
+//	clearScreen();
+//	displayAvailableOptions();
+//	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
+//	input = getUserOption();
+//	if (input == "x")
+//	{
+//		displayFeedbackMessage("Canceling character movement");
+//	}
+//	else
+//	{
+//		if (input.length() < 3)
+//		{
+//			displayFeedbackMessage("Wrong coordinates");
+//			displayFeedbackMessage("Character movement aborted");
+//			displayFeedbackMessage("Character created on default position (25,25)");
+//		}
+//		else
+//		{
+//			displayFeedbackMessage("Moving character");
+//			std::string delimiter = ",";
+//			size_t pos = 0;
+//			std::string token;
+//			while ((pos = input.find(delimiter)) != std::string::npos) {
+//				token = input.substr(0, pos);
+//				input.erase(0, pos + delimiter.length());
+//			}
+//			std::stringstream coordX{ token }, coordY{ input };
+//			std::pair<int, int> coords{};
+//			coordX >> coords.first;
+//			coordY >> coords.second;
+//			currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
+//		}
+//	}
+//}
 
 void enQueueCombat()
 {
@@ -426,7 +528,7 @@ void displayAvailableMoves()
 {
 	//displayFeedbackMessage("1.\t");
 	std::list <std::string> :: iterator iter;
-	for (iter = currWorkingChar->getPowers().begin(); iter != currWorkingChar->getPowers().end(); iter++)
+    for (iter = currWorkingChar->getPowers()->begin(); iter != currWorkingChar->getPowers()->end(); iter++)
 	{
 		std::cout << "hi\n";
 		std::string currString{ *iter };
@@ -456,45 +558,106 @@ std::string getUserOption()
 	return input;
 }
 
-void diceobuSystemCore(std::string input)
+void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, const std::string &cName, 
+						const std::string	&cGender, const std::string &cClass,
+                       const std::string &cRace, const std::string &cAlignment,
+                       const std::string &cBackground, const int &cBalance, const int &cLevel)
 {
+    //LobbyWindow lb;
+    Map* previousMap;// = currWorkingMap;
+    Character *previousCharacter;// = currWorkingChar;
+    int currWorkingCharID = 0;
+    std::string currWorkingCharName = "Name";
+    std::string previousMapName;
+    std::string previousCharacterName;
+
 	if (input == "1")
 	{
-		createNewMap();
+        createNewMap();
+
 		currWorkingMap->writeMap();
-		//	refresh map
-		//	update currWorkingMap box
+
+        initPixmapArray(); // Refresh map
+       // LobbyWindow lw;
+       // lw(new Ui::LobbyWindow)
+
+        emit mui->refreshCurrent();
+
+        //// qDebug() << "was here2";
+         //qDebug() << "mainDep 503///"
+               //   << QString::fromStdString(input)
+               //   << currWorkingMap->getMapID()
+                  //<< currWorkingChar->getEntityID()
+               //   << "Map ID" << previousMap->getMapID()
+                //  << "Trash Char ID" << previousCharacter->getEntityID()
+                 // << coordX << coordY
+                   //  ;
+
+       // emit mui->updateLog(input, currWorkingMap);
+       // // qDebug() << "mainDep 499///" << QString::fromStdString(input) << currWorkingMap->getMapID() << currWorkingChar->getEntityID()
+       //          << previousMap->getMapID() << previousCharacter->getEntityID() << coordX << coordY;
+         emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap, previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
+
+        //LobbyWindow::displayCurrent();
+        //QMessageBox::information(&lw,"Success","Map created successfully.");//	update currWorkingMap box
 		//	displayFeedbackMessageUI("Map created");
 	}
-	else if (input == "2")
+    else if (input == "2") // Create Character
 	{
-		if (activeMaps.empty())
+        if (activeMaps.empty())
 		{
 			//	displayFeedbackMessageUI("Cannot create character without a map");
+			emit mui->errorMessage(1);
 		}
 		else
 		{
-			if (characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25))
+            int notcreated = characterCreation(cName, cGender, cClass,cRace,cAlignment,cBackground,cBalance,cLevel,coordX,coordY);
+            if (notcreated)
 			{
 				//displayFeedbackMessageUI("Could not create character");
 			}
 			else
 			{
 				//displayFeedbackMessageUI("New character created");
+                currWorkingMap->writeMap();
+                initPixmapArray();
+                emit mui->refreshCurrent();
+                currWorkingCharID = currWorkingChar->getEntityID();
+                currWorkingCharName = currWorkingChar->getName();
+
+                if (muteLog != 1)
+                {
+                emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                    previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
+                }
 			}
 		}
 	}
-	else if (input == "3")
+	else if (input == "3")	// Move Character
 	{
-		if (activeCharacters.empty())
+        if (currWorkingMap->m_containingCharacters.empty())
 		{
-			//displayFeedbackMessageUI("No character found");
+			//displayFeedbackMessageUI("No character found"); // Done in UI		
 		}
 		else
 		{
-			// moveCurrentCharacterUI(x, y);
+            moveCurrentCharacterUI(coordX, coordY);
 			currWorkingMap->writeMap();
+
 			//	refresh map
+            initPixmapArray();
+            mui->refreshCurrent();
+            currWorkingCharID = currWorkingChar->getEntityID();
+            currWorkingCharName = currWorkingChar->getName();
+            if (directionalMovement == 0)
+            {
+            emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
+            }
+            else
+            {
+                 directionalMovement = 0;
+            }
 		}
 	}
 	else if (input == "4")
@@ -523,7 +686,7 @@ void diceobuSystemCore(std::string input)
 	}
 	else if (input == "5")
 	{
-		//displayInfoUI();
+		//displayInfoUI(); // Help
 	}
 	else if (input == "6")
 	{
@@ -551,28 +714,40 @@ void diceobuSystemCore(std::string input)
 	{
 		if (activeMaps.empty())
 		{
-			//displayFeedbackMessageUI("Nothing to delete");
+			mui->errorMessage(2); //            QMessageBox::warning(&lb,"Error!","Nothing to delete!");
 		}
 		else
 		{
 			if (currWorkingMap->m_containingCharacters.empty())
 			{
+                previousMap = currWorkingMap;
+                previousMapName = currWorkingMap->getMapName();
 				deleteCurrentMap();
+
+                //mapIDCounter--;
 				if (!activeMaps.empty())
 				{
 					currWorkingMap->writeMap();
 					// update currWorkingMap box
-				}
+                    emit mui->refreshCurrent();
+                }
 				else
 				{
 					//	change currWorkingMap box to empty
+                    emit mui->refreshCurrent();
 				}
 				//	refresh map
+                initPixmapArray();
+
+                emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                    previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
 				//	displayFeedbackMessageUI("Selected map deleted");
+               // QMessageBox::information(&lb,"Success.","Map deleted.");
 			}
 			else
 			{
 				//displayFeedbackMessageUI("Cannot delete map containing characters");
+				mui->errorMessage(3); //                QMessageBox::critical(&lb,"Error!","Cannot delete a Map containing characters!");
 			}
 		}
 	}
@@ -581,34 +756,47 @@ void diceobuSystemCore(std::string input)
 		if (activeCharacters.empty())
 		{
 			//	displayFeedbackMessageUI("Nothing to delete");
+			mui->errorMessage(2); //  QMessageBox::warning(&lb,"Error!","Nothing to delete!");
 		}
 		else
-		{
+        {
+            previousCharacter = currWorkingChar;
+            previousCharacterName = currWorkingChar->getName();
 			deleteCurrentCharacter();
 			if (!activeCharacters.empty())
 			{
 				// update currWorkingChar box
+                emit mui->refreshCurrent();
 			}
 			else
 			{
 				//	change currWorkingChar box to empty
+                emit mui->refreshCurrent();
 			}
 			currWorkingMap->writeMap();
 			//	refresh map
-		}
+            initPixmapArray();
+            emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);        }
 	}
 	else if (input == "10")
 	{
 		if (activeMaps.empty())
 		{
 			// displayFeedbackMessageUI("No maps found");
+            mui->errorMessage(4); // 	QMessageBox::critical(&lb, "Error!", "No Maps found!");
 		}
 		else
 		{
+            previousMap = currWorkingMap;
 			chooseNextMap();
 			currWorkingMap->writeMap();
 			//	refresh map
+            initPixmapArray();
 			// update currWorkingMap box
+            emit mui->refreshCurrent();
+            emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);		
 		}
 	}
 	else if (input == "11")
@@ -616,19 +804,69 @@ void diceobuSystemCore(std::string input)
 		if (activeCharacters.empty())
 		{
 			// displayFeedbackMessageUI("no chars found");
+			mui->errorMessage(5);	//	QMessageBox::critical(&lb,"Error!","No Characters found!");
 		}
 		else
 		{
+            previousCharacter = currWorkingChar;
 			chooseNextCharacter();
 			currWorkingMap->writeMap();
 			//	refresh map
+            initPixmapArray();
 			// update currWorkingMap box
 			// update currWorkingChar box
-		}
+            emit mui->refreshCurrent();
+            currWorkingCharID = currWorkingChar->getEntityID();
+            currWorkingCharName = currWorkingChar->getName();
+            emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
+                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);		}
 	}
 	else if (input == "12")
 	{
 		//	displayCombatQueueUI();
+	}
+	else if (input == "13")
+	{
+		if (activeMaps.empty())
+		{
+		// displayFeedbackMessageUI("No maps found");
+			mui->errorMessage(4); //QMessageBox::critical(&lb, "Error!", "No Maps found!");
+		}
+		else
+		{
+			previousMap = currWorkingMap;
+			jumpToMap(targetMapID);
+			currWorkingMap->writeMap();
+			//	refresh map
+			initPixmapArray();
+			// update currWorkingMap box
+			emit mui->refreshCurrent();
+			emit mui->updateLog(input, currWorkingMap, currWorkingCharID, currWorkingCharName, previousMap,
+				previousMapName, previousCharacter, previousCharacterName, coordX, coordY);
+		}
+	}
+	else if (input == "14")
+	{
+		if (activeCharacters.empty())
+		{
+			// displayFeedbackMessageUI("no chars found");
+            mui->errorMessage(5); //    QMessageBox::critical(&lb, "Error!", "No Characters found!");
+		}
+		else
+		{
+			previousCharacter = currWorkingChar;
+			jumpToCharacter(targetCharacterID);
+			currWorkingMap->writeMap();
+			//	refresh map
+			initPixmapArray();
+			// update currWorkingMap box
+			// update currWorkingChar box
+			emit mui->refreshCurrent();
+			currWorkingCharID = currWorkingChar->getEntityID();
+			currWorkingCharName = currWorkingChar->getName();
+			emit mui->updateLog(input, currWorkingMap, currWorkingCharID, currWorkingCharName, previousMap,
+				previousMapName, previousCharacter, previousCharacterName, coordX, coordY);
+		}
 	}
 	else if (input == "a")
 	{
@@ -650,214 +888,4 @@ void diceobuSystemCore(std::string input)
 	}
 }
 
-void simLaunch()
-{
-	clearScreen();
-	displayAvailableOptions();
-	std::string input{};
-	while (1)
-	{
-		input = getUserOption();
-		clearScreen();
-		displayAvailableOptions();
-		if (input == "1")
-		{
-			displayFeedbackMessage("Creating map");
-			createNewMap();
-			clearScreen();
-			displayAvailableOptions();
-			displayFeedbackMessage("New map created");
-		}
-		else if (input == "2")
-		{
-			if (activeMaps.empty())
-			{
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Cannot create character without a map");
-			}
-			else
-			{
-				displayFeedbackMessage("Creating new character");
-				//createNewCharacter();
-				if (characterCreation("name", "class", "race", "alignment", "background", -51, 11, 25, 25))
-				{
-					clearScreen();
-					displayAvailableOptions();
-					displayFeedbackMessage("Could not create character");
-				}
-				else
-				{
-					clearScreen();
-					displayAvailableOptions();
-					displayFeedbackMessage("New character created");
-					moveCurrentCharacter();
-					clearScreen();
-					currWorkingChar->getCurrMap()->printMap();
-					displayAvailableOptions();
-				}
-			}
-		}
-		else if (input == "3")
-		{
-			if (activeCharacters.empty())
-			{
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("No character found");
-			}
-			else
-			{
-				moveCurrentCharacter();
-				clearScreen();
-				currWorkingChar->getCurrMap()->printMap();
-				displayAvailableOptions();
-			}
-		}
-		else if (input == "4")
-		{
-			if (activeCharacters.empty())
-			{
-				displayFeedbackMessage("No characters found");
-			}
-			else
-			{
-				if (inCombat)
-				{
-					displayFeedbackMessage("Ending combat");
-					inCombat = false;
-					combatQueue.clear();
-					clearScreen();
-					displayAvailableOptions();
-					displayFeedbackMessage("Combat ended");
-				}
-				else
-				{
-					displayFeedbackMessage("Starting combat");
-					inCombat = true;
-					enQueueCombat();
-					clearScreen();
-					displayCombatQueue();
-					resolveCombatAttack();
-					displayFeedbackMessage("Combat started");
-				}
-			}
-		}
-		else if (input == "5")
-		{
-			displayFeedbackMessage("Displaying additional information");
-			clearScreen();
-			displayInfo();
-			displayAvailableOptions();
-		}
-		else if (input == "6")
-		{
-			displayFeedbackMessage("Displaying all active maps");
-			clearScreen();
-			if (activeMaps.empty())
-			{
-				displayAvailableOptions();
-				displayFeedbackMessage("Nothing to display");
-			}
-			else
-			{
-				displayActiveMaps();
-				writeActiveMaps();
-				displayAvailableOptions();
-			}
-		}
-		else if (input == "7")
-		{
-			displayFeedbackMessage("Displaying all active characters");
-			clearScreen();
-			if (activeCharacters.empty())
-			{
-				displayAvailableOptions();
-				displayFeedbackMessage("Nothing to display");
-			}
-			else
-			{
-				displayActiveCharacters();
-				displayAvailableOptions();
-			}
-		}
-		else if (input == "8")
-		{
-			if (activeMaps.empty())
-			{
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Nothing to delete");
-			}
-			else
-			{
-				displayFeedbackMessage("Deleting current map");
-				if (currWorkingMap->m_containingCharacters.empty())
-				{
-					deleteCurrentMap();
-					clearScreen();
-					displayAvailableOptions();
-					displayFeedbackMessage("Current map deleted");
-				}
-				else
-				{
-					clearScreen();
-					displayAvailableOptions();
-					displayFeedbackMessage("Cannot delete map containing characters");
-				}
-			}
-		}
-		else if (input == "9")
-		{
-			if (activeCharacters.empty())
-			{
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Nothing to delete");
-			}
-			else
-			{
-				displayFeedbackMessage("Deleting current character");
-				deleteCurrentCharacter();
-				clearScreen();
-				displayAvailableOptions();
-				displayFeedbackMessage("Current character deleted");
-			}
-		}
-		else if (input == "10")
-		{
-			clearScreen();
-			displayAvailableOptions();
-			displayFeedbackMessage("Changing Map");
-			chooseNextMap();
-			clearScreen();
-			displayAvailableOptions();
-		}
-		else if (input == "11")
-		{
-			clearScreen();
-			displayAvailableOptions();
-			displayFeedbackMessage("Changing Map");
-			chooseNextCharacter();
-			clearScreen();
-			displayAvailableOptions();
-		}
-		else if (input == "a" && inCombat)
-		{
-			resolveCombatAttack();
-		}
-		else if (input == "x")
-		{
-			displayFeedbackMessage("Exiting");
-			activeMaps.clear();
-			activeCharacters.clear();
-			clearScreen();
-			displayFeedbackMessage("Application exited");
-			break;
-		}
-		else
-		{
-			displayFeedbackMessage("Unrecognized command");
-		}
-	}
-}
+

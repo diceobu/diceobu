@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8BE79276-92A4-31CD-948C-94B27AA1453B}</ProjectGuid>
+    <RootNamespace>DiceobuUI</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>DiceobuUI</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>DiceobuUI</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">DiceobuUI</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">DiceobuUI</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtWidgets;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtGui;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtANGLE;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtCore;release;C:\VulkanSDK\1.0.51.0\include;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Core.lib;$(QTDIR)\lib\qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;F:\DOCUMENTS\QT\5.12.3\MSVC2017\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\DiceobuUI.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <OutputFile>$(Configuration)\moc_%(Filename).cpp</OutputFile>
+      <Define>UNICODE;_UNICODE;$(Platform);_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;F:/DOCUMENTS/QT/5.12.3/MSVC2017/mkspecs/$(Platform)-msvc;.;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtWidgets;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtGui;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtANGLE;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtCore;F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include;F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>resources</InitFuncName>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <InputFile>%(FullPath)</InputFile>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+    <QtUic>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtWidgets;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtGui;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtANGLE;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\include\QtCore;debug;C:\VulkanSDK\1.0.51.0\include;..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Cored.lib;$(QTDIR)\lib\qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;F:\DOCUMENTS\QT\5.12.3\MSVC2017\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\DiceobuUI.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <OutputFile>$(Configuration)\moc_%(Filename).cpp</OutputFile>
+      <Define>UNICODE;_UNICODE;$(Platform);_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+      <DynamicSource>output</DynamicSource>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;F:/DOCUMENTS/QT/5.12.3/MSVC2017/mkspecs/$(Platform)-msvc;.;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtWidgets;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtGui;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtANGLE;F:/DOCUMENTS/QT/5.12.3/MSVC2017/include/QtCore;F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include;F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt;F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt</IncludePath>
+    </QtMoc>
+    <QtRcc>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <InitFuncName>resources</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+    <QtUic>
+      <QTDIR>F:\DOCUMENTS\QT\5.12.3\MSVC2017</QTDIR>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <InputFile>%(FullPath)</InputFile>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Campaign.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="DungeonMaster.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NonMagicalPower.cpp" />
+    <ClCompile Include="NonUsable.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="PC.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Power.cpp" />
+    <ClCompile Include="Spell.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Usable.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="characterdetailswindow.cpp" />
+    <ClCompile Include="charactersaves.cpp" />
+    <ClCompile Include="charcreatewindow.cpp" />
+    <ClCompile Include="lobbywindow.cpp" />
+    <ClCompile Include="loginwindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainDependancies.cpp" />
+    <ClCompile Include="mainuiclass.cpp" />
+    <ClCompile Include="mapcreatewindow.cpp" />
+    <ClCompile Include="mapwidget.cpp" />
+    <ClCompile Include="movewindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Campaign.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="DiceobuLibrary.h" />
+    <ClInclude Include="DungeonMaster.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="GameData.h" />
+    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="NonMagicalPower.h" />
+    <ClInclude Include="NonUsable.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="PC.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Power.h" />
+    <ClInclude Include="Spell.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Usable.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="Weapon.h" />
+    <QtMoc Include="characterdetailswindow.h">
+    </QtMoc>
+    <ClInclude Include="charactersaves.h" />
+    <QtMoc Include="charcreatewindow.h">
+    </QtMoc>
+    <QtMoc Include="lobbywindow.h">
+    </QtMoc>
+    <QtMoc Include="loginwindow.h">
+    </QtMoc>
+    <ClInclude Include="mainDependancies.h" />
+    <QtMoc Include="mainuiclass.h">
+    </QtMoc>
+    <QtMoc Include="mapcreatewindow.h">
+    </QtMoc>
+    <QtMoc Include="mapwidget.h">
+    </QtMoc>
+    <QtMoc Include="movewindow.h">
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\..\..\DOCUMENTS\QT\5.12.3\MSVC2017\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="ui_characterdetailswindow.h" />
+    <ClInclude Include="ui_charcreatewindow.h" />
+    <ClInclude Include="ui_lobbywindow.h" />
+    <ClInclude Include="ui_loginwindow.h" />
+    <ClInclude Include="ui_mapcreatewindow.h" />
+    <ClInclude Include="ui_mapwidget.h" />
+    <ClInclude Include="ui_movewindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="characterdetailswindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_characterdetailswindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_characterdetailswindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="charcreatewindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_charcreatewindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_charcreatewindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="lobbywindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_lobbywindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_lobbywindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="loginwindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_loginwindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_loginwindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="mapcreatewindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_mapcreatewindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_mapcreatewindow.h</OutputFile>
+    </QtUic>
+    <QtUic Include="mapwidget.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_mapwidget.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_mapwidget.h</OutputFile>
+    </QtUic>
+    <QtUic Include="movewindow.ui">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_movewindow.h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_movewindow.h</OutputFile>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bold.ttf" />
+    <None Include="img\Diceobu.png" />
+    <None Include="fonts\ImperatorSmallCaps" />
+    <None Include="img\Ranger.png" />
+    <None Include="img\Rogue.png" />
+    <None Include="img\Warrior.png" />
+    <None Include="img\Wizard.png" />
+    <None Include="img\add-folder.png" />
+    <None Include="img\berseker.png" />
+    <None Include="img\bg1.jpg" />
+    <None Include="img\bg2.png" />
+    <None Include="img\bg3.png" />
+    <None Include="img\bg4.jpg" />
+    <None Include="img\close.png" />
+    <None Include="img\d20.png" />
+    <None Include="img\d20v2.png" />
+    <None Include="img\dirt.png" />
+    <None Include="img\diskette.png" />
+    <None Include="img\dot.png" />
+    <None Include="img\empty.png" />
+    <None Include="img\etst1.png" />
+    <None Include="img\fighter.png" />
+    <None Include="img\fighterClassImage.png" />
+    <None Include="img\floor.png" />
+    <None Include="img\floor2.png" />
+    <None Include="img\grass.png" />
+    <None Include="img\grass2.png" />
+    <None Include="img\grass3.png" />
+    <None Include="img\labelAC.png" />
+    <None Include="img\labelAC2.png" />
+    <None Include="img\labelAC_LI.jpg" />
+    <None Include="img\labelAS.jpg" />
+    <None Include="img\labelAS2.png" />
+    <None Include="img\labelImage.jpg" />
+    <None Include="img\labelImage2.png" />
+    <None Include="img\legitob.png" />
+    <None Include="map-Castle_of_Belithriel.dat" />
+    <None Include="map-Woods_of_Oblivion.dat" />
+    <None Include="map-instance.dat" />
+    <None Include="img\rangerClassImage.png" />
+    <QtRcc Include="resources.qrc">
+    </QtRcc>
+    <None Include="img\rock.png" />
+    <None Include="img\rogueClassImage.png" />
+    <None Include="img\sand.png" />
+    <None Include="img\settings.png" />
+    <None Include="img\star.png" />
+    <None Include="img\water.png" />
+    <None Include="img\wizard2.png" />
+    <None Include="img\wizardClassImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DiceobuUI.pro.user" />
+    <None Include="Sample.dat" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Qt5Version_x0020_Win32="msvc2017" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

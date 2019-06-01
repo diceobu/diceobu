@@ -11,7 +11,8 @@
 #include <string>
 
 //	Constructors
-NPC::NPC(	const std::string	&name,			const int			&hitPoints,
+NPC::NPC(	const std::string	&name,			const std::string	&gender,
+			const int			&maxHitPoints,	const int			&currHitPoints,
 			const int			&overheal,		const int			&armorClass,
 			const std::string	&size,			const int			&height,
 			const int			&weight,		const int			&entityID,
@@ -23,7 +24,7 @@ NPC::NPC(	const std::string	&name,			const int			&hitPoints,
 			const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
 			const int			&reach,
 			const std::string	&dialogTable,	const std::string	&itemList,		const std::string	&questList)
-	:	Character(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap, abilityScores, powers,
+	:	Character(name, gender, maxHitPoints, currHitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap, abilityScores, powers,
 		speed, cClass, alignment, equipment, level, exp, race, languages, balance, background, proficiency, visionRange, reach),
 		m_dialogTable{ dialogTable }, m_itemList{ itemList }, m_questList{ questList }
 {}

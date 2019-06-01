@@ -10,9 +10,10 @@
 //	Standard Libraries
 #include <iostream>
 #include <string>
-
+#include <QPixmap>
 //	Constructors
-Character::Character(	const std::string			&name,			const int	&hitPoints,
+Character::Character(	const std::string			&name,			const std::string	&gender,
+						const int					&maxHitPoints,	const int	&currHitPoints,
 						const int					&overheal,		const int	&armorClass,
 						const std::string			&size,			const int	&height,
 						const int					&weight,		const int	&entityID,
@@ -23,8 +24,8 @@ Character::Character(	const std::string			&name,			const int	&hitPoints,
 						const std::string	&race,			const std::string	&languages,		const int			&balance,
 						const std::string	&background,	const std::string	&proficiency,	const int			&visionRange,
 						const int			&reach)
-	:	Entity(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap),
-		m_abilityScores{ abilityScores },	m_powers{ powers },
+	:	Entity(name, maxHitPoints, currHitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap),
+        m_abilityScores{ abilityScores },	m_powers{ powers },             m_gender{ gender },
 		m_speed{ speed },					m_cClass{ cClass },				m_alignment{ alignment },
 		m_equipment{ equipment },			m_level{ level },				m_exp{ exp },
 		m_race{ race },						m_languages{ languages },		m_balance{ balance },
@@ -40,10 +41,40 @@ void Character::printCharacter()
 				<< "Class: " << m_cClass << '\n'
 				<< "Level: " << m_level << '\t'
 				<< "Experience: " << m_exp << '\n'
-				<< "Hit Points: " << m_hitPoints << '\t'
+				<< "Hit Points: " << m_maxHitPoints << '\t'
 				<< "Armor Class: " << m_armorClass << '\n'
 				<< "Balance: " << m_balance << '\t'
 				<< "Current Map: " << m_currMap->getMapID() << '\t'
 				<< "Coordinates: " << m_coordinates.first << "," << m_coordinates.second
 				<< '\n';
+}
+
+QPixmap Character::getClassImage(){//Character* tempChar){
+
+    QPixmap classImage;
+
+    if (m_cClass == "Wizard")
+    {
+        classImage = QPixmap(":/img/wizardClassImage.png");
+    }
+    else if (m_cClass == "Fighter")
+    {
+        classImage = QPixmap(":/img/fighterClassImage.png");
+    }
+    else if (m_cClass == "Rogue")
+    {
+        classImage = QPixmap(":/img/rogueClassImage.png");
+    }
+    else if (m_cClass == "Ranger")
+    {
+        classImage = QPixmap(":/img/rangerClassImage.png");
+    }
+
+    if ((m_name == "OBDSF") || (m_name == "obdsf") || (m_name == "Obergard") || (m_name == "Obergard Shadowgriff"))
+    {
+         classImage = QPixmap(":/img/legitob.png");
+         classImage = classImage.scaled(165,233);
+    }
+
+    return classImage;
 }

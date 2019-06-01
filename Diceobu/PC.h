@@ -28,7 +28,8 @@ private:
 	//	Member Functions
 public:
 	//	Constructors
-	PC(	const std::string	&name,			const int			&hitPoints,
+	PC(	const std::string	&name,			const std::string	&gender,
+		const int			&maxHitPoints,	const int			&currHitPoints,
 		const int			&overheal,		const int			&armorClass,
 		const std::string	&size,			const int			&height,
 		const int			&weight,		const int			&entityID,

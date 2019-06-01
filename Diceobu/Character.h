@@ -11,6 +11,7 @@
 #include "Entity.h"
 //	Standard Libraries
 #include <string>
+#include <QPixmap>
 
 class Character : public Entity
 {
@@ -19,9 +20,10 @@ public:
 //	Some public Member Variables
 protected:
 	int			m_abilityScores;
-	const std::list<std::string>	m_powers;
+     std::list<std::string>	m_powers;
 	int			m_speed;
 	std::string	m_cClass;
+	std::string	m_gender;
 	std::string	m_alignment;
 	std::string	m_equipment;
 	int			m_level;
@@ -40,12 +42,13 @@ private:
 //	Member Functions
 public:
 //	Constructors
-	Character(	const std::string			&name,			const int	&hitPoints,
+	Character(	const std::string			&name,			const std::string		&gender,
+				const int					&maxHitPoints,	const int	&currHitPoints,
 				const int					&overheal,		const int	&armorClass,
 				const std::string			&size,			const int	&height,
 				const int					&weight,		const int	&entityID,
 				const std::pair<int, int>	&coordinates,	Map*		&currMap,
-				const int			&abilityScores,	const std::list<std::string>	&powers,
+                const int			&abilityScores,	const std::list<std::string>	&powers,
 				const int			&speed,			const std::string	&cClass,		const std::string	&alignment,
 				const std::string	&equipment,		const int			&level,			const int			&exp,
 				const std::string	&race,			const std::string	&languages,		const int			&balance,
@@ -54,9 +57,10 @@ public:
 //	Access Functions
 //	Getters
 	const int			getAbilityScores()	{ return m_abilityScores; }
-	std::list<std::string>	getPowers()			{ return m_powers; }
+    std::list<std::string>*	getPowers()		{ return &m_powers; }
 	const int			getSpeed()			{ return m_speed; }
 	const std::string	getCClass()			{ return m_cClass; }
+	const std::string	getGender()			{ return m_gender; }
 	const std::string	getAlignment()		{ return m_alignment; }
 	const std::string	getEquipment()		{ return m_equipment; }
 	const int			getLevel()			{ return m_level; }
@@ -72,6 +76,7 @@ public:
 	void setAbilityScores(const int &abilityScores)		{ m_abilityScores = abilityScores; }
 	void setSpeed(const int &speed)						{ m_speed = speed; }
 	void setCClass(const std::string &cClass)			{ m_cClass = cClass; }
+	void setGender(const std::string &gender)			{ m_gender = gender; }
 	void setAlignment(const std::string &alignment)		{ m_alignment = alignment; }
 	void setEquipment(const std::string &equipment)		{ m_equipment = equipment; }
 	void setLevel(const int &level)						{ m_level = level; }
@@ -85,4 +90,5 @@ public:
 	void setReach(const int &reach)						{ m_reach = reach; }
 //	Others
 	void printCharacter();
+    QPixmap getClassImage();//Character* tempChar);
 };
