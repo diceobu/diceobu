@@ -31,8 +31,6 @@
 static int window_width    =   1440;
 static int window_height   =   900;
 
-static int i = 0;
-
 int targetMapID;
 int targetCharacterID;
 
@@ -78,9 +76,11 @@ LobbyWindow::~LobbyWindow()
 void LobbyWindow::on_pushButton_5_clicked()
 {
 
-    currWorkingChar->getPowers()->push_back("Hello");
-    qDebug() << "lw78" << QString::fromStdString(currWorkingChar->getPowers()->back());
-    i++;
+//    currWorkingChar->getPowers()->push_back("Hello");
+//    qDebug() << "lw78" << QString::fromStdString(currWorkingChar->getPowers()->back());
+    diceobuSystemCore("4");
+
+
 }
 
 void LobbyWindow::on_actionSaveCharacter_triggered()
@@ -239,10 +239,28 @@ void LobbyWindow::displayCurrent()
 
 
 
-void LobbyWindow::updateLists(){
+void LobbyWindow::updateLists()
+{
 
     std::list<Map*> tempMaps = getActiveMaps();
     std::list<Character*> tempCharacters = getActiveCharacters();
+
+	if (!activeCharactersisEmpty())
+	{
+		std::list<std::string> ::iterator iter3;
+		std::string currentPower;
+		std::list<std::string> *tempPowers;
+		tempPowers = currWorkingChar->getPowers();
+
+        //qDeleteAll(ui->listWidget_Powers->selectedItems());
+        ui->listWidget_Powers_Lobby->clear();
+		for (iter3 = tempPowers->begin(); iter3 != tempPowers->end(); iter3++)
+		{
+			currentPower = *iter3;
+            ui->listWidget_Powers_Lobby->addItem(QString::fromStdString(currentPower));
+		}
+	}
+	
 
     if (activeMapsisEmpty())
     {
@@ -460,3 +478,32 @@ void LobbyWindow::errorHandler(int errorCode)
 }
 
 
+
+void LobbyWindow::on_pushButton_Engage_Combat_clicked()
+{
+//    if (!inCombat)
+//    {
+//        qDebug() << "Hello" ;
+//        diceobuSystemCore("4");
+//    }
+//    else
+//    {
+//        qDebug() << "Bye";
+//        inCombatTemp = false;
+//    }
+}
+
+void LobbyWindow::on_pushButton_Engage_Combat_toggled(bool checked)
+{
+    inCombatTemp = checked;
+    if (checked)
+    {
+        diceobuSystemCore("4");
+    }
+}
+
+void LobbyWindow::on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item)
+{
+    QListWidgetItem arg = *item;
+    qDebug() << arg.whatsThis();
+}

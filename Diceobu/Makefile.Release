@@ -751,10 +751,6 @@ release\moc_lobbywindow.cpp: lobbywindow.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
-		lobbywindow.h \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -905,9 +901,6 @@ release\moc_loginwindow.cpp: loginwindow.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -1022,53 +1015,6 @@ release\moc_mainuiclass.cpp: mainuiclass.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qsizepolicy.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcursor.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qkeysequence.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qevent.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvariant.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmap.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdebug.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtextstream.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlocale.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qset.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontiguouscache.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurl.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurlquery.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfile.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfiledevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvector2d.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtouchdevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPainter \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainter.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtextoption.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpen.h \
-		lobbywindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMainWindow \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmainwindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtabwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qicon.h \
-		mainuiclass.h \
-		charcreatewindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
-		movewindow.h \
-		mapcreatewindow.h \
-		characterdetailswindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		release\moc_predefs.h \
 		..\..\..\Qt\5.12.3\msvc2017\bin\moc.exe
 	F:\Documents\Qt\5.12.3\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include F:/Documents/GitHub/DONTTOUCH/DiceobuUI/release/moc_predefs.h -IF:/Documents/Qt/5.12.3/msvc2017/mkspecs/win32-msvc -IF:/Documents/GitHub/DONTTOUCH/DiceobuUI -IF:/Documents/Qt/5.12.3/msvc2017/include -IF:/Documents/Qt/5.12.3/msvc2017/include/QtWidgets -IF:/Documents/Qt/5.12.3/msvc2017/include/QtGui -IF:/Documents/Qt/5.12.3/msvc2017/include/QtANGLE -IF:/Documents/Qt/5.12.3/msvc2017/include/QtCore -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"F:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"F:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" mainuiclass.h -o release\moc_mainuiclass.cpp
@@ -1321,8 +1267,6 @@ release\moc_mapwidget.cpp: mapwidget.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -1600,8 +1544,6 @@ ui_lobbywindow.h: lobbywindow.ui \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -2917,9 +2859,6 @@ release\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -2969,6 +2908,9 @@ release\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qitemselectionmodel.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QLabel \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QListWidget \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlistwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlistview.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMenu \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmenu.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMenuBar \
@@ -2987,6 +2929,8 @@ release\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtextcursor.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtextformat.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
+		mapwidget.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsScene \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsscene.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsView \
@@ -3003,6 +2947,7 @@ release\lobbywindow.obj: lobbywindow.cpp lobbywindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QTextStream \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMessageBox \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h \
+		mainDependancies.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QStringList \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QStyle \
 		charactersaves.h \
@@ -3149,9 +3094,6 @@ release\main.obj: main.cpp loginwindow.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -3313,9 +3255,6 @@ release\loginwindow.obj: loginwindow.cpp loginwindow.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
@@ -3352,6 +3291,7 @@ release\loginwindow.obj: loginwindow.cpp loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qboxlayout.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qlayout.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsScene \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qgraphicsscene.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QGraphicsView \
@@ -3360,6 +3300,8 @@ release\loginwindow.obj: loginwindow.cpp loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractscrollarea.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMessageBox \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h \
+		mainDependancies.h \
+		mapwidget.h \
 		mainclass.h
 
 release\mainDependancies.obj: mainDependancies.cpp GlobalVariables.h \
@@ -3512,7 +3454,14 @@ release\mainDependancies.obj: mainDependancies.cpp GlobalVariables.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent \
 		loginwindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMessageBox \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmessagebox.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QApplication \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qeventloop.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qinputmethod.h
 
 release\mainuiclass.obj: mainuiclass.cpp mainuiclass.h \
 		Map.h \
@@ -3615,53 +3564,7 @@ release\mainuiclass.obj: mainuiclass.cpp mainuiclass.h \
 		Spell.h \
 		Usable.h \
 		Weapon.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
-		mapwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpalette.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qbrush.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfont.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontmetrics.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qfontinfo.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qsizepolicy.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qcursor.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qkeysequence.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qevent.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qvariant.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qmap.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qdebug.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qtextstream.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qlocale.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qset.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qcontiguouscache.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurl.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qurlquery.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfile.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\qfiledevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qvector2d.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtouchdevice.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPaintEvent \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QPainter \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpainter.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qtextoption.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qpen.h \
-		lobbywindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QMainWindow \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qmainwindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qtabwidget.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\qicon.h \
-		charcreatewindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \
-		movewindow.h \
-		mapcreatewindow.h \
-		characterdetailswindow.h \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QDebug \
-		..\..\..\Qt\5.12.3\msvc2017\include\QtGui\QKeyEvent
+		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject
 
 release\mapcreatewindow.obj: mapcreatewindow.cpp mapcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
@@ -3985,7 +3888,6 @@ release\mapwidget.obj: mapwidget.cpp mapwidget.h \
 		Usable.h \
 		Weapon.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtCore\QObject \
-		mainDependancies.h \
 		charcreatewindow.h \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\QDialog \
 		..\..\..\Qt\5.12.3\msvc2017\include\QtWidgets\qdialog.h \

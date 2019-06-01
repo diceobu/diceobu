@@ -21,13 +21,21 @@
 //  Qt Libraries
 #include <QMessageBox>
 #include <QDebug>
+#include <QApplication>
+#include <thread>
+#include <chrono>
 //	Global Structures
-static std::list<Map*> activeMaps;
 
+static std::list<Map*> activeMaps;
 static std::list<Character*> activeCharacters;
 
 Map* currWorkingMap;
 Character* currWorkingChar;
+
+bool inCombat{ false };
+bool inCombatTemp{ false };
+
+Character* firstOfRound;
 
 int muteLog = 0;
 //Character* currWorkingChar = new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
@@ -35,6 +43,19 @@ int muteLog = 0;
 
 static std::list<Character*> combatQueue;
 
+
+void nextTurn()
+{
+	combatQueue.push_back(combatQueue.front());
+	combatQueue.pop_front();
+	currWorkingChar = combatQueue.back();
+}
+
+
+static std::list<Character*> getCombatQueue()
+{
+	return combatQueue;
+}
 
 std::list<Map*> getActiveMaps()
 {
@@ -309,8 +330,8 @@ void deleteCurrentMap()
 int createNewCharacter()
 {
 	if (currWorkingMap->m_tileGrid[25][25]->getOccupied()) return 1;
-	activeCharacters.push_back(new Character("jeff", "male", 50, 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
-		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
+	activeCharacters.push_back(new Character("Jeff", "Male", 50, 50, 30, 20, "Large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "Fighter",
+		"Lawful Trash", "Some Vest", 20, 50000, "Human", "Some langs", 0, "Tourash", "none", -1, -5));
 	currWorkingChar = activeCharacters.back();
 	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 	return 0;
@@ -325,16 +346,16 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 	int					currHitPoints{ maxHitPoints };
 	int					overheal{ 0 };
 	int					armorClass{ 5 };
-	std::string			size{ "medium" };
+	std::string			size{ "Medium" };
 	int					height{ 5 };
 	int					weight{ 60 };
 	std::pair<int, int>	coordinates{coordX, coordY};
 	int					abilityScores{ 10 };
 	std::list<std::string>	powers;
 	int					speed{ 3 };
-	std::string			equipment{ "leather armor" };
+	std::string			equipment{ "Leather Armor" };
 	int					exp{ 0 };
-	std::string			languages{ "common" };
+	std::string			languages{ "Common" };
 	std::string			proficiency{};
 	int					visionRange{ 30 };
 	int					reach{ 1 };
@@ -344,40 +365,40 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 		maxHitPoints += 8 * level;
 		armorClass += 20;
 		abilityScores += 5;
-		powers = { "phMelAttck", "indomitable", "cleave", "crescendo" };
-		equipment = "heavy armor";
+		powers = { "Melee Attack", "Indomitable", "Cleave", "Crescendo" };
+		equipment = "Heavy Armor";
 	}
 	else if (cClass == "Wizard")
 	{
 		maxHitPoints += 4 * level;
 		armorClass += 5;
 		abilityScores += 20;
-		powers = { "phMelAttck", "mgRangAttck", "callMeteor", "suddenStorm", "iceAge",
-			"grandIllusion", "stealTime", "oppressiveForce", "iceKnife", "maelstromOfChaos",
-			"disintegrate", "teleport", "earthenAegis" };
-		equipment = "cloth armor";
+		powers = { "Melee Attack", "Ranged Attack", "Call Meteor", "Sudden Storm", "Ice Age",
+			"Grand Illusion", "Steal Time", "Oppressive Force", "Ice Knife", "Maelstrom of Chaos",
+			"Disintegrate", "Teleport", "Earthen Aegis" };
+		equipment = "Robes";
 	}
 	else if (cClass == "Rogue")
 	{
 		maxHitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
-		powers = { "phMelAttck", "sneakAttack ", "stealth", "impossibleToCatch", "throwingDagger" };
+		powers = { "Melee Attack", "Sneak Attack ", "Stealth", "Impossible to Catch", "Throwing Dagger" };
 	}
 	else if (cClass == "Ranger")
 	{
 		maxHitPoints += 5 * level;
 		armorClass += 7;
 		abilityScores += 15;
-		powers = { "phRangAttck", "hawkEye", "longShot", "cheapShot", "naturesWay", "rainningArrow" };
+		powers = { "Melee Attack", "Ranged Attack", "Hawk Eye", "Long Shot", "Cheap Shot", "Nature's Way", "Rainning Arrows" };
 	}
 	if (race == "Dwarf")
 	{
 		maxHitPoints += level;
 		armorClass += 5;
 		size = "small";
-		powers.push_back("repair");
-		languages = "common&dwarvish";
+		powers.push_back("Repair");
+		languages = "Common & Dwarvish";
 		visionRange += 10;
 		weight += 30;
 	}
@@ -385,9 +406,9 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 	{
 		height += 3;
 		abilityScores += 10;
-		powers.push_back("heal");
+		powers.push_back("Heal");
 		speed += 2;
-		languages = "common&elvish";
+		languages = "Common & Elvish";
 		visionRange += 30;
 	}
 	else if (race == "Human")
@@ -396,7 +417,7 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 		armorClass += 2;
 		height += 2;
 		abilityScores += 5;
-		powers.push_back("inspire");
+		powers.push_back("Inspire");
 		speed += 1;
 		weight += 15;
 	}
@@ -493,10 +514,27 @@ void moveCurrentCharacterUI(const int &coordX, const int &coordY)
 //	}
 //}
 
+
 void enQueueCombat()
 {
-	std::list<Character*> tempActiveCharacters{ activeCharacters };
-	while (!tempActiveCharacters.empty())
+	std::list<Character*> tempActiveCharacters{};
+	std::list <Character*> ::iterator iter;
+	std::list <int> ::iterator iter2;
+
+	for (iter2 = currWorkingMap->m_containingCharacters.begin(); iter2 != currWorkingMap->m_containingCharacters.end(); iter2++)
+	{
+        int tempID{ *iter2 };
+		for (iter = activeCharacters.begin(); iter != activeCharacters.end(); iter++)
+		{
+			Character* tempChar{ *iter };
+			if (tempID == tempChar->getEntityID())
+			{
+				tempActiveCharacters.push_back(tempChar);
+			}
+		}
+	}
+	
+	while (!tempActiveCharacters.empty()) // randomize character order
 	{
 		if (rand()%2)
 		{
@@ -662,26 +700,19 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 	}
 	else if (input == "4")
 	{
-		if (activeCharacters.empty())
+		if (currWorkingMap->m_containingCharacters.empty())
 		{
-			//displayFeedbackMessageUI("No characters found");
+			emit mui->errorMessage(5);
 		}
 		else
 		{
-			if (inCombat)
-			{
-				inCombat = false;
-				combatQueue.clear();
-				//displayFeedbackMessageUI("Combat ended");
-			}
-			else
-			{
-				inCombat = true;
-				enQueueCombat();
-				//displayFeedbackMessageUI("Combat started");
-				//displayCombatQueueUI();
-				resolveCombatMove("power");
-			}
+			inCombat = true;
+			inCombatTemp = true;
+			enQueueCombat();
+			firstOfRound = combatQueue.back();
+			emit mui->refreshCurrent();
+			//combatQueue.clear();
+            //inCombat = false;
 		}
 	}
 	else if (input == "5")
