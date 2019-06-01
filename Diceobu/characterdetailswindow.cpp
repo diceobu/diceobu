@@ -36,7 +36,7 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui->label_Name->setText(QString::fromStdString(currWorkingChar->getName()));
     ui->label_Class_Level->setText("<font size=5>" + QString::fromStdString(currWorkingChar->getCClass()) + "</font>" + "\n Level " + QString::number(currWorkingChar->getLevel()));
     ui->label_Alignment->setText(QString::fromStdString(currWorkingChar->getAlignment()));
-    ui->label_Background_Race->setText(QString::fromStdString(currWorkingChar->getRace()) + "\n" + QString::fromStdString(currWorkingChar->getBackground()));
+    ui->label_Background_Race->setText(QString::fromStdString(currWorkingChar->getGender()) + " " + QString::fromStdString(currWorkingChar->getRace()) + "\n" + QString::fromStdString(currWorkingChar->getBackground()));
     ui->label_Size->setText(QString::fromStdString(currWorkingChar->getSize()));
     //ui->label_Languages->setText(QString::fromStdString(currWorkingChar->getLanguages()));
 
@@ -45,7 +45,7 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui->label_Ability_Scores_Value->setText(QString::number(currWorkingChar->getAbilityScores()));
     ui->label_AC_Value->setText(QString::number(currWorkingChar->getArmorClass()));
     ui->label_EXP->setText(QString::number(currWorkingChar->getExp()));
-    ui->label_HP->setText(QString::number(currWorkingChar->getHitPoints()) + "/" + QString::number(currWorkingChar->getHitPoints()) + " (+"
+    ui->label_HP->setText(QString::number(currWorkingChar->getcurrHitPoints()) + "/" + QString::number(currWorkingChar->getmaxHitPoints()) + " (+"
                           + QString::number(currWorkingChar->getOverheal()) + ")");
     ui->label_Weight->setText(QString::number(currWorkingChar->getWeight()) + "<font size=3> lbs. </font>");
     ui->label_Height->setText(QString::number(currWorkingChar->getHeight()) + "'");
@@ -54,6 +54,16 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui->label_Vision_Range->setText(QString::number(currWorkingChar->getVisionRange()) + " ft.");
     ui->label_Balance->setText(QString::number(currWorkingChar->getBalance()) + " g");
 
+    std::list<std::string> :: iterator iter;
+    std::string currentPower;
+    std::list<std::string> *tempPowers;
+    tempPowers = currWorkingChar->getPowers();
+
+    for(iter =tempPowers->begin(); iter != tempPowers->end(); iter++)
+    {
+        currentPower = *iter;
+        ui->listWidget_Powers->addItem(QString::fromStdString(currentPower));
+    }
 
     ui->label_ID->setText(QString::number(currWorkingChar->getEntityID()));
     ui->label_Current_Map->setText(QString::number(currWorkingChar->getCurrMap()->getMapID()));

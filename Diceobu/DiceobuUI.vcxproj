@@ -218,6 +218,7 @@
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="characterdetailswindow.cpp" />
+    <ClCompile Include="charactersaves.cpp" />
     <ClCompile Include="charcreatewindow.cpp" />
     <ClCompile Include="lobbywindow.cpp" />
     <ClCompile Include="loginwindow.cpp" />
@@ -254,6 +255,7 @@
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="characterdetailswindow.h">
     </QtMoc>
+    <ClInclude Include="charactersaves.h" />
     <QtMoc Include="charcreatewindow.h">
     </QtMoc>
     <QtMoc Include="lobbywindow.h">

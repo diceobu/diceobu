@@ -436,7 +436,7 @@ color: black;
    <property name="font">
     <font>
      <family>ImperatorSmallCaps</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
      <weight>9</weight>
      <italic>false</italic>
      <bold>false</bold>
@@ -445,7 +445,7 @@ color: black;
    <property name="styleSheet">
     <string notr="true">QLabel{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 16pt &quot;ImperatorSmallCaps&quot;;
+font: 75 14pt &quot;ImperatorSmallCaps&quot;;
 border-style: solid;
 border-color: black;
 border-width: 2px;
@@ -455,7 +455,7 @@ color: black;
 </string>
    </property>
    <property name="text">
-    <string>Background &amp; Race</string>
+    <string>Background &amp; Race &amp; Gender</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -791,8 +791,7 @@ color: black;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>20</string>
@@ -1712,7 +1711,7 @@ color: white
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -1824,7 +1823,7 @@ color: rgb(220, 220, 220);
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -1936,20 +1935,18 @@ color: rgb(220, 220, 220);
     </item>
    </layout>
   </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>label_EXP_Tag</zorder>
   <zorder>label_Ability_Scores</zorder>
   <zorder>label_EXP</zorder>
-  <zorder>pushButton_close</zorder>
   <zorder>label_Image</zorder>
-  <zorder>pushButton_More</zorder>
   <zorder>groupBox_Entity_Details</zorder>
   <zorder>label_Background_Race</zorder>
   <zorder>label_Name</zorder>
   <zorder>label_AC</zorder>
   <zorder>label_Class_Level</zorder>
   <zorder>label_Alignment</zorder>
-  <zorder>pushButton_Less</zorder>
-  <zorder>pushButton_close_2</zorder>
   <zorder>label_Image_Value</zorder>
   <zorder>label_Ability_Scores_Value</zorder>
   <zorder>label_AC_Value</zorder>

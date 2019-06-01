@@ -18,7 +18,8 @@ class Entity
 //	Member Variables
 protected:
 	std::string			m_name{ "emstr" };
-	int					m_hitPoints{ -1 };
+	int					m_maxHitPoints{ -1 };
+	int					m_currHitPoints{ -1 };
 	int					m_overheal{ -1 };
 	int					m_armorClass{ -1 };
 	std::string			m_size{ "emstr" };
@@ -30,7 +31,8 @@ protected:
 //	Member Functions
 public:
 //	Constructors
-	Entity(	const std::string			&name,			const int	&hitPoints,
+	Entity(	const std::string			&name,			
+			const int					&maxHitPoints,	const int	&currHitPoints,
 			const int					&overheal,		const int	&armorClass,
 			const std::string			&size,			const int	&height,
 			const int					&weight,		const int	&entityID,
@@ -38,7 +40,8 @@ public:
 //	Access Functions
 //	Getters
 	const std::string			getName()			{ return m_name; }
-	const int					getHitPoints()		{ return m_hitPoints; }
+	const int					getmaxHitPoints()	{ return m_maxHitPoints; }
+	const int					getcurrHitPoints()	{ return m_currHitPoints; }
 	const int					getOverheal()		{ return m_overheal; }
 	const int					getArmorClass()		{ return m_armorClass; }
 	const std::string			getSize()			{ return m_size; }
@@ -51,7 +54,8 @@ public:
 	Map*						getCurrMap()		{ return m_currMap; }
 //	Setters
 	void setName(const std::string &name)						{ m_name = name; }
-	void setHitPoints(const int &hitPoints)						{ m_hitPoints = hitPoints; }
+	void setmaxHitPoints(const int &maxHitPoints)				{ m_maxHitPoints = maxHitPoints; }
+	void setcurrHitPoints(const int &currHitPoints)				{ m_currHitPoints = currHitPoints; }
 	void setOverheal(const int &overheal)						{ m_overheal = overheal; }
 	void setArmorClass(const int &armorClass)					{ m_armorClass = armorClass; }
 	void setSize(const std::string &size)						{ m_size = size; }

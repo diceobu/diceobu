@@ -11,7 +11,8 @@
 #include <string>
 
 //	Constructors
-PC::PC(	const std::string	&name,			const int			&hitPoints,
+PC::PC(	const std::string	&name,			const std::string	&gender,
+		const int			&maxHitPoints,	const int			&currHitPoints,
 		const int			&overheal,		const int			&armorClass,
 		const std::string	&size,			const int			&height,
 		const int			&weight,		const int			&entityID,
@@ -24,7 +25,7 @@ PC::PC(	const std::string	&name,			const int			&hitPoints,
 		const int			&reach,
 		const int			&userID,		const int			&inventory,		const bool			&inspiration,
 		const int			&expenses)
-	: Character(name, hitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap, abilityScores, powers,
+	: Character(name, gender, maxHitPoints, currHitPoints, overheal, armorClass, size, height, weight, entityID, coordinates, currMap, abilityScores, powers,
 		speed, cClass, alignment, equipment, level, exp, race, languages, balance, background, proficiency, visionRange, reach),
 	m_userID{ userID }, m_inventory{ inventory }, m_inspiration{ inspiration }, m_expenses{ expenses }
 {}

@@ -13,12 +13,14 @@
 #include <utility>
 
 //	Constructors
-Entity::Entity(	const std::string			&name,			const int	&hitPoints,
+Entity::Entity(	const std::string			&name,			
+				const int					&maxHitPoints,	const int	&currHitPoints,
 				const int					&overheal,		const int	&armorClass,
 				const std::string			&size,			const int	&height,
 				const int					&weight,		const int	&entityID,
 				const std::pair<int, int>	&coordinates,	Map*		&currMap)
-	:	m_name{ name },					m_hitPoints{ hitPoints },
+	:	m_name{ name },					
+		m_maxHitPoints{ maxHitPoints }, m_currHitPoints{ currHitPoints },
 		m_overheal{ overheal },			m_armorClass{ armorClass },
 		m_size{ size },					m_height{ height },
 		m_weight{ weight },				m_entityID{ entityID },

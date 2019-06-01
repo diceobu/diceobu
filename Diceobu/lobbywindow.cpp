@@ -31,6 +31,8 @@
 static int window_width    =   1440;
 static int window_height   =   900;
 
+static int i = 0;
+
 int targetMapID;
 int targetCharacterID;
 
@@ -76,6 +78,9 @@ LobbyWindow::~LobbyWindow()
 void LobbyWindow::on_pushButton_5_clicked()
 {
 
+    currWorkingChar->getPowers()->push_back("Hello");
+    qDebug() << "lw78" << QString::fromStdString(currWorkingChar->getPowers()->back());
+    i++;
 }
 
 void LobbyWindow::on_actionSaveCharacter_triggered()

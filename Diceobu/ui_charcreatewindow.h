@@ -25,7 +25,7 @@ QT_BEGIN_NAMESPACE
 class Ui_CharCreateWindow
 {
 public:
-    QHBoxLayout *horizontalLayout_12;
+    QHBoxLayout *horizontalLayout_13;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
     QSpacerItem *verticalSpacer_3;
@@ -36,6 +36,9 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_class;
     QComboBox *field_class;
+    QHBoxLayout *horizontalLayout_12;
+    QLabel *label_gender;
+    QComboBox *field_gender;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_race;
     QComboBox *field_race;
@@ -72,12 +75,12 @@ public:
     {
         if (CharCreateWindow->objectName().isEmpty())
             CharCreateWindow->setObjectName(QString::fromUtf8("CharCreateWindow"));
-        CharCreateWindow->resize(476, 574);
-        horizontalLayout_12 = new QHBoxLayout(CharCreateWindow);
-        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        CharCreateWindow->resize(610, 574);
+        horizontalLayout_13 = new QHBoxLayout(CharCreateWindow);
+        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_12->addItem(horizontalSpacer);
+        horizontalLayout_13->addItem(horizontalSpacer);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -141,6 +144,36 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_6);
 
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        label_gender = new QLabel(CharCreateWindow);
+        label_gender->setObjectName(QString::fromUtf8("label_gender"));
+        label_gender->setFont(font);
+
+        horizontalLayout_12->addWidget(label_gender);
+
+        field_gender = new QComboBox(CharCreateWindow);
+        field_gender->setObjectName(QString::fromUtf8("field_gender"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(field_gender->sizePolicy().hasHeightForWidth());
+        field_gender->setSizePolicy(sizePolicy);
+        field_gender->setMinimumSize(QSize(145, 25));
+        field_gender->setMaximumSize(QSize(145, 25));
+        field_gender->setBaseSize(QSize(40, 0));
+        field_gender->setFont(font1);
+        field_gender->setLayoutDirection(Qt::LeftToRight);
+        field_gender->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"setItemData(i, Qt::AlignCenter, Qt::TextAlignmentRole);\n"
+"}"));
+        field_gender->setSizeAdjustPolicy(QComboBox::AdjustToContentsOnFirstShow);
+
+        horizontalLayout_12->addWidget(field_gender);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_12);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         label_race = new QLabel(CharCreateWindow);
@@ -151,9 +184,6 @@ public:
 
         field_race = new QComboBox(CharCreateWindow);
         field_race->setObjectName(QString::fromUtf8("field_race"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(field_race->sizePolicy().hasHeightForWidth());
         field_race->setSizePolicy(sizePolicy);
         field_race->setMinimumSize(QSize(145, 25));
@@ -367,15 +397,16 @@ public:
         verticalLayout_2->addLayout(horizontalLayout_11);
 
 
-        horizontalLayout_12->addLayout(verticalLayout_2);
+        horizontalLayout_13->addLayout(verticalLayout_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_12->addItem(horizontalSpacer_2);
+        horizontalLayout_13->addItem(horizontalSpacer_2);
 
 #ifndef QT_NO_SHORTCUT
         label_name->setBuddy(field_name);
         label_class->setBuddy(field_class);
+        label_gender->setBuddy(field_race);
         label_race->setBuddy(field_race);
         labeL_alignment->setBuddy(field_alignment);
         label_background->setBuddy(field_background);
@@ -395,6 +426,7 @@ public:
         CharCreateWindow->setWindowTitle(QApplication::translate("CharCreateWindow", "Dialog", nullptr));
         label_name->setText(QApplication::translate("CharCreateWindow", "Name :", nullptr));
         label_class->setText(QApplication::translate("CharCreateWindow", "Class :", nullptr));
+        label_gender->setText(QApplication::translate("CharCreateWindow", "Gender:", nullptr));
         label_race->setText(QApplication::translate("CharCreateWindow", "Race :", nullptr));
         labeL_alignment->setText(QApplication::translate("CharCreateWindow", "Alignment :", nullptr));
         label_background->setText(QApplication::translate("CharCreateWindow", "Background :", nullptr));

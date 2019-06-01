@@ -30,7 +30,7 @@ CharCreateWindow::CharCreateWindow(QWidget *parent) :
     ui->field_background->addItem("Noble");
     ui->field_background->addItem("Sage");
     ui->field_background->addItem("Soldier");
-    /* Alignments */
+    /* Alignment */
     ui->field_alignment->addItem("Lawful Good");
     ui->field_alignment->addItem("Lawful Neutral");
     ui->field_alignment->addItem("Lawful Evil");
@@ -40,7 +40,11 @@ CharCreateWindow::CharCreateWindow(QWidget *parent) :
     ui->field_alignment->addItem("Chaotic Good");
     ui->field_alignment->addItem("Chaotic Neutral");
     ui->field_alignment->addItem("Chaotic Evil");
+    /* Gender */
+    ui->field_gender->addItem("Male");
+    ui->field_gender->addItem("Female");
 
+    /*Defaults*/
     ui->field_name->setText("Adam");
     ui->field_balance->setText("0");
     ui->field_level->setText("1");
@@ -61,6 +65,7 @@ CharCreateWindow::~CharCreateWindow()
 void CharCreateWindow::on_pushButton_confirm_clicked()
 {
     std::string cName       = ui->field_name->text().toStdString();
+    std::string cGender     = ui->field_gender->currentText().toStdString();
     std::string cClass      = ui->field_class->currentText().toStdString();
     std::string cRace       = ui->field_race->currentText().toStdString();
     std::string cAlignment  = ui->field_alignment->currentText().toStdString();
@@ -77,13 +82,14 @@ void CharCreateWindow::on_pushButton_confirm_clicked()
     }
     else
     {
+        qDebug() << "s86%%" << coordX << coordY << currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() << currWorkingMap->m_tileGrid[coordX][coordY]->getOpen();
         if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())
         {
             QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");
         }
         else
         {
-            diceobuSystemCore("2",coordX,coordY,cName,cClass,cRace,cAlignment,cBackground,cBalance,cLevel);
+            diceobuSystemCore("2",coordX,coordY,cName,cGender,cClass,cRace,cAlignment,cBackground,cBalance,cLevel);
             close();
         }
     }

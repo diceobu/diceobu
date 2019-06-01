@@ -44,7 +44,7 @@ void deleteCurrentMap();
 
 int createNewCharacter();
 
-int characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+int characterCreation(const std::string &name, const std::string &gender, const std::string &cClass, const std::string &race, const std::string &alignment,
     const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY);
 
 void deleteCurrentCharacter();
@@ -72,8 +72,9 @@ std::string getUserOption();
 
 
 void diceobuSystemCore(std::string input, const int &coordX = 25, const int &coordY = 25, const std::string &cName = "Adam",
-                       const std::string &cClass = "Fighter", const std::string &cRace = "Human", const std::string &cAlignment = "Neutral",
-                       const std::string &cBackground = "Soldier", const int &cBalance = 0, const int &cLevel = 0);
+						const std::string	&cGender = "Male", const std::string &cClass = "Fighter", const std::string &cRace = "Human",
+						const std::string &cAlignment = "Neutral",
+						const std::string &cBackground = "Soldier", const int &cBalance = 0, const int &cLevel = 0);
 void simLaunch();
 
 void checkLists();  // NOT IN ORDERRRRRRRRRRRR

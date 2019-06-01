@@ -71,11 +71,11 @@ public:
     QFrame *line;
     QLabel *label_More_Details;
     QFrame *line_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_More;
     QPushButton *pushButton_close;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_Less;
     QPushButton *pushButton_close_2;
@@ -264,14 +264,14 @@ public:
         label_Background_Race->setGeometry(QRect(455, 230, 165, 60));
         QFont font3;
         font3.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font3.setPointSize(16);
+        font3.setPointSize(14);
         font3.setBold(false);
         font3.setItalic(false);
         font3.setWeight(9);
         label_Background_Race->setFont(font3);
         label_Background_Race->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
-"font: 75 16pt \"ImperatorSmallCaps\";\n"
+"font: 75 14pt \"ImperatorSmallCaps\";\n"
 "border-style: solid;\n"
 "border-color: black;\n"
 "border-width: 2px;\n"
@@ -300,13 +300,7 @@ public:
         label_HP = new QLabel(CharacterDetailsWindow);
         label_HP->setObjectName(QString::fromUtf8("label_HP"));
         label_HP->setGeometry(QRect(290, 160, 121, 31));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font4.setPointSize(14);
-        font4.setBold(false);
-        font4.setItalic(false);
-        font4.setWeight(9);
-        label_HP->setFont(font4);
+        label_HP->setFont(font3);
         label_HP->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -347,13 +341,13 @@ public:
         label_Class_Level = new QLabel(CharacterDetailsWindow);
         label_Class_Level->setObjectName(QString::fromUtf8("label_Class_Level"));
         label_Class_Level->setGeometry(QRect(255, 80, 160, 61));
-        QFont font5;
-        font5.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font5.setPointSize(14);
-        font5.setBold(false);
-        font5.setItalic(false);
-        font5.setWeight(50);
-        label_Class_Level->setFont(font5);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font4.setPointSize(14);
+        font4.setBold(false);
+        font4.setItalic(false);
+        font4.setWeight(50);
+        label_Class_Level->setFont(font4);
         label_Class_Level->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font:  \"ImperatorSmallCaps\";\n"
@@ -369,7 +363,7 @@ public:
         label_Alignment = new QLabel(CharacterDetailsWindow);
         label_Alignment->setObjectName(QString::fromUtf8("label_Alignment"));
         label_Alignment->setGeometry(QRect(455, 300, 165, 40));
-        label_Alignment->setFont(font4);
+        label_Alignment->setFont(font3);
         label_Alignment->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 14pt \"ImperatorSmallCaps\";\n"
@@ -757,13 +751,13 @@ public:
         label_Ability_Scores_Value_Tag = new QLabel(CharacterDetailsWindow);
         label_Ability_Scores_Value_Tag->setObjectName(QString::fromUtf8("label_Ability_Scores_Value_Tag"));
         label_Ability_Scores_Value_Tag->setGeometry(QRect(497, 110, 80, 31));
-        QFont font6;
-        font6.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font6.setPointSize(8);
-        font6.setBold(false);
-        font6.setItalic(false);
-        font6.setWeight(9);
-        label_Ability_Scores_Value_Tag->setFont(font6);
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font5.setPointSize(8);
+        font5.setBold(false);
+        font5.setItalic(false);
+        font5.setWeight(9);
+        label_Ability_Scores_Value_Tag->setFont(font5);
         label_Ability_Scores_Value_Tag->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "font: 75 8pt \"ImperatorSmallCaps\";\n"
 "color: black;\n"
@@ -774,13 +768,13 @@ public:
         label_AC_Value_Tag = new QLabel(CharacterDetailsWindow);
         label_AC_Value_Tag->setObjectName(QString::fromUtf8("label_AC_Value_Tag"));
         label_AC_Value_Tag->setGeometry(QRect(502, 55, 70, 31));
-        QFont font7;
-        font7.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font7.setPointSize(6);
-        font7.setBold(false);
-        font7.setItalic(false);
-        font7.setWeight(9);
-        label_AC_Value_Tag->setFont(font7);
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font6.setPointSize(6);
+        font6.setBold(false);
+        font6.setItalic(false);
+        font6.setWeight(9);
+        label_AC_Value_Tag->setFont(font6);
         label_AC_Value_Tag->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "font: 75 6pt \"ImperatorSmallCaps\";\n"
 "color: black;\n"
@@ -807,23 +801,23 @@ public:
         line_2->setGeometry(QRect(400, 395, 220, 21));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
-        widget = new QWidget(CharacterDetailsWindow);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(240, 360, 181, 41));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(CharacterDetailsWindow);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(240, 360, 181, 41));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_More = new QPushButton(widget);
+        pushButton_More = new QPushButton(layoutWidget);
         pushButton_More->setObjectName(QString::fromUtf8("pushButton_More"));
         pushButton_More->setMinimumSize(QSize(0, 35));
         pushButton_More->setMaximumSize(QSize(130, 100));
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
-        font8.setPointSize(10);
-        font8.setBold(false);
-        font8.setItalic(false);
-        font8.setWeight(9);
-        pushButton_More->setFont(font8);
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("ImperatorSmallCaps"));
+        font7.setPointSize(10);
+        font7.setBold(false);
+        font7.setItalic(false);
+        font7.setWeight(9);
+        pushButton_More->setFont(font7);
         pushButton_More->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 10pt \"ImperatorSmallCaps\";\n"
@@ -847,11 +841,11 @@ public:
 
         horizontalLayout->addWidget(pushButton_More);
 
-        pushButton_close = new QPushButton(widget);
+        pushButton_close = new QPushButton(layoutWidget);
         pushButton_close->setObjectName(QString::fromUtf8("pushButton_close"));
         pushButton_close->setMinimumSize(QSize(0, 35));
         pushButton_close->setMaximumSize(QSize(130, 100));
-        pushButton_close->setFont(font8);
+        pushButton_close->setFont(font7);
         pushButton_close->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 10pt \"ImperatorSmallCaps\";\n"
@@ -875,17 +869,17 @@ public:
 
         horizontalLayout->addWidget(pushButton_close);
 
-        widget1 = new QWidget(CharacterDetailsWindow);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(450, 710, 181, 41));
-        horizontalLayout_2 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(CharacterDetailsWindow);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(450, 710, 181, 41));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        pushButton_Less = new QPushButton(widget1);
+        pushButton_Less = new QPushButton(layoutWidget1);
         pushButton_Less->setObjectName(QString::fromUtf8("pushButton_Less"));
         pushButton_Less->setMinimumSize(QSize(0, 35));
         pushButton_Less->setMaximumSize(QSize(130, 100));
-        pushButton_Less->setFont(font8);
+        pushButton_Less->setFont(font7);
         pushButton_Less->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 10pt \"ImperatorSmallCaps\";\n"
@@ -909,11 +903,11 @@ public:
 
         horizontalLayout_2->addWidget(pushButton_Less);
 
-        pushButton_close_2 = new QPushButton(widget1);
+        pushButton_close_2 = new QPushButton(layoutWidget1);
         pushButton_close_2->setObjectName(QString::fromUtf8("pushButton_close_2"));
         pushButton_close_2->setMinimumSize(QSize(0, 35));
         pushButton_close_2->setMaximumSize(QSize(130, 100));
-        pushButton_close_2->setFont(font8);
+        pushButton_close_2->setFont(font7);
         pushButton_close_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-color: rgb(45, 45, 45);\n"
 "font: 75 10pt \"ImperatorSmallCaps\";\n"
@@ -937,20 +931,18 @@ public:
 
         horizontalLayout_2->addWidget(pushButton_close_2);
 
+        layoutWidget->raise();
+        layoutWidget->raise();
         label_EXP_Tag->raise();
         label_Ability_Scores->raise();
         label_EXP->raise();
-        pushButton_close->raise();
         label_Image->raise();
-        pushButton_More->raise();
         groupBox_Entity_Details->raise();
         label_Background_Race->raise();
         label_Name->raise();
         label_AC->raise();
         label_Class_Level->raise();
         label_Alignment->raise();
-        pushButton_Less->raise();
-        pushButton_close_2->raise();
         label_Image_Value->raise();
         label_Ability_Scores_Value->raise();
         label_AC_Value->raise();
@@ -987,7 +979,7 @@ public:
         label_Map_Tag->setText(QApplication::translate("CharacterDetailsWindow", "[Map]:", nullptr));
         label_XY_Tag->setText(QApplication::translate("CharacterDetailsWindow", "[X/Y]:", nullptr));
         label_XY->setText(QApplication::translate("CharacterDetailsWindow", "X/Y", nullptr));
-        label_Background_Race->setText(QApplication::translate("CharacterDetailsWindow", "Background & Race", nullptr));
+        label_Background_Race->setText(QApplication::translate("CharacterDetailsWindow", "Background & Race & Gender", nullptr));
         label_Name->setText(QApplication::translate("CharacterDetailsWindow", "Name", nullptr));
         label_HP->setText(QApplication::translate("CharacterDetailsWindow", "20/20 (+0)", nullptr));
         label_AC->setText(QApplication::translate("CharacterDetailsWindow", "AC", nullptr));

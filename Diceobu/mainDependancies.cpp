@@ -309,19 +309,20 @@ void deleteCurrentMap()
 int createNewCharacter()
 {
 	if (currWorkingMap->m_tileGrid[25][25]->getOccupied()) return 1;
-	activeCharacters.push_back(new Character("jeff", 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
+	activeCharacters.push_back(new Character("jeff", "male", 50, 50, 30, 20, "large", 24, 22, characterIDCounter++, { 25, 25 }, currWorkingMap, 11, { "none" }, 2, "fighter",
 		"lawful trash", "some vest", 20, 50000, "human", "some langs", 0, "tourash", "none", -1, -5));
 	currWorkingChar = activeCharacters.back();
 	currWorkingMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
 	return 0;
 }
 
-int characterCreation(const std::string &name, const std::string &cClass, const std::string &race, const std::string &alignment,
+int characterCreation(const std::string &name, const std::string &gender, const std::string &cClass, const std::string &race, const std::string &alignment,
 	const std::string &background, const int &balance, const int &level, const int &coordX, const int &coordY)
 {
     if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())	return 1; //????????????????????
 
-	int					hitPoints{ 10 };
+	int					maxHitPoints{ 10 };
+	int					currHitPoints{ maxHitPoints };
 	int					overheal{ 0 };
 	int					armorClass{ 5 };
 	std::string			size{ "medium" };
@@ -340,7 +341,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 
 	if (cClass == "Fighter")
 	{
-		hitPoints += 8 * level;
+		maxHitPoints += 8 * level;
 		armorClass += 20;
 		abilityScores += 5;
 		powers = { "phMelAttck", "indomitable", "cleave", "crescendo" };
@@ -348,7 +349,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (cClass == "Wizard")
 	{
-		hitPoints += 4 * level;
+		maxHitPoints += 4 * level;
 		armorClass += 5;
 		abilityScores += 20;
 		powers = { "phMelAttck", "mgRangAttck", "callMeteor", "suddenStorm", "iceAge",
@@ -358,21 +359,21 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (cClass == "Rogue")
 	{
-		hitPoints += 6 * level;
+		maxHitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
 		powers = { "phMelAttck", "sneakAttack ", "stealth", "impossibleToCatch", "throwingDagger" };
 	}
 	else if (cClass == "Ranger")
 	{
-		hitPoints += 5 * level;
+		maxHitPoints += 5 * level;
 		armorClass += 7;
 		abilityScores += 15;
 		powers = { "phRangAttck", "hawkEye", "longShot", "cheapShot", "naturesWay", "rainningArrow" };
 	}
 	if (race == "Dwarf")
 	{
-		hitPoints += level;
+		maxHitPoints += level;
 		armorClass += 5;
 		size = "small";
 		powers.push_back("repair");
@@ -391,7 +392,7 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 	}
 	else if (race == "Human")
 	{
-		hitPoints += level / 5;
+		maxHitPoints += level / 5;
 		armorClass += 2;
 		height += 2;
 		abilityScores += 5;
@@ -399,8 +400,12 @@ int characterCreation(const std::string &name, const std::string &cClass, const 
 		speed += 1;
 		weight += 15;
 	}
+
+
+
+	currHitPoints = maxHitPoints;
     //currWorkingMap->m_tileGrid[coordX][coordY]->setOccupied(true); //??????????????????????????
-	activeCharacters.push_back(new Character(name, hitPoints, overheal, armorClass,
+	activeCharacters.push_back(new Character(name, gender, maxHitPoints, currHitPoints, overheal, armorClass,
 		size, height, weight, characterIDCounter++, coordinates, currWorkingMap, abilityScores,
 		powers, speed, cClass, alignment, equipment, level, exp, race, languages, balance,
 		background, proficiency, visionRange, reach));
@@ -523,7 +528,7 @@ void displayAvailableMoves()
 {
 	//displayFeedbackMessage("1.\t");
 	std::list <std::string> :: iterator iter;
-	for (iter = currWorkingChar->getPowers().begin(); iter != currWorkingChar->getPowers().end(); iter++)
+    for (iter = currWorkingChar->getPowers()->begin(); iter != currWorkingChar->getPowers()->end(); iter++)
 	{
 		std::cout << "hi\n";
 		std::string currString{ *iter };
@@ -553,7 +558,8 @@ std::string getUserOption()
 	return input;
 }
 
-void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, const std::string &cName, const std::string &cClass,
+void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, const std::string &cName, 
+						const std::string	&cGender, const std::string &cClass,
                        const std::string &cRace, const std::string &cAlignment,
                        const std::string &cBackground, const int &cBalance, const int &cLevel)
 {
@@ -605,7 +611,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		}
 		else
 		{
-            int notcreated = characterCreation(cName,cClass,cRace,cAlignment,cBackground,cBalance,cLevel,coordX,coordY);
+            int notcreated = characterCreation(cName, cGender, cClass,cRace,cAlignment,cBackground,cBalance,cLevel,coordX,coordY);
             if (notcreated)
 			{
 				//displayFeedbackMessageUI("Could not create character");

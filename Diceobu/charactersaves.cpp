@@ -62,12 +62,12 @@ int loadPlayerCharacter(std::string saveFilepath){
         }
         else                            // token has a value
         {
-            if (previousToken == "CoordinateX")
+            if (previousToken == "Coordinate X")
             {
                 coordX = std::stoi(token);
 
             }
-            else if (previousToken == "CoordinateY")
+            else if (previousToken == "Coordinate Y")
             {
                 coordY = std::stoi(token);
 
@@ -92,6 +92,7 @@ int loadPlayerCharacter(std::string saveFilepath){
 
     muteLog = 1;
     diceobuSystemCore("2",coordX,coordY);
+    currWorkingChar->getPowers()->clear();
     muteLog = 0;
 
 
@@ -111,6 +112,10 @@ int loadPlayerCharacter(std::string saveFilepath){
             {
                 currWorkingChar->setName(token);
             }
+			else if (previousToken == "Gender")
+            {
+                currWorkingChar->setGender(token);
+            }
             else if (previousToken == "Class")
             {
                 currWorkingChar->setCClass(token);
@@ -119,15 +124,19 @@ int loadPlayerCharacter(std::string saveFilepath){
             {
                 currWorkingChar->setRace(token);
             }
-            else if (previousToken == "HitPoints")
+            else if (previousToken == "Maximum Hit Points")
             {
-                currWorkingChar->setHitPoints(std::stoi(token));
+                currWorkingChar->setmaxHitPoints(std::stoi(token));
+            }
+			else if (previousToken == "Current Hit Points")
+            {
+                currWorkingChar->setcurrHitPoints(std::stoi(token));
             }
             else if (previousToken == "Overheal")
             {
                 currWorkingChar->setOverheal(std::stoi(token));
             }
-            else if (previousToken == "ArmorClass")
+            else if (previousToken == "Armor Class")
             {
                 currWorkingChar->setArmorClass(std::stoi(token));
             }
@@ -143,15 +152,15 @@ int loadPlayerCharacter(std::string saveFilepath){
             {
                 currWorkingChar->setWeight(std::stoi(token));
             }
-            else if (previousToken == "CoordinateX")
+            else if (previousToken == "Coordinate X")
             {
                 currWorkingChar->setCoordinateX(std::stoi(token));
             }
-            else if (previousToken == "CoordinateY")
+            else if (previousToken == "Coordinate Y")
             {
                 currWorkingChar->setCoordinateY(std::stoi(token));
             }
-            else if (previousToken == "AbilityScores")
+            else if (previousToken == "Ability Scores")
             {
                 currWorkingChar->setAbilityScores(std::stoi(token));
             }
@@ -179,7 +188,7 @@ int loadPlayerCharacter(std::string saveFilepath){
             {
                 currWorkingChar->setBackground(token);
             }
-            else if (previousToken == "VisionRange")
+            else if (previousToken == "Vision Range")
             {
                 currWorkingChar->setVisionRange(std::stoi(token));
             }
@@ -187,10 +196,15 @@ int loadPlayerCharacter(std::string saveFilepath){
             {
                 currWorkingChar->setReach(std::stoi(token));
             }
-//                else if (previousToken == "Class")
-//                {
-
-//                }
+	        else if (previousToken == "Powers")
+			{
+				tempQSL = QString::fromStdString(token).split(", ");               // Split each line by " = " and push tokens in tokenList
+				for (int i = 0; i < tempQSL.size(); i++)
+                {
+                    qDebug() << "load203" << tempQSL.at(i);
+                    currWorkingChar->getPowers()->push_back(tempQSL.at(i).toStdString());
+				}
+            }
 //                else if (previousToken == "Class")
 //                {
 
@@ -218,26 +232,43 @@ int savePlayerCharacter(){
     saveFilepath.append(".pc");
     std::ofstream outFile(saveFilepath);
 
-    outFile << "Name = "            << currWorkingChar->getName()           << '\n';
-    outFile << "Class = "           << currWorkingChar->getCClass()         << '\n';
-    outFile << "Level = "           << currWorkingChar->getLevel()          << '\n';
-    outFile << "Race = "            << currWorkingChar->getRace()           << '\n';
-    outFile << "Background = "      << currWorkingChar->getBackground()     << '\n';
-    outFile << "Alignment = "       << currWorkingChar->getAlignment()      << '\n';
-    outFile << "ArmorClass = "      << currWorkingChar->getArmorClass()     << '\n';
-    outFile << "AbilityScores = "   << currWorkingChar->getAbilityScores()  << '\n';
-    outFile << "HitPoints = "       << currWorkingChar->getHitPoints()      << '\n';
-    outFile << "Overheal = "        << currWorkingChar->getOverheal()       << '\n';
-    outFile << "EXP = "             << currWorkingChar->getExp()            << '\n';
-    outFile << "Balance = "         << currWorkingChar->getBalance()        << '\n';
-    outFile << "Size = "            << currWorkingChar->getSize()           << '\n';
-    outFile << "Height = "          << currWorkingChar->getHeight()         << '\n';
-    outFile << "Weight = "          << currWorkingChar->getWeight()         << '\n';
-    outFile << "Reach = "           << currWorkingChar->getReach()          << '\n';
-    outFile << "Speed = "           << currWorkingChar->getSpeed()          << '\n';
-    outFile << "VisionRange = "     << currWorkingChar->getVisionRange()    << '\n';
-    outFile << "CoordinateX = "     << currWorkingChar->getCoordinateX()    << '\n';
-    outFile << "CoordinateY = "     << currWorkingChar->getCoordinateY()    << '\n';
+    outFile << "Name = "				<< currWorkingChar->getName()           << '\n';
+    outFile << "Gender = "				<< currWorkingChar->getGender()         << '\n';
+    outFile << "Class = "				<< currWorkingChar->getCClass()         << '\n';
+    outFile << "Level = "				<< currWorkingChar->getLevel()          << '\n';
+    outFile << "Race = "				<< currWorkingChar->getRace()           << '\n';
+    outFile << "Background = "			<< currWorkingChar->getBackground()     << '\n';
+    outFile << "Alignment = "			<< currWorkingChar->getAlignment()      << '\n';
+    outFile << "Armor Class = "			<< currWorkingChar->getArmorClass()     << '\n';
+    outFile << "Ability Scores = "		<< currWorkingChar->getAbilityScores()  << '\n';
+    outFile << "Maximum Hit Points = "  << currWorkingChar->getmaxHitPoints()   << '\n';
+    outFile << "Current Hit Points = "  << currWorkingChar->getmaxHitPoints()   << '\n';
+    outFile << "Overheal = "			<< currWorkingChar->getOverheal()       << '\n';
+    outFile << "EXP = "					<< currWorkingChar->getExp()            << '\n';
+    outFile << "Balance = "				<< currWorkingChar->getBalance()        << '\n';
+    outFile << "Size = "				<< currWorkingChar->getSize()           << '\n';
+    outFile << "Height = "				<< currWorkingChar->getHeight()         << '\n';
+    outFile << "Weight = "				<< currWorkingChar->getWeight()         << '\n';
+    outFile << "Reach = "				<< currWorkingChar->getReach()          << '\n';
+    outFile << "Speed = "				<< currWorkingChar->getSpeed()          << '\n';
+    outFile << "Vision Range = "		<< currWorkingChar->getVisionRange()    << '\n';
+    outFile << "Coordinate X = "		<< currWorkingChar->getCoordinateX()    << '\n';
+    outFile << "Coordinate Y = "		<< currWorkingChar->getCoordinateY()    << '\n';
+
+
+    outFile << "Powers = ";
+    int i=0;
+    std::list<std::string> :: iterator iter;
+    std::string currentPower;
+    std::list<std::string> *tempPowers;
+    tempPowers = currWorkingChar->getPowers();
+    for(iter =tempPowers->begin(); iter != tempPowers->end(); iter++)
+    {
+        currentPower = *iter;
+        outFile << currentPower;
+        i++;
+        if (i < tempPowers->size()){ outFile << ", "; }
+    }
 
 //    outFile << "Name = " << currWorkingChar->getName() << '\n';
 //    outFile << "Name = " << currWorkingChar->getName() << '\n';

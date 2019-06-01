@@ -27,7 +27,8 @@ private:
 	//	Member Functions
 public:
 	//	Constructors
-	NPC(	const std::string	&name,			const int			&hitPoints,
+	NPC(	const std::string	&name,			const std::string	&gender,
+			const int			&maxHitPoints,	const int			&currHitPoints,
 			const int			&overheal,		const int			&armorClass,
 			const std::string	&size,			const int			&height,
 			const int			&weight,		const int			&entityID,
