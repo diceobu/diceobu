@@ -55,7 +55,8 @@ SOURCES += \
         mainuiclass.cpp \
         mapcreatewindow.cpp \
         mapwidget.cpp \
-        movewindow.cpp
+        movewindow.cpp \
+        powersettingswindow.cpp
 
 HEADERS += \
         Campaign.h \
@@ -90,7 +91,8 @@ HEADERS += \
         mainuiclass.h \
         mapcreatewindow.h \
         mapwidget.h \
-        movewindow.h
+        movewindow.h \
+        powersettingswindow.h
 
 FORMS += \
         characterdetailswindow.ui \
@@ -99,7 +101,8 @@ FORMS += \
         loginwindow.ui \
         mapcreatewindow.ui \
         mapwidget.ui \
-        movewindow.ui
+        movewindow.ui \
+        powersettingswindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

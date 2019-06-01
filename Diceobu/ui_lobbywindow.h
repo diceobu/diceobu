@@ -322,7 +322,7 @@ public:
         pushButton_Engage_Combat->setCheckable(true);
         groupBox_Powers = new QGroupBox(centralwidget);
         groupBox_Powers->setObjectName(QString::fromUtf8("groupBox_Powers"));
-        groupBox_Powers->setGeometry(QRect(870, 350, 211, 281));
+        groupBox_Powers->setGeometry(QRect(870, 350, 241, 281));
         groupBox_Powers->setFocusPolicy(Qt::NoFocus);
         groupBox_Powers->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -334,11 +334,11 @@ public:
 "}"));
         listWidget_Powers_Lobby = new QListWidget(groupBox_Powers);
         listWidget_Powers_Lobby->setObjectName(QString::fromUtf8("listWidget_Powers_Lobby"));
-        listWidget_Powers_Lobby->setGeometry(QRect(10, 30, 191, 241));
+        listWidget_Powers_Lobby->setGeometry(QRect(10, 30, 221, 241));
         listWidget_Powers_Lobby->setFocusPolicy(Qt::NoFocus);
         listWidget_Powers_Lobby->setStyleSheet(QString::fromUtf8("QListWidget{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
-"font: 75 12pt \"ImperatorSmallCaps\";\n"
+"font: 75 11pt \"ImperatorSmallCaps\";\n"
 "border-style: solid;\n"
 "border-color: black;\n"
 "border-width: 2px;\n"

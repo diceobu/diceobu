@@ -385,7 +385,7 @@ border-radius: 10px;
      <rect>
       <x>870</x>
       <y>350</y>
-      <width>211</width>
+      <width>241</width>
       <height>281</height>
      </rect>
     </property>
@@ -410,7 +410,7 @@ border-color: white;
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>191</width>
+       <width>221</width>
        <height>241</height>
       </rect>
      </property>
@@ -420,7 +420,7 @@ border-color: white;
      <property name="styleSheet">
       <string notr="true">QListWidget{
 background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
-font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+font: 75 11pt &quot;ImperatorSmallCaps&quot;;
 border-style: solid;
 border-color: black;
 border-width: 2px;

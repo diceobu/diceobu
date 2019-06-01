@@ -97,3 +97,5 @@ extern int muteLog;
 extern bool inCombat;
 
 extern bool inCombatTemp;
+
+std::list<Character*> getCombatQueue();

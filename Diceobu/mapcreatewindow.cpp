@@ -42,3 +42,8 @@ void MapCreateWindow::on_pushButton_confirm_clicked()
     close();
 
 }
+
+void MapCreateWindow::on_pushButton_cancel_clicked()
+{
+    close();
+}

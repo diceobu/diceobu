@@ -31,6 +31,7 @@
 static int window_width    =   1440;
 static int window_height   =   900;
 
+QString tempQString;
 int targetMapID;
 int targetCharacterID;
 
@@ -436,7 +437,7 @@ void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int
     else if (input == "15")
     {
         ui->system_log->append(QString(">> Loaded Character [ID %1] - %2 at {%3,%4}").arg(QString::number(currWorkingChar->getEntityID()),
-                                                                               QString::fromStdString(currWorkingChar->getName()),
+                                                                                         QString::fromStdString(currWorkingChar->getName()),
                                                                                                       QString::number(currWorkingChar->getCoordinateX()),
                                                                                                                       QString::number(currWorkingChar->getCoordinateY())
                                                                                                       ));
@@ -504,6 +505,7 @@ void LobbyWindow::on_pushButton_Engage_Combat_toggled(bool checked)
 
 void LobbyWindow::on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item)
 {
-    QListWidgetItem arg = *item;
-    qDebug() << arg.whatsThis();
+    tempQString = item->text();;
+    powerSettingsWindow = new PowerSettingsWindow(this);
+    powerSettingsWindow->show();
 }
