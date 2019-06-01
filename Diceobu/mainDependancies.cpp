@@ -51,7 +51,6 @@ void nextTurn()
 	currWorkingChar = combatQueue.back();
 }
 
-
 static std::list<Character*> getCombatQueue()
 {
 	return combatQueue;
@@ -575,9 +574,155 @@ void displayAvailableMoves()
 	
 }
 
-void resolveCombatMove(const std::string &power)
+int baseDamageCalculator()
 {
-	power;
+	return (currWorkingChar->getAbilityScores())*(currWorkingChar->getLevel());
+}
+
+void resolveMeleeAttack(Character* &targetChar)
+{
+	int damageInflicted{ baseDamageCalculator() };
+
+	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+}
+
+void resolveRangedAttack(Character* targetChar)
+{
+	int damageInflicted{ baseDamageCalculator() - currWorkingChar->getLevel() };
+
+	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+}
+
+void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY)
+{
+	if (name == "Melee Attack")
+	{
+		resolveMeleeAttack(targetChar);
+	}
+	else if (name == "Ranged Attack")
+	{
+		resolveRangedAttack(targetChar);
+	}
+	else if (name == "Indomitable")
+	{
+		//resolveIndomitable(targetChar);
+	}
+	else if (name == "Cleave")
+	{
+		//resolveCleave(targetChar);
+	}
+	else if (name == "Crescendo")
+	{
+		//resolveCrescendo(targetChar);
+	}
+	else if (name == "Call Meteor")
+	{
+		//resolveCallMeteor(targetCoordX, targetCoordY);
+	}
+	else if (name == "Sudden Storm")
+	{
+		//resolveSuddenStorm();
+	}
+	else if (name == "Ice Age")
+	{
+		//resolveIceAge(targetCoordX, targetCoordY);
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
+	else if (name == "")
+	{
+
+	}
 }
 
 void resolveCombatAttack()
@@ -689,8 +834,12 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
             currWorkingCharName = currWorkingChar->getName();
             if (directionalMovement == 0)
             {
-            emit mui->updateLog(input,currWorkingMap,currWorkingCharID, currWorkingCharName, previousMap,
-                                previousMapName, previousCharacter, previousCharacterName, coordX,coordY);
+				if (muteLog != 1)
+				{
+					emit mui->updateLog(input, currWorkingMap, currWorkingCharID, currWorkingCharName, previousMap,
+						previousMapName, previousCharacter, previousCharacterName, coordX, coordY);
+				}
+				muteLog = 0;
             }
             else
             {
@@ -898,24 +1047,6 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 			emit mui->updateLog(input, currWorkingMap, currWorkingCharID, currWorkingCharName, previousMap,
 				previousMapName, previousCharacter, previousCharacterName, coordX, coordY);
 		}
-	}
-	else if (input == "a")
-	{
-		if(inCombat)
-		{
-			resolveCombatMove("power");
-		}
-		else
-		{
-			//	displayFeedbackMessageUI("Not in combat");
-		}
-	}
-	else if (input == "x")
-	{
-		activeMaps.clear();
-		activeCharacters.clear();
-		combatQueue.clear();
-		//	Qt function calls to terminate session
 	}
 }
 
