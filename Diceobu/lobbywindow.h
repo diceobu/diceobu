@@ -9,6 +9,7 @@
 #include "movewindow.h"
 #include "mapcreatewindow.h"
 #include "characterdetailswindow.h"
+#include "powersettingswindow.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -32,6 +33,7 @@ private:
     MoveWindow *moveWindow;
     MapCreateWindow *mapCreateWindow;
     CharacterDetailsWindow *characterDetailsWindow;
+    PowerSettingsWindow *powerSettingsWindow;
 
     void updateLists();
 protected:
@@ -72,6 +74,8 @@ extern int targetMapID;
 extern int targetCharacterID;
 
 extern int directionalMovement;
+
+extern QString tempQString;
 
 
 #endif // LOBBYWINDOW_H
