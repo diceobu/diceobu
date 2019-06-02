@@ -48,6 +48,7 @@ SOURCES += \
         characterdetailswindow.cpp \
         charactersaves.cpp \
         charcreatewindow.cpp \
+        combatstatuswindow.cpp \
         lobbywindow.cpp \
         main.cpp \
         loginwindow.cpp \
@@ -85,6 +86,7 @@ HEADERS += \
         characterdetailswindow.h \
         charactersaves.h \
         charcreatewindow.h \
+        combatstatuswindow.h \
         lobbywindow.h \
         loginwindow.h \
         mainDependancies.h \
@@ -97,6 +99,7 @@ HEADERS += \
 FORMS += \
         characterdetailswindow.ui \
         charcreatewindow.ui \
+        combatstatuswindow.ui \
         lobbywindow.ui \
         loginwindow.ui \
         mapcreatewindow.ui \

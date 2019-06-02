@@ -30,7 +30,8 @@ public:
 		  const std::string &ofClass,		const std::string	&description,
 		  const int		    &range,			const std::string	&damageType,
 		  const bool		&cMaterial,		const int			&materialList,
-		  const std::string &aoe,			const int			&castingTime,
+		  const std::string &aoe,			const int			&baseDamage,
+		  const int			&castingTime,
 		  const std::string &duration,		const int			&concentration,
 		  const bool		&cVerbal,		const bool			&cSomatic,
 		  const std::string &schOfMagic,	const int			&magicLevel);

@@ -57,7 +57,7 @@ public:
     {
         if (PowerSettingsWindow->objectName().isEmpty())
             PowerSettingsWindow->setObjectName(QString::fromUtf8("PowerSettingsWindow"));
-        PowerSettingsWindow->resize(478, 412);
+        PowerSettingsWindow->resize(276, 281);
         verticalLayout_6 = new QVBoxLayout(PowerSettingsWindow);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_5 = new QVBoxLayout();

@@ -130,7 +130,7 @@ int loadPlayerCharacter(std::string saveFilepath){
             }
 			else if (previousToken == "Current Hit Points")
             {
-                currWorkingChar->setcurrHitPoints(std::stoi(token));
+                currWorkingChar->setCurrHitPoints(std::stoi(token));
             }
             else if (previousToken == "Overheal")
             {

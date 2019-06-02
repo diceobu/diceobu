@@ -26,12 +26,14 @@ protected:
 	bool		m_cMaterial{ "none" };
 	int			m_materialList{0};
 	std::string m_aoe{ "none" };
+	int			m_baseDamage{ 0 };
 //	Member Functions
 public:
 //	Constructors
 	Power(const std::string &name,			const int &levelReq,		const std::string &ofClass,
 		  const std::string &description,	const int &range,			const std::string &damageType,
-		  const bool		&cMaterial,		const int &materialList,	const std::string &aoe);
+		  const bool		&cMaterial,		const int &materialList,	const std::string &aoe,
+		  const int			&baseDamage);
 //	Access Functions
 //	Getters
 	std::string getName()		  { return m_name; }
@@ -43,6 +45,7 @@ public:
 	bool		getCMaterial()	  { return m_cMaterial; }
 	int			getMaterialList() { return m_materialList; }
 	std::string getAoe()		  { return m_aoe; }
+	int			getBaseDamage()	  { return m_baseDamage; }
 //	Setters
 	void setName(const std::string name)				{ m_name = name; }
 	void setLevelReq(const int levelReq)				{ m_levelReq = levelReq; }
@@ -53,5 +56,8 @@ public:
 	void setCMaterial(const bool cMaterial)				{ m_cMaterial = cMaterial; }
 	void setMaterialList(const int materialList)		{ m_materialList = materialList; }
 	void setAoe(const std::string aoe)					{ m_aoe = aoe; }
+	void setBaseDamage(const int baseDamage)			{ m_baseDamage = baseDamage; }
 //	Others
 };
+
+void initializePowerList();

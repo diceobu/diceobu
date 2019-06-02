@@ -10,6 +10,7 @@
 #include "mapcreatewindow.h"
 #include "characterdetailswindow.h"
 #include "powersettingswindow.h"
+#include "combatstatuswindow.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -34,6 +35,7 @@ private:
     MapCreateWindow *mapCreateWindow;
     CharacterDetailsWindow *characterDetailsWindow;
     PowerSettingsWindow *powerSettingsWindow;
+    CombatStatusWindow *combatStatusWindow;
 
     void updateLists();
 protected:
@@ -63,9 +65,10 @@ private slots:
     void on_pushButton_Character_Details_clicked();
     void on_actionSaveCharacter_triggered();
     void on_actionLoadCharacter_triggered();
-    void on_pushButton_Engage_Combat_clicked();
     void on_pushButton_Engage_Combat_toggled(bool checked);
     void on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item);
+    void on_pushButton_Combat_Status_clicked();
+    void on_pushButton_Skip_Turn_clicked();
 };
 
 extern MainUIClass *mui;

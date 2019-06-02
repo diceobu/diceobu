@@ -1,0 +1,28 @@
+Melee Attack : 1, Fighter, NS, 1, none, none, 0, none, 2
+Ranged Attack : 1, Fighter, NS, 15, none, none, 0, none, 1
+Indomitable : 10, Fighter, NS, 1, none, none, 0, none, 5
+Cleave : 7, Fighter, NS, 3, none, none, 0, circle, 2
+Crescendo : 16, Fighter, NS, 1, none, none, 0, none, 10
+Call Meteor : 17, Wizard, NS, 20, fire, none, 0, circle, 20
+Sudden Storm : 7, Wizard, NS, -1, none, none, 0, circle, 10
+Ice Age : 18, Wizard, NS, 20, ice, none, 0, circle, 15
+Grand Illusion : 13, Wizard, NS, 10, none, none, 0, none, 0
+Steal Time : 4, Wizard, NS, 15, none, none, 0, none, 5
+Oppressive Force : 3, Wizard, NS, 15, none, none, 0, none, 5
+Ice Knife : 5, Wizard, NS, 10, ice, none, 0, none, 25
+Maelstrom of Chaos : 19, Wizard, NS, 30, fire, none, 0, circle, 10
+Disintegrate : 2, Wizard, NS, 10, none, none, 0, none, 5
+Teleport : 10, Wizard, NS, 15, none, none, 0, none, 0
+Earthen Aegis : 15, Wizard, NS, 15, none, none, 0, square, 15
+Sneak Attack : 4, Rogue, NS, 3, none, none, 0, none, 30
+Stealth : 3, Rogue, NS, -1, none, none, 0, none, 0
+Impossible to Catch : 6, Rogue, NS, -1, none, none, 0, none, 0
+Throwing Dagger : 2, Rogue, NS, 16, none, none, 0, none, 15
+Hawk Eye : 4, Ranger, NS, -1, none, none, 0, none, 0
+Long Shot : 6, Ranger, NS, 50, none, none, 0, none, 10
+Cheap Shot : 3, Ranger, NS, 30, none, none, 0, none, 5
+Nature's Way : 10, Ranger, NS, 20, none, none, 0, circle, 0
+Rainning Arrows : 13, Ranger, NS, 40, none, none, 0, circle, 15
+Repair : 0, Any, NS, 1, none, none, 0, none, 0
+Heal : 5, Any, NS, 15, none, none, 0, circle, -30
+Inspire : 0, Any, NS, -1, none, none, 0, square, 0

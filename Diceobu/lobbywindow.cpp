@@ -26,7 +26,7 @@
 #include <QStyle>
 #include "charactersaves.h"
 #include <QFileDialog>
-
+#include "powersettingswindow.h"
 
 static int window_width    =   1440;
 static int window_height   =   900;
@@ -79,7 +79,9 @@ void LobbyWindow::on_pushButton_5_clicked()
 
 //    currWorkingChar->getPowers()->push_back("Hello");
 //    qDebug() << "lw78" << QString::fromStdString(currWorkingChar->getPowers()->back());
-    diceobuSystemCore("4");
+    qDebug() << inCombat;
+    nextTurn();
+   // diceobuSystemCore("4");
 
 
 }
@@ -98,6 +100,12 @@ void LobbyWindow::on_actionSaveCharacter_triggered()
 
 void LobbyWindow::on_actionLoadCharacter_triggered()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
+
     if (!activeMapsisEmpty())
     {
         QString saveFilePath = QFileDialog::getOpenFileName(this, tr("Choose a Player Character to load"),"saves","Character Files (*.pc)");
@@ -114,6 +122,11 @@ void LobbyWindow::on_actionLoadCharacter_triggered()
 
 void LobbyWindow::on_actionNewCharacter_triggered()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
 
     if (activeMapsisEmpty())
     {
@@ -141,6 +154,11 @@ void LobbyWindow::on_pushButton_Character_Details_clicked()
 
 void LobbyWindow::on_pushButton_Move_clicked()
 {
+    if (currWorkingChar->getCurrHitPoints() <= 0)
+        {
+            emit mui->errorMessage(8);
+            return;
+        }
     if (getActiveMaps().empty())
     {
         QMessageBox::critical(this,"Error!","Nothing to move!");
@@ -164,11 +182,21 @@ void LobbyWindow::on_pushButton_Move_clicked()
 
 void LobbyWindow::on_actionDeleteMap_triggered()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     diceobuSystemCore("8");
 }
 
 void LobbyWindow::on_actionNewMap_triggered()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     mapCreateWindow = new MapCreateWindow(this);
     mapCreateWindow->show();
     //diceobuSystemCore("1");
@@ -176,17 +204,32 @@ void LobbyWindow::on_actionNewMap_triggered()
 
 void LobbyWindow::on_pushButton_nextMap_clicked()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     diceobuSystemCore("10");
 }
 
 void LobbyWindow::on_actionDeleteCharacter_triggered()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     diceobuSystemCore("9");
 }
 
 
 void LobbyWindow::on_pushButton_nextCharacter_clicked()
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     diceobuSystemCore("11");
 }
 
@@ -198,6 +241,11 @@ void LobbyWindow::on_pushButton_Grid_toggled(bool checked)
 
 void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     QStringList tempQSList;
     tempQSList = ui->comboBox_Maps->currentText().split(" ");
     targetMapID = tempQSList.at(0).toInt();
@@ -206,6 +254,11 @@ void LobbyWindow::on_comboBox_Maps_activated(const QString &arg1)
 
 void LobbyWindow::on_comboBox_Characters_activated(const QString &arg1)
 {
+    if (inCombat)
+    {
+        emit mui->errorMessage(9);
+        return;
+    }
     QStringList tempQSList;
     tempQSList = ui->comboBox_Characters->currentText().split(" ");
     targetCharacterID = tempQSList.at(0).toInt();
@@ -216,13 +269,24 @@ void LobbyWindow::displayCurrent()
 {
     //currWorkingMap->writeMap();
 	initPixmapArray();
+
+    ui->pushButton_Move->setVisible(!inCombat);
+    ui->pushButton_nextMap->setVisible(!inCombat);
+    ui->pushButton_nextCharacter->setVisible(!inCombat);
+    ui->comboBox_Maps->setVisible(!inCombat);
+    ui->comboBox_Characters->setVisible(!inCombat);
+
+    ui->pushButton_Combat_Status->setVisible(inCombat);
+    ui->groupBox_NextUp->setVisible(inCombat);
+    ui->pushButton_Skip_Turn->setVisible(inCombat);
+
     if (activeMapsisEmpty())
     {
         ui->label_currMap->setText("None");
     }
     else
     {
-        ui->label_currMap->setText(QString::number(currWorkingMap->getMapID()));
+        ui->label_currMap->setText(QString::number(currWorkingMap->getMapID()) + " : " + QString::fromStdString(currWorkingMap->getMapName()));
     }
 
     if (activeCharactersisEmpty())
@@ -231,7 +295,7 @@ void LobbyWindow::displayCurrent()
     }
     else
     {
-        ui->label_currChar->setText(QString::number(currWorkingChar->getEntityID()));
+        ui->label_currChar->setText(QString::number(currWorkingChar->getEntityID()) + " : " + QString::fromStdString(currWorkingChar->getName()));
     }
     ui->tableWidget->update();
     updateLists();
@@ -326,6 +390,27 @@ void LobbyWindow::updateLists()
             }
         }
     }
+
+    tempCharacters = getCombatQueue();
+    if (!tempCharacters.empty())
+    {
+        ui->label_Next_Up->setText(QString::number(tempCharacters.front()->getEntityID()) + " : " +  QString::fromStdString(tempCharacters.front()->getName()));
+    }
+//    if (!tempCharacters.empty())
+//    {
+//        std::list <Character*> :: iterator iter2;
+//        Character* currChar;
+//        std::list<std::string> *tempPowers;
+//        tempPowers = currWorkingChar->getPowers();
+
+//        ui->listWidget_NextUp->clear();
+//        for (iter2 = tempCharacters.begin(); iter2 != tempCharacters.end(); iter2++)
+//        {
+//            currChar = *iter2;
+//            ui->listWidget_NextUp->addItem(QString::number(currChar->getEntityID()) + QString::fromStdString(currChar->getName()));
+//        }
+//    }
+
 }
 
 void LobbyWindow::keyPressEvent(QKeyEvent *e)
@@ -475,30 +560,37 @@ void LobbyWindow::errorHandler(int errorCode)
     case 7:
         QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");
         break;
+    case 8:
+        QMessageBox::critical(this,"Error!","Cannot move while dead!");
+        break;
+    case 9:
+        QMessageBox::critical(this,"Error!","Cannot do that while in combat!");
+        break;
+    case 10:
+        QMessageBox::critical(this,"Error!","Not enough Characters to initiate Combat!");
+        break;
 	}
 }
 
-
-
-void LobbyWindow::on_pushButton_Engage_Combat_clicked()
-{
-//    if (!inCombat)
-//    {
-//        qDebug() << "Hello" ;
-//        diceobuSystemCore("4");
-//    }
-//    else
-//    {
-//        qDebug() << "Bye";
-//        inCombatTemp = false;
-//    }
-}
 
 void LobbyWindow::on_pushButton_Engage_Combat_toggled(bool checked)
 {
     inCombatTemp = checked;
     if (checked)
     {
+        if (activeMapsisEmpty())
+        {
+            emit mui->errorMessage(4);
+            ui->pushButton_Engage_Combat->setChecked(false);
+            return;
+        }
+        if (currWorkingMap->m_containingCharacters.size() < 2)
+        {
+            emit mui->errorMessage(10);
+            ui->pushButton_Engage_Combat->setChecked(false);
+            return;
+        }
+
         diceobuSystemCore("4");
     }
 }
@@ -508,4 +600,15 @@ void LobbyWindow::on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item)
     tempQString = item->text();;
     powerSettingsWindow = new PowerSettingsWindow(this);
     powerSettingsWindow->show();
+}
+
+void LobbyWindow::on_pushButton_Combat_Status_clicked()
+{
+    combatStatusWindow = new CombatStatusWindow(this);
+    combatStatusWindow->show();
+}
+
+void LobbyWindow::on_pushButton_Skip_Turn_clicked()
+{
+    nextTurn();
 }

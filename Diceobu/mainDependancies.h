@@ -85,6 +85,14 @@ bool activeMapsisEmpty();
 
 void jumpToMap(const int &targetMapID);
 
+void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY);
+
+void nextTurn();
+
+
+std::list<Character*> getCombatQueue();
+
+
 
 //    it's a feature bix
 
@@ -98,4 +106,6 @@ extern bool inCombat;
 
 extern bool inCombatTemp;
 
-std::list<Character*> getCombatQueue();
+extern std::list<Power*> powerList;
+
+

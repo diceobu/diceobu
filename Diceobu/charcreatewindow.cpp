@@ -82,7 +82,6 @@ void CharCreateWindow::on_pushButton_confirm_clicked()
     }
     else
     {
-        qDebug() << "s86%%" << coordX << coordY << currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() << currWorkingMap->m_tileGrid[coordX][coordY]->getOpen();
         if (currWorkingMap->m_tileGrid[coordX][coordY]->getOccupied() || !currWorkingMap->m_tileGrid[coordX][coordY]->getOpen())
         {
             QMessageBox::critical(this,"Error!","Target tile is closed or already occupied!");

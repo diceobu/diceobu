@@ -45,7 +45,7 @@ CharacterDetailsWindow::CharacterDetailsWindow(QWidget *parent) :
     ui->label_Ability_Scores_Value->setText(QString::number(currWorkingChar->getAbilityScores()));
     ui->label_AC_Value->setText(QString::number(currWorkingChar->getArmorClass()));
     ui->label_EXP->setText(QString::number(currWorkingChar->getExp()));
-    ui->label_HP->setText(QString::number(currWorkingChar->getcurrHitPoints()) + "/" + QString::number(currWorkingChar->getmaxHitPoints()) + " (+"
+    ui->label_HP->setText(QString::number(currWorkingChar->getCurrHitPoints()) + "/" + QString::number(currWorkingChar->getmaxHitPoints()) + " (+"
                           + QString::number(currWorkingChar->getOverheal()) + ")");
     ui->label_Weight->setText(QString::number(currWorkingChar->getWeight()) + "<font size=3> lbs. </font>");
     ui->label_Height->setText(QString::number(currWorkingChar->getHeight()) + "'");

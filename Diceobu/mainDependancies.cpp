@@ -46,12 +46,26 @@ static std::list<Character*> combatQueue;
 
 void nextTurn()
 {
-	combatQueue.push_back(combatQueue.front());
-	combatQueue.pop_front();
-	currWorkingChar = combatQueue.back();
+    qDebug() << inCombatTemp << inCombat;
+
+    if (inCombatTemp == false )//&& firstOfRound == combatQueue.back())
+    {
+        inCombat = false;
+        combatQueue.clear();
+        //return;
+    }
+    else
+    {
+        combatQueue.push_back(combatQueue.front());
+        combatQueue.pop_front();
+        currWorkingChar = combatQueue.back();
+    }
+
+    currWorkingMap->writeMap();
+    emit mui->refreshCurrent();
 }
 
-static std::list<Character*> getCombatQueue()
+std::list<Character*> getCombatQueue()
 {
 	return combatQueue;
 }
@@ -382,20 +396,22 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 		maxHitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
-		powers = { "Melee Attack", "Sneak Attack ", "Stealth", "Impossible to Catch", "Throwing Dagger" };
+		powers = { "Melee Attack", "Sneak Attack ", "Stealth", "Impossible to Catch",
+			"Throwing Dagger" };
 	}
 	else if (cClass == "Ranger")
 	{
 		maxHitPoints += 5 * level;
 		armorClass += 7;
 		abilityScores += 15;
-		powers = { "Melee Attack", "Ranged Attack", "Hawk Eye", "Long Shot", "Cheap Shot", "Nature's Way", "Rainning Arrows" };
+		powers = { "Melee Attack", "Ranged Attack", "Hawk Eye", "Long Shot", "Cheap Shot",
+			"Nature's Way", "Rainning Arrows" };
 	}
 	if (race == "Dwarf")
 	{
 		maxHitPoints += level;
 		armorClass += 5;
-		size = "small";
+		size = "Small";
 		powers.push_back("Repair");
 		languages = "Common & Dwarvish";
 		visionRange += 10;
@@ -574,23 +590,107 @@ void displayAvailableMoves()
 	
 }
 
-int baseDamageCalculator()
+Power* findPower(std::string powerName)
 {
-	return (currWorkingChar->getAbilityScores())*(currWorkingChar->getLevel());
+	std::list <Power*> ::iterator iter;
+	for (iter = powerList.begin(); iter != powerList.end(); iter++)
+	{
+		Power* currPower = *iter;
+		if (currPower->getName() == powerName)
+		{
+			return currPower;
+		}
+	}
+}
+
+int DamageCalculator(Power* &power)
+{
+	return (power->getBaseDamage() + currWorkingChar->getAbilityScores())*(currWorkingChar->getLevel());
 }
 
 void resolveMeleeAttack(Character* &targetChar)
 {
-	int damageInflicted{ baseDamageCalculator() };
+	Power* currPower{ findPower("Melee Attack") };
+
+	int damageInflicted{ DamageCalculator(currPower) };
 
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
 void resolveRangedAttack(Character* targetChar)
 {
-	int damageInflicted{ baseDamageCalculator() - currWorkingChar->getLevel() };
+	Power* currPower{ findPower("Ranged Attack") };
+
+	int damageInflicted{ DamageCalculator(currPower) - currWorkingChar->getLevel() };
 
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+}
+
+void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY)
+{
+	int startPointX{ targetCoordX - 5 };
+	int startPointY{ targetCoordY - 5 };
+
+	for (int i = startPointX; i < startPointX + 11; i++)
+	{
+		for (int j = startPointY; j < startPointX + 11; j++)
+		{
+			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
+			{
+				if (power->getAoe() == "circle")
+				{
+					if (((i == startPointX || i == startPointX + 10) && (j <= startPointY + 3 || j >= startPointY + 7))
+						|| ((j == startPointY || j == startPointY + 10) && (i <= startPointX + 3 || i >= startPointX + 7))
+						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 9)) || (i == startPointX + 9 && (j == startPointY + 1 || j == startPointY + 9)))
+					{}
+					else
+					{
+						Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
+						if (currTile->getOpen() == true)
+						{
+                            currTile->setTileEffects(power->getDamageType());
+							if (currTile->getOccupied())
+							{
+								std::list <Character*> ::iterator iter;
+								for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
+								{
+									Character* currChar{ *iter };
+									if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
+									{
+										Character* targetChar = currChar;
+										int damageInflicted{ DamageCalculator(power) };
+										targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+									}
+								}
+							}
+						}
+					}
+				}
+				else
+				{
+					Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
+					if (currTile->getOpen() == true)
+					{
+                        currTile->setTileEffects(power->getDamageType());
+						if (currTile->getOccupied())
+						{
+							std::list <Character*> ::iterator iter;
+							for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
+							{
+								Character* currChar{ *iter };
+								if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
+								{
+									Character* targetChar = currChar;
+									int damageInflicted{ DamageCalculator(power) };
+									targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY)
@@ -609,7 +709,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Cleave")
 	{
-		//resolveCleave(targetChar);
+		//resolveCleave();
 	}
 	else if (name == "Crescendo")
 	{
@@ -627,102 +727,87 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	{
 		//resolveIceAge(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Grand Illusion")
 	{
-
+		//resolveGrandIllusion(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Steal Time")
 	{
-
+		//resolveStealTime(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Oppressive Force")
 	{
-
+		//resolveOppressiveForce(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Ice Knife")
 	{
-
+		//resolveIceKnife(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Maelstrom of Chaos")
 	{
-
+		//resolveMaelstromOfChaos(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Disintegrate")
 	{
-
+		//resolveDisintegrate(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Teleport")
 	{
-
+		//resolveTeleport(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Earthen Aegis")
 	{
-
+		//resolveEarthenAegis(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Sneak Attack")
 	{
-
+		//resolveSneakAttack(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Stealth")
 	{
-
+		//resolveStealth();
 	}
-	else if (name == "")
+	else if (name == "Impossible to Catch")
 	{
-
+		//resolveImpossibleToCatch();
 	}
-	else if (name == "")
+	else if (name == "Throwing Dagger")
 	{
-
+		//resolveThrowingDagger(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Hawk Eye")
 	{
-
+		//resolveHawkEye();
 	}
-	else if (name == "")
+	else if (name == "Long Shot")
 	{
-
+		//resolveLongShot(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Cheap Shot")
 	{
-
+		//resolveCheapShot(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Nature's Way")
 	{
-
+		//resolveNaturesWay(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Rainning Arrows")
 	{
-
+		//resolveRainningArrows(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Repair")
 	{
-
+		//resolveRepair(targetChar);
 	}
-	else if (name == "")
+	else if (name == "Heal")
 	{
-
+		//resolveHeal(targetCoordX, targetCoordY);
 	}
-	else if (name == "")
+	else if (name == "Inspire")
 	{
-
+		//resolveInspire();
 	}
-	else if (name == "")
-	{
-
-	}
-	else if (name == "")
-	{
-
-	}
-	else if (name == "")
-	{
-
-	}
-	else if (name == "")
-	{
-
-	}
+	nextTurn();
 }
 
 void resolveCombatAttack()
@@ -855,6 +940,7 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 		}
 		else
 		{
+            initializePowerList();
 			inCombat = true;
 			inCombatTemp = true;
 			enQueueCombat();
