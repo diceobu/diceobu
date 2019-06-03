@@ -493,43 +493,43 @@ void moveCurrentCharacterUI(const int &coordX, const int &coordY)
 	currWorkingMap = targetMap;
 }
 
-//void moveCurrentCharacter()
-//{
-//	std::string input;
-//	clearScreen();
-//	displayAvailableOptions();
-//	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
-//	input = getUserOption();
-//	if (input == "x")
-//	{
-//		displayFeedbackMessage("Canceling character movement");
-//	}
-//	else
-//	{
-//		if (input.length() < 3)
-//		{
-//			displayFeedbackMessage("Wrong coordinates");
-//			displayFeedbackMessage("Character movement aborted");
-//			displayFeedbackMessage("Character created on default position (25,25)");
-//		}
-//		else
-//		{
-//			displayFeedbackMessage("Moving character");
-//			std::string delimiter = ",";
-//			size_t pos = 0;
-//			std::string token;
-//			while ((pos = input.find(delimiter)) != std::string::npos) {
-//				token = input.substr(0, pos);
-//				input.erase(0, pos + delimiter.length());
-//			}
-//			std::stringstream coordX{ token }, coordY{ input };
-//			std::pair<int, int> coords{};
-//			coordX >> coords.first;
-//			coordY >> coords.second;
-//			currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
-//		}
-//	}
-//}
+void moveCurrentCharacter()
+{
+	std::string input;
+	clearScreen();
+	displayAvailableOptions();
+	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
+	input = getUserOption();
+	if (input == "x")
+	{
+		displayFeedbackMessage("Canceling character movement");
+	}
+	else
+	{
+		if (input.length() < 3)
+		{
+			displayFeedbackMessage("Wrong coordinates");
+			displayFeedbackMessage("Character movement aborted");
+			displayFeedbackMessage("Character created on default position (25,25)");
+		}
+		else
+		{
+			displayFeedbackMessage("Moving character");
+			std::string delimiter = ",";
+			size_t pos = 0;
+			std::string token;
+			while ((pos = input.find(delimiter)) != std::string::npos) {
+				token = input.substr(0, pos);
+				input.erase(0, pos + delimiter.length());
+			}
+			std::stringstream coordX{ token }, coordY{ input };
+			std::pair<int, int> coords{};
+			coordX >> coords.first;
+			coordY >> coords.second;
+			currWorkingChar->changeEntityPosition(currWorkingMap, currWorkingMap, coords);
+		}
+	}
+}
 
 
 void enQueueCombat()
@@ -1162,4 +1162,214 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 	}
 }
 
-
+void simLaunch()
+{
+	clearScreen();
+	displayAvailableOptions();
+	std::string input{};
+	while (1)
+	{
+		input = getUserOption();
+		clearScreen();
+		displayAvailableOptions();
+		if (input == "1")
+		{
+			displayFeedbackMessage("Creating map");
+			createNewMap();
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("New map created");
+		}
+		else if (input == "2")
+		{
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Cannot create character without a map");
+			}
+			else
+			{
+				displayFeedbackMessage("Creating new character");
+				if (characterCreation("name", "non binary", "class", "race", "alignment", "background", -51, 11, 25, 25))
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Could not create character");
+				}
+				else
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("New character created");
+					moveCurrentCharacter();
+					clearScreen();
+					currWorkingChar->getCurrMap()->printMap();
+					displayAvailableOptions();
+				}
+			}
+		}
+		else if (input == "3")
+		{
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("No character found");
+			}
+			else
+			{
+				moveCurrentCharacter();
+				clearScreen();
+				currWorkingChar->getCurrMap()->printMap();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "4")
+		{
+			if (activeCharacters.empty())
+			{
+				displayFeedbackMessage("No characters found");
+			}
+			else
+			{
+				if (inCombat)
+				{
+					displayFeedbackMessage("Ending combat");
+					inCombat = false;
+					combatQueue.clear();
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Combat ended");
+				}
+				else
+				{
+					displayFeedbackMessage("Starting combat");
+					inCombat = true;
+					enQueueCombat();
+					clearScreen();
+					displayCombatQueue();
+					resolveCombatAttack();
+					displayFeedbackMessage("Combat started");
+				}
+			}
+		}
+		else if (input == "5")
+		{
+			displayFeedbackMessage("Displaying additional information");
+			clearScreen();
+			displayInfo();
+			displayAvailableOptions();
+		}
+		else if (input == "6")
+		{
+			displayFeedbackMessage("Displaying all active maps");
+			clearScreen();
+			if (activeMaps.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveMaps();
+				writeActiveMaps();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "7")
+		{
+			displayFeedbackMessage("Displaying all active characters");
+			clearScreen();
+			if (activeCharacters.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveCharacters();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "8")
+		{
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting current map");
+				if (activeMaps.front()->m_containingCharacters.empty())
+					if (currWorkingMap->m_containingCharacters.empty())
+					{
+						deleteCurrentMap();
+						clearScreen();
+						displayAvailableOptions();
+						displayFeedbackMessage("Current map deleted");
+					}
+					else
+					{
+						clearScreen();
+						displayAvailableOptions();
+						displayFeedbackMessage("Cannot delete map containing characters");
+					}
+			}
+		}
+		else if (input == "9")
+		{
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting current character");
+				deleteCurrentCharacter();
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Current character deleted");
+			}
+		}
+		else if (input == "10")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextMap();
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "11")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextCharacter();
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "a" && inCombat)
+		{
+			resolveCombatAttack();
+		}
+		else if (input == "x")
+		{
+			displayFeedbackMessage("Exiting");
+			activeMaps.clear();
+			activeCharacters.clear();
+			clearScreen();
+			displayFeedbackMessage("Application exited");
+			break;
+		}
+		else
+		{
+			displayFeedbackMessage("Unrecognized command");
+		}
+	}
+}

@@ -12,6 +12,7 @@
 
 static constexpr int mapSize{ 50 };
 
+static constexpr bool runUI{ true };
 
 static unsigned int mapIDCounter{ 0 };
 
