@@ -82,11 +82,6 @@ std::list<Character*> getActiveCharacters()
     return activeCharacters;
 }
 
-void checkLists()
-{
-    // qDebug() << "Maps:" << activeMaps.empty() << "Characters:" << activeCharacters.empty();
-}
-
 bool activeCharactersisEmpty()
 {
     return activeCharacters.empty();
@@ -739,7 +734,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Call Meteor")
 	{
-		resolveAoeAttack("Call Meteor", targetCoordX, targetCoordY, 0);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 0);
 	}
 	else if (name == "Sudden Storm")
 	{

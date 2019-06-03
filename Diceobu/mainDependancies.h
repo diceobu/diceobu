@@ -80,8 +80,6 @@ void diceobuSystemCore(std::string input, const int &coordX = 25, const int &coo
 						const std::string &cAlignment = "Neutral",
 						const std::string &cBackground = "Soldier", const int &cBalance = 0, const int &cLevel = 0);
 
-void checkLists();  // NOT IN ORDERRRRRRRRRRRR
-
 bool activeCharactersisEmpty();
 
 bool activeMapsisEmpty();
