@@ -132,6 +132,50 @@ void initPixmapArray()
                         {
                            i--;
                         }
+                        else if (tempChar == '1')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/dirt-scorched.png");
+                        }
+                        else if (tempChar == '+')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/dirt-iced.png");
+                        }
+                        else if (tempChar == '2')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/grass-scorched.png");
+                        }
+                        else if (tempChar == '_')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/grass-iced.png");
+                        }
+                        else if (tempChar == '6')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/soulsand-scorched.png");
+                        }
+                        else if (tempChar == '&')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/soulsand-iced.png");
+                        }
+                        else if (tempChar == '4')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/sand-scorched.png");
+                        }
+                        else if (tempChar == '(')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/sand-iced.png");
+                        }
+                        else if (tempChar == '7')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/floor-scorched.png");
+                        }
+                        else if (tempChar == '^')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/floor-iced.png");
+                        }
+                        else if (tempChar == '*')
+                        {
+                            pixmap_array[0][i] = QPixmap(":/img/water-iced.png");
+                        }
                         else if (tempChar == 'F')
                         {
                             pixmap_array[0][i] = QPixmap(":/img/Warrior.png");
@@ -143,6 +187,7 @@ void initPixmapArray()
                         else if (tempChar == 'R')
                         {
                             pixmap_array[0][i] = QPixmap(":/img/Rogue.png");
+
                         }
                         else if (tempChar == 'B')
                         {

@@ -126,6 +126,9 @@
     <ClCompile Include="charcreatewindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="combatstatuswindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lobbywindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -148,6 +151,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="movewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="powersettingswindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -230,6 +236,9 @@
     <QtMoc Include="charcreatewindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="combatstatuswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="lobbywindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -251,8 +260,15 @@
     <QtMoc Include="movewindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="powersettingswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
     
     
     
@@ -283,6 +299,9 @@
     <ClInclude Include="ui_charcreatewindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_combatstatuswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="ui_lobbywindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -298,12 +317,18 @@
     <ClInclude Include="ui_movewindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_powersettingswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="characterdetailswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="charcreatewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="combatstatuswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="lobbywindow.ui">
@@ -319,6 +344,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="movewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="powersettingswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -347,18 +375,6 @@
     <None Include="img\add-folder.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\berseker.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\bg1.jpg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\bg2.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\bg3.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\bg4.jpg">
       <Filter>Resource Files</Filter>
     </None>
@@ -368,25 +384,13 @@
     <None Include="img\d20.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\d20v2.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\dirt.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\diskette.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\dot.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\empty.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\etst1.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\fighter.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\fighterClassImage.png">
@@ -395,28 +399,10 @@
     <None Include="img\floor.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\floor2.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\grass.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\grass2.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\grass3.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\labelAC.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\labelAC2.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\labelAC_LI.jpg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\labelAS.jpg">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\labelAS2.png">
@@ -458,13 +444,7 @@
     <None Include="img\settings.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="img\star.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="img\water.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="img\wizard2.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\wizardClassImage.png">

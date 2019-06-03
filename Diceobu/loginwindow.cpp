@@ -20,7 +20,6 @@ LoginWindow::LoginWindow(QWidget *parent) :
     //tatic std::list<Map*> activeMapz;
 
     //// qDebug() << activeMapz.empty();
-    checkLists();
     initializePowerList();
 
     //connect(mainClass, SIGNAL(refreshCurrents()), lobbyWindow, SLOT(displayCurrent()));

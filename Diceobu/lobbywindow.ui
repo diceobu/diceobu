@@ -233,7 +233,7 @@ border-radius: 10px;
    <widget class="QPushButton" name="pushButton_Engage_Combat">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>660</x>
       <y>840</y>
       <width>131</width>
       <height>31</height>
@@ -984,34 +984,6 @@ color: white;
      <string>Skip Turn &gt;&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>140</y>
-      <width>80</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-background-color: rgba(0,0,0,0);
-font: 75 18pt &quot;ImperatorSmallCaps&quot;;
-border-style: solid;
-border-color: black;
-border-width: 2px;
-border-radius: 10px;
-color: black;
-}
-</string>
-    </property>
-    <property name="text">
-     <string>Not paint</string>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
@@ -1220,6 +1192,62 @@ border-radius: 10px;
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>150</y>
+      <width>101</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 11pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Not paint</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Entity_Positions">
+    <property name="geometry">
+     <rect>
+      <x>131</x>
+      <y>840</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 10pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Entity Positions</string>
+    </property>
+   </widget>
    <zorder>pushButton_Combat_Status</zorder>
    <zorder>pushButton_Character_Details</zorder>
    <zorder>label</zorder>
@@ -1233,10 +1261,11 @@ border-radius: 10px;
    <zorder>groupBox_Powers</zorder>
    <zorder>groupBox_NextUp</zorder>
    <zorder>pushButton_Skip_Turn</zorder>
-   <zorder>pushButton_5</zorder>
    <zorder>tabWidget</zorder>
    <zorder>pushButton_System_Log</zorder>
    <zorder>pushButton_Combat_Log</zorder>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_Entity_Positions</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1353,7 +1382,22 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
     <addaction name="separator"/>
     <addaction name="actionOptions"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionOptions">
    <property name="icon">
@@ -1445,6 +1489,32 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
    </property>
    <property name="shortcut">
     <string>J</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="actionAbout_the_Interface">
+   <property name="text">
+    <string>About the Interface</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>ImperatorSmallCaps</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
   </action>
  </widget>

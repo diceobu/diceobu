@@ -47,5 +47,4 @@ void Entity::changeEntityPosition(Map* &currMap, Map* &targetMap, const std::pai
 	targetMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupied(true);
 	targetMap->m_tileGrid[coordinates.first][coordinates.second]->setOccupantID(m_entityID);
 	targetMap->m_containingCharacters.push_back(currWorkingChar->getEntityID());
-
 }

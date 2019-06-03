@@ -5,12 +5,21 @@
 
 #include <QDebug>
 
+#include "mainDependancies.h"
+
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    LoginWindow loginWindow;
+	if (runUI)
+	{
+		QApplication a(argc, argv);
+		LoginWindow loginWindow;
 
-    loginWindow.show();
+		loginWindow.show();
 
-    return a.exec();
+		return a.exec();
+	}
+	else
+	{
+		simLaunch();
+	}
 }

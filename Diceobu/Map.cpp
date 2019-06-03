@@ -129,14 +129,58 @@ char Map::getTileSymbol(Tile &currTile)
 {
 	char tileSymbol{};
 
-    if      (currTile.getTerrainType() == "dirt")		tileSymbol = 'd';
-    else if (currTile.getTerrainType() == "grass")		tileSymbol = 'g';
-    else if (currTile.getTerrainType() == "rock")		tileSymbol = 'r';
-    else if (currTile.getTerrainType() == "sand")		tileSymbol = 's';
-    else if (currTile.getTerrainType() == "water")		tileSymbol = 'w';
-	else if (currTile.getTerrainType() == "soulsand")	tileSymbol = '$';
-    else if (currTile.getTerrainType() == "floor")      tileSymbol = 'f';
-    else if (currTile.getTerrainType() == "none")       tileSymbol = ' ';
+	std::string currTileTerrainType = currTile.getTerrainType();
+	std::string currTileEffects = currTile.getTileEffects();
+
+	if (currTileTerrainType == "dirt")
+	{
+		tileSymbol = 'd';
+
+		if (currTileEffects == "fire") tileSymbol = '1';
+		else if (currTileEffects == "ice") tileSymbol = '+';
+	}
+	else if (currTileTerrainType == "grass")
+	{
+		tileSymbol = 'g';
+
+		if (currTileEffects == "fire") tileSymbol = '2';
+		else if (currTileEffects == "ice") tileSymbol = '_';
+	}
+	else if (currTileTerrainType == "rock")
+	{
+		tileSymbol = 'r';
+	}
+	else if (currTileTerrainType == "sand")
+	{
+		tileSymbol = 's';
+
+		if (currTileEffects == "fire") tileSymbol = '4';
+		else if (currTileEffects == "ice") tileSymbol = '(';
+	}
+	else if (currTileTerrainType == "water")
+	{
+		tileSymbol = 'w';
+
+		if (currTileEffects == "ice") tileSymbol = '*';
+	}
+	else if (currTileTerrainType == "soulsand")
+	{
+		tileSymbol = '$';
+
+		if (currTileEffects == "fire") tileSymbol = '6';
+		else if (currTileEffects == "ice") tileSymbol = '&';
+	}
+	else if (currTileTerrainType == "floor")
+	{
+		tileSymbol = 'f';
+
+		if (currTileEffects == "fire") tileSymbol = '7';
+		else if (currTileEffects == "ice") tileSymbol = '^';
+	}
+	else if (currTileTerrainType == "none")
+	{
+		tileSymbol = ' ';
+	}
 
     if (currTile.getOccupied())
     {

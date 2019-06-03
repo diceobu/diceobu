@@ -44,7 +44,7 @@ PowerSettingsWindow::PowerSettingsWindow(QWidget *parent) :
     ui->label_Level_Req_Value->setText(QString::number(tempPower->getLevelReq()));
 
     std::string range = std::to_string(tempPower->getRange());
-    if (range == "-1") { range = "Self";}
+    if (range == "0") { range = "Self";}
     ui->label_Range_Value->setText(QString::fromStdString(range));
 
     ui->label_Damage_Value->setText(QString::number(tempPower->getBaseDamage()));
@@ -97,9 +97,6 @@ void PowerSettingsWindow::on_pushButton_cancel_clicked()
 void PowerSettingsWindow::on_pushButton_confirm_clicked()
 {
 
-    int coordX = ui->field_x->text().toInt();
-    int coordY = ui->field_x->text().toInt();                   // XY
-
     QStringList tempQSList;
     tempQSList = ui->comboBox_Targets->currentText().split(" ");
     targetCharacterID = tempQSList.at(0).toInt();                   // Target ID
@@ -114,6 +111,11 @@ void PowerSettingsWindow::on_pushButton_confirm_clicked()
     targetDistance = sqrt((std::pow(targetChar->getCoordinateX()-currWorkingChar->getCoordinateX(),2)) + (std::pow(targetChar->getCoordinateY()-currWorkingChar->getCoordinateY(),2)));
     int x = targetChar->getCoordinateY()-currWorkingChar->getCoordinateY();
     Power* tempPower = findPower(powerName);
+
+
+
+    int coordX = ui->field_x->text().toInt();
+    int coordY = ui->field_x->text().toInt();                   // XY
 
     if (targetDistance > tempPower->getRange())
     {

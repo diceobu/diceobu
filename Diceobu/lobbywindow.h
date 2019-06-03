@@ -11,6 +11,8 @@
 #include "characterdetailswindow.h"
 #include "powersettingswindow.h"
 #include "combatstatuswindow.h"
+#include "entitypositionswindow.h"
+#include "diceobuinfo.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -36,6 +38,8 @@ private:
     CharacterDetailsWindow *characterDetailsWindow;
     PowerSettingsWindow *powerSettingsWindow;
     CombatStatusWindow *combatStatusWindow;
+    EntityPositionsWindow *entityPositionsWindow;
+    DiceobuInfo *diceobuInfo;
 
     void updateLists();
 protected:
@@ -72,6 +76,8 @@ private slots:
     void on_pushButton_Skip_Turn_clicked();
     void on_pushButton_System_Log_toggled(bool checked);
     void on_pushButton_Combat_Log_toggled(bool checked);
+    void on_pushButton_Entity_Positions_clicked();
+    void on_actionAbout_triggered();
 };
 
 extern MainUIClass *mui;

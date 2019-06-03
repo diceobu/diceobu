@@ -49,6 +49,8 @@ SOURCES += \
         charactersaves.cpp \
         charcreatewindow.cpp \
         combatstatuswindow.cpp \
+        diceobuinfo.cpp \
+        entitypositionswindow.cpp \
         lobbywindow.cpp \
         main.cpp \
         loginwindow.cpp \
@@ -87,6 +89,8 @@ HEADERS += \
         charactersaves.h \
         charcreatewindow.h \
         combatstatuswindow.h \
+        diceobuinfo.h \
+        entitypositionswindow.h \
         lobbywindow.h \
         loginwindow.h \
         mainDependancies.h \
@@ -100,6 +104,8 @@ FORMS += \
         characterdetailswindow.ui \
         charcreatewindow.ui \
         combatstatuswindow.ui \
+        diceobuinfo.ui \
+        entitypositionswindow.ui \
         lobbywindow.ui \
         loginwindow.ui \
         mapcreatewindow.ui \

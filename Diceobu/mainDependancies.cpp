@@ -82,11 +82,6 @@ std::list<Character*> getActiveCharacters()
     return activeCharacters;
 }
 
-void checkLists()
-{
-    // qDebug() << "Maps:" << activeMaps.empty() << "Characters:" << activeCharacters.empty();
-}
-
 bool activeCharactersisEmpty()
 {
     return activeCharacters.empty();
@@ -398,7 +393,7 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 		maxHitPoints += 6 * level;
 		armorClass += 10;
 		abilityScores += 12;
-		powers = { "Melee Attack", "Sneak Attack ", "Stealth", "Impossible to Catch",
+		powers = { "Melee Attack", "Sneak Attack", "Stealth", "Impossible to Catch",
 			"Throwing Dagger" };
 	}
 	else if (cClass == "Ranger")
@@ -493,43 +488,43 @@ void moveCurrentCharacterUI(const int &coordX, const int &coordY)
 	currWorkingMap = targetMap;
 }
 
-//void moveCurrentCharacter()
-//{
-//	std::string input;
-//	clearScreen();
-//	displayAvailableOptions();
-//	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
-//	input = getUserOption();
-//	if (input == "x")
-//	{
-//		displayFeedbackMessage("Canceling character movement");
-//	}
-//	else
-//	{
-//		if (input.length() < 3)
-//		{
-//			displayFeedbackMessage("Wrong coordinates");
-//			displayFeedbackMessage("Character movement aborted");
-//			displayFeedbackMessage("Character created on default position (25,25)");
-//		}
-//		else
-//		{
-//			displayFeedbackMessage("Moving character");
-//			std::string delimiter = ",";
-//			size_t pos = 0;
-//			std::string token;
-//			while ((pos = input.find(delimiter)) != std::string::npos) {
-//				token = input.substr(0, pos);
-//				input.erase(0, pos + delimiter.length());
-//			}
-//			std::stringstream coordX{ token }, coordY{ input };
-//			std::pair<int, int> coords{};
-//			coordX >> coords.first;
-//			coordY >> coords.second;
-//			currWorkingChar->changeEntityPosition(activeMaps.back(), coords);
-//		}
-//	}
-//}
+void moveCurrentCharacter()
+{
+	std::string input;
+	clearScreen();
+	displayAvailableOptions();
+	displayFeedbackMessage("Type new coordinates (format: x,y) or press x to cancel");
+	input = getUserOption();
+	if (input == "x")
+	{
+		displayFeedbackMessage("Canceling character movement");
+	}
+	else
+	{
+		if (input.length() < 3)
+		{
+			displayFeedbackMessage("Wrong coordinates");
+			displayFeedbackMessage("Character movement aborted");
+			displayFeedbackMessage("Character created on default position (25,25)");
+		}
+		else
+		{
+			displayFeedbackMessage("Moving character");
+			std::string delimiter = ",";
+			size_t pos = 0;
+			std::string token;
+			while ((pos = input.find(delimiter)) != std::string::npos) {
+				token = input.substr(0, pos);
+				input.erase(0, pos + delimiter.length());
+			}
+			std::stringstream coordX{ token }, coordY{ input };
+			std::pair<int, int> coords{};
+			coordX >> coords.first;
+			coordY >> coords.second;
+			currWorkingChar->changeEntityPosition(currWorkingMap, currWorkingMap, coords);
+		}
+	}
+}
 
 
 void enQueueCombat()
@@ -620,7 +615,7 @@ void resolveMeleeAttack(Character* &targetChar)
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
-void resolveRangedAttack(Character* targetChar)
+void resolveRangedAttack(Character* &targetChar)
 {
 	Power* currPower{ findPower("Ranged Attack") };
 
@@ -630,68 +625,87 @@ void resolveRangedAttack(Character* targetChar)
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
-void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY)
+void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier, const int &radious)
 {
-	int startPointX{ targetCoordX - 5 };
-	int startPointY{ targetCoordY - 5 };
+	Power* currPower{ findPower(name) };
 
-	for (int i = startPointX; i < startPointX + 11; i++)
+	aoeAttackCalculator(currPower, targetCoordX, targetCoordY, powerDamageModifier, radious);
+}
+
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, const int &powerDamageModifier)
+{
+	Power* currPower{ findPower(name) };
+
+	int damageInflicted{ DamageCalculator(currPower) + powerDamageModifier};
+
+	damageDealt = damageInflicted / targetChar->getArmorClass();
+	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+}
+
+void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int &powerDamageModifier)
+{
+	Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
+	if (currTile->getOpen() == true)
 	{
-		for (int j = startPointY; j < startPointX + 11; j++)
+		currTile->setTileEffects(power->getDamageType());
+		if (currTile->getOccupied())
+		{
+			std::list <Character*> ::iterator iter;
+			for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
+			{
+				Character* currChar{ *iter };
+				if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
+				{
+					Character* targetChar = currChar;
+					int damageInflicted{ DamageCalculator(power) + powerDamageModifier };
+					targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+				}
+			}
+		}
+	}
+}
+
+void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier, const int &radious)
+{
+	int startPointX{ targetCoordX - radious };
+	int startPointY{ targetCoordY - radious };
+
+	for (int i = startPointX; i < startPointX + 2*radious+1; i++)
+	{
+		for (int j = startPointY; j < startPointX + 2*radious+1; j++)
 		{
 			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
 			{
 				if (power->getAoe() == "circle")
 				{
-					if (((i == startPointX || i == startPointX + 10) && (j <= startPointY + 3 || j >= startPointY + 7))
-						|| ((j == startPointY || j == startPointY + 10) && (i <= startPointX + 3 || i >= startPointX + 7))
-						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 9)) || (i == startPointX + 9 && (j == startPointY + 1 || j == startPointY + 9)))
+					if (((i == startPointX || i == startPointX + 2*radious) && (j <= startPointY + 3 || j >= startPointY + 2*radious-3))
+						|| ((j == startPointY || j == startPointY + 2*radious) && (i <= startPointX + 3 || i >= startPointX + 2*radious-3))
+						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 2*radious-1))
+						|| (i == startPointX + 2*radious-1 && (j == startPointY + 1 || j == startPointY + 2*radious-1)))
 					{}
 					else
 					{
-						Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
-						if (currTile->getOpen() == true)
-						{
-                            currTile->setTileEffects(power->getDamageType());
-							if (currTile->getOccupied())
-							{
-								std::list <Character*> ::iterator iter;
-								for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
-								{
-									Character* currChar{ *iter };
-									if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
-									{
-										Character* targetChar = currChar;
-										int damageInflicted{ DamageCalculator(power) };
-										targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
-									}
-								}
-							}
-						}
+						aoeAttackDamageDealer(i, j, power, powerDamageModifier);
 					}
 				}
 				else
 				{
-					Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
-					if (currTile->getOpen() == true)
-					{
-                        currTile->setTileEffects(power->getDamageType());
-						if (currTile->getOccupied())
-						{
-							std::list <Character*> ::iterator iter;
-							for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
-							{
-								Character* currChar{ *iter };
-								if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
-								{
-									Character* targetChar = currChar;
-									int damageInflicted{ DamageCalculator(power) };
-									targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
-								}
-							}
-						}
-					}
+					aoeAttackDamageDealer(i, j, power, powerDamageModifier);
 				}
+			}
+		}
+	}
+}
+
+void clearTileEffects()
+{
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 50; j++)
+		{
+			if (currWorkingMap->m_tileGrid[i][j]->getTileEffects() != "none")
+			{
+				currWorkingMap->m_tileGrid[i][j]->setTileEffects("none");
 			}
 		}
 	}
@@ -709,7 +723,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Indomitable")
 	{
-		//resolveIndomitable(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 20);
 	}
 	else if (name == "Cleave")
 	{
@@ -721,7 +735,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Call Meteor")
 	{
-		//resolveCallMeteor(targetCoordX, targetCoordY);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 0, 5);
 	}
 	else if (name == "Sudden Storm")
 	{
@@ -1141,4 +1155,214 @@ void diceobuSystemCore(std::string input,const int &coordX, const int &coordY, c
 	}
 }
 
-
+void simLaunch()
+{
+	clearScreen();
+	displayAvailableOptions();
+	std::string input{};
+	while (1)
+	{
+		input = getUserOption();
+		clearScreen();
+		displayAvailableOptions();
+		if (input == "1")
+		{
+			displayFeedbackMessage("Creating map");
+			createNewMap();
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("New map created");
+		}
+		else if (input == "2")
+		{
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Cannot create character without a map");
+			}
+			else
+			{
+				displayFeedbackMessage("Creating new character");
+				if (characterCreation("name", "non binary", "class", "race", "alignment", "background", -51, 11, 25, 25))
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Could not create character");
+				}
+				else
+				{
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("New character created");
+					moveCurrentCharacter();
+					clearScreen();
+					currWorkingChar->getCurrMap()->printMap();
+					displayAvailableOptions();
+				}
+			}
+		}
+		else if (input == "3")
+		{
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("No character found");
+			}
+			else
+			{
+				moveCurrentCharacter();
+				clearScreen();
+				currWorkingChar->getCurrMap()->printMap();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "4")
+		{
+			if (activeCharacters.empty())
+			{
+				displayFeedbackMessage("No characters found");
+			}
+			else
+			{
+				if (inCombat)
+				{
+					displayFeedbackMessage("Ending combat");
+					inCombat = false;
+					combatQueue.clear();
+					clearScreen();
+					displayAvailableOptions();
+					displayFeedbackMessage("Combat ended");
+				}
+				else
+				{
+					displayFeedbackMessage("Starting combat");
+					inCombat = true;
+					enQueueCombat();
+					clearScreen();
+					displayCombatQueue();
+					resolveCombatAttack();
+					displayFeedbackMessage("Combat started");
+				}
+			}
+		}
+		else if (input == "5")
+		{
+			displayFeedbackMessage("Displaying additional information");
+			clearScreen();
+			displayInfo();
+			displayAvailableOptions();
+		}
+		else if (input == "6")
+		{
+			displayFeedbackMessage("Displaying all active maps");
+			clearScreen();
+			if (activeMaps.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveMaps();
+				writeActiveMaps();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "7")
+		{
+			displayFeedbackMessage("Displaying all active characters");
+			clearScreen();
+			if (activeCharacters.empty())
+			{
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to display");
+			}
+			else
+			{
+				displayActiveCharacters();
+				displayAvailableOptions();
+			}
+		}
+		else if (input == "8")
+		{
+			if (activeMaps.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting current map");
+				if (activeMaps.front()->m_containingCharacters.empty())
+					if (currWorkingMap->m_containingCharacters.empty())
+					{
+						deleteCurrentMap();
+						clearScreen();
+						displayAvailableOptions();
+						displayFeedbackMessage("Current map deleted");
+					}
+					else
+					{
+						clearScreen();
+						displayAvailableOptions();
+						displayFeedbackMessage("Cannot delete map containing characters");
+					}
+			}
+		}
+		else if (input == "9")
+		{
+			if (activeCharacters.empty())
+			{
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Nothing to delete");
+			}
+			else
+			{
+				displayFeedbackMessage("Deleting current character");
+				deleteCurrentCharacter();
+				clearScreen();
+				displayAvailableOptions();
+				displayFeedbackMessage("Current character deleted");
+			}
+		}
+		else if (input == "10")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextMap();
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "11")
+		{
+			clearScreen();
+			displayAvailableOptions();
+			displayFeedbackMessage("Changing Map");
+			chooseNextCharacter();
+			clearScreen();
+			displayAvailableOptions();
+		}
+		else if (input == "a" && inCombat)
+		{
+			resolveCombatAttack();
+		}
+		else if (input == "x")
+		{
+			displayFeedbackMessage("Exiting");
+			activeMaps.clear();
+			activeCharacters.clear();
+			clearScreen();
+			displayFeedbackMessage("Application exited");
+			break;
+		}
+		else
+		{
+			displayFeedbackMessage("Unrecognized command");
+		}
+	}
+}

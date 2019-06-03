@@ -31,13 +31,13 @@ public:
     {
         if (CombatStatusWindow->objectName().isEmpty())
             CombatStatusWindow->setObjectName(QString::fromUtf8("CombatStatusWindow"));
-        CombatStatusWindow->resize(441, 392);
+        CombatStatusWindow->resize(441, 459);
         CombatStatusWindow->setStyleSheet(QString::fromUtf8("QDialog{\n"
 "background-image: url(:/img/bg4.jpg);\n"
 "}"));
         groupBox_Combat_Order = new QGroupBox(CombatStatusWindow);
         groupBox_Combat_Order->setObjectName(QString::fromUtf8("groupBox_Combat_Order"));
-        groupBox_Combat_Order->setGeometry(QRect(10, 10, 211, 191));
+        groupBox_Combat_Order->setGeometry(QRect(10, 120, 421, 191));
         groupBox_Combat_Order->setFocusPolicy(Qt::NoFocus);
         groupBox_Combat_Order->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -49,7 +49,7 @@ public:
 "}"));
         listWidget_Combat_Order = new QListWidget(groupBox_Combat_Order);
         listWidget_Combat_Order->setObjectName(QString::fromUtf8("listWidget_Combat_Order"));
-        listWidget_Combat_Order->setGeometry(QRect(10, 30, 191, 151));
+        listWidget_Combat_Order->setGeometry(QRect(10, 30, 401, 151));
         listWidget_Combat_Order->setFocusPolicy(Qt::NoFocus);
         listWidget_Combat_Order->setStyleSheet(QString::fromUtf8("QListWidget{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
@@ -63,7 +63,7 @@ public:
 ""));
         groupBox_Currently_Playing = new QGroupBox(CombatStatusWindow);
         groupBox_Currently_Playing->setObjectName(QString::fromUtf8("groupBox_Currently_Playing"));
-        groupBox_Currently_Playing->setGeometry(QRect(230, 10, 201, 91));
+        groupBox_Currently_Playing->setGeometry(QRect(120, 10, 201, 91));
         groupBox_Currently_Playing->setFocusPolicy(Qt::NoFocus);
         groupBox_Currently_Playing->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"
@@ -97,7 +97,7 @@ public:
         label_Currently_Playing->setWordWrap(true);
         groupBox_Status = new QGroupBox(CombatStatusWindow);
         groupBox_Status->setObjectName(QString::fromUtf8("groupBox_Status"));
-        groupBox_Status->setGeometry(QRect(10, 250, 421, 131));
+        groupBox_Status->setGeometry(QRect(10, 320, 421, 131));
         groupBox_Status->setFocusPolicy(Qt::NoFocus);
         groupBox_Status->setStyleSheet(QString::fromUtf8(" QGroupBox {\n"
 "font: 75 12pt \"ImperatorSmallCaps\";\n"

@@ -61,23 +61,24 @@ void displayCombatQueue();
 
 void displayAvailableMoves();
 
-void resolveCombatMove(const std::string &power);
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, const int &powerDamageModifier);
+
+void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int &powerDamageModifier);
+
+void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier, const int &radious);
+
+void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY);
+
+void clearTileEffects();
 
 void resolveCombatAttack();
 
 std::string getUserOption();
 
-/*void diceobuSystemCore(std::string input,const std::string &cName = "Name", const std::string &cClass, const std::string &cRace, const std::string &cAlignment,
-                       const std::string &cBackground, const int &cBalance, const int &cLevel, const int &coordX, const int &coordY;)*/
-
-
 void diceobuSystemCore(std::string input, const int &coordX = 25, const int &coordY = 25, const std::string &cName = "Adam",
 						const std::string	&cGender = "Male", const std::string &cClass = "Fighter", const std::string &cRace = "Human",
 						const std::string &cAlignment = "Neutral",
 						const std::string &cBackground = "Soldier", const int &cBalance = 0, const int &cLevel = 0);
-void simLaunch();
-
-void checkLists();  // NOT IN ORDERRRRRRRRRRRR
 
 bool activeCharactersisEmpty();
 
@@ -85,18 +86,25 @@ bool activeMapsisEmpty();
 
 void jumpToMap(const int &targetMapID);
 
+void jumpToCharacter(const int &targetCharacterID);
+
 void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY);
 
 void nextTurn();
 
 Power* findPower(std::string powerName);
 
+int DamageCalculator(Power* &power);
+
+void resolveMeleeAttack(Character* &targetChar);
+
+void resolveRangedAttack(Character* &targetChar);
+
+void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier, const int &radious);
+
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, int &powerDamageModifier);
 
 std::list<Character*> getCombatQueue();
-
-
-
-//    it's a feature bix
 
 extern Map* currWorkingMap;
 
@@ -110,4 +118,4 @@ extern bool inCombatTemp;
 
 extern std::list<Power*> powerList;
 
-
+void simLaunch();

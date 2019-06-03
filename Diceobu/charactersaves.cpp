@@ -201,7 +201,6 @@ int loadPlayerCharacter(std::string saveFilepath){
 				tempQSL = QString::fromStdString(token).split(", ");               // Split each line by " = " and push tokens in tokenList
 				for (int i = 0; i < tempQSL.size(); i++)
                 {
-                    qDebug() << "load203" << tempQSL.at(i);
                     currWorkingChar->getPowers()->push_back(tempQSL.at(i).toStdString());
 				}
             }

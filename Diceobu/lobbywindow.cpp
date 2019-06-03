@@ -69,7 +69,6 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     this->setPalette(palette);
 
     displayCurrent();
-    checkLists();
 }
 
 
@@ -287,6 +286,8 @@ void LobbyWindow::displayCurrent()
     ui->groupBox_NextUp->setVisible(inCombat);
     ui->pushButton_Skip_Turn->setVisible(inCombat);
 
+    if (!activeCharactersisEmpty()) ui->pushButton_5->setText(QString::number(currWorkingChar->getCoordinateX()) + QString::number(currWorkingChar->getCoordinateY()));
+
     if (activeMapsisEmpty())
     {
         ui->label_currMap->setText("None");
@@ -304,8 +305,11 @@ void LobbyWindow::displayCurrent()
     {
         ui->label_currChar->setText(QString::number(currWorkingChar->getEntityID()) + " : " + QString::fromStdString(currWorkingChar->getName()));
     }
+
     ui->tableWidget->update();
+
     updateLists();
+
 }
 
 
@@ -317,6 +321,7 @@ void LobbyWindow::updateLists()
     std::list<Map*> tempMaps = getActiveMaps();
     std::list<Character*> tempCharacters = getActiveCharacters();
 
+
 	if (!activeCharactersisEmpty())
 	{
 		std::list<std::string> ::iterator iter3;
@@ -324,21 +329,22 @@ void LobbyWindow::updateLists()
 		std::list<std::string> *tempPowers;
 		tempPowers = currWorkingChar->getPowers();
 
-        //qDeleteAll(ui->listWidget_Powers->selectedItems());
+
         ui->listWidget_Powers_Lobby->clear();
         int i = 0;
 		for (iter3 = tempPowers->begin(); iter3 != tempPowers->end(); iter3++)
 		{
 			currentPower = *iter3;
             Power* currentPowerObj = findPower(currentPower);
+
             if (currWorkingChar->getLevel() >= currentPowerObj->getLevelReq())
             {
+
                     ui->listWidget_Powers_Lobby->addItem(QString::fromStdString(currentPower));
                     i++;
             }
-
 		}
-qDebug() << "hui";
+
         for (iter3 = tempPowers->begin(); iter3 != tempPowers->end(); iter3++)
         {
             currentPower = *iter3;
@@ -351,8 +357,6 @@ qDebug() << "hui";
             }
 
         }
-
-
 	}
     ui->listWidget_Powers_Lobby->setToolTip("Test");
 	
@@ -717,4 +721,15 @@ void LobbyWindow::on_pushButton_Combat_Log_toggled(bool checked)
         ui->pushButton_System_Log->setChecked(true);
 
     }
+}
+
+void LobbyWindow::on_pushButton_Entity_Positions_clicked()
+{
+
+}
+
+void LobbyWindow::on_actionAbout_triggered()
+{
+    diceobuInfo = new DiceobuInfo(this);
+    diceobuInfo->show();
 }
