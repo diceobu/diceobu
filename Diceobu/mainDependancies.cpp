@@ -630,6 +630,13 @@ void resolveRangedAttack(Character* targetChar)
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
+void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY)
+{
+	Power* currPower{ findPower(name) };
+
+	aoeAttackCalculator(currPower, targetCoordX, targetCoordY);
+}
+
 void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY)
 {
 	int startPointX{ targetCoordX - 5 };
@@ -697,6 +704,20 @@ void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targ
 	}
 }
 
+void clearTileEffects()
+{
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 50; j++)
+		{
+			if (currWorkingMap->m_tileGrid[i][j]->getTileEffects() != "none")
+			{
+				currWorkingMap->m_tileGrid[i][j]->setTileEffects("none");
+			}
+		}
+	}
+}
+
 void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY)
 {
 	if (name == "Melee Attack")
@@ -721,7 +742,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Call Meteor")
 	{
-		//resolveCallMeteor(targetCoordX, targetCoordY);
+		resolveAoeAttack("Call Meteor", targetCoordX, targetCoordY);
 	}
 	else if (name == "Sudden Storm")
 	{

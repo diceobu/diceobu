@@ -126,6 +126,9 @@
     <ClCompile Include="charcreatewindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="combatstatuswindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lobbywindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -148,6 +151,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="movewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="powersettingswindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -230,6 +236,9 @@
     <QtMoc Include="charcreatewindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="combatstatuswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="lobbywindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -251,8 +260,15 @@
     <QtMoc Include="movewindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="powersettingswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
     
     
     
@@ -283,6 +299,9 @@
     <ClInclude Include="ui_charcreatewindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_combatstatuswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="ui_lobbywindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -298,12 +317,18 @@
     <ClInclude Include="ui_movewindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_powersettingswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="characterdetailswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="charcreatewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="combatstatuswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="lobbywindow.ui">
@@ -319,6 +344,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="movewindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="powersettingswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
