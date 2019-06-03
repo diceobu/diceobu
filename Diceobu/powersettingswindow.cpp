@@ -8,8 +8,8 @@
 #include <tgmath.h>
 #include <cmath>
 
-static int window_width    =   202;
-static int window_height   =   230;
+static int window_width    =   504;
+static int window_height   =   310;
 
 Character* targetChar;
 std::list <Character*> targetCharList;
@@ -25,7 +25,34 @@ PowerSettingsWindow::PowerSettingsWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Choose a Target");
+    if (inCombat) { window_width = 741;}
     setFixedSize(window_width, window_height);
+
+    std::string powerName = tempQString.toStdString();
+    Power* tempPower = findPower(powerName);
+
+    ui->label_Name->setText(QString::fromStdString(tempPower->getName()));
+
+    ui->label_Class_Value->setText(QString::fromStdString(tempPower->getOfClass()));
+
+    ui->label_Damage_Type_Value->setText(QString::fromStdString(tempPower->getDamageType()));
+
+    std::string aoe = tempPower->getAoe();
+    if (aoe == "none") { aoe = "Single Target";}
+    ui->label_AoE_Value->setText(QString::fromStdString(aoe));
+
+    ui->label_Level_Req_Value->setText(QString::number(tempPower->getLevelReq()));
+
+    std::string range = std::to_string(tempPower->getRange());
+    if (range == "-1") { range = "Self";}
+    ui->label_Range_Value->setText(QString::fromStdString(range));
+
+    ui->label_Damage_Value->setText(QString::number(tempPower->getBaseDamage()));
+
+    ui->textBrowser_Description->setText("\"" + QString::fromStdString(tempPower->getDescription()) + "\"");
+
+
+
     targetCharList = getCombatQueue();
 
 
@@ -40,6 +67,21 @@ PowerSettingsWindow::PowerSettingsWindow(QWidget *parent) :
         ui->comboBox_Targets->addItem(QString::number(targetChar->getEntityID()) + " " + QString::fromStdString(targetChar->getName()));
     }
 
+
+    if (!targetCharList.empty())
+    {
+    QStringList tempQSList;
+    tempQSList = ui->comboBox_Targets->currentText().split(" ");
+    targetCharacterID = tempQSList.at(0).toInt();                   // Target ID
+    for(iter = targetCharList.begin(); iter != targetCharList.end(); iter++)
+    {
+        targetChar = *iter;
+        if (targetChar->getEntityID() == targetCharacterID) {break;}        // Target Char*
+    }
+
+    ui->field_x->setText(QString::number(targetChar->getCoordinateX()));
+    ui->field_y->setText(QString::number(targetChar->getCoordinateY()));
+    }
 }
 
 PowerSettingsWindow::~PowerSettingsWindow()

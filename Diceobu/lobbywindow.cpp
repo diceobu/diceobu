@@ -27,6 +27,8 @@
 #include "charactersaves.h"
 #include <QFileDialog>
 #include "powersettingswindow.h"
+#include <QToolTip>
+
 
 static int window_width    =   1440;
 static int window_height   =   900;
@@ -324,12 +326,35 @@ void LobbyWindow::updateLists()
 
         //qDeleteAll(ui->listWidget_Powers->selectedItems());
         ui->listWidget_Powers_Lobby->clear();
+        int i = 0;
 		for (iter3 = tempPowers->begin(); iter3 != tempPowers->end(); iter3++)
 		{
 			currentPower = *iter3;
-            ui->listWidget_Powers_Lobby->addItem(QString::fromStdString(currentPower));
+            Power* currentPowerObj = findPower(currentPower);
+            if (currWorkingChar->getLevel() >= currentPowerObj->getLevelReq())
+            {
+                    ui->listWidget_Powers_Lobby->addItem(QString::fromStdString(currentPower));
+                    i++;
+            }
+
 		}
+qDebug() << "hui";
+        for (iter3 = tempPowers->begin(); iter3 != tempPowers->end(); iter3++)
+        {
+            currentPower = *iter3;
+            Power* currentPowerObj = findPower(currentPower);
+            if (currWorkingChar->getLevel() < currentPowerObj->getLevelReq())
+            {
+                ui->listWidget_Powers_Lobby->addItem(QString::fromStdString(currentPower));
+                ui->listWidget_Powers_Lobby->item(i)->setForeground(Qt::gray);
+                i++;
+            }
+
+        }
+
+
 	}
+    ui->listWidget_Powers_Lobby->setToolTip("Test");
 	
 
     if (activeMapsisEmpty())
@@ -553,7 +578,8 @@ void LobbyWindow::updateCombatLog(int input, Character* targetChar, int damageDe
                                                                                                 QString::fromStdString(powerUsed)));
         break;
     case 2:
-        ui->combat_log->append(">> [ID: %1] - %2 skipped their turn.");
+        ui->combat_log->append(QString(">> [ID: %1] - %2 skipped their turn.").arg(QString::number(currWorkingChar->getEntityID()),
+                                                                                   QString::fromStdString(currWorkingChar->getName())));
         break;
     }
 }
@@ -621,7 +647,18 @@ void LobbyWindow::on_pushButton_Engage_Combat_toggled(bool checked)
             return;
         }
 
+        ui->tabWidget->setCurrentIndex(1);
+        ui->pushButton_System_Log->setChecked(true);
+        ui->pushButton_Combat_Log->setChecked(false);
+
         diceobuSystemCore("4");
+    }
+    else
+    {
+        nextTurn();
+        ui->tabWidget->setCurrentIndex(0);
+        ui->pushButton_System_Log->setChecked(false);
+        ui->pushButton_Combat_Log->setChecked(true);
     }
 }
 
@@ -650,8 +687,8 @@ void LobbyWindow::on_pushButton_Combat_Status_clicked()
 
 void LobbyWindow::on_pushButton_Skip_Turn_clicked()
 {
-    nextTurn();
     emit mui->updateCombatLog(2, currWorkingChar, 0, "Skip");
+	nextTurn();
 }
 
 void LobbyWindow::on_pushButton_System_Log_toggled(bool checked)
@@ -671,8 +708,8 @@ void LobbyWindow::on_pushButton_Combat_Log_toggled(bool checked)
 {
     if (checked)
     {
-    ui->tabWidget->setCurrentIndex(0);
-    ui->pushButton_System_Log->setChecked(false);
+        ui->tabWidget->setCurrentIndex(0);
+        ui->pushButton_System_Log->setChecked(false);
     }
     else
     {

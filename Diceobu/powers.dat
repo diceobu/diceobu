@@ -1,4 +1,4 @@
-Melee Attack : 1, Fighter, NS, 1, none, none, 0, none, 2
+Melee Attack : 1, None, The user swings their weapon at their foe., 1, none, none, 0, none, 2
 Ranged Attack : 1, Fighter, NS, 15, none, none, 0, none, 1
 Indomitable : 10, Fighter, NS, 1, none, none, 0, none, 5
 Cleave : 7, Fighter, NS, 3, none, none, 0, circle, 2

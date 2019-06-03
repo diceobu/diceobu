@@ -283,7 +283,7 @@ public:
         label_Background_Race->setWordWrap(true);
         label_Name = new QLabel(CharacterDetailsWindow);
         label_Name->setObjectName(QString::fromUtf8("label_Name"));
-        label_Name->setGeometry(QRect(229, 10, 212, 51));
+        label_Name->setGeometry(QRect(229, 10, 212, 61));
         label_Name->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);\n"
 "font: 75 20pt \"ImperatorSmallCaps\";\n"
