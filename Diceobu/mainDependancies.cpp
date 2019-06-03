@@ -620,7 +620,7 @@ void resolveMeleeAttack(Character* &targetChar)
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
-void resolveRangedAttack(Character* targetChar)
+void resolveRangedAttack(Character* &targetChar)
 {
 	Power* currPower{ findPower("Ranged Attack") };
 
@@ -630,14 +630,47 @@ void resolveRangedAttack(Character* targetChar)
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
-void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY)
+void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
 {
 	Power* currPower{ findPower(name) };
 
-	aoeAttackCalculator(currPower, targetCoordX, targetCoordY);
+	aoeAttackCalculator(currPower, targetCoordX, targetCoordY, powerDamageModifier);
 }
 
-void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY)
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, const int &powerDamageModifier)
+{
+	Power* currPower{ findPower(name) };
+
+	int damageInflicted{ DamageCalculator(currPower) + powerDamageModifier};
+
+	damageDealt = damageInflicted / targetChar->getArmorClass();
+	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+}
+
+void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int &powerDamageModifier)
+{
+	Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
+	if (currTile->getOpen() == true)
+	{
+		currTile->setTileEffects(power->getDamageType());
+		if (currTile->getOccupied())
+		{
+			std::list <Character*> ::iterator iter;
+			for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
+			{
+				Character* currChar{ *iter };
+				if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
+				{
+					Character* targetChar = currChar;
+					int damageInflicted{ DamageCalculator(power) + powerDamageModifier };
+					targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
+				}
+			}
+		}
+	}
+}
+
+void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
 {
 	int startPointX{ targetCoordX - 5 };
 	int startPointY{ targetCoordY - 5 };
@@ -656,48 +689,12 @@ void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targ
 					{}
 					else
 					{
-						Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
-						if (currTile->getOpen() == true)
-						{
-                            currTile->setTileEffects(power->getDamageType());
-							if (currTile->getOccupied())
-							{
-								std::list <Character*> ::iterator iter;
-								for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
-								{
-									Character* currChar{ *iter };
-									if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
-									{
-										Character* targetChar = currChar;
-										int damageInflicted{ DamageCalculator(power) };
-										targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
-									}
-								}
-							}
-						}
+						aoeAttackDamageDealer(i, j, power, powerDamageModifier);
 					}
 				}
 				else
 				{
-					Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
-					if (currTile->getOpen() == true)
-					{
-                        currTile->setTileEffects(power->getDamageType());
-						if (currTile->getOccupied())
-						{
-							std::list <Character*> ::iterator iter;
-							for (iter = combatQueue.begin(); iter != combatQueue.end(); iter++)
-							{
-								Character* currChar{ *iter };
-								if (currChar->getEntityID() == currTile->getOccupantID() && currTile->getOccupantID() != currWorkingChar->getEntityID())
-								{
-									Character* targetChar = currChar;
-									int damageInflicted{ DamageCalculator(power) };
-									targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
-								}
-							}
-						}
-					}
+					aoeAttackDamageDealer(i, j, power, powerDamageModifier);
 				}
 			}
 		}
@@ -742,7 +739,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Call Meteor")
 	{
-		resolveAoeAttack("Call Meteor", targetCoordX, targetCoordY);
+		resolveAoeAttack("Call Meteor", targetCoordX, targetCoordY, 0);
 	}
 	else if (name == "Sudden Storm")
 	{

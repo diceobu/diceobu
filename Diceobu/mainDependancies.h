@@ -20,8 +20,6 @@ std::list<Character*> getActiveCharacters();
 
 void clearScreen();
 
-void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY);
-
 void displayWelcomeMessage();
 
 void displayAvailableOptions();
@@ -63,6 +61,12 @@ void displayCombatQueue();
 
 void displayAvailableMoves();
 
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, const int &powerDamageModifier);
+
+void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int &powerDamageModifier);
+
+void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier);
+
 void resolveCombatMove(const std::string &name, Character* &targetChar, const int &targetCoordX, const int &targetCoordY);
 
 void clearTileEffects();
@@ -96,9 +100,11 @@ int DamageCalculator(Power* &power);
 
 void resolveMeleeAttack(Character* &targetChar);
 
-void resolveRangedAttack(Character* targetChar);
+void resolveRangedAttack(Character* &targetChar);
 
-void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY);
+void resolveAoeAttack(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier);
+
+void singleTargetAttackCalculator(const std::string &name, Character* &targetChar, int &powerDamageModifier);
 
 std::list<Character*> getCombatQueue();
 
