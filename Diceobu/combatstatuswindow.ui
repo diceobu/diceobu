@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CombatStatusWindow</class>
+ <widget class="QDialog" name="CombatStatusWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>441</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-image: url(:/img/bg4.jpg);
+}</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox_Combat_Order">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>421</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Combat Order</string>
+   </property>
+   <widget class="QListWidget" name="listWidget_Combat_Order">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>401</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Currently_Playing">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>10</y>
+     <width>201</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Currently Playing</string>
+   </property>
+   <widget class="QLabel" name="label_Currently_Playing">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>ImperatorSmallCaps</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 white, stop:1 gray);
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+color: black;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_Status">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>320</y>
+     <width>421</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QGroupBox {
+font: 75 12pt &quot;ImperatorSmallCaps&quot;;
+ border: 2px solid black;
+ margin-top: 2ex;
+ border-radius: 5px;
+color: white;
+border-color: white;
+}</string>
+   </property>
+   <property name="title">
+    <string>Combatant's Status</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
