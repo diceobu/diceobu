@@ -1493,7 +1493,7 @@ font: 75 11pt &quot;ImperatorSmallCaps&quot;;
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>About...</string>
+    <string>Game Info</string>
    </property>
    <property name="font">
     <font>

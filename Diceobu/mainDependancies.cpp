@@ -18,6 +18,8 @@
 #include <string>
 #include <list>
 #include <iterator>
+#include <tgmath.h>
+#include <cmath>
 //  Qt Libraries
 #include <QMessageBox>
 #include <QDebug>
@@ -53,6 +55,7 @@ void nextTurn()
     if (inCombatTemp == false )//&& firstOfRound == combatQueue.back())
     {
         inCombat = false;
+        clearTileEffects();
         combatQueue.clear();
         //return;
     }
@@ -61,6 +64,7 @@ void nextTurn()
         combatQueue.push_back(combatQueue.front());
         combatQueue.pop_front();
         currWorkingChar = combatQueue.back();
+        if (currWorkingChar->getCurrHitPoints() <= 0){ nextTurn();}
     }
 
     currWorkingMap->writeMap();
@@ -645,7 +649,7 @@ void singleTargetAttackCalculator(const std::string &name, Character* &targetCha
 void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int &powerDamageModifier)
 {
 	Tile* currTile = currWorkingChar->getCurrMap()->m_tileGrid[i][j];
-	if (currTile->getOpen() == true)
+	if (currTile->getOpen() == true || currTile->getTerrainType() != "water")
 	{
 		currTile->setTileEffects(power->getDamageType());
 		if (currTile->getOccupied())
@@ -658,6 +662,7 @@ void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int 
 				{
 					Character* targetChar = currChar;
 					int damageInflicted{ DamageCalculator(power) + powerDamageModifier };
+					damageDealt = damageInflicted / targetChar->getArmorClass();
 					targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 				}
 			}
@@ -665,24 +670,55 @@ void aoeAttackDamageDealer(const int &i, const int &j, Power* &power, const int 
 	}
 }
 
+int distanceCalculator(int x1, int y1, int x2, int y2)
+{
+	int distance = sqrt((std::pow(x2 - x1, 2)) + std::pow(y2 - y1, 2));
+	return distance;
+}
+
 void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier, const int &radious)
 {
-	int startPointX{ targetCoordX - radious };
-	int startPointY{ targetCoordY - radious };
-
-	for (int i = startPointX; i < startPointX + 2*radious+1; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = startPointY; j < startPointX + 2*radious+1; j++)
+		for (int j = 0; j < 50; j++)
 		{
 			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
 			{
 				if (power->getAoe() == "circle")
 				{
-					if (((i == startPointX || i == startPointX + 2*radious) && (j <= startPointY + 3 || j >= startPointY + 2*radious-3))
-						|| ((j == startPointY || j == startPointY + 2*radious) && (i <= startPointX + 3 || i >= startPointX + 2*radious-3))
-						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 2*radious-1))
-						|| (i == startPointX + 2*radious-1 && (j == startPointY + 1 || j == startPointY + 2*radious-1)))
-					{}
+					if (distanceCalculator(targetCoordX, targetCoordY, i, j) <= radious)
+					{
+						//currWorkingMap->m_tileGrid[i][j]->setTileEffects("fire");
+						aoeAttackDamageDealer(i, j, power, powerDamageModifier);
+					}
+				}
+				else
+				{
+					aoeAttackDamageDealer(i, j, power, powerDamageModifier);
+				}
+			}
+		}
+	}
+}
+
+void aoeAttackCalculatorA(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
+{
+	int startPointX{ targetCoordX - 5 };
+	int startPointY{ targetCoordY - 5 };
+
+	for (int i = startPointX; i < startPointX + 11; i++)
+	{
+		for (int j = startPointY; j < startPointX + 11; j++)
+		{
+			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
+			{
+				if (power->getAoe() == "circle")
+				{
+					if (((i == startPointX || i == startPointX + 10) && (j <= startPointY + 3 || j >= startPointY + 7))
+						|| ((j == startPointY || j == startPointY + 10) && (i <= startPointX + 3 || i >= startPointX + 7))
+						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 9)) || (i == startPointX + 9 && (j == startPointY + 1 || j == startPointY + 9)))
+					{
+					}
 					else
 					{
 						aoeAttackDamageDealer(i, j, power, powerDamageModifier);
@@ -695,6 +731,15 @@ void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targ
 			}
 		}
 	}
+}
+
+void resolveAoeAttackA(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
+{
+	Power* currPower{ findPower(name) };
+
+	qDebug() << QString::number(targetCoordX) << QString::number(targetCoordY) << "746";
+
+	aoeAttackCalculatorA(currPower, targetCoordX, targetCoordY, powerDamageModifier);
 }
 
 void clearTileEffects()
@@ -727,11 +772,11 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Cleave")
 	{
-		//resolveCleave();
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 0, 2);
 	}
 	else if (name == "Crescendo")
 	{
-		//resolveCrescendo(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 40);
 	}
 	else if (name == "Call Meteor")
 	{
@@ -739,11 +784,11 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Sudden Storm")
 	{
-		//resolveSuddenStorm();
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 20, 10);
 	}
 	else if (name == "Ice Age")
 	{
-		//resolveIceAge(targetCoordX, targetCoordY);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 10,7);
 	}
 	else if (name == "Grand Illusion")
 	{
@@ -751,23 +796,23 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Steal Time")
 	{
-		//resolveStealTime(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 4);
 	}
 	else if (name == "Oppressive Force")
 	{
-		//resolveOppressiveForce(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 9);
 	}
 	else if (name == "Ice Knife")
 	{
-		//resolveIceKnife(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 30);
 	}
 	else if (name == "Maelstrom of Chaos")
 	{
-		//resolveMaelstromOfChaos(targetCoordX, targetCoordY);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 15, 15);
 	}
 	else if (name == "Disintegrate")
 	{
-		//resolveDisintegrate(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 14);
 	}
 	else if (name == "Teleport")
 	{
@@ -775,11 +820,11 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Earthen Aegis")
 	{
-		//resolveEarthenAegis(targetCoordX, targetCoordY);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 0, 5);
 	}
 	else if (name == "Sneak Attack")
 	{
-		//resolveSneakAttack(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 20);
 	}
 	else if (name == "Stealth")
 	{
@@ -791,7 +836,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Throwing Dagger")
 	{
-		//resolveThrowingDagger(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 10);
 	}
 	else if (name == "Hawk Eye")
 	{
@@ -799,11 +844,11 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Long Shot")
 	{
-		//resolveLongShot(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 10);
 	}
 	else if (name == "Cheap Shot")
 	{
-		//resolveCheapShot(targetChar);
+		singleTargetAttackCalculator(name, targetChar, 4);
 	}
 	else if (name == "Nature's Way")
 	{
@@ -811,7 +856,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Rainning Arrows")
 	{
-		//resolveRainningArrows(targetCoordX, targetCoordY);
+		resolveAoeAttack(name, targetCoordX, targetCoordY, 10, 6);
 	}
 	else if (name == "Repair")
 	{
@@ -819,11 +864,11 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	}
 	else if (name == "Heal")
 	{
-		//resolveHeal(targetCoordX, targetCoordY);
+	resolveAoeAttack(name, targetCoordX, targetCoordY, -20, 5);
 	}
 	else if (name == "Inspire")
 	{
-		//resolveInspire();
+	resolveAoeAttack(name, targetCoordX, targetCoordY, 0, 10);
 	}
     emit mui->updateCombatLog(1, targetChar, damageDealt, name);
 	nextTurn();

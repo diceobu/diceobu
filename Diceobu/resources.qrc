@@ -39,6 +39,7 @@
         <file>img/soulsand-iced.png</file>
         <file>img/soulsand-scorched.png</file>
         <file>img/water-iced.png</file>
+        <file>img/soulsand.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/ImperatorSmallCaps Bold.ttf</file>

@@ -128,6 +128,10 @@ void initPixmapArray()
                         {
                            pixmap_array[0][i] = QPixmap(":/img/floor.png");
                         }
+                        else if (tempChar == '$')
+                        {
+                           pixmap_array[0][i] = QPixmap(":/img/soulsand.png");
+                        }
                         else if ((tempChar == '\n') || (tempChar == '\r') || (tempChar == '#'))
                         {
                            i--;

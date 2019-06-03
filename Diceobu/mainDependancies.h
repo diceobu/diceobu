@@ -49,6 +49,8 @@ int characterCreation(const std::string &name, const std::string &gender, const 
 
 void deleteCurrentCharacter();
 
+int distanceCalculator(int x1, int y1, int x2, int y2);
+
 void displayInfo();
 
 void moveCurrentCharacterUI(const int &coordX, const int &coordY);

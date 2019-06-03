@@ -68,6 +68,8 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     palette.setBrush(QPalette::Background, background);
     this->setPalette(palette);
 
+    ui->pushButton_5->setVisible(false);
+    ui->pushButton_Entity_Positions->setVisible(false);
     displayCurrent();
 }
 
@@ -555,7 +557,7 @@ void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int
     }
     else if (input == "15")
     {
-        ui->system_log->append(QString(">> Loaded Character [ID %1] - %2 at {%3,%4}").arg(QString::number(currWorkingChar->getEntityID()),
+        ui->system_log->append(QString(">> Loaded Character [ID: %1] - %2 at {%3,%4}").arg(QString::number(currWorkingChar->getEntityID()),
                                                                                          QString::fromStdString(currWorkingChar->getName()),
                                                                                                       QString::number(currWorkingChar->getCoordinateX()),
                                                                                                                       QString::number(currWorkingChar->getCoordinateY())

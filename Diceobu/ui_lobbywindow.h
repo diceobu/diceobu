@@ -951,7 +951,7 @@ public:
 #ifndef QT_NO_SHORTCUT
         actionSaveCharacter->setShortcut(QApplication::translate("LobbyWindow", "J", nullptr));
 #endif // QT_NO_SHORTCUT
-        actionAbout->setText(QApplication::translate("LobbyWindow", "About...", nullptr));
+        actionAbout->setText(QApplication::translate("LobbyWindow", "Game Info", nullptr));
         actionAbout_the_Interface->setText(QApplication::translate("LobbyWindow", "About the Interface", nullptr));
         label->setText(QApplication::translate("LobbyWindow", "Game Map", nullptr));
         groupBox->setTitle(QString());
