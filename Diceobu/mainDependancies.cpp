@@ -670,18 +670,20 @@ void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targ
 	int startPointX{ targetCoordX - radious };
 	int startPointY{ targetCoordY - radious };
 
-	for (int i = startPointX; i < startPointX + 2*radious+1; i++)
+	std::cout << startPointX << " " << startPointX + 2 * radious + 1;
+
+	for (int i = startPointX; i < (startPointX + ((2*radious)+1)); i++)
 	{
-		for (int j = startPointY; j < startPointX + 2*radious+1; j++)
+		for (int j = startPointY; j < (startPointX + ((2*radious)+1)); j++)
 		{
 			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
 			{
 				if (power->getAoe() == "circle")
 				{
-					if (((i == startPointX || i == startPointX + 2*radious) && (j <= startPointY + 3 || j >= startPointY + 2*radious-3))
-						|| ((j == startPointY || j == startPointY + 2*radious) && (i <= startPointX + 3 || i >= startPointX + 2*radious-3))
-						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 2*radious-1))
-						|| (i == startPointX + 2*radious-1 && (j == startPointY + 1 || j == startPointY + 2*radious-1)))
+					if ((((i == startPointX) || (i == (startPointX + (2*radious)))) && (j <= (startPointY + 3) || (j >= (startPointY + ((2*radious)-3)))))
+						|| (((j == startPointY) || (j == (startPointY + (2*radious)))) && ((i <= (startPointX + 3)) || (i >= (startPointX + ((2*radious)-3)))))
+						|| ((i == (startPointX + 1)) && ((j == (startPointY + 1)) || (j == (startPointY + ((2*radious)-1)))))
+						|| ((i == (startPointX + ((2*radious)-1))) && ((j == (startPointY + 1)) || (j == (startPointY + ((2*radious)-1))))))
 					{}
 					else
 					{
@@ -695,6 +697,47 @@ void aoeAttackCalculator(Power* &power, const int &targetCoordX, const int &targ
 			}
 		}
 	}
+}
+
+void aoeAttackCalculatorA(Power* &power, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
+{
+	int startPointX{ targetCoordX - 5 };
+	int startPointY{ targetCoordY - 5 };
+
+	for (int i = startPointX; i < startPointX + 11; i++)
+	{
+		for (int j = startPointY; j < startPointX + 11; j++)
+		{
+			if (i >= 0 && i <= 49 && j >= 0 && j <= 49)
+			{
+				if (power->getAoe() == "circle")
+				{
+					if (((i == startPointX || i == startPointX + 10) && (j <= startPointY + 3 || j >= startPointY + 7))
+						|| ((j == startPointY || j == startPointY + 10) && (i <= startPointX + 3 || i >= startPointX + 7))
+						|| (i == startPointX + 1 && (j == startPointY + 1 || j == startPointY + 9)) || (i == startPointX + 9 && (j == startPointY + 1 || j == startPointY + 9)))
+					{
+					}
+					else
+					{
+						aoeAttackDamageDealer(i, j, power, powerDamageModifier);
+					}
+				}
+				else
+				{
+					aoeAttackDamageDealer(i, j, power, powerDamageModifier);
+				}
+			}
+		}
+	}
+}
+
+void resolveAoeAttackA(const std::string &name, const int &targetCoordX, const int &targetCoordY, const int &powerDamageModifier)
+{
+	Power* currPower{ findPower(name) };
+
+	qDebug() << QString::number(targetCoordX) << QString::number(targetCoordY) << "746";
+
+	aoeAttackCalculatorA(currPower, targetCoordX, targetCoordY, powerDamageModifier);
 }
 
 void clearTileEffects()

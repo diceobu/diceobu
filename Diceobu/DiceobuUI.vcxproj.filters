@@ -129,6 +129,12 @@
     <ClCompile Include="combatstatuswindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="diceobuinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entitypositionswindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lobbywindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -239,6 +245,12 @@
     <QtMoc Include="combatstatuswindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="diceobuinfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="entitypositionswindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="lobbywindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -285,6 +297,10 @@
     
     
     
+    
+    
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
@@ -300,6 +316,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_combatstatuswindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_diceobuinfo.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_entitypositionswindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_lobbywindow.h">
@@ -329,6 +351,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="combatstatuswindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="diceobuinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="entitypositionswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="lobbywindow.ui">
@@ -384,6 +412,15 @@
     <None Include="img\d20.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\d20v2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\dirt-iced.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\dirt-scorched.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="img\dirt.png">
       <Filter>Resource Files</Filter>
     </None>
@@ -396,7 +433,19 @@
     <None Include="img\fighterClassImage.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\floor-iced.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\floor-scorched.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="img\floor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\grass-iced.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\grass-scorched.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\grass.png">
@@ -438,10 +487,25 @@
     <None Include="img\rogueClassImage.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="img\sand-iced.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\sand-scorched.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="img\sand.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\settings.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\soulsand-iced.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\soulsand-scorched.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\water-iced.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="img\water.png">

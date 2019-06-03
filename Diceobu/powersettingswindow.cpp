@@ -115,7 +115,7 @@ void PowerSettingsWindow::on_pushButton_confirm_clicked()
 
 
     int coordX = ui->field_x->text().toInt();
-    int coordY = ui->field_x->text().toInt();                   // XY
+    int coordY = ui->field_y->text().toInt();                   // XY
 
     if (targetDistance > tempPower->getRange())
     {
