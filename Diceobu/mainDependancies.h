@@ -89,6 +89,8 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 
 void nextTurn();
 
+Power* findPower(std::string powerName);
+
 
 std::list<Character*> getCombatQueue();
 

@@ -16,6 +16,8 @@ signals:
     void refreshCurrent();
     void updateLog(std::string input,Map* currWorkingMap,int currWorkingCharID, std::string currWorkingCharName,
                    Map* previousMap, std::string previousMapName, Character* previousCharacter,std::string previousCharacterName, int coordX,int coordY);
+
+    void updateCombatLog(int input, Character* targetChar, int damageDealt, std::string powerUsed);
     void errorMessage(int errorCode);
 
 

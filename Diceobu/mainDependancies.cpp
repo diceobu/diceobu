@@ -35,6 +35,8 @@ Character* currWorkingChar;
 bool inCombat{ false };
 bool inCombatTemp{ false };
 
+static int damageDealt;
+
 Character* firstOfRound;
 
 int muteLog = 0;
@@ -612,8 +614,9 @@ void resolveMeleeAttack(Character* &targetChar)
 {
 	Power* currPower{ findPower("Melee Attack") };
 
-	int damageInflicted{ DamageCalculator(currPower) };
+    int damageInflicted{ DamageCalculator(currPower) };
 
+    damageDealt = damageInflicted / targetChar->getArmorClass();
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
@@ -621,8 +624,9 @@ void resolveRangedAttack(Character* targetChar)
 {
 	Power* currPower{ findPower("Ranged Attack") };
 
-	int damageInflicted{ DamageCalculator(currPower) - currWorkingChar->getLevel() };
+    int damageInflicted{ DamageCalculator(currPower) - currWorkingChar->getLevel() };
 
+    damageDealt = damageInflicted / targetChar->getArmorClass();
 	targetChar->setCurrHitPoints(targetChar->getCurrHitPoints() - damageInflicted / targetChar->getArmorClass());
 }
 
@@ -807,6 +811,7 @@ void resolveCombatMove(const std::string &name, Character* &targetChar, const in
 	{
 		//resolveInspire();
 	}
+    emit mui->updateCombatLog(1, targetChar, damageDealt, name);
 	nextTurn();
 }
 

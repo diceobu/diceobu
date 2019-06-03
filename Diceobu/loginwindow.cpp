@@ -21,6 +21,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     //// qDebug() << activeMapz.empty();
     checkLists();
+    initializePowerList();
 
     //connect(mainClass, SIGNAL(refreshCurrents()), lobbyWindow, SLOT(displayCurrent()));
 

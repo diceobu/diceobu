@@ -21,6 +21,8 @@ private slots:
 
     void on_pushButton_confirm_clicked();
 
+    void on_comboBox_Targets_activated(const QString &arg1);
+
 private:
     Ui::PowerSettingsWindow *ui;
 };

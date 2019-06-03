@@ -45,8 +45,9 @@ public slots:
     void displayCurrent();
     void updateSystemLog(std::string input,Map* this_currWorkingMap,int currWorkingCharID, std::string currWorkingCharName,
                          Map* previousMap, std::string previousMapName, Character* previousCharacter,std::string previousCharacterName, int coordX,int coordY);
+    void updateCombatLog(int input, Character* targetChar, int damageDealt, std::string powerUsed);
 
-   void errorHandler(int errorCode);
+    void errorHandler(int errorCode);
 
 private slots:
     void on_pushButton_5_clicked();
@@ -69,6 +70,8 @@ private slots:
     void on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item);
     void on_pushButton_Combat_Status_clicked();
     void on_pushButton_Skip_Turn_clicked();
+    void on_pushButton_System_Log_toggled(bool checked);
+    void on_pushButton_Combat_Log_toggled(bool checked);
 };
 
 extern MainUIClass *mui;

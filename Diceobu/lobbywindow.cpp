@@ -45,6 +45,8 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(mui, SIGNAL(updateCombatLog(int, Character*, int, std::string)),
+            this, SLOT(updateCombatLog(int, Character*, int, std::string)));
     connect(mui, SIGNAL(refreshCurrent()),
             this, SLOT(displayCurrent()));
     connect(mui, SIGNAL(updateLog(std::string ,Map* ,int , std::string, Map* , std::string , Character* ,std::string , int ,int )),
@@ -55,6 +57,9 @@ LobbyWindow::LobbyWindow(QWidget *parent) :
     QPixmap background(":/img/bg4.jpg");
     setFixedSize(window_width,window_height);
     background = background.scaled(window_width+50,window_height+50, Qt::IgnoreAspectRatio);
+
+    ui->pushButton_System_Log->setChecked(false);
+    ui->pushButton_Combat_Log->setChecked(true);
 
 
     QPalette palette;
@@ -274,7 +279,7 @@ void LobbyWindow::displayCurrent()
     ui->pushButton_nextMap->setVisible(!inCombat);
     ui->pushButton_nextCharacter->setVisible(!inCombat);
     ui->comboBox_Maps->setVisible(!inCombat);
-    ui->comboBox_Characters->setVisible(!inCombat);
+    ui->comboBox_Characters->setVisible(!inCombat);    
 
     ui->pushButton_Combat_Status->setVisible(inCombat);
     ui->groupBox_NextUp->setVisible(inCombat);
@@ -535,6 +540,25 @@ void LobbyWindow::updateSystemLog(std::string input,Map* this_currWorkingMap,int
 
 }
 
+void LobbyWindow::updateCombatLog(int input, Character* targetChar, int damageDealt, std::string powerUsed)
+{
+    switch (input)
+    {
+    case 1:
+        ui->combat_log->append(QString(">> [ID: %1] - %2 dealt %3 damage to [ID: %4] - %5 with %6.").arg(QString::number(currWorkingChar->getEntityID()),
+                                                                                                QString::fromStdString(currWorkingChar->getName()),
+                                                                                                QString::number(damageDealt),
+                                                                                                QString::number(targetChar->getEntityID()),
+                                                                                                QString::fromStdString(targetChar->getName()),
+                                                                                                QString::fromStdString(powerUsed)));
+        break;
+    case 2:
+        ui->combat_log->append(">> [ID: %1] - %2 skipped their turn.");
+        break;
+    }
+}
+
+
 void LobbyWindow::errorHandler(int errorCode)
 {
 	switch (errorCode)
@@ -569,7 +593,13 @@ void LobbyWindow::errorHandler(int errorCode)
     case 10:
         QMessageBox::critical(this,"Error!","Not enough Characters to initiate Combat!");
         break;
-	}
+    case 11:
+        QMessageBox::critical(this,"Error!","You have not learnt this Power yet!");
+        break;
+    case 12:
+        QMessageBox::critical(this,"Error!","Target is out of range!");
+        break;
+    }
 }
 
 
@@ -598,8 +628,18 @@ void LobbyWindow::on_pushButton_Engage_Combat_toggled(bool checked)
 void LobbyWindow::on_listWidget_Powers_Lobby_itemClicked(QListWidgetItem *item)
 {
     tempQString = item->text();;
-    powerSettingsWindow = new PowerSettingsWindow(this);
-    powerSettingsWindow->show();
+
+    Power* tempPower = findPower(tempQString.toStdString());
+
+    if (currWorkingChar->getLevel() < tempPower->getLevelReq())
+    {
+        emit mui->errorMessage(11);
+    }
+    else
+    {
+     powerSettingsWindow = new PowerSettingsWindow(this);
+     powerSettingsWindow->show();
+    }
 }
 
 void LobbyWindow::on_pushButton_Combat_Status_clicked()
@@ -611,4 +651,33 @@ void LobbyWindow::on_pushButton_Combat_Status_clicked()
 void LobbyWindow::on_pushButton_Skip_Turn_clicked()
 {
     nextTurn();
+    emit mui->updateCombatLog(2, currWorkingChar, 0, "Skip");
+}
+
+void LobbyWindow::on_pushButton_System_Log_toggled(bool checked)
+{
+    if (checked) {
+        ui->tabWidget->setCurrentIndex(1);
+        ui->pushButton_Combat_Log->setChecked(false);
+    }
+    else
+    {
+        ui->tabWidget->setCurrentIndex(0);
+        ui->pushButton_Combat_Log->setChecked(true);
+    }
+}
+
+void LobbyWindow::on_pushButton_Combat_Log_toggled(bool checked)
+{
+    if (checked)
+    {
+    ui->tabWidget->setCurrentIndex(0);
+    ui->pushButton_System_Log->setChecked(false);
+    }
+    else
+    {
+        ui->tabWidget->setCurrentIndex(1);
+        ui->pushButton_System_Log->setChecked(true);
+
+    }
 }
